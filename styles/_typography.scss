@@ -1,0 +1,84 @@
+//
+// Headings
+//
+$h1-font-size: 56px;
+$h2-font-size: 48px;
+$h3-font-size: 40px;
+$h4-font-size: 32px;
+$h5-font-size: 24px;
+$h6-font-size: 16px;
+
+h1,
+.title-1 {
+	@include margin(0, top);
+  @include margin(16px, bottom);
+	@include font-size(32px);
+	line-height: 40px;
+	font-weight: 500;
+
+	@include breakpoint($screen-sm) {
+		@include margin(0, top);
+	  @include margin(16px, bottom);
+		@include font-size(40px);
+		line-height: 50px;
+	}
+
+	@include breakpoint($screen-lg) {
+		@include margin(0, top);
+	  @include margin(24px, bottom);
+		@include font-size(56px);
+		line-height: 70px;
+	}
+}
+
+h2,
+.title-2 {
+	@include margin(0, top);
+  @include margin(16px, bottom);
+	@include font-size(32px);
+	line-height: 40px;
+	font-weight: 500;
+}
+
+h3,
+.title-3 {
+	font-weight: 500;
+	@include margin(0, top);
+	@include margin(16px, bottom);
+	@include font-size(32px);
+	line-height: 40px;
+}
+
+h4,
+.title-4 {
+	@include margin(0, top);
+  @include margin(16px, bottom);
+	@include font-size(20px);
+	line-height: 25px;
+	font-weight: 500;
+}
+
+h5,
+.title-5 {
+	font-weight: 500;
+	@include margin(0, top);
+  @include margin(16px, bottom);
+	@include font-size(20px);
+	line-height: 25px;
+}
+
+h6,
+.title-6 {
+  @include margin(0, top);
+  @include margin(16px, bottom);
+	@include font-size(20px);
+	line-height: 25px;
+	font-weight: 500;
+}
+
+p {
+  @include margin(0, top);
+  @include margin(16px, bottom);
+	line-height: 24px;
+	font-weight: 400;
+}

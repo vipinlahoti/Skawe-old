@@ -1,0 +1,285 @@
+@mixin clearfix($extend: true) {
+  @if $extend {
+    @extend %clearfix;
+  } @else {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+/// Mixin for box sizing
+@mixin box-sizing($args) {
+  -webkit-box-sizing: $args;
+  -moz-box-sizing: $args;
+  box-sizing: $args;
+}
+
+/// Clearfix helper
+/// @requires {mixin} clearfix
+%clearfix {
+  @include clearfix($extend: false);
+}
+
+/// Mixin to size elements.
+/// @param {Number} $width           - Width
+/// @param {Number} $height [$width] - Height
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin breakpoint($class) {
+  @if $class == $screen-xs {
+    @media (max-width: $screen-sm - 1) { @content; }
+  }
+  @else if $class == $screen-sm {
+    @media (min-width: $screen-sm) { @content; }
+  }
+  @else if $class == $screen-md {
+    @media (min-width: $screen-md) { @content; }
+  }
+  @else if $class == $screen-lg {
+    @media (min-width: $screen-lg) { @content; }
+  }
+  @else if $class == $screen-xl {
+    @media (min-width: $screen-xl) { @content; }
+  }
+  @else if $class == $screen-xxl {
+    @media (min-width: $screen-xxl) { @content; }
+  }
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg, xl, xxl";
+  }
+}
+
+// Position (vert, hor, center)
+@mixin center($position) {
+  position: absolute;
+
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  }
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Text Alignment Left, Right, Center
+@mixin text-align($position) {
+  @if $position == 'left' {
+    text-align: left;
+  }
+  @else if $position == 'right' {
+    text-align: right;
+  }
+  @else if $position == 'center' {
+  	text-align: center;
+  }
+}
+
+/// Mixin to round corners
+@mixin round-corner($tl: 5px, $tr: null, $br: null, $bl: null) {
+
+	@if ($tr == null) {	$tr: $tl;	}
+	@if ($br == null) {	$br: $tl;	}
+	@if ($bl == null) {	$bl: $tl;	}
+
+	-webkit-border-radius: $tl $tr $br $bl;
+	-moz-border-radius: $tl $tr $br $bl;
+ 	border-radius: $tl $tr $br $bl;
+
+	/* Prevent background color leak outs */
+	-webkit-background-clip: padding-box;
+	-moz-background-clip:    padding;
+	background-clip:         padding-box;
+}
+
+@function strip-unit( $number ) {
+  @if type-of( $number ) == 'number' and not unitless( $number ) {
+    @return $number / ( $number * 0 + 1 );
+  }
+
+  @return $number;
+}
+
+@mixin px-to-rem($property, $px-values) {
+  // Number of pixels in 1rem (default: 16px/rem)
+  // When converting to rems, we must divide by this ratio.
+  $px-per-rem: $base-font-size / 1rem;
+
+  // Print the pixel fallback declaration first so we can override it in capable browsers.
+  #{$property}: $px-values;
+
+  // If there is only one value, print the declaration with the value converted to rems.
+  @if type-of($px-values) == "number" {
+    #{$property}: $px-values / $px-per-rem;
+  } @else {
+    // Otherwise, we've got a list and we'll need to convert each value in turn.
+    // Create an empty list that we can dump values into.
+    $rem-values: ();
+    @each $value in $px-values {
+      // If the value is zero, a string or a color, leave it be.
+      @if $value == 0 or type-of($value) == "string" or type-of($value) == "color" {
+        $rem-values: append($rem-values, $value);
+      } @else {
+        $rem-values: append($rem-values, $value / $px-per-rem);
+      }
+    }
+    // Print the property and its list of converted values.
+    #{$property}: $rem-values;
+  }
+}
+
+// Adjust the leading to a new multiple of the baseline
+@mixin set-leading($lines) {
+	@include px-to-rem(line-height, $base-line-height * $lines);
+}
+
+// Calculate the number of baselines required to accomodate a
+// given pixel-based font size.
+@function lines-for-font-size($font-size) {
+	$lines: if(
+		$round-to-nearest-half-line,
+		ceil(2 * $font-size / $base-line-height) / 2,
+		ceil($font-size / $base-line-height)
+	);
+	@if $lines * $base-line-height - $font-size < $min-line-padding * 2 {
+		$lines: $lines + if($round-to-nearest-half-line, 0.5, 1);
+	}
+	@return $lines;
+}
+
+@mixin font-size($to-size, $lines: lines-for-font-size($to-size)) {
+	@include px-to-rem(font-size, $to-size);
+	// line heights were not matching with the comps
+	// need to fix the math later
+	// @include set-leading($lines);
+}
+
+//
+// Calculate Rem
+//
+@function calc-rem( $size: (), $root: $base-font-size ) {
+  $size-root: $root;
+  $size_final: '';
+
+  @for $i from 1 to length($size) + 1 {
+    $n_size: nth( $size, $i ) / $size-root;
+    $size_final: join($size_final, strip-unit( $n_size ) * 1rem);
+  }
+  @return #{$size_final};
+}
+
+
+//
+// Margin
+//
+// calculates margin in 'rem' with 'px' fallback.
+// with the option to set direction, e.g., 'margin-top'
+//
+
+@mixin margin( $size, $dir: null, $important: null) {
+  @if $dir != null {
+    $dir: '-' + $dir;
+  }
+  margin#{$dir}: $size $important;
+  margin#{$dir}: calc-rem($size) $important;
+}
+
+//
+// Padding
+//
+// calculates padding in 'rem' with 'px' fallback.
+// with the option to set direction, e.g., 'padding-top'
+//
+
+@mixin padding( $size, $dir: null, $important: null) {
+  @if $dir != null {
+    $dir: '-' + $dir;
+  }
+  padding#{$dir}: $size $important;
+  padding#{$dir}: calc-rem($size) $important;
+}
+
+//
+// Width Rem
+//
+// calculates width in 'rem' with 'px' fallback.
+//
+
+@mixin width( $width, $type: null ) {
+
+  @if $type == max {
+
+    max-width: $width;
+    max-width: calc-rem( $width );
+
+  } @else if $type == min {
+
+    min-width: $width;
+    min-width: calc-rem( $width );
+
+  } @else {
+
+    width: $width;
+    width: calc-rem( $width );
+
+  }
+
+}
+
+//
+// Height Rem
+//
+// calculates height in 'rem' with 'px' fallback.
+//
+
+@mixin height( $height, $type: null ) {
+
+  @if $type == max {
+
+    max-height: $height;
+    max-height: calc-rem( $height );
+
+  } @else if $type == min {
+
+    min-height: $height;
+    min-height: calc-rem( $height );
+
+  } @else {
+
+    height: $height;
+    height: calc-rem( $height );
+
+  }
+}
+
+@mixin stack-spacing() {
+	// column bottom margin on mobile and collapse component last elem margin
+	& > *:last-child,
+	& > *:last-child > *:last-child,
+	& > *:last-child > *:last-child > *:last-child,
+	& > *:last-child > *:last-child > *:last-child > *:last-child,
+	& > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child,
+	& > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child,
+	& > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child,
+	& > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child > *:last-child, > *:last-child {
+			margin-bottom: 0;
+	}
+}

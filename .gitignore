@@ -1,0 +1,54 @@
+.eslintcache
+npm-debug.log
+*.scssc
+.sass-cache/*
+.DS_Store
+*-ck.js
+providers_secret.js
+*.sublime-project
+
+*.sublime-workspace
+codekit-config.json
+
+config.rb
+
+deploy.sh
+
+.idea
+
+scratch
+
+.deploy
+.deploy/*
+
+versions
+
+/sessions
+
+/credentials
+/node_modules
+/.pnp
+.pnp.js
+bundle.tar.gz
+
+jsdoc-conf.json
+jsdoc.json
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
