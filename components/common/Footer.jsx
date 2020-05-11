@@ -8,7 +8,6 @@ const siteTitle = 'Skawe';
 const Footer = () =>
   
   <React.Fragment>
-    <Skawe.components.MiniFooter />
     <footer className="section-small">
       <Container>
         <Row className="between-xs">

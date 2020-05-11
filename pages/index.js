@@ -1,5 +1,5 @@
 import Skawe from '@skawe';
-import React, { Component } from 'react';
+import React from 'react';
 import { Jumbotron, Container, Row, Col, Card } from 'react-bootstrap';
 
 export default () => {
@@ -8,7 +8,7 @@ export default () => {
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Home" description="Home description" />
 
-      <Jumbotron className="section-hero">
+      <Jumbotron className="jumbotron-bg-image section-hero">
         <Container>
           <Row>
             <Col sm={12} md={7} lg={7}>
@@ -22,7 +22,6 @@ export default () => {
                   <Skawe.components.Button variant="white-fill" type="link" path="/hosting">
                     Choose Your Hosting
                   </Skawe.components.Button>
-
                 </div>
               </div>
             </Col>

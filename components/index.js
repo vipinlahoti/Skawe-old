@@ -5,6 +5,8 @@ import './common/MiniFooter.jsx';
 import './common/HeadTags.jsx';
 import './common/Logo.jsx';
 import './common/Icon.jsx';
+import './common/DomainSearch.jsx';
+
 // import './common/ScrollToTop.jsx';
 
 // UI Components

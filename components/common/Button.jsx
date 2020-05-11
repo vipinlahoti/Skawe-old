@@ -7,7 +7,7 @@ class SkaweButton extends Component {
 
   render() {
     const { variant, type, size, path, icon, children, ...rest } = this.props;
-    const btnClass = `btn btn-${variant}`;
+    const btnClass = `btn btn-${variant} btn-${size}`;
 
     return (
       <React.Fragment>

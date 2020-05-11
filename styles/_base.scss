@@ -69,6 +69,16 @@ a {
   }
 }
 
+.list {
+  @include margin(16px, top);
+  @include padding(0);
+
+  li {
+    @include margin(4px, bottom);
+    list-style: none;
+  }
+}
+
 .font-weight-bold {
   font-weight: 700;
 }
@@ -113,6 +123,10 @@ a {
   background: $light;
 }
 
+.bg-gray {
+  background: $gray-100;
+}
+
 .bg-dark {
   background: $dark;
 }
@@ -123,6 +137,18 @@ a {
 
 .bg-black {
   background: $black;
+}
+
+.bg-sweet-blue {
+  background: $sweet-blue;
+}
+
+.bg-sweet-pink {
+  background: $sweet-pink;
+}
+
+.bg-sweet-purple {
+  background: $sweet-purple;
 }
 
 .text-primary {
@@ -155,10 +181,18 @@ a {
 
 .text-dark {
   color: $dark;
+
+  a {
+    color: inherit;    
+  }
 }
 
 .text-white {
   color: $white;
+
+  a {
+    color: inherit;    
+  }
 }
 
 .text-black {
@@ -179,4 +213,10 @@ a {
 
 .d-block {
   display: block!important;
+}
+
+.section-stripe {
+  .col {
+    max-width: 80%;
+  }
 }

@@ -74,6 +74,17 @@
     }
   }
 
+  &.btn-small {
+    @include padding(4px 20px);
+    @include font-size(15px);
+    height: 40px;
+    line-height: 25px;
+
+    .icon {
+      line-height: 25px;
+    }
+  }
+
 }
 
 //

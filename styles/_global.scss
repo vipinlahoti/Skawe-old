@@ -41,14 +41,24 @@
 
 .jumbotron {
   @include padding(32px);
+  @include padding(105px, top);
+  @include margin(-105px, top);
   @include height(600px);
-  background: url(/global.jpg) no-repeat fixed center;
-  background-size: cover;
-  overflow: hidden;
-  color: $white;
+  @extend .bg-sweet-blue;
   display: flex;
   align-items: center;
   position: relative;
+
+  .hero__wrapper {
+    position: relative;
+    z-index: 99;
+  }
+}
+
+.jumbotron-bg-image {
+  background: url(/global.jpg) no-repeat fixed center;
+  background-size: cover;
+  color: $white;
 
   &:after {
     background: $dark;
@@ -61,11 +71,6 @@
     right: 0;
     z-index: 1;
   }
-
-  .hero__wrapper {
-    position: relative;
-    z-index: 99;
-  }
 }
 
 .jumbotron-fluid {
@@ -74,6 +79,10 @@
 
 .section {
   @include padding(120px 0);
+}
+
+.section-lg {
+  @include padding(160px 0); 
 }
 
 .section-small {
@@ -190,10 +199,43 @@ footer,
   display: flex;
 
   .form-control {
-    @include width(480px, min);
+    @include width(580px, min);
   }
 
   .btn {
     @include padding(4px 16px);
+  }
+}
+
+.domain-links {
+  a {
+    @include margin(32px, right);
+    // color: $gray-600;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;      
+    }
+  }
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-group-horizontal {
+  flex-direction: row;
+}
+
+.list-group-item {
+  @include padding(32px);
+  position: relative;
+  display: block;
+  border: 1px solid rgba(0,0,0,.125);
+  border-right-width: 0;
+
+  &:last-child {
+    border-right-width: 1px;
   }
 }

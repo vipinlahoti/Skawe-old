@@ -10,6 +10,7 @@ class Layout extends Component {
 
         <Skawe.components.Header />
         {this.props.children}
+        <Skawe.components.MiniFooter variant="bg-primary" className="center-xs" title="Need help? Call our award-winning support team 24/7." />
         <Skawe.components.Footer />
       </React.Fragment>
     )

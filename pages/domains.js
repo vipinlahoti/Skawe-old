@@ -1,29 +1,107 @@
 import Skawe from '@skawe';
 import React from 'react';
-import { Jumbotron, Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Col, ListGroup } from 'react-bootstrap';
 
 export default () => {
   return (
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Domains" description="Domains Page" />
 
-      <div className="section">
+      <Jumbotron>
         <Container>
           <Row className="center-xs">
-            <div className="text-left">
-              <h3 className="title-3">
-                Get a Domain Name
-              </h3>
-              <p className="lead">With Privacy Protection and lots more.</p>
-              
-              <Form className="domain-search">
-                <Form.Control type="text" placeholder="Find your Perfect Domain Name." />
-                
-                <Button type="submit" variant="black-fill">
-                  <Skawe.components.Icon name="search" />
-                </Button>
-              </Form>
-            </div>  
+            <Col>
+              <div className="hero__wrapper text-dark">
+                <Skawe.components.DomainSearch title="Get a Domain Name" />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Jumbotron>
+
+      <Skawe.components.MiniFooter variant="bg-sweet-purple" className="middle-xs between-xs" title="Each and every domain name comes with all you need to get online." link="/domains" />
+      
+      <div className="section">
+        <Container>
+          <Row>
+            <Col md={3}>
+              <ListGroup>
+                <ListGroup.Item>
+                  <h5 className="title-6">.com</h5>
+                  <p className="mb-0">Starting at</p>
+                  <p className="title-5">₹ 99</p>
+                  <Skawe.components.Button type="link" path="/domains" size="small">
+                    Check Availability
+                  </Skawe.components.Button>
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+
+            <Col md={3}>
+              <ListGroup>
+                <ListGroup.Item>
+                  <h5 className="title-6">.net</h5>
+                  <p className="mb-0">Starting at</p>
+                  <p className="title-5">₹ 99</p>
+                  <Skawe.components.Button type="link" path="/domains" size="small">
+                    Check Availability
+                  </Skawe.components.Button>
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+            
+            <Col md={3}>
+              <ListGroup>
+                <ListGroup.Item>
+                  <h5 className="title-6">.in</h5>
+                  <p className="mb-0">Starting at</p>
+                  <p className="title-5">₹ 99</p>
+                  <Skawe.components.Button type="link" path="/domains" size="small">
+                    Check Availability
+                  </Skawe.components.Button>
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+
+            <Col md={3}>
+              <ListGroup>
+                <ListGroup.Item>
+                  <h5 className="title-6">.org</h5>
+                  <p className="mb-0">Starting at</p>
+                  <p className="title-5">₹ 99</p>
+                  <Skawe.components.Button type="link" path="/domains" size="small">
+                    Check Availability
+                  </Skawe.components.Button>
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+
+            <Col md={3}>
+              <ListGroup>
+                <ListGroup.Item>
+                  <h5 className="title-6">.online</h5>
+                  <p className="mb-0">Starting at</p>
+                  <p className="title-5">₹ 99</p>
+                  <Skawe.components.Button type="link" path="/domains" size="small">
+                    Check Availability
+                  </Skawe.components.Button>
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+
+            <Col md={3}>
+              <ListGroup>
+                <ListGroup.Item>
+                  <h5 className="title-6">.club</h5>
+                  <p className="mb-0">Starting at</p>
+                  <p className="title-5">₹ 99</p>
+                  <Skawe.components.Button type="link" path="/domains" size="small">
+                    Check Availability
+                  </Skawe.components.Button>
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+            
           </Row>
         </Container>
       </div>
