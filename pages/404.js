@@ -8,12 +8,11 @@ export default () => {
       <Skawe.components.HeadTags title="404" description="Error 404 Page" />
       <div className="section">
         <Container>
-          <Row>
-            <Col sm={12} md={5} lg={5}>
-              <h4 className="display-3">Error 404</h4>
+          <Row className="center-xs">
+            <Col sm={12}>
+              <Skawe.components.Icon name="error_outline" iconClass="font-lg" />
+              <p className="lead">Error 404</p>
             </Col>
-
-            <Col sm={12} md={7} lg={7}></Col>
           </Row>
         </Container>
       </div>

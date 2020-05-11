@@ -9,12 +9,13 @@ class Login extends Component {
     return (
       <Card className="shadow-lg">
         <Card.Header className="p-5">
-          <div className="text-muted text-center mb-3">
-            <small>Login with credentials</small>
+          <div className="title-5 mb-2">
+            Registered Users
+            <span>Have an account? Sign in now.</span>
           </div>
           <Form>
             <Form.Group controlId="username">
-              <Form.Label>Username</Form.Label>
+              <Form.Label>Username or Customer #</Form.Label>
               <Form.Control type="text" />
             </Form.Group>
 
@@ -22,15 +23,29 @@ class Login extends Component {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" />
             </Form.Group>
-            <Button variant="primary" block>
-              Login
-            </Button>
-            <Link href="/forgot-password">
-              <a className="d-block mt-3"><small>Forgot your password?</small></a>
-            </Link>
-            <Link href="/register">
-              <a className="d-block mt-1"><small>Don't have an account? Register</small></a>
-            </Link>
+            
+            <Button block>Login</Button>
+            
+            <p className="mt-1">
+              Need to find your 
+              <Link href="/retrieve-username">
+                <a> Username </a>
+              </Link>
+              or
+              <Link href="/forgot-password">
+                <a> Password </a>
+              </Link>
+              ?
+            </p>
+
+            <p>
+              Don't have an account? 
+              <Link href="/register">
+                <a> Register Now</a>
+              </Link>
+              .
+            </p>
+
           </Form>
         </Card.Header>
       </Card>

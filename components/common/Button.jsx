@@ -16,12 +16,14 @@ class SkaweButton extends Component {
             <a className={btnClass}>
               {icon ? <Skawe.components.Icon name={icon} /> : null}
               {children}
+              {!icon ? <Skawe.components.Icon name="arrow_forward" /> : null}
             </a>
           </Link>
         :
           <Button variant={variant} size={size} {...rest}>
             {icon ? <Skawe.components.Icon name={icon} /> : null}
             {children}
+            {!icon ? <Skawe.components.Icon name="arrow_forward" /> : null}
           </Button>
         }
       </React.Fragment>

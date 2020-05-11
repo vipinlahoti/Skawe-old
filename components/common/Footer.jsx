@@ -1,21 +1,59 @@
 import Skawe from '@skawe';
+import Link from 'next/link';
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Nav } from 'react-bootstrap';
+
+const siteTitle = 'Skawe';
 
 const Footer = () =>
-  <footer className="section-small">
-    <Container>
-      <Row>
-        <Col md={7}>
-          <h4 className="mb-0 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-          <hr />
-          <div className="copyright">&copy; 2020.</div>
-        </Col>
-        <Col md={5}>
+  
+  <React.Fragment>
+    <Skawe.components.MiniFooter />
+    <footer className="section-small">
+      <Container>
+        <Row className="between-xs">
+          <Col>
+            <Nav>
+              <Link href='/'>
+                <a className="nav-link">
+                  Help
+                </a>
+              </Link>
 
-        </Col>
-      </Row>
-    </Container>
-  </footer>
+              <Link href='/'>
+                <a className="nav-link">
+                  Contact Us
+                </a>
+              </Link>
+
+              <Link href='/'>
+                <a className="nav-link">
+                  WHOIS
+                </a>
+              </Link>
+              <hr />
+              <div className="copyright">
+                Use of this Site is subject to express terms of use. <br />
+                By using this site, you signify that you agree to be bound by these &nbsp;
+                <Link href='/'>
+                  <a>Universal Terms of Service</a>
+                </Link>
+                .
+              </div>
+              <div className="copyright mt-1">
+                Copyright &copy; 1999 - 2020 All Rights Reserved. &nbsp;
+                <Link href='/'>
+                  <a>Privacy Policy</a>
+                </Link>.
+              </div>
+            </Nav>
+          </Col>
+          <Col>
+            <Skawe.components.Logo siteTitle={siteTitle}/>
+          </Col>
+        </Row>
+      </Container>
+    </footer>
+  </React.Fragment>
 
 Skawe.registerComponent('Footer', Footer);

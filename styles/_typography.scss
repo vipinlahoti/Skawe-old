@@ -8,72 +8,68 @@ $h4-font-size: 32px;
 $h5-font-size: 24px;
 $h6-font-size: 16px;
 
+h1, h2, h3, h4, h5, h6,
+.title-1, .title-2, .title-3, .title-4, .title-5 {
+	@include margin(0);
+	font-family: $brand-font-family;
+  font-weight: 500;
+}
+
 h1,
+.h1,
 .title-1 {
-	@include margin(0, top);
   @include margin(16px, bottom);
-	@include font-size(32px);
-	line-height: 40px;
+	@include font-size($h1-font-size);
 	font-weight: 500;
-
-	@include breakpoint($screen-sm) {
-		@include margin(0, top);
-	  @include margin(16px, bottom);
-		@include font-size(40px);
-		line-height: 50px;
-	}
-
-	@include breakpoint($screen-lg) {
-		@include margin(0, top);
-	  @include margin(24px, bottom);
-		@include font-size(56px);
-		line-height: 70px;
-	}
 }
 
 h2,
+.h2,
 .title-2 {
 	@include margin(0, top);
   @include margin(16px, bottom);
-	@include font-size(32px);
-	line-height: 40px;
-	font-weight: 500;
+	@include font-size($h2-font-size);
 }
 
 h3,
+.h3,
 .title-3 {
-	font-weight: 500;
 	@include margin(0, top);
 	@include margin(16px, bottom);
-	@include font-size(32px);
-	line-height: 40px;
+	@include font-size($h3-font-size);
 }
 
 h4,
+.h4,
 .title-4 {
 	@include margin(0, top);
   @include margin(16px, bottom);
-	@include font-size(20px);
-	line-height: 25px;
-	font-weight: 500;
+	@include font-size($h4-font-size);
 }
 
 h5,
+.h5,
 .title-5 {
-	font-weight: 500;
 	@include margin(0, top);
   @include margin(16px, bottom);
-	@include font-size(20px);
-	line-height: 25px;
+	@include font-size($h5-font-size);
 }
 
 h6,
+.h6,
 .title-6 {
   @include margin(0, top);
   @include margin(16px, bottom);
-	@include font-size(20px);
-	line-height: 25px;
-	font-weight: 500;
+	@include font-size($h6-font-size);
+}
+
+.title-1 span,
+.title-2 span,
+.title-3 span,
+.title-4 span,
+.title-5 span {
+	display: block;
+  font-weight: 300;
 }
 
 p {
@@ -81,4 +77,16 @@ p {
   @include margin(16px, bottom);
 	line-height: 24px;
 	font-weight: 400;
+}
+
+.lead {
+	@include font-size(21px);
+	line-height: 28px;
+	font-weight: 300;
+}
+
+.card-text {
+	@include font-size(18px);
+	font-weight: 300;
+	line-height: 28px;
 }

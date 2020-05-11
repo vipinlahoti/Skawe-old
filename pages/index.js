@@ -12,18 +12,19 @@ export default () => {
         <Container>
           <Row>
             <Col sm={12} md={7} lg={7}>
-              <h4 className="display-4">An agile suite that’s designed for change.</h4>
-              <p>Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
-              <div className="mt-4">
-                <Skawe.components.Button variant="white" type="link" path="/register" icon="person_add">
-                  Register
-                </Skawe.components.Button>
-                <Skawe.components.Button variant="white" type="link" path="/login" icon="account">
-                  Login
-                </Skawe.components.Button>
+              <div className="hero__wrapper">
+                <h4 className="title-3">An agile suite that’s designed for change.</h4>
+                <p>Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
+                <div className="mt-2">
+                  <Skawe.components.Button variant="white" type="link" path="/domain">
+                    Get a Domain
+                  </Skawe.components.Button>
+                  <Skawe.components.Button variant="white-fill" type="link" path="/hosting">
+                    Choose Your Hosting
+                  </Skawe.components.Button>
 
+                </div>
               </div>
-            
             </Col>
           </Row>
         </Container>
@@ -31,10 +32,10 @@ export default () => {
 
       <div className="section section-features">
         <Container>
-          <Row className="justify-content-md-center text-center mb-4">
+          <Row className="center-xs mb-4">
             <Col sm={12} md={8} lg={8}>
-              <h3 className="display-3">Excepteur sint occaecat cupidatat.</h3>
-              <p className="lead">hero.description</p>
+              <h3 className="title-3">Excepteur sint occaecat cupidatat.</h3>
+              <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
             </Col>
           </Row>
 
@@ -47,7 +48,7 @@ export default () => {
                   </div>
                   <Card.Title>Lorem ipsum dolor sit amet</Card.Title>
                   <Card.Text>
-                    hero.description
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -61,7 +62,7 @@ export default () => {
                   </div>
                   <Card.Title>Lorem ipsum dolor sit amet</Card.Title>
                   <Card.Text>
-                    hero.description
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -75,7 +76,7 @@ export default () => {
                   </div>
                   <Card.Title>Lorem ipsum dolor sit amet</Card.Title>
                   <Card.Text>
-                    hero.description
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -88,8 +89,8 @@ export default () => {
         <Container>
           <Row>
             <Col sm={12} md={5} lg={5}>
-              <h4 className="display-3">HomePage dolor <span className="text-primary">sit amet, consectetur adipiscing elit.</span></h4>
-              <p className="lead">hero.description</p>
+              <h4 className="title-4">HomePage dolor <span className="text-primary">sit amet, consectetur adipiscing elit.</span></h4>
+              <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
             </Col>
 
             <Col sm={12} md={7} lg={7}></Col>
@@ -102,8 +103,8 @@ export default () => {
           <Row>
             <Col sm={12} md={7} lg={7}></Col>
             <Col sm={12} md={5} lg={5}>
-              <h4 className="display-3">Lorem ipsum dolor <span className="text-danger">sit amet, consectetur adipiscing elit.</span></h4>
-              <p className="lead">hero.description</p>
+              <h4 className="title-4">Lorem ipsum dolor <span className="text-danger">sit amet, consectetur adipiscing elit.</span></h4>
+              <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
             </Col>
           </Row>
         </Container>

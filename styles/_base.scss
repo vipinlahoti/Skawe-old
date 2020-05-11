@@ -31,6 +31,10 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 hr {
+  @include margin(32px 0); 
+  border: 0;
+  border-top: 1px solid $gray-700;
+  width: 10%;
   box-sizing: content-box; // 1
   height: 0; // 1
   overflow: visible; // 2
@@ -44,6 +48,7 @@ ul {
 small {
   @include font-size(8px); // Add the correct font size in all browsers
 }
+
 
 // .show {
 //   display: block !important;
@@ -62,4 +67,116 @@ a {
     color: $primary;
     text-decoration: none;
   }
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.font-weight-bolder {
+  font-weight: bolder;
+}
+
+.font-weight-normal {
+  font-weight: 400;
+}
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.bg-primary {
+  background: $primary;
+}
+
+.bg-secondary {
+  background: $secondary;
+}
+
+.bg-success {
+  background: $success;
+}
+
+.bg-info {
+  background: $info;
+}
+
+.bg-warning {
+  background: $warning;
+}
+
+.bg-danger {
+  background: $danger;
+}
+
+.bg-light {
+  background: $light;
+}
+
+.bg-dark {
+  background: $dark;
+}
+
+.bg-white {
+  background: $white;
+}
+
+.bg-black {
+  background: $black;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-secondary {
+  color: $secondary;
+}
+
+.text-success {
+  color: $success;
+}
+
+.text-info {
+  color: $info;
+}
+
+.text-warning {
+  color: $warning;
+}
+
+.text-danger {
+  color: $danger;
+}
+
+.text-light {
+  color: $light;
+}
+
+.text-dark {
+  color: $dark;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-black {
+  color: $black;
+}
+
+.rounded {
+  border-radius: 5px !important;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.rounded-pill {
+  border-radius: 50px !important;
+}
+
+.d-block {
+  display: block!important;
 }

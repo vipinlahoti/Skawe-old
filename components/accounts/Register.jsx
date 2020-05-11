@@ -8,18 +8,20 @@ class Register extends Component {
     return (
       <Card className="shadow-lg">
         <Card.Header className="p-5">
-          <div className="text-muted text-center mb-3">
-            <small>Create your account with us</small>
-          </div>
-          <Form>
-            <Form.Group controlId="username">
-              <Form.Label>Username</Form.Label>
-              <Form.Control type="text" />
-            </Form.Group>
 
+          <div className="title-5 mb-2">
+            Create an Account
+          </div>
+
+          <Form>
             <Form.Group controlId="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" />
+            </Form.Group>
+
+            <Form.Group controlId="username">
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" />
             </Form.Group>
 
             <Form.Group controlId="password">
@@ -29,9 +31,25 @@ class Register extends Component {
             <Button variant="primary" block>
               Register
             </Button>
+
+            <p className="mt-1">
+              By creating an account, you agree to Skawe's 
+              <Link href="/login">
+                <a> Terms & Conditions </a>
+              </Link>
+               and 
+               <Link href="/login">
+                <a> Privacy Policy </a>
+              </Link>
+            </p>
+
+            <p>
+            Already have an account?
             <Link href="/login">
-              <a className="d-block mt-3"><small>Already have an account? Sign in!</small></a>
+              <a> Sign In</a>
             </Link>
+            .
+          </p>
           </Form>
         </Card.Header>
       </Card>

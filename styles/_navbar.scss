@@ -30,8 +30,26 @@
   list-style: none;
 
   .nav-link {
-    @include padding(8px 16px);
+    @include margin(0 16px);
+    cursor: pointer;
     color: $dark;
+    border-bottom: 3px solid transparent;
     display: block;
+    line-height: 48px;
+    transition: all 0.3s ease-in-out 0s;
+
+    &:hover {
+      border-color: $dark;
+    }
+
+    ~.btn {
+      @include margin(10px, left);
+    }
+  }
+
+  .nav-cart {
+    &:hover {
+      border-color: transparent;
+    }    
   }
 }

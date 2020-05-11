@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 @import 'variables';
-@import 'mixins/grid-mixins';
 @import 'mixins/helpers';
 @import 'mixins/visibility-mixins';
 
@@ -13,8 +12,9 @@
 @import 'typography';
 
 // Components
+@import 'button';
 @import 'dropdown';
 @import 'navbar';
-
+@import 'forms';
 
 @import 'global';

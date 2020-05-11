@@ -1,7 +1,199 @@
+:-webkit-autofill,
+:-webkit-autofill:active,
+:-webkit-autofill:focus,
+:-webkit-autofill:hover {
+  transition: all 5000s ease-in-out 0s;
+  transition-property: background-color,color;
+}
+
 .ml-auto {
   margin-left: auto;
 }
 
 .mr-auto {
   margin-right: auto;
+}
+
+.text-left {
+  @include text-align(left);
+}
+
+.text-center {
+  @include text-align(center);
+}
+
+.text-right {
+  @include text-align(right);
+}
+
+.icon-arrow_forward {
+  @include font-size(20px);
+}
+
+.icon {
+  line-height: inherit;
+}
+
+.menu-slider {
+  @include margin(16px, right);
+  @include font-size(36px);
+}
+
+.jumbotron {
+  @include padding(32px);
+  @include height(600px);
+  background: url(/global.jpg) no-repeat fixed center;
+  background-size: cover;
+  overflow: hidden;
+  color: $white;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:after {
+    background: $dark;
+    opacity: .45;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .hero__wrapper {
+    position: relative;
+    z-index: 99;
+  }
+}
+
+.jumbotron-fluid {
+  @include padding(32px 0);
+}
+
+.section {
+  @include padding(120px 0);
+}
+
+.section-small {
+  @include padding(64px 0);
+  height: auto;
+}
+
+.section-xsmall {
+  @include padding(32px 0);
+  height: auto;
+}
+
+.section-diagonal {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  display: block;
+  left: 0;
+  top: -250px;
+  background-color: $primary;
+  transform: skewY(-10deg);
+  @include height(650px);
+}
+
+.section-gray {
+  background: $gray-100;
+}
+
+.copyright {
+  font-size: 0.875rem;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+
+  .card-body {
+    @include padding(32px);
+  }
+}
+
+.card-icon {
+  @include padding(12px);
+  @include margin(20px, bottom);
+  @extend .text-center;
+  @include size(64px, 64px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+}
+
+.accounts-card {
+  @include width(450px);
+  margin: 0 auto;
+
+  .accounts-card-banner {
+    @include height(285px, max);
+    @include height(170px, min);
+    align-items: center;
+    display: flex;
+    height: 15vh;
+    justify-content: center;
+  }
+}
+
+footer,
+.footer {
+  @extend .bg-dark;
+  @extend .text-white;
+
+  .nav-link {
+    @include margin(16px, left);
+    @include margin(16px, right);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:first-child {
+      @include margin(0, left);
+    }
+  }
+
+  a {
+    @extend .text-white;
+    text-decoration: underline;
+
+    &:hover {
+      @extend .text-white;
+    }
+  }
+
+  .navbar-brand {
+    @extend .text-white;
+    text-decoration: none;
+
+    &:hover {
+      @extend .text-white;
+    }
+  }
+}
+
+.font-lg {
+  @include font-size(180px);
+  @include margin(20px, bottom);
+  opacity: .45;
+}
+
+.domain-search {
+  display: flex;
+
+  .form-control {
+    @include width(480px, min);
+  }
+
+  .btn {
+    @include padding(4px 16px);
+  }
 }
