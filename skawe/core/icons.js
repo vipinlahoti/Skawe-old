@@ -11,4 +11,9 @@ Skawe.utils.icons = {
   arrow_forward: 'arrow_forward',
   menu: 'menu',
   search: 'search',
+  fast_forward: 'fast_forward',
+  accessibility: 'accessibility',
+  snooze: 'snooze',
+  subdirectory_arrow_right: 'subdirectory_arrow_right',
+  update: 'update',
 };

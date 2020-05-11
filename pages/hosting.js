@@ -24,7 +24,7 @@ export default () => {
         </Container>
       </Jumbotron>
       
-      <Skawe.components.MiniFooter variant="bg-sweet-pink" className="middle-xs between-xs" title="Webhosting Starts at just Rs. 99/mo" link="/hosting" />
+      <Skawe.components.MiniFooter variant="bg-sweet-pink" className="center-xs" title="Webhosting Starts at just Rs. 99/mo" />
 
       <div className="section">
         <Container>

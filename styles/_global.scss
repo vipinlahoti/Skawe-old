@@ -234,8 +234,33 @@ footer,
   display: block;
   border: 1px solid rgba(0,0,0,.125);
   border-right-width: 0;
+  transition: 0.3s all ease-in-out;
 
   &:last-child {
     border-right-width: 1px;
+  }
+
+  &:hover {
+    // box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.domain-icons {
+  width: 80px;
+}
+
+.disclaimers {
+  @include font-size(14px);
+}
+
+.card-icon-lg {
+  @include padding(0);
+  @include margin(5px, bottom);
+  box-shadow: none;
+  width: auto;
+  height: auto;
+
+  .icon {
+    @include font-size(56px);
   }
 }

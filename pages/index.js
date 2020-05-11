@@ -8,7 +8,7 @@ export default () => {
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Home" description="Home description" />
 
-      <Jumbotron className="jumbotron-bg-image section-hero">
+      <Jumbotron className="section-hero">
         <Container>
           <Row>
             <Col sm={12} md={7} lg={7}>
@@ -16,10 +16,10 @@ export default () => {
                 <h4 className="title-3">An agile suite that’s designed for change.</h4>
                 <p>Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
                 <div className="mt-2">
-                  <Skawe.components.Button variant="white" type="link" path="/domain">
+                  <Skawe.components.Button type="link" path="/domain">
                     Get a Domain
                   </Skawe.components.Button>
-                  <Skawe.components.Button variant="white-fill" type="link" path="/hosting">
+                  <Skawe.components.Button variant="black-fill" type="link" path="/hosting">
                     Choose Your Hosting
                   </Skawe.components.Button>
                 </div>
@@ -31,7 +31,7 @@ export default () => {
 
       <div className="section section-features">
         <Container>
-          <Row className="center-xs mb-4">
+          <Row className="center-xs mb-2">
             <Col sm={12} md={8} lg={8}>
               <h3 className="title-3">Excepteur sint occaecat cupidatat.</h3>
               <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>

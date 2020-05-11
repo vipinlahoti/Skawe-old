@@ -10,7 +10,7 @@ const MiniFooter = ({title, variant, link, className}) =>
         <Col sm={8}>
           <Row className={className}>
             <Col>
-              <h4 className="mb-0 font-weight-light title-5 text-left">{title}</h4>
+              <h4 className="mb-0 font-weight-light title-5">{title}</h4>
             </Col>
 
             {link ?

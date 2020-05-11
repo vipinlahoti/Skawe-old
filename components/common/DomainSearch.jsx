@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const DomainSearch = ({ title, domainLinks }) => {
+const DomainSearch = ({ title, placeholder, domainLinks }) => {
   return (
     <div className="text-left">
       {title ? (
@@ -14,7 +14,7 @@ const DomainSearch = ({ title, domainLinks }) => {
       <p className="lead">With Privacy Protection and lots more.</p>
       
       <Form className="domain-search">
-        <Form.Control type="text" placeholder="Find your Perfect Domain Name." />
+        <Form.Control type="text" placeholder={placeholder} />
         
         <Button type="submit" variant="black-fill">
           <Skawe.components.Icon name="search" />
@@ -23,11 +23,8 @@ const DomainSearch = ({ title, domainLinks }) => {
 
       {domainLinks ?
         (<p className="domain-links mt-xs">
-          <Link href="/">
-            <a>Bulk registration</a>
-          </Link>
-          <Link href="/">
-            <a>Transfer domains</a>
+          <Link href="/domain-transfer">
+            <a>Transfer your domain to us.</a>
           </Link>
         </p>)
       : null }
