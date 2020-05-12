@@ -1,6 +1,7 @@
 import Skawe from '@skawe';
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import fetch from 'node-fetch';
 
 function UniversalTOS({UniversalTOSData}) {
 
