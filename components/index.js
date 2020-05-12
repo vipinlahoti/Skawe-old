@@ -1,4 +1,6 @@
 import './common/Loading.jsx';
+import './common/ComponentLoading.jsx';
+
 import './common/Layout.jsx';
 import './common/TosLayout.jsx';
 import './common/Header.jsx';

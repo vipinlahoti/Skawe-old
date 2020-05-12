@@ -22,7 +22,6 @@ export default class MyApp extends App {
     return (
       <>
         <PageTransition
-          skipInitialTransition
           timeout={TIMEOUT}
           classNames="page-transition"
         >

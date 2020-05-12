@@ -13,19 +13,19 @@ const Footer = () =>
         <Row className="between-xs">
           <Col>
             <Nav>
-              <Link href='/'>
+              <Link href='/help'>
                 <a className="nav-link">
                   Help
                 </a>
               </Link>
 
-              <Link href='/'>
+              <Link href='/contact-us'>
                 <a className="nav-link">
                   Contact Us
                 </a>
               </Link>
 
-              <Link href='/'>
+              <Link href='/whois'>
                 <a className="nav-link">
                   WHOIS
                 </a>
@@ -41,6 +41,9 @@ const Footer = () =>
               </div>
               <div className="copyright mt-1">
                 Copyright &copy; 1999 - 2020 All Rights Reserved. &nbsp;
+                <Link href='/legal'>
+                  <a className="mr-1">Legal</a>
+                </Link>
                 <Link href='/privacy-policy'>
                   <a>Privacy Policy</a>
                 </Link>.

@@ -15,7 +15,6 @@ class Layout extends Component {
       )
       .then(getSalesHeaderData => getSalesHeaderData.json())
       .then((item) => {
-        console.log('item: ', item)
         this.setState({salesHeader: item})
       })
     } catch (error) {

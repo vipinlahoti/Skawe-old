@@ -5,14 +5,14 @@ import { Container, Row, Col } from 'react-bootstrap';
 export default () => {
   return (
     <Skawe.components.Layout>
-      <Skawe.components.HeadTags title="Privacy Policy" description="Privacy Policy Page" />
-      <Skawe.components.InnerBanner title="Privacy Policy" />
+      <Skawe.components.HeadTags title="Help" description="Help Page" />
+      <Skawe.components.InnerBanner title="Help" />
       
       <div className="section">
         <Container>
           <Row className="center-xs">
             <Col sm={12}>
-              <Skawe.components.TosLayout pageId="privacy" />
+              HELP
             </Col>
           </Row>
         </Container>

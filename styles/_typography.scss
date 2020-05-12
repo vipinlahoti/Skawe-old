@@ -3,7 +3,7 @@
 //
 $h1-font-size: 56px;
 $h2-font-size: 48px;
-$h3-font-size: 40px;
+$h3-font-size: 36px;
 $h4-font-size: 32px;
 $h5-font-size: 24px;
 $h6-font-size: 16px;
@@ -80,4 +80,13 @@ p {
 .card-text {
 	@include font-size(18px);
 	font-weight: 300;
+}
+
+.text-data {
+  .h1, .h2, .h3 {
+    @include font-size($h5-font-size);
+    @include margin(16px, bottom);
+    @include margin(32px, top);
+    display: block;   
+  }
 }

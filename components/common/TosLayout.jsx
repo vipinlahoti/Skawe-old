@@ -4,15 +4,14 @@ import React, { Component } from 'react';
 class TosLayout extends Component {
 
   state = {
-    TOSData: null,
-    error: null
+    TOSData: null
   }
 
-  universalTos = async () => {
+  universalTos = async ctx => {
     const getTosRes = await fetch(
         `https://www.secureserver.net/api/v1/agreements/561121/${this.props.pageId}?marketId=en-IN`
       )
-      .then(getSalesHeaderData => getSalesHeaderData.json())
+      .then(getTosData => getTosData.json())
       .then((item) => {
         this.setState({TOSData: [item.body]})
       })
@@ -29,7 +28,7 @@ class TosLayout extends Component {
       <React.Fragment>
         {TOSData ?
           TOSData.map((item, index) => <Skawe.components.TextData key={index} siteData={item} />)
-          : (<Skawe.components.Loading />) }
+          : (<Skawe.components.ComponentLoading />) }
       </React.Fragment>
     )
   }
