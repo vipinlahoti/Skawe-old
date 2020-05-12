@@ -29,7 +29,7 @@ class TosLayout extends Component {
       <React.Fragment>
         {TOSData ?
           TOSData.map((item, index) => <Skawe.components.TextData key={index} siteData={item} />)
-          : null }
+          : (<Skawe.components.Loading />) }
       </React.Fragment>
     )
   }
