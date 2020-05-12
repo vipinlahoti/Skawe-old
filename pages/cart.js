@@ -7,19 +7,7 @@ export default () => {
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Cart" description="Cart Page" />
       
-      <Jumbotron className="section-hero-small">
-        <Container>
-          <Row>
-            <Col sm={12} md={7} lg={7}>
-              <div className="hero__wrapper">
-                <div className="title-4 mb-0">
-                  Cart
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </Jumbotron>
+      <Skawe.components.InnerBanner title="Cart" />
 
       <div className="section">
         <Container>

@@ -8,20 +8,7 @@ function UniversalTOS({UniversalTOSData}) {
   return (
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Universal Terms of Services" description="Universal Terms of Services Page" />
-
-      <Jumbotron className="section-hero-small">
-        <Container>
-          <Row>
-            <Col sm={12} md={7} lg={7}>
-              <div className="hero__wrapper">
-                <div className="title-4 mb-0">
-                  Universal Terms of Service Agreement
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </Jumbotron>
+      <Skawe.components.InnerBanner title="Universal Terms of Service Agreement" />
 
       <div className="section">
         <Container>

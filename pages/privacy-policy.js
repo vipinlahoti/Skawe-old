@@ -6,6 +6,9 @@ export default () => {
   return (
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Privacy Policy" description="Privacy Policy Page" />
+
+      <Skawe.components.InnerBanner title="Privacy Policy" />
+      
       <div className="section">
         <Container>
           <Row className="center-xs">

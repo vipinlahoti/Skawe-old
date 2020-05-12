@@ -6,6 +6,7 @@ export default () => {
   return (
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="404" description="Error 404 Page" />
+
       <div className="section">
         <Container>
           <Row className="center-xs">
