@@ -1,18 +1,20 @@
-import Skawe from 'meteor/skawe:lib';
+import Skawe from '@skawe';
 import React from 'react';
 
 const wrapper = {
   alignItems: 'center',
-  borderTop: '5px solid #5e72e4',
   display: 'flex',
   height: '100vh',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  background: '#c8eeff'
 };
 
 const Loading = props => {
+  const siteTitle = 'Skawe';
+
   return (
     <div style={wrapper}>
-      Loading
+      <Skawe.components.Logo siteTitle={siteTitle} />
     </div>
   );
 };

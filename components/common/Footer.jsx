@@ -34,14 +34,14 @@ const Footer = () =>
               <div className="copyright">
                 Use of this Site is subject to express terms of use. <br />
                 By using this site, you signify that you agree to be bound by these &nbsp;
-                <Link href='/'>
+                <Link href='/universal-tos'>
                   <a>Universal Terms of Service</a>
                 </Link>
                 .
               </div>
               <div className="copyright mt-1">
                 Copyright &copy; 1999 - 2020 All Rights Reserved. &nbsp;
-                <Link href='/'>
+                <Link href='/privacy-policy'>
                   <a>Privacy Policy</a>
                 </Link>.
               </div>

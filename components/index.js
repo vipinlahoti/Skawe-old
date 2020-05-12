@@ -1,6 +1,8 @@
+import './common/Loading.jsx';
 import './common/Layout.jsx';
 import './common/Header.jsx';
 import './common/Footer.jsx';
+import './common/TextData.jsx';
 import './common/MiniFooter.jsx';
 import './common/HeadTags.jsx';
 import './common/Logo.jsx';
