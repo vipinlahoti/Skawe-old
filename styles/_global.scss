@@ -77,6 +77,12 @@
   @include padding(32px 0);
 }
 
+.section-hero-small {
+  @include padding(169px, top);
+  @include padding(64px, bottom);
+  height: auto;
+}
+
 .section {
   @include padding(120px 0);
 }
@@ -262,5 +268,15 @@ footer,
 
   .icon {
     @include font-size(56px);
+  }
+}
+
+.text-data {
+  h1 {
+    display: none;
+  }
+
+  &:first-child div {
+    display: none;
   }
 }

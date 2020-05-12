@@ -1,6 +1,6 @@
 import Skawe from '@skawe';
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Col, Card } from 'react-bootstrap';
 import fetch from 'node-fetch';
 
 function UniversalTOS({UniversalTOSData}) {
@@ -8,6 +8,20 @@ function UniversalTOS({UniversalTOSData}) {
   return (
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Universal Terms of Services" description="Universal Terms of Services Page" />
+
+      <Jumbotron className="section-hero-small">
+        <Container>
+          <Row>
+            <Col sm={12} md={7} lg={7}>
+              <div className="hero__wrapper">
+                <div className="title-4 mb-0">
+                  Universal Terms of Service Agreement
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Jumbotron>
 
       <div className="section">
         <Container>

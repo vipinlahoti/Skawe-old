@@ -7,7 +7,7 @@ export default () => {
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Cart" description="Cart Page" />
       
-      <Jumbotron className="section-small">
+      <Jumbotron className="section-hero-small">
         <Container>
           <Row>
             <Col sm={12} md={7} lg={7}>

@@ -37,7 +37,7 @@ class Layout extends Component {
           <React.Fragment>
             <Skawe.components.Header {...this.state.salesHeader} />
             {this.props.children}
-            <Skawe.components.MiniFooter variant="bg-primary" className="center-xs" title={`Need help? Call our award-winning support team ${this.state.salesHeader.supportphone.hours} at ${this.state.salesHeader.supportphone.number}.`} {...this.state.salesHeader} />
+            <Skawe.components.MiniFooter variant="bg-primary" className="center-xs" title={`Need help? Call our award-winning support team ${this.state.salesHeader.supportphone.hours} at ${this.state.salesHeader.supportphone.number}.`} />
             <Skawe.components.Footer {...this.state.salesHeader} />
           </React.Fragment>
         )
