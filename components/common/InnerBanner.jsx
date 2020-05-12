@@ -3,7 +3,7 @@ import React from 'react';
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
 const InnerBanner = ({title}) =>
-  <Jumbotron className="section-hero-small">
+  <Jumbotron className="section-small">
     <Container>
       <Row>
         <Col sm={12} md={7} lg={7}>

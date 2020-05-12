@@ -13,11 +13,10 @@ html {
 
 body {
   @include font-size($base-font-size);
-  margin: 0;
-  padding: 0;
+  @include margin(0);
+  @include padding(0);
   font-family: $base-font-family;
   font-weight: $font-weight-base;
-  line-height: $line-height-base;
   color: $text-color;
   text-align: left;
   background-color: $white;
@@ -79,20 +78,20 @@ a {
   }
 }
 
-.font-weight-bold {
-  font-weight: 700;
-}
-
-.font-weight-bolder {
-  font-weight: bolder;
+.font-weight-light {
+  font-weight: 300;
 }
 
 .font-weight-normal {
   font-weight: 400;
 }
 
-.font-weight-light {
-  font-weight: 300;
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.font-weight-bolder {
+  font-weight: 700;
 }
 
 .bg-primary {

@@ -3,7 +3,7 @@ import './common/Layout.jsx';
 import './common/Header.jsx';
 import './common/Footer.jsx';
 import './common/InnerBanner.jsx';
-
+import './common/NavLink.jsx';
 import './common/TextData.jsx';
 import './common/MiniFooter.jsx';
 import './common/HeadTags.jsx';

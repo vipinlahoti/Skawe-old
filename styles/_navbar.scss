@@ -1,5 +1,6 @@
 .navbar {
   @include padding(24px 48px);
+  @extend .bg-sweet-blue;
   position: relative;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
@@ -38,7 +39,8 @@
     line-height: 48px;
     transition: all 0.3s ease-in-out 0s;
 
-    &:hover {
+    &:hover,
+    &.active {
       border-color: $dark;
     }
 

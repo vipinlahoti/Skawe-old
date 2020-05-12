@@ -29,33 +29,33 @@ const LeftNavLinks = () =>
 
 const RightNavLinks = () => 
   <Nav className="ml-auto">
-    <Link href='/domains'>
+    <Skawe.components.NavLink activeClassName="active" href="/domains">
       <a className="nav-link">
         Domains
       </a>
-    </Link>
+    </Skawe.components.NavLink>
 
-    <Link href='/hosting'>
+    <Skawe.components.NavLink activeClassName="active" href='/hosting'>
       <a className="nav-link">
         Hosting
       </a>
-    </Link>
+    </Skawe.components.NavLink>
 
-    <Link href='/register'>
+    <Skawe.components.NavLink activeClassName="active" href='/register'>
       <a className="nav-link">
         Register
       </a>
-    </Link>
+    </Skawe.components.NavLink>
 
     <Skawe.components.Button type="link" path="/login">
       Login
     </Skawe.components.Button>
 
-    <Link href='/cart'>
+    <Skawe.components.NavLink href='/cart'>
       <a className="nav-link nav-cart">
         <Skawe.components.Icon name="shopping_cart" iconClass="" />
       </a>
-    </Link>
+    </Skawe.components.NavLink>
 
   </Nav>
 
