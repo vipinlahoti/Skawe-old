@@ -1,4 +1,5 @@
 const constants = {
+  host: 'https://www.secureserver.net',
   plId: '561121',
   marketId: 'en-IN',
   currencyType: 'INR',

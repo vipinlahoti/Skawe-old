@@ -9,12 +9,9 @@ class Cart extends Component {
   }
 
   getCartList = async ctx => {
-    const getTosRes = await fetch(
-        `https://www.secureserver.net/api/v1/cart/${constants.plId}`
-      )
+    const getCartRes = await fetch(`${constants.host}/api/v1/cart/${constants.plId}`)
       .then(getCart => getCart.json())
       .then((item) => {
-        console.log(item)
         this.setState({cartResult: [item]})
       })
   };
@@ -25,7 +22,6 @@ class Cart extends Component {
 
   render() {
     const { cartResult } = this.state;
-    console.log('cartResult: ', cartResult)
     return (
       <Skawe.components.Layout>
         <Skawe.components.HeadTags title="Cart" description="Cart Page" />

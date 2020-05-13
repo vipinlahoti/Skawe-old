@@ -1,5 +1,4 @@
 import Skawe from '@skawe';
-import Link from 'next/link';
 import React from 'react';
 
 const TextData = ({ siteData }) => {
