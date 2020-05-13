@@ -2,79 +2,72 @@ import Skawe from '@skawe';
 import React from 'react';
 import { Container, Row, Col, ListGroup, Card } from 'react-bootstrap';
 
-const DomainSearchResults = () =>
-
+const DomainSearchResults = ({domainList}) =>
+  
   <React.Fragment>
-    <Skawe.components.MiniFooter variant="bg-sweet-purple" className="center-xs" title="Each and every domain name comes with all you need to get online." />
     
     <div className="section-small">
       <Container>
-        <Row className="center-xs">
-          <Col md={8}>
-            <Card className="text-left list-featured-group">
-              <Card.Title className="bg-primary text-white">
-                <span>Domain Taken</span>
-                <span>Call 1-800-1210120 for buying assistance</span>
-              </Card.Title>
-              <Card.Body>
-                <Card.Text>
-                  helloworld<span className="text-primary">.com</span>
-                  <small class="block">is <span className="text-danger">Unavailable</span></small>
-                  <small class="block">is <span className="text-success">Available</span></small>
-                </Card.Text>
-                <div className="list-featured-group-description">
-                  <ul className="disclaimers">
-                    <li>Find alternate names below.</li>
-                    <li>Get help from one of our Agents.</li>
-                  </ul>
+        {domainList ?
+          domainList.map((domain, index) => 
+            <Row className="center-xs" key={index}>
+              <Col md={8}>
 
-                  <div className="mt-1 text-right">
-                    <span className="title-5 mr-2">₹ 99</span>
-                    <Skawe.components.Button variant="secondary" size="small">
-                      Add to Cart
-                    </Skawe.components.Button>
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
+              {domain.exactMatchDomain ?
+                (
+                  <Card className="text-left list-featured-group">
+                    <Card.Title className="bg-primary text-white">
+                      <span>Domain {domain.exactMatchDomain.available ? 'Available' : 'Taken' }</span>
+                      <span>Call 1-800-1210120 for buying assistance</span>
+                    </Card.Title>
+                    <Card.Body>
+                      <Card.Text>
+                        {domain.exactMatchDomain.domain}
+                        {domain.exactMatchDomain.available
+                          ? (<small className="block">is <span className="text-success">Available</span></small>)
+                          : (<small className="block">is <span className="text-danger">Unavailable</span></small>)
+                        }
+                      </Card.Text>
+                      <div className="list-featured-group-description">
+                        {domain.exactMatchDomain.available
+                          ? 
+                            (
+                              <div className="mt-1 text-right">
+                                <span className="title-5 mr-1 sale-price">{domain.exactMatchDomain.salePrice}</span>
+                                <span className="title-5 mr-2 list-price">{domain.exactMatchDomain.listPrice}</span>
+                                <Skawe.components.CartButton type="domain" id="domain" domain={domain.exactMatchDomain.domain} skipCrossSell={true} />
+                              </div>
+                            )
+                          : 
+                            (
+                              <ul className="disclaimers">
+                                <li>Find alternate names below.</li>
+                                <li>Get help from one of our Agents.</li>
+                              </ul>
+                            )
+                          }
+                      </div>
+                    </Card.Body>
+                  </Card>
+                ) : null }
 
-            <ListGroup horizontal>
-              <ListGroup.Item>
-                <p className="title-5">helloworld<span className="text-primary">.com</span></p>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <div className="title-5 mr-3">₹ 99</div>
-                <Skawe.components.Button variant="secondary" size="small">
-                  Add to Cart
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
+                {domain.suggestedDomains ?
+                  domain.suggestedDomains.map((sDomains, index) => 
+                    <ListGroup horizontal key={index}>
+                      <ListGroup.Item>
+                        <p className="title-5">{sDomains.domain}</p>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <span className="title-5 mb-0 mr-1 sale-price">{sDomains.salePrice}</span>
+                        <span className="title-5 mb-0 mr-2 list-price">{sDomains.listPrice}</span>
+                        <Skawe.components.CartButton type="domain" id="domain" domain={sDomains.salePrice.domain} skipCrossSell={true} />
+                      </ListGroup.Item>
+                    </ListGroup>
+                    ) : null }
 
-            <ListGroup horizontal>
-              <ListGroup.Item>
-                <p className="title-5">helloworld<span className="text-primary">.in</span></p>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <div className="title-5 mr-3">₹ 99</div>
-                <Skawe.components.Button variant="secondary" size="small">
-                  Add to Cart
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-
-            <ListGroup horizontal>
-              <ListGroup.Item>
-                <p className="title-5">helloworld<span className="text-primary">.org</span></p>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <div className="title-5 mr-3">₹ 99</div>
-                <Skawe.components.Button variant="secondary" size="small">
-                  Add to Cart
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-        </Row>
+              </Col>
+            </Row>
+          ) : null }
       </Container>
     </div>
 

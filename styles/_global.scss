@@ -41,7 +41,6 @@
 
 .jumbotron {
   @include padding(32px);
-  // @include padding(105px, top);
   @include height(500px);
   @extend .bg-sweet-blue;
   display: flex;
@@ -224,8 +223,9 @@ footer,
 }
 
 .list-group-horizontal {
-  @include padding(16px 32px);
+  @include padding(24px 32px);
   border: 1px solid rgba(0,0,0,.125);
+  border-bottom: 0;
   flex-direction: row;
   justify-content: space-between;
 
@@ -234,6 +234,14 @@ footer,
     border: 0;
     display: flex;
     flex-direction: row;
+
+    span {
+      font-family: $base-font-family;
+    }
+  }
+
+  &:last-child {
+    border: 1px solid rgba(0,0,0,.125);
   }
 }
 
@@ -306,4 +314,15 @@ footer,
   &:first-child div {
     display: none;
   }
+}
+
+.list-price {
+  @include font-size(18px);
+  @include margin(5px, top);
+  color: $gray-600;
+  text-decoration: line-through;
+}
+
+.sale-price {
+  color: $primary;
 }

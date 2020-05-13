@@ -1,24 +1,57 @@
 import Skawe from '@skawe';
-import React from 'react';
+import constants from '@constants';
+import React, { Component } from 'react';
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
-export default () => {
-  return (
-    <Skawe.components.Layout>
-      <Skawe.components.HeadTags title="Cart" description="Cart Page" />
-      
-      <Skawe.components.InnerBanner title="Cart" />
+class Cart extends Component {
+  state = {
+    cartResult: null,
+  }
 
-      <div className="section">
-        <Container>
-          <Row className="center-xs">
-            <Col sm={12}>
-              <Skawe.components.Icon name="shopping_cart" iconClass="font-lg" />
-              <p className="lead text-mute">There are no items in your basket.</p>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </Skawe.components.Layout>
-  )
+  getCartList = async ctx => {
+    const getTosRes = await fetch(
+        `https://www.secureserver.net/api/v1/cart/${constants.plId}`
+      )
+      .then(getCart => getCart.json())
+      .then((item) => {
+        console.log(item)
+        this.setState({cartResult: [item]})
+      })
+  };
+
+  componentDidMount() {
+    this.getCartList();
+  }
+
+  render() {
+    const { cartResult } = this.state;
+    console.log('cartResult: ', cartResult)
+    return (
+      <Skawe.components.Layout>
+        <Skawe.components.HeadTags title="Cart" description="Cart Page" />
+        
+        <Skawe.components.InnerBanner title="Cart" />
+
+        <div className="section">
+          <Container>
+            <Row className="center-xs">
+              <Col sm={12}>
+                {cartResult
+                  ?
+                    (
+                      <React.Fragment>
+                        <Skawe.components.Icon name="shopping_cart" iconClass="font-lg" />
+                        <p className="lead text-mute">There are no items in your basket.</p>
+                      </React.Fragment>
+                    )
+                  : (<Skawe.components.ComponentLoading />) }
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </Skawe.components.Layout>
+    )
+  }
 }
+
+export default Cart;

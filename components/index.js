@@ -13,6 +13,7 @@ import './common/HeadTags.jsx';
 import './common/Logo.jsx';
 import './common/Icon.jsx';
 import './common/DomainSearch.jsx';
+import './common/CartButton.jsx';
 
 import './domains/DomainPage.jsx';
 import './domains/DomainSearchResults.jsx';
