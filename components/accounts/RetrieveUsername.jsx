@@ -22,11 +22,11 @@ class RetrieveUsername extends Component {
             
             <p className="d-block mt-1">
               Need to find your 
-              <Link href="/forgot-password">
+              <Link href="/accounts/forgot-password">
                 <a> Password </a>
               </Link>
               ? Or
-              <Link href="/login">
+              <Link href="/accounts/login">
                 <a> Sign In</a>
               </Link>
               .

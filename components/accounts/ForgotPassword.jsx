@@ -22,16 +22,16 @@ class ForgotPassword extends Component {
             
             <p className="d-block mt-1">
               Need to find your 
-              <Link href="/retrieve-username">
+              <Link href="/accounts/retrieve-username">
                 <a> Username </a>
               </Link>
               ? Or
-              <Link href="/login">
+              <Link href="/accounts/login">
                 <a> Sign In</a>
               </Link>
               .
             </p>
-            <Link href="/register">
+            <Link href="/accounts/register">
               <a className="d-block">Don't have an account? Register</a>
             </Link>
 

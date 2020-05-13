@@ -41,13 +41,13 @@ const RightNavLinks = () =>
       </a>
     </Skawe.components.NavLink>
 
-    <Skawe.components.NavLink activeClassName="active" href='/register'>
+    <Skawe.components.NavLink activeClassName="active" href='/accounts/register'>
       <a className="nav-link">
         Register
       </a>
     </Skawe.components.NavLink>
 
-    <Skawe.components.Button type="link" path="/login">
+    <Skawe.components.Button type="link" path="/accounts/login">
       Login
     </Skawe.components.Button>
 

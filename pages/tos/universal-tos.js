@@ -1,18 +1,19 @@
 import Skawe from '@skawe';
+import constants from '@constants';
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 export default () => {
   return (
     <Skawe.components.Layout>
-      <Skawe.components.HeadTags title="Privacy Policy" description="Privacy Policy Page" />
-      <Skawe.components.InnerBanner title="Privacy Policy" />
-      
+      <Skawe.components.HeadTags title="Universal Terms of Services" description="Universal Terms of Services Page" />
+      <Skawe.components.InnerBanner title="Universal Terms of Service Agreement" />
+
       <div className="section">
         <Container>
           <Row className="center-xs">
             <Col sm={12}>
-              <Skawe.components.TosLayout pageId="privacy" />
+              <Skawe.components.TosLayout pageId={constants.universalTOS} />
             </Col>
           </Row>
         </Container>

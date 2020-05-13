@@ -34,18 +34,18 @@ class Register extends Component {
 
             <p className="mt-1">
               By creating an account, you agree to Skawe's 
-              <Link href="/login">
+              <Link href="/tos/universal-tos">
                 <a> Terms & Conditions </a>
               </Link>
                and 
-               <Link href="/login">
+               <Link href="/tos/privacy-policy">
                 <a> Privacy Policy </a>
               </Link>
             </p>
 
             <p>
             Already have an account?
-            <Link href="/login">
+            <Link href="/accounts/login">
               <a> Sign In</a>
             </Link>
             .

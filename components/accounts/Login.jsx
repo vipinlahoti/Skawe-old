@@ -28,11 +28,11 @@ class Login extends Component {
             
             <p className="mt-1">
               Need to find your 
-              <Link href="/retrieve-username">
+              <Link href="/accounts/retrieve-username">
                 <a> Username </a>
               </Link>
               or
-              <Link href="/forgot-password">
+              <Link href="/accounts/forgot-password">
                 <a> Password </a>
               </Link>
               ?

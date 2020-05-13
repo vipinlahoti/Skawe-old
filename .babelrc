@@ -8,6 +8,7 @@
         "alias": {
           "@skawe": "./skawe",
           "@components": "./components",
+          "@constants": "./constants",
         }
       }
     ]
