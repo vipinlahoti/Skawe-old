@@ -14,6 +14,8 @@ import './common/Logo.jsx';
 import './common/Icon.jsx';
 import './common/DomainSearch.jsx';
 
+import './domains/DomainPage.jsx';
+import './domains/DomainSearchResults.jsx';
 // import './common/ScrollToTop.jsx';
 
 // UI Components

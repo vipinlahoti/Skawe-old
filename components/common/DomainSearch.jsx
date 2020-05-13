@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const DomainSearch = ({ title, placeholder, domainLinks }) => {
+const DomainSearch = ({ title, lead, placeholder, domainLinks, handleChange, handleValue, handleSubmit }) => {
   return (
     <div className="text-left">
       {title ? (
@@ -11,10 +11,10 @@ const DomainSearch = ({ title, placeholder, domainLinks }) => {
           {title}
         </h3>
       ) : null}
-      <p className="lead">With Privacy Protection and lots more.</p>
+      { lead ? (<p className="lead">{lead}</p>) : '' }
       
-      <Form className="domain-search">
-        <Form.Control type="text" placeholder={placeholder} />
+      <Form className="domain-search" onSubmit={handleSubmit}>
+        <Form.Control type="text" name="domain-search" value={handleValue} onChange={handleChange} placeholder={placeholder} required />
         
         <Button type="submit" variant="black-fill">
           <Skawe.components.Icon name="search" />

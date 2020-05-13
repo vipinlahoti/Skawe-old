@@ -3,7 +3,6 @@ import React from 'react';
 import { Jumbotron, Container, Row, Col, Card } from 'react-bootstrap';
 
 export default () => {
-
   return (
     <Skawe.components.Layout>
       <Skawe.components.HeadTags title="Home" description="Home description" />
@@ -88,7 +87,7 @@ export default () => {
         <Container>
           <Row>
             <Col sm={12} md={5} lg={5}>
-              <h4 className="title-4">HomePage dolor <span className="text-primary">sit amet, consectetur adipiscing elit.</span></h4>
+              <h4 className="title-4">HomePage dolor <span className="text-primary block">sit amet, consectetur adipiscing elit.</span></h4>
               <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
             </Col>
 
@@ -102,7 +101,7 @@ export default () => {
           <Row>
             <Col sm={12} md={7} lg={7}></Col>
             <Col sm={12} md={5} lg={5}>
-              <h4 className="title-4">Lorem ipsum dolor <span className="text-danger">sit amet, consectetur adipiscing elit.</span></h4>
+              <h4 className="title-4">Lorem ipsum dolor <span className="text-danger block">sit amet, consectetur adipiscing elit.</span></h4>
               <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
             </Col>
           </Row>

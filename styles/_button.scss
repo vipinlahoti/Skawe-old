@@ -66,6 +66,26 @@
     }
   }
 
+  &.btn-primary {
+    border-color: $primary;
+    color: $primary;
+
+    &:hover {
+      background: $primary;
+      color: $white;
+    }
+  }
+
+  &.btn-secondary {
+    border-color: $secondary;
+    color: $secondary;
+
+    &:hover {
+      background: $secondary;
+      color: $white;
+    }
+  }
+
   &.btn-black {
     &-fill {
       background: $dark;

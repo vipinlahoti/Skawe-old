@@ -57,11 +57,11 @@ h6,
 	@include font-size($h6-font-size);
 }
 
-.title-1 span,
-.title-2 span,
-.title-3 span,
-.title-4 span,
-.title-5 span {
+.title-1 .block,
+.title-2 .block,
+.title-3 .block,
+.title-4 .block,
+.title-5 .block {
 	display: block;
   font-weight: 300;
 }

@@ -2,7 +2,6 @@ import Skawe from '@skawe';
 import React, { Component } from 'react';
 
 class Layout extends Component {
-
   state = {
     salesHeader: null,
     error: null
@@ -29,8 +28,6 @@ class Layout extends Component {
   render() {
     return (
       <React.Fragment>
-      <Skawe.components.HeadTags />
-
       {this.state.salesHeader ?
         (
           <React.Fragment>

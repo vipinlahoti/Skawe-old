@@ -224,7 +224,41 @@ footer,
 }
 
 .list-group-horizontal {
+  @include padding(16px 32px);
+  border: 1px solid rgba(0,0,0,.125);
   flex-direction: row;
+  justify-content: space-between;
+
+  .list-group-item {
+    @include padding(0);
+    border: 0;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.list-featured-group {
+  @include margin(32px, bottom);
+
+  .card-title {
+    @extend .h6;
+    @include padding(8px 32px);
+    @include margin(0);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-body {
+    @include padding(32px);
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: 0;
+    display: flex;
+    justify-content: space-between;
+
+    .card-text {
+      @extend .title-5;
+    }
+  }
 }
 
 .list-group-item {
