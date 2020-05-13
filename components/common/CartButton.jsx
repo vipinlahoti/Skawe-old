@@ -3,14 +3,15 @@ import constants from '@constants';
 import Link from 'next/link';
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios'; 
 
 class CartButton extends Component {
 
   getDomainList = async postData => {
-    const getTosRes = await fetch(`https://www.secureserver.net/api/v1/cart/${constants.plId}`, {
-      method: 'POST',
-      body: JSON.stringify(postData)
-    });
+    axios.post(`https://www.secureserver.net/api/v1/cart/${constants.plId}`, postData)
+      .then(res => {
+        alert(res);
+      })
   }
 
   handleSubmit = async e => {
@@ -31,7 +32,6 @@ class CartButton extends Component {
   }
 
   render() {
-    const { id, domain, skipCrossSell, type } = this.props;
     return (
       <Button variant="secondary" size="small" onClick={this.handleSubmit}>
         Add to Cart
