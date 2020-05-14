@@ -179,6 +179,7 @@ footer,
 
   .navbar-brand {
     @extend .text-white;
+    border-color: $white;
     text-decoration: none;
 
     &:hover {

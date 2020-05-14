@@ -6,43 +6,29 @@ import { Jumbotron, Container, Row, Col, ListGroup, Card } from 'react-bootstrap
 
 class Hosting extends Component {
   state = {
-    hostingList: null,
     cPanelList: null,
     wordPressList: null,
     websiteBuilderList: null
   }
 
-  getHostingList = async ctx => {
-    axios.get(`${constants.host}/catalog/${constants.plId}/products?currencyType=${constants.currencyType}&marketId=${constants.marketId}`)
+  getHostingList = async (state, type) => {
+    axios.get(`${constants.host}/catalog/${constants.plId}/products/${type}?currencyType=${constants.currencyType}&marketId=${constants.marketId}`)
       .then(getHostingData => {
-        this.setState({hostingList: getHostingData.data})
+        this.setState({[state]: getHostingData.data})
       })
   }
-
-  getCpanelList = async ctx => {
-    axios.get(`${constants.host}/catalog/${constants.plId}/products/cpanel-starter?currencyType=${constants.currencyType}&marketId=${constants.marketId}`)
-      .then(getCpanelData => {
-        this.setState({cPanelList: getCpanelData.data})
-      })
-  }
-
-  getWordPressList = async ctx => {
-    axios.get(`${constants.host}/catalog/${constants.plId}/products/cpanel-starter?currencyType=${constants.currencyType}&marketId=${constants.marketId}`)
-      .then(getWordPressData => {
-        this.setState({wordPressList: getWordPressData.data})
-      })
-  }
-
-
 
   componentDidMount() {
-    this.getHostingList();
-    this.getCpanelList();
+    this.getHostingList('cPanelList', 'cpanel-starter');
+    this.getHostingList('wordPressList', 'wordpress-basic');
+    this.getHostingList('websiteBuilderList', 'website-builder-personal');
   }
 
   render() {
-    const { hostingList, cPanelList } = this.state;
-    console.log('hostingList: ', hostingList, cPanelList);
+    const { cPanelList, wordPressList, websiteBuilderList } = this.state;
+    const setHostingPackages = [
+      cPanelList, wordPressList, websiteBuilderList
+    ];
 
     return (
       <Skawe.components.Layout>
@@ -65,54 +51,36 @@ class Hosting extends Component {
           </Container>
         </Jumbotron>
         
-        <Skawe.components.MiniFooter variant="bg-sweet-pink" className="center-xs" title="Webhosting Starts at just Rs. 99/mo" />
+        {cPanelList ? 
+          (<Skawe.components.MiniFooter
+            variant="bg-sweet-pink"
+            className="center-xs"
+            title={`Webhosting Starts at just ${cPanelList.salePrice ? cPanelList.salePrice : cPanelList.listPrice}/mo`} 
+          />)
+         : null }
 
         <div className="section">
           <Container>
             <Row>
-              <Col md={4}>
+            {cPanelList && wordPressList && websiteBuilderList ? setHostingPackages.map((hosting, index) => 
+              <Col md={4} key={index}>
                 <ListGroup>
                   <ListGroup.Item>
-                    <h5 className="title-6">Web Hosting</h5>
+                    <h5 className="title-6">{hosting.title}</h5>
                     <p>Budget-friendly shared hosting </p>
                     <p className="mb-0">Starting at</p>
-                    <p className="title-5">₹ 99.00/mo</p>
-                    <Skawe.components.Button type="link" path="/hosting" size="small">
+                    <div className="mb-1">
+                      {hosting.salePrice ? <span className="title-5 mr-1">{hosting.salePrice}/{hosting.term[0]}</span> : null }
+                      {hosting.salePrice ? <span className="title-5 list-price">{hosting.listPrice}/{hosting.term[0]}</span> : <span className="title-5">{hosting.listPrice}/{hosting.term[0]}</span> }
+                    </div>
+                    <Skawe.components.Button type="link" path={hosting.id} size="small">
                       Learn More
                     </Skawe.components.Button>
                   </ListGroup.Item>
                 </ListGroup>
               </Col>
+              ) : null }
 
-              <Col md={4}>
-                <ListGroup>
-                  <ListGroup.Item>
-                    <h5 className="title-6">Wordpress Hosting</h5>
-                    <p>Budget-friendly shared hosting </p>
-                    <p className="mb-0">Starting at</p>
-                    <p className="title-5">₹ 99.00/mo</p>
-                    <Skawe.components.Button type="link" path="/hosting" size="small">
-                      Learn More
-                    </Skawe.components.Button>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Col>
-              
-              <Col md={4}>
-                <ListGroup>
-                  <ListGroup.Item>
-                    <h5 className="title-6">Website Builder</h5>
-                    <p>Budget-friendly shared hosting </p>
-                    <p className="mb-0">Starting at</p>
-                    <p className="title-5">₹ 99.00/mo</p>
-                    <Skawe.components.Button type="link" path="/hosting" size="small">
-                      Learn More
-                    </Skawe.components.Button>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Col>
-
-              
             </Row>
           </Container>
         </div>
