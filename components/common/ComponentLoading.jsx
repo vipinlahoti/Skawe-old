@@ -11,9 +11,7 @@ const ComponentLoading = () => (
         width: 40px;
         height: 40px;
         animation: spin 2s linear infinite;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 40px;
+        margin: 60px auto;
       }
       @keyframes spin {
         0% {

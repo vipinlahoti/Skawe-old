@@ -81,7 +81,10 @@ const DomainSearchResults = ({domainList, exactList, bundleList}) =>
                 {domain.suggestedDomains ? domain.suggestedDomains.map((sDomains, index) => 
                   <ListGroup horizontal key={index}>
                     <ListGroup.Item>
-                      <p className="title-5 text-left">{sDomains.domain} 
+                      <p className="title-5 text-left">
+                        {sDomains.domain.split('.').map((list, index) => 
+                          <span className="font-weight-bold domain-extension" key={index}>{list}</span>
+                        )}
                       <span className="font-xsmall text-primary d-block">{sDomains.disclaimer}</span></p>
                     </ListGroup.Item>
                     <ListGroup.Item>

@@ -1,12 +1,16 @@
 import Skawe from '@skawe';
+import constants from '@constants';
 import Router from 'next/router';
 import React, { Component } from 'react';
-import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
+import axios from 'axios'; 
 import classNames from 'classnames';
+import groupBy from 'lodash/groupBy';
+import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
 class Domains extends Component {
   state = {
     value: '',
+    domainsResultList: null
   }
 
   handleSubmit = async e => {
@@ -21,7 +25,26 @@ class Domains extends Component {
     this.setState({value: e.target.value});
   }
 
+  getDomainList = async ctx => {
+    axios.get(`${constants.host}/search/spins?plid=${constants.plId}&q=skaweewaks.com`)
+      .then(getDomainsData => {
+        this.setState({domainsResultList: [getDomainsData.data]})
+      })
+
+    axios.get(`${constants.host}/domains/${constants.plId}?currencyType=${constants.currencyType}&marketId=${constants.marketId}&pageSize=23&q=skaweewaks.com`)
+      .then(getDomainsData => {
+        const getDomainPrice = groupBy(getDomainsData.data.suggestedDomains, 'productId');
+        console.log(getDomainPrice)
+      })
+  }
+
+  componentDidMount() {
+    this.getDomainList();
+  }
+
   render() {
+    const { domainsResultList } = this.state;
+    
     return (
       <Skawe.components.Layout>
         <Skawe.components.HeadTags title="Domains" description="Domains Page" />
@@ -45,7 +68,7 @@ class Domains extends Component {
           </Container>
         </Jumbotron>
 
-        <Skawe.components.DomainPage />
+        <Skawe.components.DomainPage domainList={domainsResultList} />
       </Skawe.components.Layout>
     )
   }

@@ -11,6 +11,8 @@
 
 .navbar-brand {
   @include font-size(32px);
+  @include padding(5px);
+  border: 3px solid $dark;
   color: $dark;
   display: inline-block;
   font-family: $brand-font-family;

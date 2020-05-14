@@ -12,6 +12,9 @@ class CartButton extends Component {
       .then(res => {
         console.log('Added to Cart Response: ', res);
       })
+
+    // www.secureserver.net/api/dpp/searchresultscart/13?applyBP=1&domain=skaweewaks.com&plid=561121&domainstatus=available
+
   }
 
   handleSubmit = async e => {

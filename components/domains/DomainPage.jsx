@@ -2,119 +2,32 @@ import Skawe from '@skawe';
 import React from 'react';
 import { Container, Row, Col, ListGroup, Card } from 'react-bootstrap';
 
-const DomainPage = () =>
+const DomainPage = ({domainList}) =>
 
   <React.Fragment>
     <Skawe.components.MiniFooter variant="bg-sweet-purple" className="center-xs" title="Each and every domain name comes with all you need to get online." />
     
     <div className="section">
       <Container>
-        <Row>
-          <Col md={3}>
+        {domainList ? domainList.map((domainList, index) => 
+        <Row key={index}>
+          {domainList.Products ? domainList.Products.map((domain, index) => 
+          <Col md={3} key={index}>
             <ListGroup>
               <ListGroup.Item>
-                <img className="domain-icons" src="com.png" alt="com" />
+                <img className="domain-icons" src={`${domain.Tld}.png`} alt={domain.Tld} />
                 <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
+                <span className="title-5 mr-1">{domain.PriceInfo.CurrentPriceDisplay}</span>
+                <span className="title-5 list-price">{domain.PriceInfo.ListPriceDisplay}</span>
                 <Skawe.components.Button type="link" path="/domains" size="small">
                   Learn More
                 </Skawe.components.Button>
               </ListGroup.Item>
             </ListGroup>
           </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="net.png" alt="net" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="in.png" alt="in" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="org.png" alt="org" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="online.png" alt="online" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="club.png" alt="club" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="asia.png" alt="asia" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="party.png" alt="party" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
+          ) : null }
         </Row>
+        ) :null }
       </Container>
     </div>
 
@@ -217,114 +130,25 @@ const DomainPage = () =>
 
     <div className="section">
       <Container>
-        <Row>
-
-          <Col md={3}>
+        {domainList ? domainList.map((domainList, index) => 
+        <Row key={index}>
+          {domainList.Products ? domainList.Products.map((domain, index) => 
+          <Col md={3} key={index}>
             <ListGroup>
               <ListGroup.Item>
-                <img className="domain-icons" src="xyz.png" alt="xyz" />
+                <img className="domain-icons" src={`${domain.Tld}.png`} alt={domain.Tld} />
                 <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
+                <span className="title-5 mr-1">{domain.PriceInfo.CurrentPriceDisplay}</span>
+                <span className="title-5 list-price">{domain.PriceInfo.ListPriceDisplay}</span>
                 <Skawe.components.Button type="link" path="/domains" size="small">
                   Learn More
                 </Skawe.components.Button>
               </ListGroup.Item>
             </ListGroup>
           </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="shop.png" alt="shop" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="cloud.png" alt="cloud" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="health.png" alt="health" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="store.png" alt="store" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="deals.png" alt="deals" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="blog.png" alt="blog" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <ListGroup>
-              <ListGroup.Item>
-                <img className="domain-icons" src="dating.png" alt="dating" />
-                <p className="mb-0">Starting at</p>
-                <p className="title-5">₹ 99</p>
-                <Skawe.components.Button type="link" path="/domains" size="small">
-                  Learn More
-                </Skawe.components.Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          
+          ) : null }
         </Row>
+        ) :null }
       </Container>
     </div>
 

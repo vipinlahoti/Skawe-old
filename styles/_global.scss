@@ -324,3 +324,13 @@ footer,
 .sale-price {
   color: $primary;
 }
+
+.domain-extension {
+  ~ .domain-extension {
+    color: $primary;
+
+    &:before {
+      content: '.';
+    }
+  }
+}
