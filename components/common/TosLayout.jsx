@@ -1,5 +1,7 @@
 import Skawe from '@skawe';
+import constants from '@constants';
 import React, { Component } from 'react';
+import axios from 'axios'; 
 
 class TosLayout extends Component {
 
@@ -8,12 +10,10 @@ class TosLayout extends Component {
   }
 
   universalTos = async ctx => {
-    const getTosRes = await fetch(
-        `https://www.secureserver.net/api/v1/agreements/561121/${this.props.pageId}?marketId=en-IN`
-      )
-      .then(getTosData => getTosData.json())
-      .then((item) => {
-        this.setState({TOSData: [item.body]})
+    axios.get(`${constants.host}/agreements/${constants.plId}/${this.props.pageId}?marketId=${constants.marketId}`)
+      .then(getTosData => {
+        const setTosData = getTosData.data.body
+        this.setState({TOSData: [setTosData]})
       })
   };
 

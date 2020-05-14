@@ -246,8 +246,6 @@ footer,
 }
 
 .list-featured-group {
-  @include margin(32px, bottom);
-
   .card-title {
     @extend .h6;
     @include padding(8px 32px);

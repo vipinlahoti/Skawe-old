@@ -2,14 +2,17 @@ import Skawe from '@skawe';
 import constants from '@constants';
 import Router, { withRouter } from 'next/router';
 import React, { Component } from 'react';
-import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
+import axios from 'axios'; 
+import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
 class Domains extends Component {
   state = {
     value: this.props.router.query.domainToCheck,
-    domainsResult: null,
     domainQuery: this.props.router.query.domainToCheck,
+    domainsResultList: null,
+    domainsBundleList: null,
+    domainsExactList: null,
   }
 
   handleSubmit = async e => {
@@ -18,6 +21,15 @@ class Domains extends Component {
       pathname: '/domains/domain-register',
       query: { domainToCheck: this.state.value },
     })
+    this.setState({
+      domainQuery: this.state.value,
+      domainsResultList: null,
+      domainsBundleList: null,
+      domainsExactList: null,
+    });
+    this.getDomainList();
+    this.getBundleList();
+    this.getExactList();
   }
 
   handleChange = async e => {
@@ -25,21 +37,34 @@ class Domains extends Component {
   }
 
   getDomainList = async ctx => {
-    const getTosRes = await fetch(
-        `https://www.secureserver.net/api/v1/domains/${constants.plId}?currencyType=${constants.currencyType}&marketId=${constants.marketId}&pageSize=${constants.pageSize}&q=${this.state.domainQuery}`
-      )
-      .then(getDomainsData => getDomainsData.json())
-      .then((item) => {
-        this.setState({domainsResult: [item]})
+    axios.get(`${constants.host}/domains/${constants.plId}?currencyType=${constants.currencyType}&marketId=${constants.marketId}&pageSize=${constants.pageSize}&q=${this.state.domainQuery}`)
+      .then(getDomainsData => {
+        this.setState({domainsResultList: [getDomainsData.data]})
       })
-  };
+  }
+
+  getBundleList = async ctx => {
+    axios.get(`${constants.host}/search/bundles?plid=${constants.plId}&q=${this.state.domainQuery}`)
+      .then(getDomainsData => {
+        this.setState({domainsBundleList: getDomainsData.data})
+      })
+  }
+
+  getExactList = async ctx => {
+    axios.get(`${constants.host}/search/exact?plid=${constants.plId}&q=${this.state.domainQuery}`)
+      .then(getDomainsData => {
+        this.setState({domainsExactList: [getDomainsData.data]})
+      })
+  }
 
   componentDidMount() {
     this.getDomainList();
+    this.getBundleList();
+    this.getExactList();
   }
 
   render() {
-    const { domainsResult } = this.state;
+    const { domainsResultList, domainsBundleList, domainsExactList, domainsSpinList } = this.state;
 
     return (
       <Skawe.components.Layout>
@@ -61,7 +86,14 @@ class Domains extends Component {
           </Container>
         </div>
 
-        { domainsResult ? <Skawe.components.DomainSearchResults domainList={domainsResult} /> : (<Skawe.components.ComponentLoading />) }
+        {domainsExactList ? 
+          <Skawe.components.DomainSearchResults
+            domainList={domainsResultList}
+            bundleList={domainsBundleList}
+            exactList={domainsExactList}
+          /> :
+          (<Skawe.components.ComponentLoading />)
+        }
       </Skawe.components.Layout>
     )
   }

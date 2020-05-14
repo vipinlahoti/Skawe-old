@@ -1,6 +1,7 @@
 import Skawe from '@skawe';
 import constants from '@constants';
 import React, { Component } from 'react';
+import axios from 'axios'; 
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
 class Cart extends Component {
@@ -9,10 +10,9 @@ class Cart extends Component {
   }
 
   getCartList = async ctx => {
-    const getCartRes = await fetch(`${constants.host}/api/v1/cart/${constants.plId}`)
-      .then(getCart => getCart.json())
-      .then((item) => {
-        this.setState({cartResult: [item]})
+    axios.get(`${constants.host}/cart/${constants.plId}`)
+      .then(getCart => {
+        this.setState({cartResult: getCart.data})
       })
   };
 
@@ -22,6 +22,7 @@ class Cart extends Component {
 
   render() {
     const { cartResult } = this.state;
+    console.log(cartResult)
     return (
       <Skawe.components.Layout>
         <Skawe.components.HeadTags title="Cart" description="Cart Page" />

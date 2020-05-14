@@ -1,5 +1,7 @@
 import Skawe from '@skawe';
+import constants from '@constants';
 import React, { Component } from 'react';
+import axios from 'axios'; 
 
 class Layout extends Component {
   state = {
@@ -7,18 +9,11 @@ class Layout extends Component {
     error: null
   }
 
-  salesHeader = async () => {
-    try {
-      const result = await fetch(
-        'https://gui.secureserver.net/pcjson/salesheader?plId=561121&shopperId=&sid='
-      )
-      .then(getSalesHeaderData => getSalesHeaderData.json())
-      .then((item) => {
-        this.setState({salesHeader: item})
+  salesHeader = async ctx => {
+    axios.get(`https://gui.secureserver.net/pcjson/salesheader?plId=${constants.plId}&shopperId=&sid=`)
+      .then(item => {
+        this.setState({salesHeader: item.data})
       })
-    } catch (error) {
-      this.setState({error: error})
-    };
   };
 
   componentDidMount() {

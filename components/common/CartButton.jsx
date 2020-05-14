@@ -2,15 +2,15 @@ import Skawe from '@skawe';
 import constants from '@constants';
 import Link from 'next/link';
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
 import axios from 'axios'; 
+import Button from 'react-bootstrap/Button';
 
 class CartButton extends Component {
 
   getDomainList = async postData => {
-    axios.post(`https://www.secureserver.net/api/v1/cart/${constants.plId}`, postData)
+    axios.post(`${constants.host}/cart/${constants.plId}`, postData)
       .then(res => {
-        alert(res);
+        console.log('Added to Cart Response: ', res);
       })
   }
 
@@ -27,13 +27,12 @@ class CartButton extends Component {
     };
 
     this.getDomainList(addToCart);
-
-    console.log('addToCart: ', addToCart);
+    console.log('AddToCart: ', addToCart);
   }
 
   render() {
     return (
-      <Button variant="secondary" size="small" onClick={this.handleSubmit}>
+      <Button variant={this.props.variant} size="small" onClick={this.handleSubmit}>
         Add to Cart
       </Button>
     )
