@@ -9,6 +9,7 @@ class Layout extends Component {
       <React.Fragment>
         <Grudr.components.Header />
         {this.props.children}
+        <Grudr.components.MiniCreateForm />
         <Grudr.components.MiniFooter
           variant="bg-primary"
           className="center-xs"

@@ -1,6 +1,6 @@
 import Grudr from 'meteor/grudr:lib';
 import React from 'react';
-import { Jumbotron, Container, Row, Col, Card, Form, ListGroup } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Col, Form, Card, Tab, Nav } from 'react-bootstrap';
 
 const HomePage = () => {
   return (
@@ -10,10 +10,11 @@ const HomePage = () => {
       <Jumbotron>
         <Container>
           <Row>
-            <Col sm={12} md={10}>
+            <Col sm={12} md={10} lg={7}>
               <h3 className="title-3">An agile suite that’s designed for change.</h3>
               <p className="lead">Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
-              
+            </Col>  
+            <Col sm={12} md={10}>
               <div className="mt-2">
                 <Form inline>
                   <Form.Group controlId="formGroupEmail">
@@ -28,7 +29,6 @@ const HomePage = () => {
                 </Form>
                 
               </div>
-            
             </Col>
           </Row>
         </Container>
@@ -43,70 +43,34 @@ const HomePage = () => {
       <div className="section bg-light">
         <Container>
           <Row>
-            <Col sm={12} md={6} lg={3}>
-              <ListGroup>
-                <ListGroup.Item>
-                  <h5 className="title-5">Cloud Instance</h5>
-                  <p>Powerful compute instances with Intel CPUs and 100% SSD storage. </p>
-                  <p className="mb-0">Starting at</p>
-                  <div className="mb-1">
-                    <span className="title-5 mr-1">₹99/mo</span>
-                    <span className="title-5 list-price">₹299/mo</span>
-                  </div>
-                  <Grudr.components.Button type="link" variant="primary" path="/hosting" size="small">
-                    Learn More
-                  </Grudr.components.Button>
-                </ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col sm={12} md={6} lg={3}>
-              <ListGroup>
-                <ListGroup.Item>
-                  <h5 className="title-5">Block Storage</h5>
-                  <p>Powerful compute instances with Intel CPUs and 100% SSD storage. </p>
-                  <p className="mb-0">Starting at</p>
-                  <div className="mb-1">
-                    <span className="title-5 mr-1">₹99/mo</span>
-                    <span className="title-5 list-price">₹299/mo</span>
-                  </div>
-                  <Grudr.components.Button type="link" variant="primary" path="/hosting" size="small">
-                    Learn More
-                  </Grudr.components.Button>
-                </ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col sm={12} md={6} lg={3}>
-              <ListGroup>
-                <ListGroup.Item>
-                  <h5 className="title-5">Dedicated Cloud</h5>
-                  <p>Powerful compute instances with Intel CPUs and 100% SSD storage. </p>
-                  <p className="mb-0">Starting at</p>
-                  <div className="mb-1">
-                    <span className="title-5 mr-1">₹99/mo</span>
-                    <span className="title-5 list-price">₹299/mo</span>
-                  </div>
-                  <Grudr.components.Button type="link" variant="primary" path="/hosting" size="small">
-                    Learn More
-                  </Grudr.components.Button>
-                </ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col sm={12} md={6} lg={3}>
-              <ListGroup>
-                <ListGroup.Item>
-                  <h5 className="title-5">Load Balancers</h5>
-                  <p>Powerful compute instances with Intel CPUs and 100% SSD storage. </p>
-                  <p className="mb-0">Starting at</p>
-                  <div className="mb-1">
-                    <span className="title-5 mr-1">₹99/mo</span>
-                    <span className="title-5 list-price">₹299/mo</span>
-                  </div>
-                  <Grudr.components.Button type="link" variant="primary" path="/hosting" size="small">
-                    Learn More
-                  </Grudr.components.Button>
-                </ListGroup.Item>
-              </ListGroup>
-            </Col>
+            <Grudr.components.CloudCard
+              title="Cloud Instance"
+              description="Powerful compute instances with Intel CPUs and 100% SSD storage."
+              salePrice="₹99/mo"
+              listPrice="₹299/mo"
+              path="/hosting"
+            />
+            <Grudr.components.CloudCard
+              title="Block Storage"
+              description="Powerful compute instances with Intel CPUs and 100% SSD storage."
+              salePrice="₹99/mo"
+              listPrice="₹299/mo"
+              path="/hosting"
+            />
+            <Grudr.components.CloudCard
+              title="Dedicated Cloud"
+              description="Powerful compute instances with Intel CPUs and 100% SSD storage."
+              salePrice="₹99/mo"
+              listPrice="₹299/mo"
+              path="/hosting"
+            />
+            <Grudr.components.CloudCard
+              title="Load Balancers"
+              description="Powerful compute instances with Intel CPUs and 100% SSD storage."
+              salePrice="₹99/mo"
+              listPrice="₹299/mo"
+              path="/hosting"
+            />
           </Row>
         </Container>
       </div>
@@ -138,6 +102,10 @@ const HomePage = () => {
             <Col sm={12} md={5} lg={5}>
               <h4 className="display-3"><span className="d-block lead">Powerfull Control Panel</span> for better experience.</h4>
               <p className="lead">Spend more time coding and less time managing your infrastructure.</p>
+              <ul className="list">
+                <li>One-Click deployment</li>
+                <li>Easy Management</li>
+              </ul>
               <Grudr.components.Button variant="primary" type="link" path="/">
                 Control Panel Features
               </Grudr.components.Button>
@@ -159,67 +127,37 @@ const HomePage = () => {
             </Col>
           </Row>
 
-          <Row>
-            <Col sm={12} md={4} lg={4}>
-              <Card className="featured-card">
-                <Card.Body>
-                  <div className="card-icon rounded-circle bg-primary text-white">
-                    <Grudr.components.Icon name="person_add"/>
-                  </div>
-                  <Card.Title>Lorem ipsum dolor sit amet</Card.Title>
-                  <Card.Text>
-                    Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={12} md={4} lg={4}>
-              <Card className="featured-card">
-                <Card.Body>
-                  <div className="card-icon rounded-circle bg-warning text-white">
-                    <Grudr.components.Icon name="account"/>
-                  </div>
-                  <Card.Title>Lorem ipsum dolor sit amet</Card.Title>
-                  <Card.Text>
-                    Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={12} md={4} lg={4}>
-              <Card className="featured-card">
-                <Card.Body>
-                  <div className="card-icon rounded-circle bg-dark text-white">
-                    <Grudr.components.Icon name="person_add"/>
-                  </div>
-                  <Card.Title>Lorem ipsum dolor sit amet</Card.Title>
-                  <Card.Text>
-                    Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
-       <div className="section bg-light">
-        <Container>
           <Row className="center-xs">
-            <Col sm={12} md={5} lg={5}>
-              <h4 className="title-4">Get started with SSD Cloud</h4>
-              <Grudr.components.Button type="link" variant="black-fill" path="/register">
-                Create a Free Account
-              </Grudr.components.Button>
-              <Grudr.components.Button type="link" path="/hosting">
-                See all Pricing
-              </Grudr.components.Button>
+            <Col sm={12} md={10} lg={8}>
+              <Tab.Container defaultActiveKey="first">
+                <Nav variant="pills" className="flex-column">
+                  <Nav.Item>
+                    <Nav.Link eventKey="first">Deploy</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="second">Scale</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="third">Store</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+                <Tab.Content>
+                  <Tab.Pane eventKey="first">
+                    Deplor content
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="second">
+                    Scale content
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="third">
+                    Store content
+                  </Tab.Pane>
+                </Tab.Content>
+              </Tab.Container>
             </Col>
           </Row>
         </Container>
       </div>
+
     </React.Fragment>
   )
 }

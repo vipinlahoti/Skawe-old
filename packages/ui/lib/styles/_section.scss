@@ -1,0 +1,39 @@
+.section {
+  @include padding(120px 0);
+}
+
+.section-lg {
+  @include padding(160px 0); 
+}
+
+.section-small {
+  @include padding(64px 0);
+  height: auto;
+}
+
+.section-xsmall {
+  @include padding(32px 0);
+  height: auto;
+}
+
+.section-diagonal {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  display: block;
+  left: 0;
+  top: -250px;
+  background-color: $primary;
+  transform: skewY(-10deg);
+  @include height(650px);
+}
+
+.section-gray {
+  background: $gray-100;
+}
+
+.section-locations {
+  background: url('/images/world-map.png') no-repeat 100% center;
+  height: 470px;
+  background-size: cover;
+}

@@ -5,6 +5,22 @@
   image-rendering: -webkit-optimize-contrast;
 }
 
+::-moz-selection { /* Code for Firefox */
+  background: $primary;
+}
+
+::selection {
+  background: $primary;
+}
+
+:-webkit-autofill,
+:-webkit-autofill:active,
+:-webkit-autofill:focus,
+:-webkit-autofill:hover {
+  transition: all 5000s ease-in-out 0s;
+  transition-property: background-color,color;
+}
+
 html {
   -webkit-text-size-adjust: 100%; // 4
   -webkit-tap-highlight-color: rgba($black, 0); // 5
@@ -73,13 +89,38 @@ a {
 }
 
 .list {
-  @include margin(16px, top);
+  @include margin(32px, top);
+  @include margin(32px, bottom);
   @include padding(0);
-
+  
   li {
-    @include margin(4px, bottom);
+    @include font-size(18px);
+    @include padding(32px, left);
     list-style: none;
+    position: relative;
+
+    &:before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: $primary;
+      position: absolute;
+      top: 13px;
+      left: 0;
+    }
   }
+}
+
+.text-left {
+  @include text-align(left);
+}
+
+.text-center {
+  @include text-align(center);
+}
+
+.text-right {
+  @include text-align(right);
 }
 
 .font-weight-light {

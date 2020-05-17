@@ -4,6 +4,11 @@ import '../components/common/Logo.jsx';
 import '../components/common/Footer.jsx';
 import '../components/common/Header.jsx';
 import '../components/common/MiniFooter.jsx';
+import '../components/common/MiniCreateForm.jsx';
+import '../components/common/CloudCard.jsx';
+
+
+
 import '../components/common/DomainSearch.jsx';
 
 // Pages
