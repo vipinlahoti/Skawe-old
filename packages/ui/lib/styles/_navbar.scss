@@ -41,12 +41,7 @@
     line-height: 50px;
     font-weight: 600;
     transition: all 0.3s ease-in-out 0s;
-
-    &:hover,
-    &.active {
-      // border-color: inherit;
-    }
-
+  
     ~.btn {
       @include margin(10px, left);
     }
@@ -66,7 +61,7 @@
     list-style: none;
     justify-content: center;
     border-bottom: 1px solid $gray-300;
-    
+
     .nav-item {
       display: flex;
     }
