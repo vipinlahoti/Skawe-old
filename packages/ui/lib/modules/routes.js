@@ -1,11 +1,11 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 
-Grudr.routes.add([
-  {name: 'home',              path: '/',                 component: Grudr.components.HomePage},
-  {name: 'login',             path: '/login',            component: Grudr.components.LoginPage},
-  {name: 'register',          path: '/register',         component: Grudr.components.RegisterPage},
-  {name: 'forgot-password',   path: '/forgot-password',  component: Grudr.components.ForgotPassword},
-  {name: 'hosting',   path: '/hosting',  component: Grudr.components.HostingPage},
-  {name: 'domains',   path: '/domains',  component: Grudr.components.DomainsPage},
+Skawe.routes.add([
+  {name: 'home',              path: '/',                 component: Skawe.components.HomePage},
+  {name: 'login',             path: '/login',            component: Skawe.components.LoginPage},
+  {name: 'register',          path: '/register',         component: Skawe.components.RegisterPage},
+  {name: 'forgot-password',   path: '/forgot-password',  component: Skawe.components.ForgotPassword},
+  {name: 'hosting',   path: '/hosting',  component: Skawe.components.HostingPage},
+  {name: 'domains',   path: '/domains',  component: Skawe.components.DomainsPage},
 
 ]);

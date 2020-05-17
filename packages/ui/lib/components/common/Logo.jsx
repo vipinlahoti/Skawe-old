@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -18,4 +18,4 @@ const Logo = ({ logoUrl, siteTitle }) => {
   }
 }
 
-Grudr.registerComponent('Logo', Logo);
+Skawe.registerComponent('Logo', Logo);

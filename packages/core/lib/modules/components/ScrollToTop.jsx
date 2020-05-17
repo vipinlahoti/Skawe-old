@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 
@@ -14,4 +14,4 @@ class ScrollToTop extends Component {
   }
 }
 
-Grudr.registerComponent('ScrollToTop', withRouter(ScrollToTop));
+Skawe.registerComponent('ScrollToTop', withRouter(ScrollToTop));

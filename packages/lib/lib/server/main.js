@@ -1,3 +1,3 @@
-import Grudr from '../modules/index.js';
+import Skawe from '../modules/index.js';
 
-export default Grudr;
+export default Skawe;

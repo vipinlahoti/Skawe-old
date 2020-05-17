@@ -1,11 +1,11 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 
 const ForgotPassword = () =>
   <React.Fragment>
-    <Grudr.components.HeadTags title="Forgot Password Page" description="Forgot Password Page" />
+    <Skawe.components.HeadTags title="Forgot Password Page" description="Forgot Password Page" />
 
     <div className="section">
       <Container>
@@ -22,7 +22,7 @@ const ForgotPassword = () =>
                     <Form.Control type="text" />
                   </Form.Group>
 
-                  <Grudr.components.Button variant="black" block>Login</Grudr.components.Button>
+                  <Skawe.components.Button variant="black" block>Login</Skawe.components.Button>
                   
                   <p className="mt-1">Don't have an account? <Link to={{ pathname: '/register' }}>Register Now</Link>.</p>
 
@@ -35,4 +35,4 @@ const ForgotPassword = () =>
     </div>
   </React.Fragment>
 
-Grudr.registerComponent('ForgotPassword', ForgotPassword);
+Skawe.registerComponent('ForgotPassword', ForgotPassword);

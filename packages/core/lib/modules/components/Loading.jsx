@@ -1,8 +1,8 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 
-const siteTitle = Grudr.settings.get('title');
-const logoUrl = Grudr.settings.get('logoUrl');
+const siteTitle = Skawe.settings.get('title');
+const logoUrl = Skawe.settings.get('logoUrl');
 
 const wrapper = {
   alignItems: 'center',
@@ -15,9 +15,9 @@ const wrapper = {
 const Loading = props => {
   return (
     <div style={wrapper}>
-      <Grudr.components.Logo logoUrl={logoUrl} siteTitle={siteTitle}/>
+      <Skawe.components.Logo logoUrl={logoUrl} siteTitle={siteTitle}/>
     </div>
   );
 };
 
-Grudr.registerComponent('Loading', Loading);
+Skawe.registerComponent('Loading', Loading);

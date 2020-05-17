@@ -13,7 +13,7 @@ onPageLoad(sink => {
   const App = props => {
   return (
       <StaticRouter location={props.location} context={context}>
-        <Grudr.components.App />
+        <Skawe.components.App />
       </StaticRouter>
     );
   }

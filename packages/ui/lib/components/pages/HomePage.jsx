@@ -1,11 +1,11 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Jumbotron, Container, Row, Col, Form, Card, Tab, Nav } from 'react-bootstrap';
 
 const HomePage = () => {
   return (
     <React.Fragment>
-      <Grudr.components.HeadTags title="Home" description="Home description" />
+      <Skawe.components.HeadTags title="Home" description="Home description" />
 
       <Jumbotron>
         <Container>
@@ -23,9 +23,9 @@ const HomePage = () => {
                   <Form.Group controlId="formGroupPassword">
                     <Form.Control type="password" placeholder="Password" autoComplete="off" required />
                   </Form.Group>
-                  <Grudr.components.Button variant="black-fill" type="submit">
+                  <Skawe.components.Button variant="black-fill" type="submit">
                     Create an Account
-                  </Grudr.components.Button>
+                  </Skawe.components.Button>
                 </Form>
                 
               </div>
@@ -34,7 +34,7 @@ const HomePage = () => {
         </Container>
       </Jumbotron>
 
-      <Grudr.components.MiniFooter
+      <Skawe.components.MiniFooter
         variant="bg-dark"
         className="center-xs"
         title="Get started with Skawe and find everything that you need to get online."
@@ -43,28 +43,28 @@ const HomePage = () => {
       <div className="section bg-light">
         <Container>
           <Row>
-            <Grudr.components.CloudCard
+            <Skawe.components.CloudCard
               title="Cloud Instance"
               description="Powerful compute instances with Intel CPUs and 100% SSD storage."
               salePrice="₹99/mo"
               listPrice="₹299/mo"
               path="/hosting"
             />
-            <Grudr.components.CloudCard
+            <Skawe.components.CloudCard
               title="Block Storage"
               description="Powerful compute instances with Intel CPUs and 100% SSD storage."
               salePrice="₹99/mo"
               listPrice="₹299/mo"
               path="/hosting"
             />
-            <Grudr.components.CloudCard
+            <Skawe.components.CloudCard
               title="Dedicated Cloud"
               description="Powerful compute instances with Intel CPUs and 100% SSD storage."
               salePrice="₹99/mo"
               listPrice="₹299/mo"
               path="/hosting"
             />
-            <Grudr.components.CloudCard
+            <Skawe.components.CloudCard
               title="Load Balancers"
               description="Powerful compute instances with Intel CPUs and 100% SSD storage."
               salePrice="₹99/mo"
@@ -106,9 +106,9 @@ const HomePage = () => {
                 <li>One-Click deployment</li>
                 <li>Easy Management</li>
               </ul>
-              <Grudr.components.Button variant="primary" type="link" path="/">
+              <Skawe.components.Button variant="primary" type="link" path="/">
                 Control Panel Features
-              </Grudr.components.Button>
+              </Skawe.components.Button>
             </Col>
 
             <Col sm={12} md={7} lg={7}>
@@ -162,4 +162,4 @@ const HomePage = () => {
   )
 }
 
-Grudr.registerComponent('HomePage', HomePage);
+Skawe.registerComponent('HomePage', HomePage);

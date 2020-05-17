@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'grudr:lib',
+  name: 'skawe:lib',
   version: '0.0.1'
 });
 
@@ -30,7 +30,7 @@ Package.onUse(function(api) {
   api.use(packages);
   api.imply(packages);
 
-  api.export('Grudr');
+  api.export('Skawe');
 
   api.mainModule('lib/server/main.js', 'server');
   api.mainModule('lib/client/main.js', 'client');

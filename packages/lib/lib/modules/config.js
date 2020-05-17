@@ -1,26 +1,26 @@
 /**
- * @summary Kick off the namespace for Grudr.
- * @namespace Grudr
+ * @summary Kick off the namespace for Skawe.
+ * @namespace Skawe
  */
 
 // eslint-disable-next-line no-undef
-Grudr = {};
+Skawe = {};
 
 // Components
-Grudr.components = {};
+Skawe.components = {};
 
 // Register Component
-Grudr.registerComponent = (name, component) => {
-  Grudr.components[name] = component;
+Skawe.registerComponent = (name, component) => {
+  Skawe.components[name] = component;
 };
 
 /**
 * @summary Routes namespace
-* @namespace Grudr.routes
+* @namespace Skawe.routes
 * @method Add a Routes to routes Array
 * @param {object} routes - Array of Objects
 */
-Grudr.routes = {
+Skawe.routes = {
   routes: [],
   add(Routes) {
     const addedRoutes = Array.isArray(Routes) ? Routes : [Routes];
@@ -31,25 +31,25 @@ Grudr.routes = {
 
 /**
 * @summary Subscriptions namespace
-* @namespace Grudr.subscriptions
+* @namespace Skawe.subscriptions
 */
-Grudr.subscriptions = [];
+Skawe.subscriptions = [];
 
 /**
  * @summary Add a subscription to be preloaded
  * @param {string} subscription - The name of the subscription
  */
-Grudr.subscriptions.preload = function (subscription, args) {
-  Grudr.subscriptions.push({name: subscription, arguments: args});
+Skawe.subscriptions.preload = function (subscription, args) {
+  Skawe.subscriptions.push({name: subscription, arguments: args});
 };
 
 
 // Head Tags
-Grudr.headtags = {
+Skawe.headtags = {
   meta: [],
   link: [],
   script: [],
 };
 
 // eslint-disable-next-line no-undef
-export default Grudr;
+export default Skawe;

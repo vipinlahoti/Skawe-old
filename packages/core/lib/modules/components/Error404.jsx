@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
@@ -15,4 +15,4 @@ const Error404 = () =>
     </Container>
   </div>
 
-Grudr.registerComponent('Error404', Error404);
+Skawe.registerComponent('Error404', Error404);

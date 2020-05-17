@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const Main = () => 
   <BrowserRouter>
-    <Grudr.components.App />
+    <Skawe.components.App />
   </BrowserRouter>;
 
 onPageLoad(sink => {

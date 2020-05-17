@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 
 const wrapper = {
@@ -12,4 +12,4 @@ const HelloWorld = () =>
     <h2>Hello World!!</h2>
   </div>
 
-Grudr.registerComponent('HelloWorld', HelloWorld);
+Skawe.registerComponent('HelloWorld', HelloWorld);

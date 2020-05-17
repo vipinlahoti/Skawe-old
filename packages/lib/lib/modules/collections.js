@@ -1,5 +1,5 @@
 import SimpleSchema from 'simpl-schema';
-import Grudr from './config.js';
+import Skawe from './config.js';
 
 /**
  * @summary @summary Add an additional field (or an array of fields) to a schema.
@@ -23,7 +23,7 @@ Mongo.Collection.prototype.addField = function (fieldOrFieldArray) {
 
 /**
  * @summary Get a list of a schema's private fields
- * @namespace Grudr.schemas
+ * @namespace Skawe.schemas
  */
 Mongo.Collection.prototype.getPrivateFields = function () {
   var schema = this.simpleSchema()._schema;
@@ -36,7 +36,7 @@ Mongo.Collection.prototype.getPrivateFields = function () {
 
 /**
  * @summary Get a list of a schema's public fields
- * @namespace Grudr.schemas
+ * @namespace Skawe.schemas
  */
 Mongo.Collection.prototype.getPublicFields = function () {
   var schema = this.simpleSchema()._schema;

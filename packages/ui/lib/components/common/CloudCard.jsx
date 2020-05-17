@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Col, ListGroup } from 'react-bootstrap';
 
@@ -13,11 +13,11 @@ const CloudCard = ({title, description, path, listPrice, salePrice}) =>
           <span className="title-5 mr-1">{salePrice}</span>
           <span className="title-5 list-price">{listPrice}</span>
         </div>
-        <Grudr.components.Button type="link" variant="primary" path={path} size="small">
+        <Skawe.components.Button type="link" variant="primary" path={path} size="small">
           Learn More
-        </Grudr.components.Button>
+        </Skawe.components.Button>
       </ListGroup.Item>
     </ListGroup>
   </Col>
 
-Grudr.registerComponent('CloudCard', CloudCard);
+Skawe.registerComponent('CloudCard', CloudCard);

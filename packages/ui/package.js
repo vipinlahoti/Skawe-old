@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'grudr:ui',
+  name: 'skawe:ui',
   version: '0.0.1'
 });
 
@@ -8,7 +8,7 @@ Package.onUse(function(api) {
 
   api.use([
     'fourseven:scss@4.12.0',
-    'grudr:core'
+    'skawe:core'
   ]);
 
   api.addFiles([

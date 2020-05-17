@@ -1,11 +1,11 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 
-const siteTitle = Grudr.settings.get('title', 'Grudr');
-const logoUrl = Grudr.settings.get('logoUrl');
+const siteTitle = Skawe.settings.get('title', 'Skawe');
+const logoUrl = Skawe.settings.get('logoUrl');
 
 const NavLoggedIn = ({user}) =>
   <Nav className="ml-auto">
@@ -36,15 +36,15 @@ const NavLoggedOut = () =>
       Register
     </Link>
 
-    <Grudr.components.Button variant="white" type="link" path="/login">
+    <Skawe.components.Button variant="white" type="link" path="/login">
       Login
-    </Grudr.components.Button>
+    </Skawe.components.Button>
   </Nav>
 
 const Header = (props, {currentUser}) => {
   return (
     <Navbar variant="light">
-      <Grudr.components.Logo logoUrl={logoUrl} siteTitle={siteTitle}/>
+      <Skawe.components.Logo logoUrl={logoUrl} siteTitle={siteTitle}/>
       { currentUser ? <NavLoggedIn user={currentUser} /> : <NavLoggedOut /> }
     </Navbar>
   )
@@ -54,4 +54,4 @@ Header.contextTypes = {
   currentUser: PropTypes.object,
 };
 
-Grudr.registerComponent('Header', Header);
+Skawe.registerComponent('Header', Header);

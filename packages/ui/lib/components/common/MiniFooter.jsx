@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
@@ -15,9 +15,9 @@ const MiniFooter = ({title, variant, link, className}) =>
 
             {link ?
               (<Col>
-                <Grudr.components.Button variant="white" type="link" path={link}>
+                <Skawe.components.Button variant="white" type="link" path={link}>
                   Get Started
-                </Grudr.components.Button>
+                </Skawe.components.Button>
               </Col>)
             : null }
 
@@ -27,4 +27,4 @@ const MiniFooter = ({title, variant, link, className}) =>
     </Container>
   </div>
 
-Grudr.registerComponent('MiniFooter', MiniFooter);
+Skawe.registerComponent('MiniFooter', MiniFooter);

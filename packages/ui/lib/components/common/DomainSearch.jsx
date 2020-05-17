@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
@@ -17,7 +17,7 @@ const DomainSearch = ({ title, lead, placeholder, domainLinks, handleChange, han
         <Form.Control type="text" name="domain-search" value={handleValue} onChange={handleChange} placeholder={placeholder} required />
         
         <Button type="submit" variant="black-fill">
-          <Grudr.components.Icon name="search" />
+          <Skawe.components.Icon name="search" />
         </Button>
       </Form>
 
@@ -32,4 +32,4 @@ const DomainSearch = ({ title, lead, placeholder, domainLinks, handleChange, han
   )
 }
 
-Grudr.registerComponent('DomainSearch', DomainSearch);
+Skawe.registerComponent('DomainSearch', DomainSearch);

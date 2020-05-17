@@ -1,9 +1,9 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 
-const siteTitle = Grudr.settings.get('title', 'Grudr');
+const siteTitle = Skawe.settings.get('title', 'Skawe');
 
 const Footer = () =>
   <footer className="section-small">
@@ -35,7 +35,7 @@ const Footer = () =>
 
           <Col>
             <div className="text-right">
-              <Grudr.components.Logo siteTitle={siteTitle}/>
+              <Skawe.components.Logo siteTitle={siteTitle}/>
               <div className="copyright mt-1">Copyright &copy; 2020 All Rights Reserved.</div>
             </div>
           </Col>
@@ -43,4 +43,4 @@ const Footer = () =>
       </Container>
     </footer>
 
-Grudr.registerComponent('Footer', Footer);
+Skawe.registerComponent('Footer', Footer);

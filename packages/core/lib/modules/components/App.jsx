@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import { withTracker } from 'meteor/react-meteor-data';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
@@ -10,9 +10,9 @@ const RouteWithLayout = ({ component: Component, ...rest }) => {
       {...rest}
       render = {props =>
         <React.Fragment>
-          <Grudr.components.Layout {...props}>
+          <Skawe.components.Layout {...props}>
             <Component {...props} />
-          </Grudr.components.Layout>
+          </Skawe.components.Layout>
         </React.Fragment>
       }
     />
@@ -28,12 +28,12 @@ class App extends PureComponent {
   }
 
   render() {
-    const routeNames = Grudr.routes.routes;
+    const routeNames = Skawe.routes.routes;
 
     return (
       <React.Fragment>
-        <Grudr.components.ScrollToTop />
-        <Grudr.components.HeadTags />
+        <Skawe.components.ScrollToTop />
+        <Skawe.components.HeadTags />
 
         {routeNames.length ? (
           <Switch>
@@ -45,10 +45,10 @@ class App extends PureComponent {
               />
             ))}
             <RouteWithLayout
-              component={Grudr.components.Error404}
+              component={Skawe.components.Error404}
             />
           </Switch> )
-        : ( <Grudr.components.HelloWorld /> )}
+        : ( <Skawe.components.HelloWorld /> )}
 
       </React.Fragment>
     );
@@ -75,4 +75,4 @@ App.childContextTypes = {
 //   return data;
 // })(App);
 
-Grudr.registerComponent('App', App);
+Skawe.registerComponent('App', App);

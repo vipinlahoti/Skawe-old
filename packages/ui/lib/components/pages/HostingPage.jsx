@@ -1,11 +1,11 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Jumbotron, Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 const HostingPage = () => {
   return (
     <React.Fragment>
-      <Grudr.components.HeadTags title="Hosting" description="Web Hosting Page" />
+      <Skawe.components.HeadTags title="Hosting" description="Web Hosting Page" />
 
       <Jumbotron>
         <Container>
@@ -24,7 +24,7 @@ const HostingPage = () => {
         </Container>
       </Jumbotron>
 
-      <Grudr.components.MiniFooter
+      <Skawe.components.MiniFooter
         variant="bg-sweet-pink"
         className="center-xs"
         title="Webhosting Starts at just ₹99/mo"
@@ -43,9 +43,9 @@ const HostingPage = () => {
                     <span className="title-5 mr-1">₹99/mo</span>
                     <span className="title-5 list-price">₹299/mo</span>
                   </div>
-                  <Grudr.components.Button type="link" path="/hosting" size="small">
+                  <Skawe.components.Button type="link" path="/hosting" size="small">
                     Learn More
-                  </Grudr.components.Button>
+                  </Skawe.components.Button>
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -59,9 +59,9 @@ const HostingPage = () => {
                     <span className="title-5 mr-1">₹99/mo</span>
                     <span className="title-5 list-price">₹299/mo</span>
                   </div>
-                  <Grudr.components.Button type="link" path="/hosting" size="small">
+                  <Skawe.components.Button type="link" path="/hosting" size="small">
                     Learn More
-                  </Grudr.components.Button>
+                  </Skawe.components.Button>
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -75,9 +75,9 @@ const HostingPage = () => {
                     <span className="title-5 mr-1">₹99/mo</span>
                     <span className="title-5 list-price">₹299/mo</span>
                   </div>
-                  <Grudr.components.Button type="link" path="/hosting" size="small">
+                  <Skawe.components.Button type="link" path="/hosting" size="small">
                     Learn More
-                  </Grudr.components.Button>
+                  </Skawe.components.Button>
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -105,4 +105,4 @@ const HostingPage = () => {
   )
 }
 
-Grudr.registerComponent('HostingPage', HostingPage);
+Skawe.registerComponent('HostingPage', HostingPage);

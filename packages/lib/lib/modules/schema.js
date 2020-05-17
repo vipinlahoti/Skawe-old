@@ -1,11 +1,11 @@
 import SimpleSchema from 'simpl-schema';
-import Grudr from './config.js';
+import Skawe from './config.js';
 
 /**
  * @summary Global schemas object. Note: not reactive, won't be updated after initialization
- * @namespace Grudr.schemas
+ * @namespace Skawe.schemas
  */
-Grudr.schemas = {};
+Skawe.schemas = {};
 
 SimpleSchema.extendOptions([
   'editable',

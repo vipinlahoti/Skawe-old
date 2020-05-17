@@ -1,4 +1,4 @@
-import Grudr from './config.js';
+import Skawe from './config.js';
 
 import './settings.js';
 import './utils.js';
@@ -7,4 +7,4 @@ import './collections.js';
 import './icons.js';
 import './schema.js';
 
-export default Grudr;
+export default Skawe;

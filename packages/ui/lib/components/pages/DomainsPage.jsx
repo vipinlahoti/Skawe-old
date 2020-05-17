@@ -1,4 +1,4 @@
-import Grudr from 'meteor/grudr:lib';
+import Skawe from 'meteor/skawe:lib';
 import React, { Component } from 'react';
 import { Jumbotron, Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
@@ -20,14 +20,14 @@ class DomainsPage extends Component {
   render() {
     return (
       <React.Fragment>
-        <Grudr.components.HeadTags title="Hosting" description="Web Hosting Page" />
+        <Skawe.components.HeadTags title="Hosting" description="Web Hosting Page" />
 
         <Jumbotron>
           <Container>
             <Row className="center-xs">
               <Col>
                 <div className="hero__wrapper text-dark">
-                  <Grudr.components.DomainSearch
+                  <Skawe.components.DomainSearch
                     title="Get a Domain Name"
                     lead="With Privacy Protection and lots more."
                     placeholder="Find your Perfect Domain Name."
@@ -41,7 +41,7 @@ class DomainsPage extends Component {
           </Container>
         </Jumbotron>
 
-        <Grudr.components.MiniFooter
+        <Skawe.components.MiniFooter
           variant="bg-sweet-purple"
           className="center-xs"
           title="Each and every domain name comes with all you need to get online."
@@ -60,7 +60,7 @@ class DomainsPage extends Component {
                 <Card className="featured-card">
                   <Card.Body>
                     <div className="card-icon card-icon-lg">
-                      <Grudr.components.Icon name="fast_forward"/>
+                      <Skawe.components.Icon name="fast_forward"/>
                     </div>
                     <Card.Title>Domain Forwarding and Masking</Card.Title>
                     <Card.Text>
@@ -74,7 +74,7 @@ class DomainsPage extends Component {
                 <Card className="featured-card">
                   <Card.Body>
                     <div className="card-icon card-icon-lg">
-                      <Grudr.components.Icon name="lock_outline"/>
+                      <Skawe.components.Icon name="lock_outline"/>
                     </div>
                     <Card.Title>Domain Locking</Card.Title>
                     <Card.Text>
@@ -88,7 +88,7 @@ class DomainsPage extends Component {
                 <Card className="featured-card">
                   <Card.Body>
                     <div className="card-icon card-icon-lg">
-                      <Grudr.components.Icon name="accessibility"/>
+                      <Skawe.components.Icon name="accessibility"/>
                     </div>
                     <Card.Title>Total DNS Control</Card.Title>
                     <Card.Text>
@@ -102,7 +102,7 @@ class DomainsPage extends Component {
                 <Card className="featured-card">
                   <Card.Body>
                     <div className="card-icon card-icon-lg">
-                      <Grudr.components.Icon name="subdirectory_arrow_right"/>
+                      <Skawe.components.Icon name="subdirectory_arrow_right"/>
                     </div>
                     <Card.Title>Change of Registration</Card.Title>
                     <Card.Text>
@@ -116,7 +116,7 @@ class DomainsPage extends Component {
                 <Card className="featured-card">
                   <Card.Body>
                     <div className="card-icon card-icon-lg">
-                      <Grudr.components.Icon name="snooze"/>
+                      <Skawe.components.Icon name="snooze"/>
                     </div>
                     <Card.Title>Status Alerts</Card.Title>
                     <Card.Text>
@@ -130,7 +130,7 @@ class DomainsPage extends Component {
                 <Card className="featured-card">
                   <Card.Body>
                     <div className="card-icon card-icon-lg">
-                      <Grudr.components.Icon name="update"/>
+                      <Skawe.components.Icon name="update"/>
                     </div>
                     <Card.Title>Auto Renew Protection</Card.Title>
                     <Card.Text>
@@ -149,4 +149,4 @@ class DomainsPage extends Component {
   }
 }
 
-Grudr.registerComponent('DomainsPage', DomainsPage);
+Skawe.registerComponent('DomainsPage', DomainsPage);
