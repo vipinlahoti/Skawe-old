@@ -1,0 +1,59 @@
+.navbar {
+  @include padding(24px 48px);
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap; // allow us to do the line break for collapsing content
+  align-items: center;
+  justify-content: flex-start; // space out brand from logo  
+  z-index: 99;
+  width: 100%;
+}
+
+.navbar-brand {
+  @include font-size(32px);
+  @include padding(10px);
+  color: $white;
+  display: inline-block;
+  font-family: $brand-font-family;
+  font-weight: 600;
+  line-height: inherit;
+  white-space: nowrap;
+
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.navbar-nav {
+  @include margin(0px);
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+
+  .nav-link {
+    @include margin(0 16px);
+    cursor: pointer;
+    color: $white;
+    border-bottom: 3px solid transparent;
+    display: block;
+    line-height: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out 0s;
+
+    &:hover,
+    &.active {
+      // border-color: inherit;
+    }
+
+    ~.btn {
+      @include margin(10px, left);
+    }
+  }
+
+  .nav-cart {
+    &:hover {
+      border-color: transparent;
+    }    
+  }
+}

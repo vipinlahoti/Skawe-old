@@ -1,16 +1,15 @@
 {
-  "presets": ["next/babel"],
-  "plugins": [
+	"plugins": [
+	],
+  "presets": [
     [
-      "module-resolver",
+      "@babel/preset-env",
       {
-        "root": ["."],
-        "alias": {
-          "@skawe": "./skawe",
-          "@components": "./components",
-          "@constants": "./constants",
-        }
+        "shippedProposals": true,
+        "corejs":2,
+        "useBuiltIns": "usage"
       }
-    ]
+    ],
+    "@babel/preset-react"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:meteor/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -33,6 +34,7 @@
     "no-await-in-loop": 1,
     "comma-dangle": 0,
     "key-spacing": 0,
+    "meteor/audit-argument-checks": 0,
     "no-case-declarations": 0,
     "no-console": 1,
     "no-extra-boolean-cast": 0,
@@ -57,12 +59,17 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
+    "meteor": true,
     "node": true,
   },
   "plugins": [
     "babel",
+    "meteor",
     "prettier"
   ],
+  "settings": {
+    "import/resolver": "meteor"
+  },
   "root": true,
   "globals": {
     "param": true,

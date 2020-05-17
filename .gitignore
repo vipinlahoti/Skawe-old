@@ -14,41 +14,44 @@ config.rb
 
 deploy.sh
 
+.demeteorized
+
+dump/
+dump/*
+
+# settings.json
+settings.json.not-used
+production.settings.json
 .idea
 
 scratch
 
 .deploy
 .deploy/*
+### Meteor template
+.meteor/local
+.meteor/meteorite
+mup.json
+
+packages_update.py
 
 versions
 
-/sessions
+get_file_list.sh
+packages_update.py
+publish_packages.sh
 
-/credentials
-/node_modules
-/.pnp
-.pnp.js
+node_modules
+
 bundle.tar.gz
 
 jsdoc-conf.json
 jsdoc.json
+packages/nova-router/.npm
+npm-debug.log
 
-# testing
-/coverage
+typings
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-.env
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+storybook-static
+docs/storybook-material
+docs/storybook-bootstrap

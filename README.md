@@ -1,33 +1,18 @@
 # Skawe
 
+Skawe is a React framework built with Meteor.
 
-### Version
-0.0.1
+### Install
 
 
-### Installation
+Install the latest version of Node and NPM. We recommend the usage of [NVM](http://nvm.sh).
+
+You can then install [Meteor](https://www.meteor.com/install), 
+
 
 ```sh
-$ npm install
+meteor npm install
+meteor npm start
 ```
 
-
-### Run
-
-Starts the development server.
-
-```sh
-$ npm start
-```
-
-Builds the app for production.
-
-```sh
-$ npm run build
-```
-
-Runs the built app in production mode.
-
-```sh
-$ npm run prod
-```
+And open `http://localhost:3000/` in your browser.

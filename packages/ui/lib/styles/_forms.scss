@@ -1,0 +1,53 @@
+.form-inline {
+  display: flex;
+  align-items: center;
+
+  .form-control {
+    @include width(260px, min);
+  }
+
+  .form-group {
+    @include margin(8px, right);
+    @include margin(0, bottom);
+  }
+}
+
+.form-group {
+  @include margin(16px, bottom);
+}
+
+label {
+  @include margin(8px, bottom);
+  display: inline-block;
+}
+
+.form-control {
+  @include height(55px);
+  @include padding(4px 16px);
+  @include font-size(16px);
+  @extend .font-weight-normal;
+  display: block;
+  width: 100%;
+  color: $dark;
+  background-color: $white;
+  background-clip: padding-box;
+  border: 1px solid $gray-400;
+  box-shadow: 0 1px 3px rgba(50, 50, 93, .12), 0 1px 0 rgba(0,0,0,.02);
+
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Remove select outline from select box in FF
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 $gray-400;
+  }
+
+  &:focus,
+  &:active {
+    border-color: $gray-600;
+    outline: none;
+  }
+}
