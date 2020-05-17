@@ -1,5 +1,6 @@
 .navbar {
   @include padding(24px 48px);
+  background: url('/images/triangles-background.png') $primary;
   position: absolute;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
