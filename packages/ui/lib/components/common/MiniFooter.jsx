@@ -3,8 +3,8 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 
-const MiniFooter = ({title, variant, link, className}) =>
-  <div className={classNames('section-stripe section-xsmall text-white', className, variant)}>
+const MiniFooter = ({title, variant, link, className, newsLetter}) =>
+  <div className={classNames('section-stripe section-xsmall text-white', className, variant, newsLetter ? 'line-height-lg' : null)}>
     <Container>
       <Row className="center-xs">
         <Col sm={12} md={10}>
@@ -21,10 +21,13 @@ const MiniFooter = ({title, variant, link, className}) =>
               </Col>)
             : null }
 
+            {newsLetter ?
+            (<Skawe.components.NewsLetter type="inline" />) : null }
+
           </Row>
         </Col>
       </Row>
     </Container>
   </div>
 
-Skawe.registerComponent('MiniFooter', MiniFooter);
+Skawe.registerComponent('MiniFooter', MiniFooter); 

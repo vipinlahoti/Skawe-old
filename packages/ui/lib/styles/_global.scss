@@ -10,6 +10,10 @@
   margin-right: auto;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .icon-arrow_forward {
   @include font-size(20px);
 }
@@ -112,5 +116,19 @@ footer,
     &:before {
       content: '.';
     }
+  }
+}
+
+.line-height-lg {
+  .title-5 {
+    line-height: 55px;
+  }
+}
+
+.market-list {
+  .list-group-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

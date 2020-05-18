@@ -2,7 +2,7 @@ import Skawe from 'meteor/skawe:lib';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 
 const siteTitle = Skawe.settings.get('title', 'Skawe');
 const logoUrl = Skawe.settings.get('logoUrl');
@@ -16,21 +16,46 @@ const NavLoggedIn = ({user}) =>
 
 const NavLoggedOut = () => 
   <Nav className="ml-auto">
-    <NavDropdown title="Products" id="basic-nav-products">
-      <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-      <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-      <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-      <NavDropdown.Divider />
-      <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-    </NavDropdown>
+    <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Products
+      </Dropdown.Toggle>
 
-    <NavDropdown title="Features" id="basic-nav-features">
-      <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-      <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-      <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-      <NavDropdown.Divider />
-      <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-    </NavDropdown>
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">
+          <Skawe.components.Icon name="layers"/>
+          <div className="nav-link-desc">
+            Cloud Instance
+            <span>Powerful compute instances</span>
+          </div>
+        </Dropdown.Item>
+        <Dropdown.Item href="#/action-1">
+          <Skawe.components.Icon name="camera_roll"/>
+          <div className="nav-link-desc">
+            Object Storage
+            <span>Powerful compute instances</span>
+          </div>
+        </Dropdown.Item>
+        <Dropdown.Item href="#/action-1">
+          <Skawe.components.Icon name="storage"/>
+          <div className="nav-link-desc">
+            Block Storage
+            <span>Powerful compute instances</span>
+          </div>
+        </Dropdown.Item>
+        <Dropdown.Item href="#/action-1">
+          <Skawe.components.Icon name="dns"/>
+          <div className="nav-link-desc">
+            Load Balancers
+            <span>Powerful compute instances</span>
+          </div>
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+
+    <Link to={{ pathname: '/marketplace' }} className="nav-link">
+      Marketplace
+    </Link>
 
     <Link to={{ pathname: '/register' }} className="nav-link">
       Register

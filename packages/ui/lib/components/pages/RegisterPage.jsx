@@ -11,9 +11,9 @@ const RegisterPage = () =>
       <Container>
         <Row>
           <div className="accounts-card">
+            <div className="accounts-card-banner"></div>
             <Card className="shadow-lg">
               <Card.Header>
-
                 <div className="title-5 mb-2">
                   Create an Account
                 </div>

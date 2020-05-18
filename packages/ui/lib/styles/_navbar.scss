@@ -52,6 +52,42 @@
       border-color: transparent;
     }    
   }
+
+  .dropdown-toggle {
+    @include margin(16px, left);
+    @include margin(16px, right);
+    color: $white;
+    line-height: 48px;
+    font-weight: 500;
+
+    &:hover {
+      background: transparent;
+    }
+
+    &:after {
+      margin-top: 23px;
+    }
+  }
+
+  .dropdown-item {
+    @extend .middle-xs;
+    border-bottom: 1px solid $gray-200;
+    display: flex;
+
+    .icon {
+      @include font-size(42px);
+      @include margin(16px, right);
+    }
+  }
+
+  .nav-link-desc {
+    span {
+      @include margin(4px, top);
+      @include font-size(14px);
+      color: $gray-700;
+      display: block;
+    }
+  }
 }
 
 .nav {

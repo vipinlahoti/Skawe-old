@@ -2,8 +2,8 @@
   position: relative;
 
   .dropdown-menu {
-    @include width(180px, min);
-    @include padding(8px 0px);
+    @include width(280px, min);
+    // @include padding(8px 0px);
     @include margin(2px 0px);
     @include round-corner(3px);
     position: absolute;
@@ -15,10 +15,10 @@
     transition: transform .3s ease;
   
     &.show {
-      @include padding(16px);
+      // @include padding(16px);
       background: $white;
       display: block;
-      left: -33px;
+      left: -80px;
       // position: relative;
 
       &:before {
@@ -39,8 +39,7 @@
   }
 
   .dropdown-item {
-    @include padding(4px 8px);
-    @include round-corner(3px);
+    @include padding(8px 16px);
     color: $dark;
     font-weight: 600;
     display: block;
@@ -49,10 +48,10 @@
     font-weight: 400;
     text-align: inherit;
     white-space: nowrap;
+    transition: .3s all ease-in-out;
 
     &:hover {
-      background: $primary;
-      color: $white;
+      background: rgba($primary, .2);
     }
   }
 }

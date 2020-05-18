@@ -16,4 +16,14 @@ Skawe.utils.icons = {
   snooze: 'snooze',
   subdirectory_arrow_right: 'subdirectory_arrow_right',
   update: 'update',
+  all_inclusive: 'all_inclusive',
+  account_balance_wallet: 'account_balance_wallet',
+  camera_roll: 'camera_roll',
+  cloud_queue: 'cloud_queue',
+  details: 'details',
+  dns: 'dns',
+  layers: 'layers',
+  public: 'public',
+  storage: 'storage',
+
 };

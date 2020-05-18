@@ -33,7 +33,24 @@
 }
 
 .section-locations {
-  background: url('/images/world-map.png') no-repeat 100% center;
+  @include padding(80px, top);
+  position: relative;
   height: 470px;
-  background-size: cover;
+
+  &:before {
+    background: url('/images/world-map.png') no-repeat 100% center;
+    content:'';
+    background-size: cover;
+    opacity: .25;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.section-stripe {
+  background-image: url('/images/triangles-background.png');
+  background-position: fixed;
 }

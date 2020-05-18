@@ -19,6 +19,7 @@
   .icon {
     @include margin(5px, right);
     line-height: 40px;
+    max-width: 30px;
   }
 
   .icon-arrow_forward {
@@ -114,4 +115,14 @@
 .btn-block {
   justify-content: center;
   width: 100%;
+}
+
+.flat-link {
+  @include font-size(14px);
+  display: flex;
+
+  .icon {
+    @include font-size(16px);
+    @include margin(4px, left);
+  }
 }

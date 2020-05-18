@@ -9,11 +9,11 @@ class Layout extends Component {
       <React.Fragment>
         <Skawe.components.Header />
         {this.props.children}
-        <Skawe.components.MiniCreateForm />
         <Skawe.components.MiniFooter
           variant="bg-primary"
           className="center-xs"
           title="Sign up for the Skawe Cloud Newsletter"
+          newsLetter={true}
         />
         <Skawe.components.Footer />        
       </React.Fragment>

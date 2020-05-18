@@ -12,7 +12,7 @@ class SkaweButton extends Component {
     return (
       <React.Fragment>
         {type === 'link' ?
-          <Link to={{ pathname: path }} className={btnClass}>
+          <Link to={{ pathname: path }} className={btnClass} {...rest}>
             {children}
             <Skawe.components.Icon name="arrow_forward" />
           </Link>

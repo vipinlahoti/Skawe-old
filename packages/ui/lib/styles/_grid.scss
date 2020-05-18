@@ -12,9 +12,12 @@
 }
 
 .col {
-  //@include stack-spacing();
   @include padding(8px, right);
   @include padding(8px, left);
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+
   &.reverse {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;

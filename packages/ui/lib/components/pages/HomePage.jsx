@@ -11,23 +11,12 @@ const HomePage = () => {
         <Container>
           <Row>
             <Col sm={12} md={10} lg={7}>
-              <h3 className="title-3">An agile suite that’s designed for change.</h3>
+              <h2 className="title-2">An agile suite that’s designed for</h2>
               <p className="lead">Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
             </Col>  
             <Col sm={12} md={10}>
               <div className="mt-2">
-                <Form inline>
-                  <Form.Group controlId="formGroupEmail">
-                    <Form.Control type="email" placeholder="Enter email" autoComplete="off" required />
-                  </Form.Group>
-                  <Form.Group controlId="formGroupPassword">
-                    <Form.Control type="password" placeholder="Password" autoComplete="off" required />
-                  </Form.Group>
-                  <Skawe.components.Button variant="black-fill" type="submit">
-                    Create an Account
-                  </Skawe.components.Button>
-                </Form>
-                
+                <Skawe.components.CreateAccount type="inline" />
               </div>
             </Col>
           </Row>
@@ -51,14 +40,14 @@ const HomePage = () => {
               path="/hosting"
             />
             <Skawe.components.CloudCard
-              title="Block Storage"
+              title="Object Storage"
               description="Powerful compute instances with Intel CPUs and 100% SSD storage."
               salePrice="₹99/mo"
               listPrice="₹299/mo"
               path="/hosting"
             />
             <Skawe.components.CloudCard
-              title="Dedicated Cloud"
+              title="Block Storage"
               description="Powerful compute instances with Intel CPUs and 100% SSD storage."
               salePrice="₹99/mo"
               listPrice="₹299/mo"
@@ -75,24 +64,20 @@ const HomePage = () => {
         </Container>
       </div>
 
-      <div className="section">
+      <div className="section section-features">
         <Container>
           <Row className="center-xs mb-4">
             <Col sm={12} md={8} lg={8}>
-              <h3 className="display-3">Deploy the server anywhere around the world</h3>
-              <p className="lead">Worldwide locations and the local presence you need.</p>
+              <h3 className="display-3">Excepteur sint occaecat cupidatat.</h3>
+              <p className="lead">Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
             </Col>
           </Row>
 
           <Row className="center-xs">
-            <Col sm={12} md={10} lg={8}>
-              <div className="section-locations">
-
-              </div>
+            <Col sm={12} md={10}>
+              <Skawe.components.TabsContainer />
             </Col>
           </Row>
-
-       
         </Container>
       </div>
 
@@ -118,45 +103,85 @@ const HomePage = () => {
         </Container>
       </div>
 
-      <div className="section section-features">
+      <div className="section">
         <Container>
-          <Row className="center-xs mb-4">
+          <Row className="center-xs mb-2">
             <Col sm={12} md={8} lg={8}>
-              <h3 className="display-3">Excepteur sint occaecat cupidatat.</h3>
-              <p className="lead">Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
+              <h3 className="display-3">Deploy the server anywhere around the world</h3>
+              <p className="lead">Worldwide locations and the local presence you need.</p>
             </Col>
           </Row>
 
           <Row className="center-xs">
             <Col sm={12} md={10} lg={8}>
-              <Tab.Container defaultActiveKey="first">
-                <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
-                    <Nav.Link eventKey="first">Deploy</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="second">Scale</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="third">Store</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-                <Tab.Content>
-                  <Tab.Pane eventKey="first">
-                    Deplor content
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="second">
-                    Scale content
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="third">
-                    Store content
-                  </Tab.Pane>
-                </Tab.Content>
-              </Tab.Container>
+              <div className="section-locations">
+                <Row>
+                  <Col>
+                    <ul className="list-detail">
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                    </ul>
+                  </Col>
+                  <Col>
+                    <ul className="list-detail">
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                      <li>
+                        <span className="mr-3 location-code">AMS2</span>
+                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
+                        <span className=""><a>Speed Test</a></span>
+                      </li>
+                    </ul>
+                  </Col>
+                </Row>
+              </div>
             </Col>
           </Row>
         </Container>
       </div>
+
+      <Skawe.components.MiniCreateForm />
 
     </React.Fragment>
   )

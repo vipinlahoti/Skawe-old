@@ -9,6 +9,7 @@ $h5-font-size: 24px;
 $h6-font-size: 16px;
 
 h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
 .title-1, .title-2, .title-3, .title-4, .title-5, .title-6 {
 	@include margin(0);
 	font-family: $brand-font-family;
@@ -18,21 +19,22 @@ h1, h2, h3, h4, h5, h6,
 h1,
 .h1,
 .title-1 {
-  @include margin(40px, bottom);
+  @include margin(32px, bottom);
 	@include font-size($h1-font-size);
 }
 
 h2,
 .h2,
 .title-2 {
-  @include margin(32px, bottom);
+  @include margin(16px, bottom);
 	@include font-size($h2-font-size);
+  line-height: 60px;
 }
 
 h3,
 .h3,
 .title-3 {
-	@include margin(24px, bottom);
+	@include margin(16px, bottom);
 	@include font-size($h3-font-size);
 }
 
@@ -53,7 +55,7 @@ h5,
 h6,
 .h6,
 .title-6 {
-  @include margin(4px, bottom);
+  @include margin(8px, bottom);
 	@include font-size($h6-font-size);
 }
 

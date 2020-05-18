@@ -23,6 +23,7 @@
 .card-icon-lg {
   @include padding(0);
   @include margin(5px, bottom);
+  color: $primary;
   box-shadow: none;
   width: auto;
   height: auto;

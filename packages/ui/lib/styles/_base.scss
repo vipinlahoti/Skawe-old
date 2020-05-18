@@ -111,6 +111,24 @@ a {
   }
 }
 
+.list-detail {
+  @include margin(32px, top);
+  @include margin(32px, bottom);
+  @include padding(0);
+
+  li {
+    @include padding(8px 0);
+    border-bottom: 1px solid $gray-200;
+    color: $gray-600;
+    list-style: none;
+    position: relative;
+  }
+
+  .location-code {
+    color: $dark;
+  }
+}
+
 .text-left {
   @include text-align(left);
 }
@@ -140,63 +158,63 @@ a {
 }
 
 .bg-primary {
-  background: $primary;
+  background-color: $primary;
 }
 
 .bg-secondary {
-  background: $secondary;
+  background-color: $secondary;
 }
 
 .bg-success {
-  background: $success;
+  background-color: $success;
 }
 
 .bg-info {
-  background: $info;
+  background-color: $info;
 }
 
 .bg-warning {
-  background: $warning;
+  background-color: $warning;
 }
 
 .bg-danger {
-  background: $danger;
+  background-color: $danger;
 }
 
 .bg-light {
-  background: $light;
+  background-color: $light;
 }
 
 .bg-gray {
-  background: $gray-100;
+  background-color: $gray-100;
 }
 
 .bg-dark {
-  background: $dark;
+  background-color: $dark;
 }
 
 .bg-white {
-  background: $white;
+  background-color: $white;
 }
 
 .bg-black {
-  background: $black;
+  background-color: $black;
 }
 
 .bg-sweet-blue {
-  background: $sweet-blue;
+  background-color: $sweet-blue;
 }
 
 .bg-sweet-pink {
-  background: $sweet-pink;
+  background-color: $sweet-pink;
 }
 
 .bg-sweet-purple {
-  background: $sweet-purple;
+  background-color: $sweet-purple;
 }
 
 .bg-sweet-yellow {
-  background: $sweet-yellow
+  background-color: $sweet-yellow
 }
 
 .text-primary {
