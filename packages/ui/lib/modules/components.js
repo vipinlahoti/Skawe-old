@@ -21,7 +21,13 @@ import '../components/pages/ForgotPassword.jsx';
 import '../components/pages/ContactUsPage.jsx';
 
 import '../components/pages/marketplace/MarketPlacePage.jsx';
-import '../components/pages/marketplace/MarketPlaceAppsPage.jsx';
+import '../components/pages/marketplace/CustomISOPage.jsx';
+
+import '../components/pages/products/BlockStoragePage.jsx';
+import '../components/pages/products/CloudInstancePage.jsx';
+import '../components/pages/products/LoadBalancersPage.jsx';
+import '../components/pages/products/ObjectStoragePage.jsx';
+
 
 import '../components/pages/DomainsPage.jsx';
 

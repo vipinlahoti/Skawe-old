@@ -17,7 +17,6 @@ Package.onUse(function(api) {
     'es5-shim@4.8.0',
     'ecmascript@0.14.3',
 
-    'shell-server@0.5.0',
     'server-render',
     'check',
     'http',

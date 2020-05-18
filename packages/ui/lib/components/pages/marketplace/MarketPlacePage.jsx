@@ -14,8 +14,11 @@ const MarketPlacePage = () => {
               <h2 className="title-2">
                 Marketplace Catalog
               </h2>
-              <p className="lead mb-3">Deploy popular applications and game servers on our high performance servers with a single click.</p>
-              <Skawe.components.Button variant="black-fill" type="link" path="/register">
+              <p className="lead mb-2">Deploy popular applications and game servers on our high performance servers with a single click.</p>
+              <Skawe.components.Button type="link" variant="white" path="/register">
+                Browse Apps
+              </Skawe.components.Button>
+              <Skawe.components.Button type="link" variant="black-fill" path="/register">
                 Create a Free Account
               </Skawe.components.Button>
             </Col>
@@ -23,7 +26,7 @@ const MarketPlacePage = () => {
         </Container>
       </Jumbotron>
 
-      <div className="section section-features">
+      <div className="section section-features bg-light">
         <Container>
           <Row className="center-xs mb-3">
             <Col sm={12} md={8} lg={8}>
@@ -152,7 +155,7 @@ const MarketPlacePage = () => {
         </Container>
       </div>
 
-      <div className="section section-features bg-light">
+      <div className="section section-features">
         <Container>
           <Row className="center-xs mb-3">
             <Col sm={12} md={8} lg={8}>
@@ -464,21 +467,7 @@ const MarketPlacePage = () => {
         </Container>
       </div>
 
-      <div className="section">
-        <Container>
-          <Row className="center-xs mb-3">
-            <Col sm={12} md={8} lg={8}>
-              <h3 className="title-3">Upload your own Custom ISO</h3>
-              <p className="lead">Create operating system in combination of our worldwide locations available</p>
-              <Skawe.components.Button variant="primary" type="link" path="/cent-os" size="small">
-                Learn More
-              </Skawe.components.Button>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
-      <Skawe.components.MiniCreateForm form={true} type="inline" />
+      <Skawe.components.MiniCreateForm />
     </React.Fragment>
   )
 }

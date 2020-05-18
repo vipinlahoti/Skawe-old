@@ -14,15 +14,22 @@ const MiniFooter = ({title, variant, link, className, newsLetter}) =>
             </Col>
 
             {link ?
-              (<Col>
-                <Skawe.components.Button variant="white" type="link" path={link}>
-                  Get Started
-                </Skawe.components.Button>
-              </Col>)
+              (
+                <Col>
+                  <Skawe.components.Button variant="white" type="link" path={link}>
+                    Get Started
+                  </Skawe.components.Button>
+                </Col>
+              )
             : null }
 
+
             {newsLetter ?
-            (<Skawe.components.NewsLetter type="inline" />) : null }
+            (
+              <Col>
+                <Skawe.components.NewsLetter type="inline" />
+              </Col>
+            ) : null }
 
           </Row>
         </Col>

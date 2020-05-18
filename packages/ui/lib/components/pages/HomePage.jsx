@@ -26,7 +26,7 @@ const HomePage = () => {
       <Skawe.components.MiniFooter
         variant="bg-dark"
         className="center-xs"
-        title="Get started with Skawe and find everything that you need to get online."
+        title="Get started with Skáwe and find everything that you need to get online."
       />
 
       <div className="section bg-light">
