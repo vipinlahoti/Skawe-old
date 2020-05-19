@@ -90,7 +90,7 @@ const HomePage = () => {
           <Row className="middle-xs">
             <Col sm={12} md={5} lg={5}>
               <Skawe.components.Heading
-                title={`<span className="d-block lead">Powerfull Control Panel</span> for better experience.`}
+                title={`<span class="d-block lead">Powerfull Control Panel</span> for better experience.`}
                 description="Spend more time coding and less time managing your infrastructure."
               />
               <ul className="list">
