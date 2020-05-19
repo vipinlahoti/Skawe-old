@@ -1,27 +1,18 @@
 import Skawe from 'meteor/skawe:lib';
 import React from 'react';
-import { Jumbotron, Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 const ObjectStoragePage = () => {
   return (
     <React.Fragment>
       <Skawe.components.HeadTags title="Hosting" description="Web Hosting Page" />
 
-      <Jumbotron>
-        <Container>
-          <Row>
-            <Col sm={12} md={10} lg={8}>
-              <h2 className="title-2">
-                Object Storage
-              </h2>
-              <p className="lead mb-3">Find an app that suits you, then spin it up in 60 seconds or less. 100+ preconfigured 1-Click Apps are available including WordPress, LAMP, Docker, Plesk, and more.</p>
-              <Skawe.components.Button variant="black-fill" type="link" path="/register">
-                Create a Free Account
-              </Skawe.components.Button>
-            </Col>
-          </Row>
-        </Container>
-      </Jumbotron>
+      <Skawe.components.HeroJumbotron 
+        title="Object Storage"
+        description="Find an app that suits you, then spin it up in 60 seconds or less. 100+ preconfigured 1-Click Apps are available including WordPress, LAMP, Docker, Plesk, and more."
+        blackButton={true}
+        blackButtonPath="register"
+      />
 
       <div className="section">
         <Container>

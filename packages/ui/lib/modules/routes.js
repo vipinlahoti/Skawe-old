@@ -13,8 +13,11 @@ Skawe.routes.add([
   {name: 'customiso',         path: '/marketplace/custom-iso',  component: Skawe.components.CustomISOPage},
 
   // Products
-  {name: 'block-storage',     path: '/products/block-storage',  component: Skawe.components.BlockStoragePage},  
-  {name: 'cloud-instance',    path: '/products/cloud-instance', component: Skawe.components.CloudInstancePage},  
-  {name: 'load-balancers',    path: '/products/load-balancers', component: Skawe.components.LoadBalancersPage},  
-  {name: 'object-storage',    path: '/products/object-storage', component: Skawe.components.ObjectStoragePage},  
+  {name: 'cloud-instance',    path: '/products/cloud-instance', component: Skawe.components.CloudInstancePage},
+  {name: 'object-storage',    path: '/products/object-storage',  component: Skawe.components.ObjectStoragePage},
+  {name: 'block-storage',     path: '/products/block-storage',  component: Skawe.components.BlockStoragePage},
+  {name: 'load-balancers',    path: '/products/load-balancers', component: Skawe.components.LoadBalancersPage},
+
+  // Features
+  {name: 'control-panel',     path: '/features/control-panel',  component: Skawe.components.ControlPanelPage},
 ]);

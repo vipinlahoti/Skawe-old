@@ -39,7 +39,7 @@ const TabsContainer = ({title, variant, link, className, newsLetter}) =>
                 <div className="card-icon card-icon-lg">
                   <Skawe.components.Icon name="details"/>
                 </div>
-                <h6>1-Click App Marketplace</h6>
+                <h6>One Click Apps Marketplace</h6>
                 <Card.Text>
                   Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite.
                 </Card.Text>

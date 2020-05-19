@@ -50,7 +50,8 @@
     white-space: nowrap;
     transition: .3s all ease-in-out;
 
-    &:hover {
+    &:hover,
+    &.active {
       background: rgba($primary, .2);
     }
   }

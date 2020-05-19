@@ -118,10 +118,13 @@ a {
 
   li {
     @include padding(8px 0);
+    @include margin(0 8px);
     border-bottom: 1px solid $gray-200;
     color: $gray-600;
+    display: inline-block;
     list-style: none;
     position: relative;
+    width: calc(50% - 16px);
   }
 
   .location-code {

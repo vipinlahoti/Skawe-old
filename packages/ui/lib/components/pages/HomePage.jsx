@@ -7,21 +7,11 @@ const HomePage = () => {
     <React.Fragment>
       <Skawe.components.HeadTags title="Home" description="Home description" />
 
-      <Jumbotron>
-        <Container>
-          <Row>
-            <Col sm={12} md={10} lg={7}>
-              <h2 className="title-2">An agile suite that’s designed for</h2>
-              <p className="lead">Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
-            </Col>  
-            <Col sm={12} md={10}>
-              <div className="mt-2">
-                <Skawe.components.CreateAccount type="inline" />
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </Jumbotron>
+      <Skawe.components.HeroJumbotron 
+        title="An agile suite that’s designed for"
+        description="Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world."
+        form={true}
+      />
 
       <Skawe.components.MiniFooter
         variant="bg-dark"
@@ -32,34 +22,46 @@ const HomePage = () => {
       <div className="section bg-light">
         <Container>
           <Row>
-            <Skawe.components.CloudCard
-              title="Cloud Instance"
-              description="Powerful compute instances with Intel CPUs and 100% SSD storage."
-              salePrice="₹99/mo"
-              listPrice="₹299/mo"
-              path="/hosting"
-            />
-            <Skawe.components.CloudCard
-              title="Object Storage"
-              description="Powerful compute instances with Intel CPUs and 100% SSD storage."
-              salePrice="₹99/mo"
-              listPrice="₹299/mo"
-              path="/hosting"
-            />
-            <Skawe.components.CloudCard
-              title="Block Storage"
-              description="Powerful compute instances with Intel CPUs and 100% SSD storage."
-              salePrice="₹99/mo"
-              listPrice="₹299/mo"
-              path="/hosting"
-            />
-            <Skawe.components.CloudCard
-              title="Load Balancers"
-              description="Powerful compute instances with Intel CPUs and 100% SSD storage."
-              salePrice="₹99/mo"
-              listPrice="₹299/mo"
-              path="/hosting"
-            />
+            {
+              [
+                {
+                  title: 'Cloud Instance',
+                  description: 'Powerful compute instances with Intel CPUs and 100% SSD storage.',
+                  salePrice: '₹99/mo',
+                  listPrice: '₹299/mo',
+                  path: '/cloud-instance'
+                },
+                {
+                  title: 'Object Storage',
+                  description: 'Powerful compute instances with Intel CPUs and 100% SSD storage.',
+                  salePrice: '₹99/mo',
+                  listPrice: '₹299/mo',
+                  path: '/object-storage'
+                },
+                {
+                  title: 'Block Storage',
+                  description: 'Powerful compute instances with Intel CPUs and 100% SSD storage.',
+                  salePrice: '₹99/mo',
+                  listPrice: '₹299/mo',
+                  path: '/block-storage'
+                },
+                {
+                  title: 'Load Balancers',
+                  description: 'Powerful compute instances with Intel CPUs and 100% SSD storage.',
+                  salePrice: '₹99/mo',
+                  listPrice: '₹299/mo',
+                  path: '/load-balancers'
+                },
+              ].map((instances, index) => 
+                <Skawe.components.CloudCard
+                  key={index}
+                  title={instances.title}
+                  description={instances.description}
+                  salePrice={instances.salePrice}
+                  listPrice={instances.listPrice}
+                  path={instances.path}
+                />
+              )}
           </Row>
         </Container>
       </div>
@@ -68,8 +70,10 @@ const HomePage = () => {
         <Container>
           <Row className="center-xs mb-4">
             <Col sm={12} md={8} lg={8}>
-              <h3 className="display-3">Excepteur sint occaecat cupidatat.</h3>
-              <p className="lead">Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world.</p>
+              <Skawe.components.Heading
+                title="Excepteur sint occaecat cupidatat."
+                description="Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world."
+              />
             </Col>
           </Row>
 
@@ -85,13 +89,15 @@ const HomePage = () => {
         <Container>
           <Row className="middle-xs">
             <Col sm={12} md={5} lg={5}>
-              <h4 className="display-3"><span className="d-block lead">Powerfull Control Panel</span> for better experience.</h4>
-              <p className="lead">Spend more time coding and less time managing your infrastructure.</p>
+              <Skawe.components.Heading
+                title={`<span className="d-block lead">Powerfull Control Panel</span> for better experience.`}
+                description="Spend more time coding and less time managing your infrastructure."
+              />
               <ul className="list">
                 <li>One-Click deployment</li>
                 <li>Easy Management</li>
               </ul>
-              <Skawe.components.Button variant="primary" type="link" path="/">
+              <Skawe.components.Button variant="primary" type="link" path="/features/control-panel">
                 Control Panel Features
               </Skawe.components.Button>
             </Col>
@@ -107,74 +113,37 @@ const HomePage = () => {
         <Container>
           <Row className="center-xs mb-2">
             <Col sm={12} md={8} lg={8}>
-              <h3 className="display-3">Deploy the server anywhere around the world</h3>
-              <p className="lead">Worldwide locations and the local presence you need.</p>
+              <Skawe.components.Heading
+                title="Deploy the server anywhere around the world"
+                description="Worldwide locations and the local presence you need."
+              />
             </Col>
           </Row>
 
           <Row className="center-xs">
             <Col sm={12} md={10} lg={8}>
               <div className="section-locations">
-                <Row>
-                  <Col>
-                    <ul className="list-detail">
-                      <li>
+                <ul className="list-detail">
+                  {
+                    [
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                      {name: 'AMS2', description: 'Amsterdam, Netherlands', path: '/'},
+                    ].map((os, index) => 
+                      <li key={index}>
                         <span className="mr-3 location-code">AMS2</span>
                         <span className="mr-3 location-description">Amsterdam, Netherlands</span>
                         <span className=""><a>Speed Test</a></span>
                       </li>
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                    </ul>
-                  </Col>
-                  <Col>
-                    <ul className="list-detail">
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                      <li>
-                        <span className="mr-3 location-code">AMS2</span>
-                        <span className="mr-3 location-description">Amsterdam, Netherlands</span>
-                        <span className=""><a>Speed Test</a></span>
-                      </li>
-                    </ul>
-                  </Col>
-                </Row>
+                    )}
+                </ul>
               </div>
             </Col>
           </Row>
