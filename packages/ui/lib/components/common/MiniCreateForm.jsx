@@ -7,7 +7,7 @@ const MiniCreateForm = () =>
     <Container>
       <Row className="center-xs">
         <Col sm={12} md={8}>
-          <h4 className="title-4">Get started with SSD Cloud</h4>
+          <h3 className="title-3">Get started with SSD Cloud</h3>
 
           <Skawe.components.Button type="link" variant="black-fill" path="/register">
             Create a Free Account

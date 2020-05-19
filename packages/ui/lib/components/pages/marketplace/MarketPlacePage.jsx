@@ -11,24 +11,21 @@ const MarketPlacePage = () => {
         title="Marketplace Catalog"
         description="Deploy popular applications and game servers on our high performance servers with a single click."
         whiteButton={true}
+        whiteButtonText="Browse Apps"
         whiteButtonPath="/"
         blackButton={true}
-        blackButtonPath="register"
-        form={false}
+        blackButtonPath="/register"
       />
 
       <div className="section section-features bg-light">
         <Container>
-          <Row className="center-xs mb-3">
-            <Col sm={12} md={8} lg={8}>
-              <Skawe.components.Heading
-                title="Choice of Operating System"
-                description="Deploy a new instance with your preferred operating system in a single click."
-              />
-            </Col>
-          </Row>
+          <Skawe.components.Heading
+            align="center"
+            title="Choice of Operating System"
+            description="Deploy a new instance with your preferred operating system in a single click."
+          />
           <Row className="center-xs">
-            <Col sm={12} md={8} lg={8}>
+            <Col sm={12} md={10} lg={9}>
               <Row>
 
                 {
@@ -64,16 +61,13 @@ const MarketPlacePage = () => {
 
       <div className="section section-features">
         <Container>
-          <Row className="center-xs mb-3">
-            <Col sm={12} md={8} lg={8}>
-              <Skawe.components.Heading
-                title="Choice of One Click Apps"
-                description="Deploy a new instance with your preferred operating system in a single click."
-              />
-            </Col>
-          </Row>
+          <Skawe.components.Heading
+            align="center"
+            title="Choice of One Click Apps"
+            description="Deploy a new instance with your preferred operating system in a single click."
+          />
           <Row className="center-xs">
-            <Col sm={12} md={8} lg={8}>
+            <Col sm={12} md={10} lg={9}>
               <Row>
                 {
                   [

@@ -68,20 +68,13 @@ const HomePage = () => {
 
       <div className="section section-features">
         <Container>
-          <Row className="center-xs mb-4">
-            <Col sm={12} md={8} lg={8}>
-              <Skawe.components.Heading
-                title="Excepteur sint occaecat cupidatat."
-                description="Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world."
-              />
-            </Col>
-          </Row>
+          <Skawe.components.Heading
+            align="center"
+            title="Excepteur sint occaecat cupidatat."
+            description="Business today moves fast. Faster than ever before. That’s why we bring your enterprise applications into one agile suite. With finance, HR, planning, and analytics together, you gain the insight, efficiency, and agility needed to succeed in the ever-changing world."
+          />
 
-          <Row className="center-xs">
-            <Col sm={12} md={10}>
-              <Skawe.components.TabsContainer />
-            </Col>
-          </Row>
+          <Skawe.components.TabsContainer />
         </Container>
       </div>
 
@@ -111,14 +104,11 @@ const HomePage = () => {
 
       <div className="section">
         <Container>
-          <Row className="center-xs mb-2">
-            <Col sm={12} md={8} lg={8}>
-              <Skawe.components.Heading
-                title="Deploy the server anywhere around the world"
-                description="Worldwide locations and the local presence you need."
-              />
-            </Col>
-          </Row>
+          <Skawe.components.Heading
+            align="center"
+            title="Deploy the server anywhere around the world"
+            description="Worldwide locations and the local presence you need."
+          />
 
           <Row className="center-xs">
             <Col sm={12} md={10} lg={8}>

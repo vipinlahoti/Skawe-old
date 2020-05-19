@@ -99,7 +99,6 @@
 
 .list-group-item {
   @include padding(32px);
-  @include margin(0 10px);
   background: $white;
   position: relative;
   display: block;

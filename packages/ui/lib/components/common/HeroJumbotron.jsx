@@ -2,7 +2,7 @@ import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
-const HeroJumbotron = ({title, description, whiteButton, whiteButtonPath, blackButton, blackButtonPath, form}) =>
+const HeroJumbotron = ({title, description, whiteButton, whiteButtonPath, whiteButtonText, blackButton, blackButtonPath, form}) =>
   <Jumbotron>
     <Container>
       <Row>
@@ -12,7 +12,7 @@ const HeroJumbotron = ({title, description, whiteButton, whiteButtonPath, blackB
           
           {whiteButton ?
           (<Skawe.components.Button type="link" variant="white" path={whiteButtonPath}>
-            Browse Apps
+            {whiteButtonText}
           </Skawe.components.Button>) : null }
 
           {blackButton ?
