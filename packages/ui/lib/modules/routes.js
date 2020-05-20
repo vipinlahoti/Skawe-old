@@ -2,6 +2,7 @@ import Skawe from 'meteor/skawe:lib';
 
 Skawe.routes.add([
   {name: 'home',              path: '/',                        component: Skawe.components.HomePage},
+  {name: 'contact-us',        path: '/contact-us',              component: Skawe.components.ContactUsPage},
 
   // Accounts
   {name: 'login',             path: '/login',                   component: Skawe.components.LoginPage},

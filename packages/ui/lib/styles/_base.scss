@@ -6,11 +6,11 @@
 }
 
 ::-moz-selection { /* Code for Firefox */
-  background: $primary;
+  background: $highlight;
 }
 
 ::selection {
-  background: $primary;
+  background: $highlight;
 }
 
 :-webkit-autofill,
@@ -130,6 +130,25 @@ a {
   .location-code {
     color: $dark;
   }
+}
+
+.announcement__wrapper {
+  border: 1px dashed $primary;
+
+  .announcement {
+    @include padding(16px);
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.coupon-code {
+  @include padding(2px 8px);
+  @include margin(4px, left);
+  @include margin(4px, right);
+  border: 1px dashed $primary;
+  font-family: $brand-font-family;
+  font-weight: 400;
 }
 
 .text-left {

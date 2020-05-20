@@ -12,6 +12,7 @@ import '../components/common/TabsContainer.jsx';
 import '../components/common/HeroJumbotron.jsx';
 import '../components/common/DomainSearch.jsx';
 import '../components/common/Heading.jsx';
+import '../components/common/Announcement.jsx';
 
 // Pages
 import '../components/pages/HomePage.jsx';

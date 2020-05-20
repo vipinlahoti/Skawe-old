@@ -7,6 +7,10 @@ class Layout extends Component {
   render() {
     return (
       <React.Fragment>
+        <Skawe.components.Announcement
+          text="This is a sample Announcement, use coupon code"
+          code="DKEH1J8"
+        />
         <Skawe.components.Header />
         {this.props.children}
         <Skawe.components.MiniFooter

@@ -128,3 +128,16 @@
     }
   }
 }
+
+.vertical-nav {
+  .nav-link {
+    @include font-size(14px);
+    @include margin(5px 0);
+    color: $gray-400;
+    display: inline-block;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
