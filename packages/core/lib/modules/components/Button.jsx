@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 class SkaweButton extends Component {
 
   render() {
-    const { type, variant, size, path, icon, children, ...rest } = this.props;
-    const btnClass = `btn btn-${variant} btn-${size}`;
+    const { isLink, variant, size, path, icon, className, children, ...rest } = this.props;
+    const btnClass = `btn btn-${variant} btn-${size} ${className}`;
 
     return (
       <React.Fragment>
-        {type === 'link' ?
+        {isLink ?
           <Link to={{ pathname: path }} className={btnClass} {...rest}>
             {children}
             <Skawe.components.Icon name="arrow_forward" />

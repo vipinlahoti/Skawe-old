@@ -2,7 +2,7 @@ import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
-const HeroJumbotron = ({title, description, whiteButton, whiteButtonPath, whiteButtonText, blackButton, blackButtonPath, form}) =>
+const HeroJumbotron = ({title, description, whiteButton, whiteButtonPath, whiteButtonText, blackButton, blackButtonPath, form, formType}) =>
   <Jumbotron>
     <Container>
       <Row>
@@ -11,12 +11,12 @@ const HeroJumbotron = ({title, description, whiteButton, whiteButtonPath, whiteB
           <p className="lead mb-2">{description}</p>
           
           {whiteButton ?
-            (<Skawe.components.Button type="link" variant="white" path={whiteButtonPath}>
+            (<Skawe.components.Button isLink={true} variant="white" path={whiteButtonPath}>
               {whiteButtonText}
             </Skawe.components.Button>) : null }
 
           {blackButton ?
-            (<Skawe.components.Button type="link" variant="black-fill" path={blackButtonPath}>
+            (<Skawe.components.Button isLink={true} variant="black-fill" path={blackButtonPath}>
               Create a Free Account
             </Skawe.components.Button>) : null }
         </Col>
@@ -24,7 +24,7 @@ const HeroJumbotron = ({title, description, whiteButton, whiteButtonPath, whiteB
         {form ?
           (<Col sm={12} md={10}>
             <div className="mt-1">
-              <Skawe.components.CreateAccount type="inline" />
+              <Skawe.components.CreateAccount buttonText="Create an Account" state={formType} />
             </div>
           </Col>) : null }
       </Row>

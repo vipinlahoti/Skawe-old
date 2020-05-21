@@ -20,12 +20,24 @@ const Footer = () =>
                 Object Storage
               </Link>
               <br />
-              <Link to={{ pathname: '/products/block-storage' }} className="nav-link">
-                Block Storage
+              <Link to={{ pathname: '/products/backups' }} className="nav-link">
+                Backups
               </Link>
               <br />
               <Link to={{ pathname: '/products/load-balancers' }} className="nav-link">
                 Load Balancers
+              </Link>
+              <br />
+              <Link to={{ pathname: '/products/ddos-protection' }} className="nav-link">
+                DDoS Protection
+              </Link>
+              <br />
+              <Link to={{ pathname: '/products/dns-manager' }} className="nav-link">
+                DNS Manager
+              </Link>
+              <br />
+              <Link to={{ pathname: '/products/professional-services' }} className="nav-link">
+                Professional Services
               </Link>
             </Nav>
           </Col>
@@ -46,7 +58,7 @@ const Footer = () =>
           <Col>
             <h6 className="title-6">Contact</h6>
             <Nav className="vertical-nav">
-              <Link to={{ pathname: '/contact-us' }} className="nav-link">
+              <Link to={{ pathname: '/contact-sales' }} className="nav-link">
                 Contact sales
               </Link>
               <br />

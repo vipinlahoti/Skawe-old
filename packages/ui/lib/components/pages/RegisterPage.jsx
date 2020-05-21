@@ -18,23 +18,9 @@ const RegisterPage = () =>
                   Create an Account
                 </div>
 
-                <Form>
-                  <Form.Group controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" />
-                  </Form.Group>
+                <Skawe.components.CreateAccount state='signUp'/>
 
-                  <Form.Group controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" />
-                  </Form.Group>
-                  
-                  <Skawe.components.Button variant="black" block>
-                    Register
-                  </Skawe.components.Button>
-
-                  <p className="mt-1">Already have an account? <Link to={{ pathname: '/login' }}>Sign In</Link>.</p>
-                </Form>
+                <p className="mt-1">Already have an account? <Link to={{ pathname: '/login' }}>Sign In</Link>.</p>
               </Card.Header>
             </Card>
           </div>

@@ -25,5 +25,8 @@ Skawe.utils.icons = {
   layers: 'layers',
   public: 'public',
   storage: 'storage',
-
+  data_usage: 'data_usage',
+  dvr: 'dvr',
+  security:'security',
+  
 };

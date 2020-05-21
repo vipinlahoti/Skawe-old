@@ -1,8 +1,9 @@
 import Skawe from 'meteor/skawe:lib';
 import { withTracker } from 'meteor/react-meteor-data';
 import React, { PureComponent } from 'react';
+import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 const RouteWithLayout = ({ component: Component, ...rest }) => {
   return (
@@ -29,6 +30,13 @@ class App extends PureComponent {
 
   render() {
     const routeNames = Skawe.routes.routes;
+    const currentRoute = this.props.location.pathname;
+    
+    if (Meteor.isClient) {
+      if ((Meteor.user() && currentRoute === '/login') || (Meteor.user() && currentRoute === '/register')) {
+        return (<Redirect to='/accounts/dashboard' />)
+      }
+    }
 
     return (
       <React.Fragment>
@@ -63,16 +71,18 @@ App.childContextTypes = {
   currentUser: PropTypes.object
 };
 
-// const AppContainer = withTracker(() => {
-//   let data;
+const AppContainer = withTracker(() => {
+  let data;
 
-//   if (Meteor.isClient) {
-//     data = {
-//       currentUser: Meteor.user()
-//     }
-//   }
+  if (Meteor.isClient) {
+    data = {
+      currentUser: Meteor.user()
+    }
+  }
 
-//   return data;
-// })(App);
+  return data;
+})(App);
 
-Skawe.registerComponent('App', App);
+const MainAppContainer = withRouter(AppContainer)
+
+Skawe.registerComponent('App', MainAppContainer);

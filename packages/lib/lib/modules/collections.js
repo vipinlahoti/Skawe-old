@@ -2,6 +2,23 @@ import SimpleSchema from 'simpl-schema';
 import Skawe from './config.js';
 
 /**
+ * @summary The global namespace for Skawe utils.
+ * @namespace Skawe.utils
+ */
+Skawe.collection = {};
+
+Skawe.collection = options => {
+  const { collectionName } = options;
+
+  // initialize new Mongo collection
+  const collection = collectionName === 'Users'
+      ? Meteor.users
+      : new Mongo.Collection(collectionName.toLowerCase());
+
+  return collection;
+};
+
+/**
  * @summary @summary Add an additional field (or an array of fields) to a schema.
  * @param {Object|Object[]} field
  */
@@ -53,27 +70,4 @@ Mongo.Collection.prototype.attachSchema = function (schemaOrFields) {
   } else {
     this.simpleSchema().extend(schemaOrFields);
   }
-};
-
-// see https://github.com/dburles/meteor-collection-helpers/blob/master/collection-helpers.js
-Mongo.Collection.prototype.helpers = function (helpers) {
-  var self = this;
-
-  if (self._transform && !self._helpers)
-    throw new Meteor.Error(
-      "Can't apply helpers to '" + self._name + "' a transform function already exists!"
-    );
-
-  if (!self._helpers) {
-    self._helpers = function Document(doc) {
-      return Object.assign(this, doc);
-    };
-    self._transform = function (doc) {
-      return new self._helpers(doc);
-    };
-  }
-
-  Object.keys(helpers).forEach(function (key) {
-    self._helpers.prototype[key] = helpers[key];
-  });
 };

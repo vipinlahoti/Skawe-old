@@ -44,7 +44,7 @@ const MarketPlacePage = () => {
                             <Skawe.components.Icon name="details"/>
                           </div>
                           <h6 className="title-6">{os.name}</h6>
-                          <Skawe.components.Button type="link" path={os.path} size="small" className="flat-link">
+                          <Skawe.components.Button isLink={true} path={os.path} size="small" className="flat-link">
                             Learn More
                           </Skawe.components.Button>
                         </ListGroup.Item>
@@ -97,7 +97,7 @@ const MarketPlacePage = () => {
                           <Skawe.components.Icon name="details"/>
                         </div>
                         <h6 className="title-6">{app.name}</h6>
-                        <Skawe.components.Button type="link" path={app.path} size="small" className="flat-link">
+                        <Skawe.components.Button isLink={true} path={app.path} size="small" className="flat-link">
                           Learn More
                         </Skawe.components.Button>
                       </ListGroup.Item>

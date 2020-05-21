@@ -16,7 +16,7 @@ const MiniFooter = ({title, variant, link, className, newsLetter}) =>
             {link ?
               (
                 <Col>
-                  <Skawe.components.Button variant="white" type="link" path={link}>
+                  <Skawe.components.Button variant="white" isLink={true} path={link}>
                     Get Started
                   </Skawe.components.Button>
                 </Col>

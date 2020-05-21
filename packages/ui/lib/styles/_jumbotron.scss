@@ -12,6 +12,18 @@
     position: relative;
     z-index: 99;
   }
+
+  .ar-signUp {
+    @extend .form-inline;
+  }
+
+  .form-label {
+    display: none;
+  }
+
+  .alert {
+    display: inline-block;
+  }
 }
 
 .jumbotron-bg-image {

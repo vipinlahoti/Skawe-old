@@ -45,6 +45,10 @@
     height: 15vh;
     justify-content: center;
   }
+
+  .btn {
+    @extend .btn-block;
+  }
 }
 
 .list-group {
@@ -117,3 +121,20 @@
   }
 }
 
+.blog-card {
+  @include padding(4px);
+}
+
+.blog-thumbnail {
+  @include margin(-32px);
+  @include margin(7px, bottom);
+  width: calc(100% + 64px);
+}
+
+// .blog-item {
+//   .list-group-item {
+//     @include round-corner(6px);
+//     border: 1px solid $primary;
+//     box-shadow: none;
+//   }
+// }

@@ -148,7 +148,22 @@ a {
   @include margin(4px, right);
   border: 1px dashed $primary;
   font-family: $brand-font-family;
-  font-weight: 400;
+}
+
+.alert {
+  @include font-size(14px);
+  @include padding(14px);
+  @include margin(32px, bottom);
+  position: relative;
+  border: 1px solid transparent;
+  border-left-width: 3px;
+  border-left-color: $gray-600;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.095);
+
+  &.alert-error {
+    border-left-color: $red;
+    color: $red;
+  }
 }
 
 .text-left {

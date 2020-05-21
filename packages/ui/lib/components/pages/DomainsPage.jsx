@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Jumbotron, Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 class DomainsPage extends Component {
-
   state = {
     value: '',
   }

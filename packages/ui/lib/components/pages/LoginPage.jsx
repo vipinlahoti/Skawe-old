@@ -1,4 +1,5 @@
 import Skawe from 'meteor/skawe:lib';
+import { AccountsReactComponent } from 'meteor/skawe:accounts'
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Form } from 'react-bootstrap';
@@ -18,23 +19,12 @@ const LoginPage = () =>
                   Registered Users
                   <span className="d-block">Have an account? Sign in now.</span>
                 </div>
-                <Form>
-                  <Form.Group controlId="username">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="text" />
-                  </Form.Group>
+                
+                <Skawe.components.CreateAccount state='signIn'/>
 
-                  <Form.Group controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" />
-                  </Form.Group>
-                  
-                  <Skawe.components.Button variant="black" block>Login</Skawe.components.Button>
-                  
-                  <p className="mt-1">Need to find your <Link to={{ pathname: '/forgot-password' }}>Password</Link>?</p>
-                  <p>Don't have an account? <Link to={{ pathname: '/register' }}>Register Now</Link>.</p>
+                <p className="mt-1">Need to find your <Link to={{ pathname: '/forgot-password' }}>Password</Link>?</p>
+                <p>Don't have an account? <Link to={{ pathname: '/register' }}>Register Now</Link>.</p>
 
-                </Form>
               </Card.Header>
             </Card>
           </div>
@@ -44,3 +34,5 @@ const LoginPage = () =>
   </React.Fragment>
 
 Skawe.registerComponent('LoginPage', LoginPage);
+
+// <Skawe.components.CreateAccount showLabel={true} buttonText="Login" />

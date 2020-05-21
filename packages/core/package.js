@@ -7,7 +7,9 @@ Package.onUse(function(api) {
   api.versionsFrom('1.10.1');
   
   api.use([
-    'skawe:lib'
+    'skawe:lib',
+    'skawe:accounts',
+    'skawe:users'
   ]);
 
   api.imply(['skawe:lib']);

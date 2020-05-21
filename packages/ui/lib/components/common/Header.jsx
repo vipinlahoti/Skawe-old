@@ -10,12 +10,12 @@ const logoUrl = Skawe.settings.get('logoUrl');
 
 const NavLoggedIn = ({user}) =>
   <Nav className="ml-auto">
-    <Link to={{ pathname: '/dashboard' }} className="nav-link">
+    <Skawe.components.Button className="ml-1" variant="black-fill" isLink={true} path="/accounts/dashboard">
       Dashboard
-    </Link>
+    </Skawe.components.Button>
   </Nav>
 
-const NavLoggedOut = () => 
+const NavLinks = (props, {currentUser}) => 
   <Nav className="ml-auto">
     <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -35,19 +35,9 @@ const NavLoggedOut = () =>
 
         <LinkContainer to="/products/object-storage">
           <Dropdown.Item href="#/action-1">
-            <Skawe.components.Icon name="camera_roll"/>
-            <div className="nav-link-desc">
-              Object Storage
-              <span>Powerful compute instances</span>
-            </div>
-          </Dropdown.Item>
-        </LinkContainer>
-
-        <LinkContainer to="/products/block-storage">
-          <Dropdown.Item href="#/action-1">
             <Skawe.components.Icon name="storage"/>
             <div className="nav-link-desc">
-              Block Storage
+              Object Storage
               <span>Powerful compute instances</span>
             </div>
           </Dropdown.Item>
@@ -69,25 +59,29 @@ const NavLoggedOut = () =>
       Marketplace
     </Link>
 
-    <Link to={{ pathname: '/register' }} className="nav-link">
-      Register
-    </Link>
+    { currentUser ? <NavLoggedIn user={currentUser} /> : 
 
-    <Skawe.components.Button variant="white" type="link" path="/login">
-      Login
-    </Skawe.components.Button>
+    <React.Fragment>
+      <Link to={{ pathname: '/register' }} className="nav-link">
+        Register
+      </Link>
+
+      <Skawe.components.Button variant="white" isLink={true} path="/login">
+        Login
+      </Skawe.components.Button>
+    </React.Fragment> }
   </Nav>
 
-const Header = (props, {currentUser}) => {
+const Header = () => {
   return (
     <Navbar variant="light">
       <Skawe.components.Logo logoUrl={logoUrl} siteTitle={siteTitle}/>
-      { currentUser ? <NavLoggedIn user={currentUser} /> : <NavLoggedOut /> }
+      <NavLinks />
     </Navbar>
   )
 }
 
-Header.contextTypes = {
+NavLinks.contextTypes = {
   currentUser: PropTypes.object,
 };
 

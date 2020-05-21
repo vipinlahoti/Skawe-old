@@ -15,19 +15,11 @@ const ForgotPassword = () =>
             <Card className="shadow-lg">
               <Card.Header>
                 <div className="title-5 mb-2">
-                  Reset Password
+                  Forgot Password
                 </div>
-                <Form>
-                  <Form.Group controlId="username">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="text" />
-                  </Form.Group>
-
-                  <Skawe.components.Button variant="black" block>Login</Skawe.components.Button>
-                  
-                  <p className="mt-1">Don't have an account? <Link to={{ pathname: '/register' }}>Register Now</Link>.</p>
-
-                </Form>
+                <Skawe.components.CreateAccount state='forgotPwd'/>
+                <p className="mt-1">Don't have an account? <Link to={{ pathname: '/register' }}>Register Now</Link>.</p>
+                <p className="mt-1">Already have an account? <Link to={{ pathname: '/login' }}>Sign In</Link>.</p>
               </Card.Header>
             </Card>
           </div>
