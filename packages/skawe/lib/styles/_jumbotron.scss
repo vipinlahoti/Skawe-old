@@ -1,0 +1,53 @@
+.jumbotron {
+  @include padding(100px, top);
+  @include height(680px);
+  @extend .bg-primary;
+  background: url('/images/triangles-background.png') $primary fixed;
+  color: $white;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .hero__wrapper {
+    position: relative;
+    z-index: 99;
+  }
+
+  .accounts-ui {
+    @extend .form-inline;
+  }
+
+  .form-label {
+    display: none;
+  }
+
+  .alert {
+    display: inline-block;
+  }
+
+  &.section-xsmall {
+    @include padding(132px, top);
+  }
+}
+
+.jumbotron-bg-image {
+  background: url(/global.jpg) no-repeat fixed center;
+  background-size: cover;
+  color: $white;
+
+  &:after {
+    background: $dark;
+    opacity: .45;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+}
+
+.jumbotron-fluid {
+  @include padding(32px 0);
+}

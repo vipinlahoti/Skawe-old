@@ -1,0 +1,103 @@
+.modal {
+  display: none;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  outline: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1050;
+
+  &.fade {
+    .modal-dialog {
+      transition: -webkit-transform .3s ease-out;
+      transition: transform .3s ease-out;
+      transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+      -webkit-transform: translate(0,-50px);
+      transform: translate(0,-50px);
+    }
+  }
+
+  &.show {
+    .modal-dialog {
+      transform: none;
+    }
+  }
+}
+
+.modal-open {
+  overflow: hidden;
+ 
+  .modal {
+    background: rgba(0,0,0,.35);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.modal-header,
+.modal-body {
+  @include padding(32px);
+}
+
+.modal-title {
+  @include margin(0);
+  @include font-size(21px);
+}
+
+.modal-header {
+  @include padding(16px 32px);
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-400;
+  
+  .close {
+    @include padding(16px);
+    margin: -1rem -1rem -1rem auto;
+  }
+}
+
+.close {
+  @include font-size(18px);
+  background-color: transparent;
+  border: 0;
+  color: $dark;
+  cursor: pointer;
+  float: right;
+  opacity: .5;
+  padding: 0;
+}
+
+.modal-dialog {
+  @include width(700px, max);
+  @include width(480px);
+  margin: 0 0 0 auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  transform: translate(0, 50px);
+
+  .modal-content {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: $white;
+    background-clip: padding-box;
+    outline: 0;
+    height: 100%;
+    overflow-y: scroll;
+  }
+}
+
+.modal-xlarge {
+  .modal-content {
+    height: 100vh;
+  }
+}

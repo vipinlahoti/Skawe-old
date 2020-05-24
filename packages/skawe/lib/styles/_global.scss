@@ -1,0 +1,155 @@
+.fade {
+  transition: opacity .15s linear;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.icon-arrow_forward {
+  @include font-size(20px);
+}
+
+.icon {
+  line-height: inherit;
+}
+
+.copyright {
+  font-size: 0.875rem;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $gray-200;
+}
+
+.price-summary {
+  @include margin(85px, top);
+  @include padding(32px, left);
+  @include width(300px, max);
+  position: sticky;
+  top: 0;
+
+  p {
+    @include font-size(14px);
+    color: $gray-700;
+  }
+}
+
+.list-price {
+  @include font-size(18px);
+  @include margin(5px, top);
+  color: $gray-600;
+  text-decoration: line-through;
+}
+
+.sale-price {
+  color: $primary;
+}
+
+footer,
+.footer {
+  @extend .bg-dark;
+  @extend .text-white;
+
+  .nav-link {
+    @include margin(16px, left);
+    @include margin(16px, right);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:first-child {
+      @include margin(0, left);
+    }
+  }
+
+  a {
+    @extend .text-white;
+    text-decoration: underline;
+
+    &:hover {
+      @extend .text-white;
+    }
+  }
+
+  .navbar-brand {
+    @extend .text-white;
+    border-color: $white;
+    text-decoration: none;
+
+    &:hover {
+      @extend .text-white;
+    }
+  }
+}
+
+.domain-search {
+  display: flex;
+
+  .form-control {
+    @include width(580px, min);
+  }
+
+  .btn {
+    @include padding(4px 16px);
+  }
+}
+
+.domain-links {
+  a {
+    @include margin(32px, right);
+    // color: $gray-600;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;      
+    }
+  }
+}
+
+.domain-icons {
+  width: 80px;
+}
+
+.disclaimers {
+  @include font-size(14px);
+}
+
+
+.domain-extension {
+  ~ .domain-extension {
+    color: $primary;
+
+    &:before {
+      content: '.';
+    }
+  }
+}
+
+.line-height-lg {
+  .title-5 {
+    line-height: 55px;
+  }
+}
+
+.market-list {
+  .list-group-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
