@@ -1,0 +1,23 @@
+{
+  "public": {
+    "title": "Skáwe",
+    "twitterAccount": "foo",
+    "facebookPage": "http://facebook.com/foo",
+
+    "googleAnalyticsId":"123foo"
+  },
+
+  "defaultEmail": "hello@world.com",
+  "mailUrl": "smtp://postmaster%40foo.mailgun.org:foo123@smtp.mailgun.org:587/",
+
+  "oAuth": {
+    "twitter": {
+      "consumerKey": "foo",
+      "secret": "bar"
+    },
+    "facebook": {
+      "appId": "212776616844003",
+      "secret": "9f84a215f7e2d4f266a578d5538e58dd"
+    }
+  }
+}

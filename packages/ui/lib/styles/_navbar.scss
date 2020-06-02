@@ -1,0 +1,249 @@
+.navbar {
+  @include padding(24px 48px);
+  background: url('/images/triangles-background.png') $primary;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap; // allow us to do the line break for collapsing content
+  align-items: center;
+  justify-content: flex-start; // space out brand from logo  
+  z-index: 99;
+  width: 100%;
+}
+
+.navbar-brand {
+  @include font-size(32px);
+  @include padding(10px);
+  color: $white;
+  display: inline-block;
+  font-family: $brand-font-family;
+  font-weight: 600;
+  line-height: inherit;
+  white-space: nowrap;
+
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.navbar-nav {
+  @include margin(0px);
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+
+  .nav-link {
+    @include margin(0 16px);
+    cursor: pointer;
+    color: $white;
+    border-bottom: 3px solid transparent;
+    display: block;
+    line-height: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out 0s;
+  
+    ~.btn {
+      @include margin(10px, left);
+    }
+  }
+
+  .nav-cart {
+    &:hover {
+      border-color: transparent;
+    }    
+  }
+
+  .dropdown-toggle {
+     &.btn-white,
+     &.btn-none {
+      @include margin(16px, left);
+      @include margin(16px, right);
+      color: $white;
+      line-height: 48px;
+      font-weight: 500;
+
+      &:hover {
+        background: transparent;
+      }
+
+      &:after {
+        margin-top: 23px;
+      }
+    }
+
+    &.btn-primary {
+      background: $primary;
+      color: $white;
+    }
+
+    &.btn-white,
+    &.btn-none {
+      @include padding(0 20px);
+      background: $primary;
+      border: 3px solid $primary;
+      color: $white;
+
+      &:hover {
+        background: $primary;
+        border: 3px solid $primary;
+        color: $white
+      }
+    }
+  }
+
+  .dropdown-item {
+    @extend .middle-xs;
+    border-bottom: 1px solid $gray-200;
+    display: flex;
+
+    .icon {
+      @include font-size(42px);
+      @include margin(16px, right);
+    }
+  }
+
+  .nav-link-desc {
+    span {
+      @include margin(4px, top);
+      @include font-size(14px);
+      color: $gray-700;
+      display: block;
+    }
+  }
+}
+
+.navbar-admin {
+  @include padding(16px 48px 16px 32px);
+  @include height(75px);
+  background-color: $light;
+  background-image: none;
+  position: static;
+
+  .btn {
+    @include margin(0 16px);
+  }
+
+  .dropdown-toggle {
+    &:after {
+      @include margin(10px, top);
+    }
+
+    &.btn-none {
+      @include padding(0);
+      @include margin(0, right);
+      background: none;
+      border: 0;
+      color: inherit;
+
+      &:hover  {
+        background: transparent;
+        border: 0;
+        color: inherit;
+      }
+
+      &:after {
+        margin-top: 18px;
+      }
+    }
+    
+    &.btn-white {
+      color: $dark;
+    }
+  }
+
+  .dropdown-menu {
+    @include width(160px, min);
+    left: auto;
+    right: 0;
+    top: 55px;
+
+    &.show {
+      &:before {
+        left: auto;
+        right: 25px;
+      }
+    }
+  }
+}
+
+.navbar-sidebar {
+  @include width(220px);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  z-index: 21;
+  background: url('/images/triangles-background.png') $primary;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.095);
+  overflow-x: none;
+  overflow-y: auto;
+
+  .navbar-brand {
+    @include padding(28px 32px);
+  }
+
+  .nav {
+    @include padding(32px 0);
+  }
+
+  .nav-link {
+    @include padding(8px 32px);
+    color: $white;
+    display: block;
+
+    &:hover {
+      background: rgba(0, 0, 0, .065);
+    }
+  }
+}
+
+.nav {
+  &.nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    // justify-content: center;
+    border-bottom: 1px solid $gray-300;
+
+    .nav-item {
+      display: flex;
+    }
+
+    .nav-link {
+      @include padding(8px 16px);
+      color: $gray-600;
+      display: flex;
+      font-weight: 600;
+
+      &.active {
+        border-bottom: 3px solid $primary;
+        color: $dark;
+      }
+    }
+  }
+
+  +.tab-content {
+    @include padding(32px 0px);
+
+    .tab-pane {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
+
+.vertical-nav {
+  .nav-link {
+    @include font-size(14px);
+    @include margin(5px 0);
+    color: $gray-400;
+    display: inline-block;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
