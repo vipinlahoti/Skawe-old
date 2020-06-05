@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import Messages from '../messages.js';
+import Messages from '../modules/messages.js';
 
 const RouteWithLayout = ({ layoutComponent, layoutName, component, ...rest }) => {
   return (

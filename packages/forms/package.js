@@ -7,7 +7,7 @@ Package.onUse(function (api) {
   api.versionsFrom('1.10.1');
 
   api.use([
-    'skawe:lib',
+    'skawe:core',
   ]);
   
   api.mainModule('lib/server/main.js', 'server');

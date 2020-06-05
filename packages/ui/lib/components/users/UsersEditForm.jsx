@@ -8,6 +8,16 @@ const UsersEditForm = ({currentUser}) => {
   return (
     <React.Fragment>
       <Skawe.components.HeadTags title="Accounts" description="Accounts Page" />
+      
+      <div className="section-xsmall">
+        <div className="d-flex">
+          <Skawe.components.Avatar size="large" className="mr-2" user={currentUser} link={false} />
+          <div>
+            <h5 className="title-5">{Users.getDisplayName(currentUser)}</h5>
+            <h6 className="title-6">{Users.getEmail(currentUser)}</h6>
+          </div>
+        </div>
+      </div>      
 
       <div className="section-xsmall">
         <h5 className="title-5">Edit Account</h5>
@@ -34,6 +44,7 @@ const UsersEditForm = ({currentUser}) => {
                 <Skawe.components.SkaweForms
                   collection={Users}
                   document={currentUser}
+                  buttonText="Update Profile"
                   methodName="users.edit"
                 />
               </Col>

@@ -22,7 +22,7 @@ class FormComponent extends Component {
     const properties = {
       ...base,
       onChange: this.handleChange,
-      // ref: (ref) => this.formControl = ref,
+      // ref: (ref) => this.formControl = React.createRef()
     };
 
     // if control is a React component, use it
@@ -33,7 +33,11 @@ class FormComponent extends Component {
 
       switch (this.props.control) {
         case 'text':
-          return <Skawe.components.FormInput {...properties} />;
+          return <Skawe.components.FormInput type="text" {...properties} />;
+        case 'email':
+          return <Skawe.components.FormInput type="email" {...properties} />;
+        case 'password':
+          return <Skawe.components.FormInput type="password" {...properties} />;
         case 'textarea':
           return <Skawe.components.FormTextarea {...properties} />;
         case 'checkbox':

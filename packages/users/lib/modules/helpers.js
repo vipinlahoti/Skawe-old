@@ -1,9 +1,6 @@
 import Skawe from 'meteor/skawe:lib';
 import Users from './collection.js';
 
-Users.helpers({getCollection: () => Users});
-Users.helpers({getCollectionName: () => 'users'});
-
 /**
  * @summary Get a user
  * @param {String} userOrUserId
@@ -38,8 +35,11 @@ Users.getUserName = function (user) {
     return null;
   }
 };
-Users.helpers({getUserName: function () {return Users.getUserName(this);}});
-Users.getUserNameById = function (userId) {return Users.getUserName(Users.findOne(userId))};
+// Users.helpers({getUserName: function () {return Users.getUserName(this);}});
+
+Users.getUserNameById = function (userId) {
+  return Users.getUserName(Users.findOne(userId))
+};
 
 /**
  * @summary Get a user's display name (not unique, can take special characters and spaces)
@@ -49,11 +49,14 @@ Users.getDisplayName = function (user) {
   if (typeof user === 'undefined') {
     return '';
   } else {
-    return (user.skawe && user.skawe.displayName) ? user.skawe.displayName : Users.getUserName(user);
+    return (user && user.displayName) ? user.displayName : Users.getUserName(user);
   }
 };
-Users.helpers({getDisplayName: function () {return Users.getDisplayName(this);}});
-Users.getDisplayNameById = function (userId) {return Users.getDisplayName(Users.findOne(userId));};
+// Users.helpers({getDisplayName: function () {return Users.getDisplayName(this);}});
+
+Users.getDisplayNameById = function (userId) {
+  return Users.getDisplayName(Users.findOne(userId));
+};
 
 /**
  * @summary Get a user's profile URL
@@ -66,13 +69,13 @@ Users.getProfileUrl = function (user, isAbsolute) {
   }
   isAbsolute = typeof isAbsolute === 'undefined' ? false : isAbsolute; // default to false
   var prefix = isAbsolute ? Skawe.utils.getSiteUrl().slice(0,-1) : '';
-  if (user.skawe && user.skawe.slug) {
-    return `${prefix}/users/${user.skawe.slug}`;
+  if (user && user.slug) {
+    return `${prefix}/users/${user.slug}`;
   } else {
     return '';
   }
 };
-Users.helpers({getProfileUrl: function (isAbsolute) {return Users.getProfileUrl(this, isAbsolute);}});
+// Users.helpers({getProfileUrl: function (isAbsolute) {return Users.getProfileUrl(this, isAbsolute);}});
 
 /**
  * @summary Get a user's account edit URL
@@ -82,31 +85,37 @@ Users.helpers({getProfileUrl: function (isAbsolute) {return Users.getProfileUrl(
 Users.getEditUrl = function (user, isAbsolute) {
   return `${Users.getProfileUrl(user, isAbsolute)}/edit`;
 };
-Users.helpers({getEditUrl: function (isAbsolute) {return Users.getEditUrl(this, isAbsolute);}});
+// Users.helpers({getEditUrl: function (isAbsolute) {return Users.getEditUrl(this, isAbsolute);}});
 
 /**
  * @summary Get a user's email
  * @param {Object} user
  */
 Users.getEmail = function (user) {
-  if(user.skawe && user.skawe.email){
-    return user.skawe.email;
-  }else{
+  if (user && user.email) {
+    return user.email;
+  } else {
     return null;
   }
 };
-Users.helpers({getEmail: function () {return Users.getEmail(this);}});
-Users.getEmailById = function (userId) {return Users.getEmail(Users.findOne(userId));};
+// Users.helpers({getEmail: function () {return Users.getEmail(this);}});
+
+Users.getEmailById = function (userId) {
+  return Users.getEmail(Users.findOne(userId));
+};
 
 /**
  * @summary Get a user's email hash
  * @param {Object} user
  */
 Users.getEmailHash = function (user) {
-  return user.skawe.emailHash;
+  return user.emailHash;
 };
-Users.helpers({getEmailHash: function () {return Users.getEmailHash(this);}});
-Users.getEmailHashById = function (userId) {return Users.getEmailHash(Users.findOne(userId));};
+// Users.helpers({getEmailHash: function () {return Users.getEmailHash(this);}});
+
+Users.getEmailHashById = function (userId) {
+  return Users.getEmailHash(Users.findOne(userId));
+};
 
 Users.adminUsers = function (options) {
   return this.find({isAdmin : true}, options).fetch();
@@ -117,5 +126,5 @@ Users.getCurrentUserEmail = function () {
 };
 
 Users.findByEmail = function (email) {
-  return Users.findOne({'skawe.email': email});
+  return Users.findOne({'email': email});
 };

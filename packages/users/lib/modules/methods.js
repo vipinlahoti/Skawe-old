@@ -28,6 +28,7 @@ Users.edit = (userId, modifier, user) => {
 Meteor.methods({
   'users.edit'(userId, modifier) {
 
+
     // checking might be redundant because SimpleSchema already enforces the schema, but you never know
     // check(modifier, Match.OneOf({$set: Users.simpleSchema()}, {$unset: Object}, {$set: Users.simpleSchema(), $unset: Object}));
     check(modifier, Match.OneOf({$set: Object}, {$unset: Object}, {$set: Object, $unset: Object}));
@@ -35,8 +36,7 @@ Meteor.methods({
 
     const currentUser = Meteor.user();
     const user = Users.findOne(userId);
-    const schema = Users.simpleSchema()._schema;
-
+    const schema = Users.schema._schema;
 
     // check that user can edit document
     if (!user || !Users.canEdit(currentUser, user)) {

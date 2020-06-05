@@ -7,8 +7,8 @@ const FormInput = ({label, name, value, help, ...rest}) =>
     <Form.Label>{label}</Form.Label>
     <Form.Control
       autoComplete="off"
-      type="text"
       name={name}
+      value={value}
       {...rest}
       />
     <Form.Text className="text-muted">

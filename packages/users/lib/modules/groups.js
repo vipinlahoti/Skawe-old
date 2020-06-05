@@ -55,8 +55,8 @@ Users.getGroups = user => {
   
     userGroups = ['default'];
 
-    if (user.skawe.groups) { // custom groups
-      userGroups = userGroups.concat(user.skawe.groups);
+    if (user.groups) { // custom groups
+      userGroups = userGroups.concat(user.groups);
     } 
     
     if (Users.isAdmin(user)) { // admin
@@ -120,7 +120,6 @@ Users.canView = function (user, document) {
  * @param {Object} document - The document being edited
  */
 Users.canEdit = function (user, document) {
-
   user = (typeof user === 'undefined') ? Meteor.user() : user;
   const collectionName = document.getCollectionName();
 
@@ -204,3 +203,18 @@ Users.canEditField = function (user, field, document) {
 Users.createGroup('anonymous'); // non-logged-in users
 Users.createGroup('default'); // regular users
 Users.createGroup('admins'); // admin users
+
+const defaultActions = [
+  "users.new", 
+  "users.edit.own", 
+  "users.remove.own"
+];
+Users.groups.default.can(defaultActions);
+
+const adminActions = [
+  "users.new", 
+  "users.edit.all",
+  "users.remove.all",
+  "settings.edit"
+];
+Users.groups.admins.can(adminActions);

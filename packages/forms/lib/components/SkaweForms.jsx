@@ -1,15 +1,19 @@
 import Skawe from 'meteor/skawe:lib';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import FormGroup from './FormGroup.jsx';
 
 class SkaweForms extends Component {
 
-  state = {
-    disabled: false,
-    errors: [],
-    autofilledValues: {},
-    currentValues: {}
+  constructor() {
+    super()
+    this.formRef = createRef()
+    
+    this.state = {
+      disabled: false,
+      errors: [],
+      currentValues: {}
+    }
   }
 
   // add error to state
@@ -60,16 +64,18 @@ class SkaweForms extends Component {
         this.getFormType() === 'edit'
         ? Skawe.utils.getEditableFields(
           this.getSchema(),
-          this.props.currentUser,
+          this.props.document, // replace with currentUser
+          // this.props.currentUser,
           this.getDocument()
         )
         : Skawe.utils.getInsertableFields(
           this.getSchema(),
-          this.props.currentUser
+          this.props.currentUser,
+          // this.props.currentUser
         );
 
-    // if "fields" prop is specified, restrict list of fields to it
-    if (typeof fields !== "undefined" && fields.length > 0) {
+    // if 'fields' prop is specified, restrict list of fields to it
+    if (typeof fields !== 'undefined' && fields.length > 0) {
       relevantFields = _.intersection(relevantFields, fields);
     }
 
@@ -138,6 +144,8 @@ class SkaweForms extends Component {
       // add document
       field.document = this.getDocument();
 
+      console.log('field: ', field)
+
       return field;
     });
 
@@ -175,7 +183,7 @@ class SkaweForms extends Component {
     currentValues[fieldName] = fieldValue;
     this.setState({currentValues: currentValues});
 
-    console.log(
+    console.info(
       '### updateCurrentValue fieldName: ', fieldName,
       '### fieldValue: ', fieldValue,
       '### currentValues: ', currentValues
@@ -206,23 +214,36 @@ class SkaweForms extends Component {
   }
 
   // submit form handler
-  submitForm = async e => {
-    e.preventDefault();
-    this.setState({disabled: true});
+  submitForm = async event => {
+    event && event.preventDefault();
+
+    // if form is disabled (there is already a submit handler running) don't do anything
+    if (this.state.disabled) {
+      return;
+    }
+    
+    // clear errors and disable form while it's submitting
+    this.setState(prevState => ({ errors: [], disabled: true }));
+
+    const fields = this.getFieldNames();
 
     // complete the data with values from custom components
     const data = {
+      ..._.pick(this.getDocument(), ...fields),
       ...this.state.currentValues, 
     };
 
-    const fields = this.getFieldNames();
+    console.log('this.state.currentValues: ', data);
 
     if (this.getFormType() === 'new') { // new document form
 
       // remove any empty properties
       let document = _.compactObject(Skawe.utils.flatten(data));
 
-      console.log('if submitForm: ', this.props.methodName, ' === ', document);
+      console.info(
+        'if submitForm: ', this.props.methodName,
+        ' === ', document
+      );
 
       // call method with new document
       Meteor.call(this.props.methodName, document, this.methodCallback);
@@ -234,16 +255,21 @@ class SkaweForms extends Component {
       // put all keys with data on $set
       const set = _.compactObject(Skawe.utils.flatten(data));
 
+      console.log('### set ###', data, set);
       // put all keys without data on $unset
       const unsetKeys = _.difference(fields, _.keys(set));
-      const unset = _.object(unsetKeys, unsetKeys.map(()=>true));
+      const unset = _.object(unsetKeys, unsetKeys.map(() => true));
 
       // build modifier
       const modifier = { $set: set };
 
       if (!_.isEmpty(unset)) modifier.$unset = unset;
 
-      console.log('else submitForm: ', this.props.methodName, ' === ', document._id, ' === ', modifier);
+      console.info(
+        'else submitForm: ', this.props.methodName,
+        ' === ', document._id,
+        ' === ', modifier
+      );
 
       // call method with _id of document being edited and modifier
       Meteor.call(this.props.methodName, document._id, modifier, this.methodCallback);
@@ -257,13 +283,18 @@ class SkaweForms extends Component {
       <div className={"document-" + this.getFormType()}>
         <Skawe.components.Forms
           onSubmit={this.submitForm}
-          onKeyDown={this.formKeyDown}
           disabled={this.state.disabled}
+          // ref={this.formRef}
           // ref="form"
         >
           {this.renderErrors()}
           {fieldGroups.map(group => <FormGroup key={group.name} {...group} updateCurrentValue={this.updateCurrentValue} />)}
-          <Skawe.components.Button type="submit" variant="black-fill">Submit</Skawe.components.Button>
+          <Skawe.components.Button
+            type="submit"
+            variant="black-fill"
+          >
+            {this.props.buttonText ?  this.props.buttonText : 'Submit'}
+          </Skawe.components.Button>
           {this.props.cancelCallback ? <a className="form-cancel" onClick={this.props.cancelCallback}>Cancel</a> : null}
         </Skawe.components.Forms>
       </div>
@@ -278,39 +309,10 @@ SkaweForms.propTypes = {
   successCallback: PropTypes.func,
   errorCallback: PropTypes.func,
   methodName: PropTypes.string,
+  buttonText: PropTypes.string,
   cancelCallback: PropTypes.func,
   fields: PropTypes.arrayOf(PropTypes.string)
 }
 
-// const SkaweFormsContainer = Skawe.withAccount(SkaweForms);
-Skawe.registerComponent('SkaweForms', SkaweForms);
-
-
-// <Form onSubmit={this.handleSubmit}>
-//   {makeField.map((field, index) =>
-//     <Form.Group controlId={field.id} key={index}>
-//       <Form.Label>
-//         {field.label}
-//         {field.required ? <span className="required-field">(Required)</span> : null }
-//       </Form.Label>
-//       <Form.Control
-//         autoComplete="off"
-//         name={field.id}
-//         type={field.type}
-//         as={field.fieldAs}
-//         disabled={field.disable}
-//         value={field.value ? field.value : this.state ? this.state[field.id] : ''}
-//         placeholder={field.placeholder ? field.placeholder : null}
-//         onChange={this.handleChange}
-//         required={field.required} />
-//       {field.help ? 
-//         <Form.Text className="text-muted">
-//           {field.help}
-//         </Form.Text>
-//       : null}
-//     </Form.Group>
-//   )}
-//   <Skawe.components.Button variant="black-fill" type="submit">
-//     {buttonText}
-//   </Skawe.components.Button>
-// </Form>
+const SkaweFormsContainer = Skawe.withAccount(SkaweForms);
+Skawe.registerComponent('SkaweForms', SkaweFormsContainer);

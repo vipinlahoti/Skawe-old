@@ -36,7 +36,7 @@ if (typeof Skawe.settings.collection !== 'undefined') {
       optional: true,
       defaultValue: true,
       form: {
-        group: 'notifications',
+        group: 'Notifications',
         instructions: 'Enable email notifications for new posts and new comments (requires restart).'
       }
     }

@@ -5,7 +5,9 @@ import Form from 'react-bootstrap/Form';
 const Forms = ({disabled, children, ...rest}) =>
   <Form {...rest}>
     <fieldset disabled={disabled}>
-      {children}
+      <div className="fieldset">
+        {children}
+      </div>
     </fieldset>
   </Form>
 

@@ -13,7 +13,7 @@ Package.onUse(function(api) {
     'skawe:instances',
     'skawe:events',
     'skawe:email-templates',
-    'skawe:forms'
+    // 'skawe:forms'
   ]);
 
   api.imply(['skawe:lib']);

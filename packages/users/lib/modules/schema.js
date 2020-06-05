@@ -1,9 +1,9 @@
-import Skawe from 'meteor/skawe:lib';
+// import Skawe from 'meteor/skawe:lib';
 import SimpleSchema from 'simpl-schema';
 import Users from './collection.js';
 
 const adminGroup = {
-  name: 'admin',
+  name: 'Admin',
   order: 10
 };
 
@@ -21,6 +21,7 @@ const canEditAll = user => Users.canDo(user, 'users.edit.all');
  * @type {SimpleSchema}
  */
 Users.schema = new SimpleSchema({
+// const schema = {
   _id: {
     type: String,
     publish: true,
@@ -56,7 +57,7 @@ Users.schema = new SimpleSchema({
   },
   isAdmin: {
     type: Boolean,
-    label: 'Admin',
+    label: 'Is Admin',
     control: 'checkbox',
     optional: true,
     insertableBy: canEditAll,
@@ -93,7 +94,7 @@ Users.schema = new SimpleSchema({
     optional: true,
     regEx: SimpleSchema.RegEx.Email,
     required: true,
-    control: 'text',
+    control: 'email',
     insertableBy: canInsert,
     editableBy: canEdit
     // unique: true // note: find a way to fix duplicate accounts before enabling this
@@ -125,33 +126,36 @@ Users.schema = new SimpleSchema({
   /**
     Groups
   */
-  groups: {
-    type: Array,
-    optional: true,
-    control: 'select',
-    insertableBy: canEditAll,
-    editableBy: canEditAll,
-    form: {
-      options() {
-        const groups = _.without(
-          _.keys(Users.groups),
-          'anonymous',
-          'default',
-          'admins'
-        );
-        return groups.map(group => {
-          return { value: group, label: group };
-        });
-      },
-    },
-  },
-  'groups.$': {
-    type: String,
-    optional: true,
-  }
+  // groups: {
+  //   type: Array,
+  //   optional: true,
+  //   control: 'select',
+  //   insertableBy: canEditAll,
+  //   editableBy: canEditAll,
+  //   group: adminGroup,
+  //   form: {
+  //     options() {
+  //       const groups = _.without(
+  //         _.keys(Users.groups),
+  //         'anonymous',
+  //         'default',
+  //         'admins'
+  //       );
+  //       return groups.map(group => {
+  //         return { value: group, label: group };
+  //       });
+  //     },
+  //   },
+  // },
+  // 'groups.$': {
+  //   type: String,
+  //   optional: true,
+  // }
 });
+// }
 
 /**
  * @summary Attach schema to Users (Meteor.users at the moment) collection
  */
 Users.attachSchema(Users.schema);
+// export default schema;

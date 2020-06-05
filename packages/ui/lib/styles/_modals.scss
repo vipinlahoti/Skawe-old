@@ -106,5 +106,6 @@
 .modal-body {
   textarea {
     @include height(200px);
+    font: inherit;
   }
 }

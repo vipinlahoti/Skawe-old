@@ -8,23 +8,22 @@ class AdminLayout extends Component {
     const { children } = this.props; // eslint-disable-line
 
     return (
-        <div className="dashboard__wrapper">
-          <Skawe.components.AdminSidebar />
-          <div className="dashboard-container">
-            <Skawe.components.AdminHeader />
-            <div className="section-dashboard">
-              <Container>
-                <Row>
-                  <Col>
-                    {children}
-                  </Col>
-                </Row>
-              </Container>
-            </div>
-            <Skawe.components.AdminFooter />
+      <div className="dashboard__wrapper">
+        <Skawe.components.AdminSidebar />
+        <div className="dashboard-container">
+          <Skawe.components.AdminHeader />
+          <div className="section-dashboard">
+            <Container>
+              <Row>
+                <Col>
+                  {children}
+                </Col>
+              </Row>
+            </Container>
           </div>
+          <Skawe.components.AdminFooter />
         </div>
-
+      </div>
     )
   }
 }

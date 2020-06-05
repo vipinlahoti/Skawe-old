@@ -1,9 +1,6 @@
 {
-  "name": "Grudr",
+  "name": "Skawe",
   "version": "0.0.1",
-  "engines": {
-    "npm": "^3.0"
-  },
   "private": true,
   "scripts": {
     "start": "meteor --settings settings.json",
@@ -21,8 +18,6 @@
     "bcrypt": "^4.0.1",
     "classnames": "^2.2.6",
     "crypto-js": "^4.0.0",
-    "formsy-react": "^2.0.3",
-    "formsy-react-components": "^2.0.0-beta.5",
     "handlebars": "^4.7.6",
     "html-to-text": "^5.1.1",
     "juice": "^6.0.0",

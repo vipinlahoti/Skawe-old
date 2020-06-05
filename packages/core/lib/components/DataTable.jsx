@@ -30,6 +30,8 @@ const DataTable = ({collection, columns, formField, showEdit}) => {
     return collectionName.find().fetch();
   });
 
+  console.log(subscriptionList, dataList)
+
   return (
     <table className="table">
       <thead>

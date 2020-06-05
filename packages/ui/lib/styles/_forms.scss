@@ -1,3 +1,9 @@
+fieldset,
+.fieldset {
+  border: 0;
+  outline: 0;
+}
+
 .form-inline {
   display: flex;
   align-items: center;
@@ -111,7 +117,66 @@ label {
   width: 100%;
 }
 
-fieldset {
-  border: 0;
-  outline: 0;
+.custom-switch {
+  @include padding(40px, left);
+
+  .custom-control-input {
+    @include size(16px, 16px);
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+
+    &:checked {
+      ~ .custom-control-label {
+        &:before {
+          color: $white;
+          border-color: $primary;
+          background-color: $primary;
+        }
+
+        &:after {
+          background-color: $white;
+          transform: translateX(.75rem);
+        }
+      }
+    }
+  }
+
+  .custom-control-label {
+    @include margin(0, bottom)
+    position: relative;
+    vertical-align: top;
+
+    &:after,
+    &:before {
+      @include size(18px, 18px);
+      position: absolute;
+      top: .25rem;
+      left: -1.5rem;
+      display: block;
+      content: '';
+    }
+
+    &:before {
+      @include width(32px);
+      @include round-corner(10px);
+      background-color: $white;
+      border: 1px solid $gray-600;
+      left: -40px;
+      pointer-events: all;
+      transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    &:after {
+      background: no-repeat 50%/50% 50%;
+      top: calc(.25rem + 2px);
+      left: -36px;
+      width: calc(1rem - 2px);
+      height: calc(1rem - 2px);
+      background-color: $gray-600;
+      border-radius: .5rem;
+      transition: transform .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+  }
 }

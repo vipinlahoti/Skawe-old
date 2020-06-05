@@ -73,6 +73,7 @@ const NavLinks = ({currentUser}) =>
   </Nav>
 
 const Header = (props, {currentUser}) => {
+  console.log(currentUser)
   return (
     <Navbar variant="light">
       <Skawe.components.Logo logoUrl={logoUrl} siteTitle={siteTitle}/>

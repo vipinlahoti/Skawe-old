@@ -14,7 +14,9 @@
   }
 
   .ar-signUp {
-    @extend .form-inline;
+    .fieldset {
+      @extend .form-inline;
+    }
   }
 
   .form-label {

@@ -69,52 +69,6 @@ class CreateCloudInstancePage extends Component {
       <React.Fragment>
         <Skawe.components.HeadTags title="Cloud Instances" description="Cloud Instances Page" />
 
-        {/*
-        <Skawe.components.SkawePriceSummaryForms
-            heading="Create a Cloud Instance"
-            fields={[
-              {
-                id: 'distributions',
-                type: 'radio',
-                label: 'Distributions',
-                select: this.props.distributionsList,
-                required: true
-              },
-              {
-                id: 'region',
-                type: 'radio',
-                label: 'Region',
-                select: this.props.regionsList,
-                required: true,
-              },
-              {
-                id: 'server-plan',
-                type: 'radio',
-                label: 'Choost a Plan',
-                select: this.props.serverPlansList,
-                required: true,
-              },
-              {
-                id: 'instance-label',
-                type: 'text',
-                label: 'Server / Instance Label',
-                help: 'Add a label to your Instance.',
-              },
-              {
-                id: 'root-password',
-                type: 'password',
-                label: 'Root Password',
-                help: 'Password must:<br/><ul><li>Be at least 6 characters</li><li>Contain at least two of the following character classes: uppercase letters, lowercase letters, numbers, and punctuation.</li></ul>'
-              },
-              
-              {
-                id: 'ssh-key',
-                type: 'text',
-                label: 'SSH Keys'
-              },
-            ]}
-          />
-        */}
         <Container>
           <Row>
             <Col sm={12} md={8}>
@@ -155,7 +109,7 @@ class CreateCloudInstancePage extends Component {
                 selectedLabel={this.selectedLabel}
               />
               <Skawe.components.RootPassword selectedRootPassword={this.selectedRootPassword} />
-              <Skawe.components.SSHKeys />
+              {/*<Skawe.components.SSHKeys />*/}
               <Skawe.components.AdditionalFeatures
                 selectedAddonPrices={selectAddonPrices}
                 selectedAddonPlans={this.selectedAddonPlans}

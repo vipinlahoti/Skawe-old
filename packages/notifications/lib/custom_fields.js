@@ -1,7 +1,7 @@
 import Users from 'meteor/skawe:users';
 
 const notificationsGroup = {
-  name: 'notifications',
+  name: 'Notifications',
   order: 2
 };
 
