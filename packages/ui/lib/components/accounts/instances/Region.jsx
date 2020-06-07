@@ -17,15 +17,17 @@ class Region extends Component {
   }
 
   render() {
-    const { dataList, storageDescription } = this.props;
+    const { dataList, showSpeedTest } = this.props;
+
+    console.log('region: ', dataList)
 
     return (
       <div className="section-distributions mb-1 bg-light">
         <h6 className="title-6 mb-1">Region</h6>
-        {storageDescription ?
+        {showSpeedTest ?
           <Row>
             <Col>
-              <p>{storageDescription}</p>
+              <small className="d-block mb-1">Use our speedtest page to find the best region for your current location.</small>
             </Col>
           </Row>
         : null }
@@ -36,14 +38,17 @@ class Region extends Component {
                 <Form.Label className="admin-checkbox">
                   <input 
                     type="radio"
-                    id={`${location['id']},${location['country']}`}
+                    id={`${location['city']},${location['country']},${location['regionId']}`}
                     name="region"
                     onChange={this.handleChange}
                   />
                   <ListGroup.Item className="p-1">
+                    <div className="admin-card-image d-flex middle-xs">
+                      <img src={location.image} alt={location.city} />
+                    </div>
                     <div className="admin-card-description">
-                      <h6 className="title-6 mb-0">{location.id}</h6>
                       <p className="mb-0">{location.country}</p>
+                      <h6 className="title-6 mb-0">{location.city}</h6>
                     </div>
                   </ListGroup.Item>
                 </Form.Label>

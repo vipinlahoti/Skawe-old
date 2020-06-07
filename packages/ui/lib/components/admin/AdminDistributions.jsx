@@ -6,13 +6,17 @@ import _groupBy from 'lodash/groupBy';
 
 class AdminDistributions extends Component {
   state = {
-    setApiData: {},
-    apiData: {},
-    storeDistribution: {},
+    setApiData: {}
+  }
+
+  componentDidMount() {
+    const setApiData = JSON.parse(localStorage.getItem('distributionsList'));
+    if (setApiData !== null) this.setState({ setApiData });
   }
 
   fetchAPI = async e => {
     const distributionUrl = 'images';
+    localStorage.removeItem('distributionsList');
     
     Meteor.call('instances.fetch', distributionUrl, (error, results) => {
       if (error) {
@@ -20,55 +24,24 @@ class AdminDistributions extends Component {
       }
       else {
         const apiData = results.data;
-        let makeApiData = [];
+        const setApiData = _groupBy(apiData, 'vendor');
+        
+        // localstorage setter
+        localStorage.setItem('distributionsList', JSON.stringify(setApiData));
 
-        for (let i = 0; i < apiData.length; i++) {
-          const generateApiData = {
-            image: `/images/${(apiData[i]['vendor']).toLowerCase()}.png`,
-            category: apiData[i]['vendor'],
-            apiId: apiData[i]['id'],
-            label: apiData[i]['label'],
-            deprecated: apiData[i]['deprecated'],
-            isPublic: apiData[i]['is_public']
-          }
-
-          makeApiData.push(generateApiData)
-        }
-
-        const setApiDatas = _groupBy(makeApiData, 'category');
-
-        // console.log(setApiDatas)
-
-        if (setApiDatas && apiData) {
-          this.setState({
-            setApiData: setApiDatas,
-            apiData: makeApiData
-          });
+        if (setApiData) {
+          this.setState({ setApiData });
         }
       }
     });
   }
 
-  selectedData = (setSelectedItem) => {
-    this.setState({
-      storeDistribution: setSelectedItem
-    });
-  }
-
-  storeSelectedUtemToDB = () => {
-    const distributionToStore = this.state.storeDistribution;
-
-    Meteor.call('instances.new', distributionToStore, 'Distributions', (error) => {
-      if (error) {
-        console.log(error)
-      }
-    });    
+  clearLStorage = async e => {
+    localStorage.removeItem('distributionsList');
   }
 
   render() {
-    const { setApiData, apiData } = this.state; // eslint-disable-line
-    const { distributionsList } = this.props;
-
+    const { setApiData } = this.state;
     console.log(setApiData)
 
     return (
@@ -80,26 +53,25 @@ class AdminDistributions extends Component {
             <Col>
               <div className="d-flex between-xs">
                 <h5 className="title-5 mb-1">Distribution List from API</h5>
-                <Skawe.components.Button size="small" onClick={this.fetchAPI}>
-                  Refetch from API
-                </Skawe.components.Button>
+                <div>
+                  <Skawe.components.Button size="small" onClick={this.clearLStorage}>
+                    Clear Local Storage
+                  </Skawe.components.Button>
+                  <Skawe.components.Button size="small" variant="black-fill" onClick={this.fetchAPI}>
+                    Refetch from API
+                  </Skawe.components.Button>
+                </div>
               </div>
             </Col>
           </Row>
         </div>
 
-        {Object.keys(setApiData).length ?
-          <Skawe.components.OsDistributions
+        {Object.keys(setApiData).length ? 
+          <Skawe.components.InstanceJsonCard
             setApiData={setApiData}
-            apiData={apiData}
-            selectedData={this.selectedData}
+            methodName="distributions.new"
+            collection={Distributions}
           /> : null }
-
-        {Object.keys(setApiData).length ?
-          <Skawe.components.Button size="small" onClick={this.storeSelectedUtemToDB}>
-            Store selected in Database
-          </Skawe.components.Button>
-        : null}
 
         <hr />
 
@@ -109,8 +81,8 @@ class AdminDistributions extends Component {
               <h5 className="title-5 mb-1">Distribution List from Database</h5>
               <Skawe.components.DataTable
                 collection={Distributions}
-                columns={['image', 'category', 'apiId', 'label', 'deprecated', 'isPublic']}
                 showEdit={true}
+                columns={['_id', 'image', 'category', 'label', 'distId']}
               />
             </Col>
           </Row>

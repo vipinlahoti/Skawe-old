@@ -26,17 +26,16 @@ class InstancePlans extends Component {
           {dataList.map((plans, index) => 
             <Col md={4} key={index}>
               <Skawe.components.PriceCard
-                title={`${plans.disk / 1024} GB SSD`}
+                title={plans.label}
                 description={
                   `
-                  ${plans.vcpus} CPU </br>
-                  ${plans.memory} GB Memory </br>
-                  ${plans.transfer} GB Bandwidth
+                  ${plans.vcpu} </br>
+                  ${plans.memory} Memory </br>
+                  ${plans.transfer} Bandwidth
                   `
                 }
-                salePrice={plans.price.monthly}
-                listPrice={plans.price.hourly}
-                formId={`${plans['id']},${plans['vcpus']},${plans['disk']},${plans['label']},${plans['memory']},${plans['price']['monthly']},${plans['addons']['backups']['price']['monthly']},${plans['addons']['backups']['price']['hourly']}`}
+                salePrice={plans.priceMo}
+                formId={`${plans['planId']},${plans['label']},${plans['vcpu']},${plans['disk']},${plans['memory']},${plans['priceMo']},${plans['addonBackupMo']}`}
                 formName="serverPlans"
                 handleChange={this.handleChange}
               />

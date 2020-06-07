@@ -6,8 +6,6 @@ import Skawe from 'meteor/skawe:lib';
  * @param {Object} user – the user for which to check field permissions
  */
 Skawe.utils.getInsertableFields = function (schema, user) {
-
-  console.log('schema, user: ', schema, user);
   const fields = _.filter(_.keys(schema), function (fieldName) {
     const field = schema[fieldName];
     return field.insertableBy && field.insertableBy(user);
@@ -21,6 +19,7 @@ Skawe.utils.getInsertableFields = function (schema, user) {
  * @param {Object} user – the user for which to check field permissions
  */
 Skawe.utils.getEditableFields = function (schema, user, document) {
+  console.log('schema: ', schema, ' == user ==', user, ' == document ==', document)
   const fields = _.filter(_.keys(schema), function (fieldName) {
     const field = schema[fieldName];
     return field.editableBy && field.editableBy(user, document);

@@ -164,9 +164,13 @@ footer,
 
 
 .admin-checkbox {
+  position: relative;
+
   .list-group-item {
-    @extend .middle-xs;
+    // @extend .middle-xs;
+    @include height(88px, min);
     background: $white;
+    cursor: pointer;
     display: flex;
   }
   
@@ -200,4 +204,63 @@ footer,
       }
     }
   }
+}
+
+.json-card {
+  @include width(250px, min);
+}
+
+.d-collapse {
+  .collapsable-header {
+    width: 100%;
+  }
+}
+
+.radio-dropdown {
+  display: none;
+
+  .form-label {
+    cursor: pointer;
+    display: block;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  p {
+    @include margin(8px, bottom);
+    font-size: 90%;
+  }
+}
+
+.d-expand {
+  .radio-dropdown {
+    @include height(350px, max);
+    @include padding(8px 16px);
+    display: block;
+    position: absolute;
+    background: $white;
+    // border: 3px solid $primary;
+    width: 100%;
+    border-top: 0;
+    z-index: 999;
+    left: 0;
+    top: 100%;
+    box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.095);
+    transition: transform .3s ease;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+}
+
+.admin-selectbox {
+  .list-group-item {
+    @include height(55px, min);
+  }
+}
+
+.admin-select {
+  justify-content: space-between;
+  width: 100%;
 }

@@ -6,12 +6,17 @@ import _groupBy from 'lodash/groupBy';
 
 class AdminRegions extends Component {
   state = {
-    apiData: {},
-    storeRegion: {},
+    setApiData: {}
+  }
+
+  componentDidMount() {
+    const setApiData = JSON.parse(localStorage.getItem('RegionList'));
+    if (setApiData !== null) this.setState({ setApiData });
   }
 
   fetchAPI = async e => {
     const regionUrl = 'regions';
+    localStorage.removeItem('RegionList');
     
     Meteor.call('instances.fetch', regionUrl, (error, results) => {
       if (error) {
@@ -19,35 +24,25 @@ class AdminRegions extends Component {
       }
       else {
         const apiData = results.data;
+        const setApiData = _groupBy(apiData, 'id');
 
-        if (apiData) {
-          this.setState({
-            apiData: apiData
-          });
+        // localstorage setter
+        localStorage.setItem('RegionList', JSON.stringify(setApiData));
+
+        if (setApiData) {
+          this.setState({ setApiData });
         }
       }
     });
   }
 
-  selectedData = (setSelectedItem) => {
-    this.setState({
-      storeRegion: setSelectedItem
-    });
-  }
-
-  storeSelectedUtemToDB = () => {
-    const regionToStore = this.state.storeRegion;
-
-    Meteor.call('instances.new', regionToStore, 'Regions', (error) => {
-      if (error) {
-        console.log(error)
-      }
-    });    
+  clearLStorage = async e => {
+    localStorage.removeItem('RegionList');
   }
 
   render() {
-    const { apiData } = this.state; // eslint-disable-line
-    const { regionsList } = this.props;
+    const { setApiData } = this.state;
+    console.log(setApiData);
 
     return (
       <React.Fragment>
@@ -58,25 +53,25 @@ class AdminRegions extends Component {
             <Col>
               <div className="d-flex between-xs">
                 <h5 className="title-5 mb-1">Region List from API</h5>
-                <Skawe.components.Button size="small" onClick={this.fetchAPI}>
-                  Refetch from API
-                </Skawe.components.Button>
+                <div>
+                  <Skawe.components.Button size="small" onClick={this.clearLStorage}>
+                    Clear Local Storage
+                  </Skawe.components.Button>
+                  <Skawe.components.Button size="small" variant="black-fill" onClick={this.fetchAPI}>
+                    Refetch from API
+                  </Skawe.components.Button>
+                </div>
               </div>
             </Col>
           </Row>
         </div>
 
-        {Object.keys(apiData).length ?
-          <Skawe.components.OsDistributions
-            apiData={apiData}
-            selectedData={this.selectedData}
+        {Object.keys(setApiData).length ?
+          <Skawe.components.InstanceJsonCard
+            setApiData={setApiData}
+            methodName="regions.new"
+            collection={Regions}
           /> : null }
-
-        {Object.keys(apiData).length ?
-          <Skawe.components.Button size="small" onClick={this.storeSelectedUtemToDB}>
-            Store selected in Database
-          </Skawe.components.Button>
-        : null}
 
         <hr />
 
@@ -86,8 +81,8 @@ class AdminRegions extends Component {
               <h5 className="title-5 mb-1">Region List from Database</h5>
               <Skawe.components.DataTable
                 collection={Regions}
-                columns={['image', 'id', 'label', 'country-label', 'country', 'status']}
                 showEdit={true}
+                columns={['_id', 'image', 'regionId', 'region', 'countryId', 'country', 'city', 'capabilities']}
               />
             </Col>
           </Row>

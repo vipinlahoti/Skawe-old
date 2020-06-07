@@ -11,13 +11,12 @@ const SSHKeys = () =>
         <Skawe.components.DataTable
           collection={Users}
           columns={['_id', 'ssh_key']}
-          showEdit={true}
         />
       </Col>
     </Row>
     <Row>
       <Col md={6}>
-        <Skawe.components.Button>
+        <Skawe.components.Button variant="black" size="small">
           Add SSH Key
         </Skawe.components.Button>
       </Col>

@@ -64,8 +64,8 @@ class SkaweForms extends Component {
         this.getFormType() === 'edit'
         ? Skawe.utils.getEditableFields(
           this.getSchema(),
-          this.props.document, // replace with currentUser
-          // this.props.currentUser,
+          // this.props.document, // replace with currentUser
+          this.props.currentUser,
           this.getDocument()
         )
         : Skawe.utils.getInsertableFields(
@@ -144,8 +144,6 @@ class SkaweForms extends Component {
       // add document
       field.document = this.getDocument();
 
-      console.log('field: ', field)
-
       return field;
     });
 
@@ -182,12 +180,6 @@ class SkaweForms extends Component {
     const currentValues = this.state.currentValues;
     currentValues[fieldName] = fieldValue;
     this.setState({currentValues: currentValues});
-
-    console.info(
-      '### updateCurrentValue fieldName: ', fieldName,
-      '### fieldValue: ', fieldValue,
-      '### currentValues: ', currentValues
-    )
   }
 
   // common callback for both new and edit forms

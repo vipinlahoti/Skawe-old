@@ -11,10 +11,24 @@ class CreateCloudInstancePage extends Component {
     selectLabel: '',
     selectRootPassword: '',
     selectServerPlans: [],
-    selectLabel: '',
-    selectRootPassword: '',
     selectAddonPrices: [],
     selectAddonPlans: [],
+    addonPlans: [
+        {
+          id: 'enable-backup',
+          label: 'Enable Backup',
+          priceMo: '',
+          priceHr: '',
+          description: 'Three backup slots are executed and rotated automatically: a daily backup, a 2-7 day old backup, and an 8-14 day old backup. Plans are priced according to the Linode plan selected above.'
+        },
+        {
+          id: 'private-ip',
+          label: 'Private IP',
+          priceMo: '',
+          priceHr: '',
+          description: 'Add an Internal IP to this VM.'
+        }
+      ]
   }
 
   selectedDistribution = (setDistribution) => {
@@ -31,8 +45,8 @@ class CreateCloudInstancePage extends Component {
 
   selectedPlans = (setServerPlans) => {
     this.setState({
-      selectServerPlans: setServerPlans,
-      selectAddonPrices: [`${setServerPlans[6]}`, `${setServerPlans[7]}`]
+      selectAddonPrices: setServerPlans,
+      selectServerPlans: setServerPlans
     });
   }
 
@@ -49,18 +63,33 @@ class CreateCloudInstancePage extends Component {
   }
 
   selectedAddonPlans = (setAddonPlans) => {
+    const selectAddon = [];
+
+    for (let i = 0; i < setAddonPlans.length; i++) {
+      if (setAddonPlans[i].show) {
+        if (setAddonPlans[i].id === 'enable-backup') {
+          setAddonPlans[i]['priceMo'] = this.state.selectAddonPrices[6];
+        }
+        selectAddon.push(setAddonPlans[i])
+      }
+    }
+
     this.setState({
-      selectAddonPlans: setAddonPlans
+      selectAddonPlans: selectAddon
     });
   }
 
   render() {
-    const { selectDistribution, selectRegion, selectLabel, selectRootPassword, selectServerPlans, selectAddonPrices, selectAddonPlans } = this.state;
-    console.log(
-      'distributionsList: ', this.props.distributionsList,
-      'regionsList: ', this.props.regionsList,
-      'serverPlansList: ', this.props.serverPlansList
-    )
+    const { 
+      selectDistribution,
+      selectRegion,
+      selectLabel,
+      selectRootPassword,
+      selectServerPlans,
+      addonPlans,
+      selectAddonPrices,
+      selectAddonPlans
+    } = this.state;
 
     const rootPasswordTextWrapper = 
       <ul><li>Be at least 6 characters</li><li>Contain at least two of the following character classes: uppercase letters, lowercase letters, numbers, and punctuation.</li></ul>
@@ -76,7 +105,7 @@ class CreateCloudInstancePage extends Component {
                 <h5 className="title-5 mb-1">Create a Cloud Instance</h5>
               </div>
 
-              <Tab.Container defaultActiveKey="first" className="pt-0">
+              <Tab.Container defaultActiveKey="first">
                 <Nav variant="pills">
                   <Nav.Item>
                     <Nav.Link eventKey="first">Distributions</Nav.Link>
@@ -86,9 +115,9 @@ class CreateCloudInstancePage extends Component {
                   </Nav.Item>
                 </Nav>
 
-                <Tab.Content>
+                <Tab.Content className="pb-0">
                   <Tab.Pane eventKey="first">
-                    <Skawe.components.Distribution selectedDistribution={this.selectedDistribution} />
+                    <Skawe.components.DistributionSelect selectedDistribution={this.selectedDistribution} />
                   </Tab.Pane>
                   <Tab.Pane eventKey="second">
                     One Click Apps
@@ -96,7 +125,7 @@ class CreateCloudInstancePage extends Component {
                 </Tab.Content>
               </Tab.Container>
 
-              <Skawe.components.Region
+              <Skawe.components.RegionSelect
                 showSpeedTest={true}
                 selectedRegion={this.selectedRegion}
               />
@@ -105,25 +134,27 @@ class CreateCloudInstancePage extends Component {
                 column={6}
                 title="Server / Instance Label"
                 placeholder="cloud-instance"
-                description="Add a label to your Instance."
+                description="Add a label to your Instance, ex: 'your-server-name'"
                 selectedLabel={this.selectedLabel}
               />
               <Skawe.components.RootPassword selectedRootPassword={this.selectedRootPassword} />
               {/*<Skawe.components.SSHKeys />*/}
               <Skawe.components.AdditionalFeatures
                 selectedAddonPrices={selectAddonPrices}
+                addonPlans={addonPlans}
                 selectedAddonPlans={this.selectedAddonPlans}
               />
             </Col>
 
             <Col sm={12} md={4}>
               <Skawe.components.PriceSummary
+                distribution={selectDistribution}
                 region={selectRegion}
-                os={selectDistribution}
+                serverPlans={selectServerPlans}
                 serverLabel={selectLabel}
                 rootPassword={selectRootPassword}
-                serverPlans={selectServerPlans}
-               />
+                addOnsPlans={selectAddonPlans}
+              />
             </Col>
           </Row>
         </Container>

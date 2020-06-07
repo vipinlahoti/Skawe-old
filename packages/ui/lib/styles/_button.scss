@@ -49,6 +49,7 @@
 
   &.disabled,
   &:disabled {
+    cursor: default;
     opacity: .65;
   }
 

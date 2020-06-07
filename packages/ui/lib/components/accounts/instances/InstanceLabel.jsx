@@ -9,7 +9,7 @@ class InstanceLabel extends Component {
 
   handleChange = async e => {
     this.setState({value: e.target.value});
-    this.props.serverLabel(e.target.value);
+    this.props.selectedLabel(e.target.value);
   }
 
   render() {

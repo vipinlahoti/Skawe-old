@@ -3,8 +3,9 @@ import { Distributions } from 'meteor/skawe:instances';
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 
-const EditFormModal = ({dataItem, formField}) => {
-  console.log('formField', formField);
+const EditFormModal = ({collection, dataItem}) => {
+  const methodName = `${collection._name}.edit`;
+  console.log('dataItem', dataItem);
 
   return (
     <Skawe.components.ModalTrigger title={`Edit ${dataItem._id}`} component={
@@ -14,6 +15,16 @@ const EditFormModal = ({dataItem, formField}) => {
         </Skawe.components.Button>
       </div>
     }>
+
+    <Skawe.components.SkaweForms
+      collection={collection}
+      document={dataItem}
+      buttonText="Update"
+      methodName={methodName}
+      successCallback={updateItem => {
+        alert(`${updateItem.label} is updated`);
+      }}
+    />
 
     </Skawe.components.ModalTrigger>
   )
@@ -30,7 +41,7 @@ const DataTable = ({collection, columns, formField, showEdit}) => {
     return collectionName.find().fetch();
   });
 
-  console.log(subscriptionList, dataList)
+  console.log('subscriptionList ', subscriptionList, dataList)
 
   return (
     <table className="table">
@@ -59,11 +70,7 @@ const DataTable = ({collection, columns, formField, showEdit}) => {
             )}
             {showEdit ?
             <td className={`datatable-body-action`}>
-              <EditFormModal
-                dataItem={dataItem}
-                columns={columns}
-                formField={dataList[index]}
-              />
+              <EditFormModal dataItem={dataItem} collection={collection}/>
             </td>
             : null }
           </tr>

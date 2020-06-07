@@ -6,51 +6,43 @@ import _groupBy from 'lodash/groupBy';
 
 class AdminServerPlans extends Component {
   state = {
-    setApiData: {},
-    apiData: {},
-    storeServerPlan: {},
+    setApiData: {}
+  }
+
+  componentDidMount() {
+    const setApiData = JSON.parse(localStorage.getItem('serverPlanList'));
+    if (setApiData !== null) this.setState({ setApiData });
   }
 
   fetchAPI = async e => {
     const serverPlanUrl = 'linode/types';
+    localStorage.removeItem('serverPlanList');
     
     Meteor.call('instances.fetch', serverPlanUrl, (error, results) => {
       if (error) {
         alert(error.error);
       }
       else {
-        const setApiDatas = _groupBy(results.data, 'class');
         const apiData = results.data;
+        const setApiData = _groupBy(results.data, 'class');
 
-        if (apiData) {
-          this.setState({
-            setApiData: setApiDatas,
-            apiData: apiData
-          });
+        // localstorage setter
+        localStorage.setItem('serverPlanList', JSON.stringify(setApiData));
+
+        if (setApiData) {
+          this.setState({ setApiData });
         }
       }
     });
   }
 
-  selectedData = (setSelectedItem) => {
-    this.setState({
-      storeServerPlan: setSelectedItem
-    });
-  }
-
-  storeSelectedUtemToDB = () => {
-    const serverPlanToStore = this.state.storeServerPlan;
-
-    Meteor.call('instances.new', serverPlanToStore, 'ServerPlans', (error) => {
-      if (error) {
-        console.log(error)
-      }
-    });    
+  clearLStorage = async e => {
+    localStorage.removeItem('serverPlanList');
   }
 
   render() {
-    const { setApiData, apiData } = this.state; // eslint-disable-line
-    const { regionsList } = this.props;
+    const { setApiData } = this.state;
+    console.log(setApiData);
 
     return (
       <React.Fragment>
@@ -61,26 +53,25 @@ class AdminServerPlans extends Component {
             <Col>
               <div className="d-flex between-xs">
                 <h5 className="title-5 mb-1">Server Plan List from API</h5>
-                <Skawe.components.Button size="small" onClick={this.fetchAPI}>
-                  Refetch from API
-                </Skawe.components.Button>
+                <div>
+                  <Skawe.components.Button size="small" onClick={this.clearLStorage}>
+                    Clear Local Storage
+                  </Skawe.components.Button>
+                  <Skawe.components.Button size="small" variant="black-fill" onClick={this.fetchAPI}>
+                    Refetch from API
+                  </Skawe.components.Button>
+                </div>
               </div>
             </Col>
           </Row>
         </div>
 
         {Object.keys(setApiData).length ?
-          <Skawe.components.ServerPlans
+          <Skawe.components.InstanceJsonCard
             setApiData={setApiData}
-            apiData={apiData}
-            selectedData={this.selectedData}
+            methodName="serverplans.new"
+            collection={ServerPlans}
           /> : null }
-
-        {Object.keys(setApiData).length ?
-          <Skawe.components.Button size="small" onClick={this.storeSelectedUtemToDB}>
-            Store selected in Database
-          </Skawe.components.Button>
-        : null}
 
         <hr />
 
@@ -90,8 +81,25 @@ class AdminServerPlans extends Component {
               <h5 className="title-5 mb-1">Server Plan from Database</h5>
               <Skawe.components.DataTable
                 collection={ServerPlans}
-                columns={['label', 'id', 'memory', 'vcpus', 'disk', 'transfer', 'retail Price mo', 'retail Price hr', 'sale Price mo', 'sale Price hr' ]}
                 showEdit={true}
+                columns={[
+                  '_id',
+                  'planId',
+                  'label',
+                  'memory',
+                  'disk',
+                  'vcpu',
+                  'transfer',
+                  'class',
+                  'priceHr',
+                  'priceMo',
+                  'salesPriceHr',
+                  'salesPriceMo',
+                  'addonBackupHr',
+                  'addonBackupMo',
+                  'salesAddonBackupHr',
+                  'salesAddonBackupMo'
+                ]}
               />
             </Col>
           </Row>

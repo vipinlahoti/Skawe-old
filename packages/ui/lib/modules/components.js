@@ -47,7 +47,7 @@ import '../components/pages/features/ControlPanelPage.jsx';
 // Instances
 import '../components/accounts/instances/FirstInstance.jsx';
 import '../components/accounts/instances/AdditionalFeatures.jsx';
-import '../components/accounts/instances/OsDistributions.jsx';
+import '../components/accounts/instances/InstanceJsonCard.jsx';
 import '../components/accounts/instances/InstanceLabel.jsx';
 import '../components/accounts/instances/InstanceSizeCount.jsx';
 import '../components/accounts/instances/InstancePlans.jsx';
@@ -55,7 +55,9 @@ import '../components/accounts/instances/AddDomain.jsx';
 import '../components/accounts/instances/ImportDomainZone.jsx';
 
 import '../components/accounts/instances/Distribution.jsx';
+import '../components/accounts/instances/DistributionSelect.jsx';
 import '../components/accounts/instances/Region.jsx';
+import '../components/accounts/instances/RegionSelect.jsx';
 import '../components/accounts/instances/RootPassword.jsx';
 import '../components/accounts/instances/SSHKeys.jsx';
 
@@ -74,7 +76,6 @@ import '../components/admin/AdminHeader.jsx';
 import '../components/admin/AdminFooter.jsx';
 import '../components/admin/AdminSidebar.jsx';
 import '../components/admin/AdminUsers.jsx';
-import '../components/admin/ServerPlans.jsx';
 import '../components/admin/AdminAddons.jsx';
 
 import '../components/admin/AdminDistributions.jsx';

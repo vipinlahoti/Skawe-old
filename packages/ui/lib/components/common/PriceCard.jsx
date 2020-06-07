@@ -16,8 +16,8 @@ const PriceCard = ({formId, formName, handleChange, title, description, listPric
         <h5 className="title-5">{title}</h5>
         <p className="mb-1" dangerouslySetInnerHTML={{ __html: description }}></p>
         <div>
-          <span className="title-5 mr-1 text-primary">{salePrice}/mo</span>
-          <span className="title-5 list-price">{listPrice}/h</span>
+          <span className="title-5 mr-1 text-primary">₹ {salePrice}/mo</span>
+          {/* <span className="title-5 list-price">{listPrice}/h</span> */}
         </div>
       </div>
     </ListGroup.Item>

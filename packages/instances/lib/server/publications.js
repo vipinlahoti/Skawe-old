@@ -6,6 +6,6 @@ import { Distributions, Regions, ServerPlans, ServerAddOns } from '../modules/co
     const subscriptionList = `${subscription}.list`;
   
     Meteor.publish(subscriptionList, function () {
-      return collection.find({show: true});
+      return collection.find();
     });
 })

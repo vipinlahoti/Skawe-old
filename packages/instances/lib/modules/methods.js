@@ -5,13 +5,15 @@ import {
   ServerPlans,
   ServerAddOns,
 } from './collection.js'
+
+
 /**
  * Instances API
  */
 export const InstancesAPI = {}
 
 InstancesAPI.baseAPI = 'https://api.linode.com/v4',
-InstancesAPI.baseAPIKey = 'cda3cde9e551489b0f02f8b3eeaf29b81ed650b0389bbaec0f8bd72972576107';
+InstancesAPI.baseAPIKey = '4bcc8b11cabc0d431ea67106cacc29f376a637fbf7c0e097c6893b5e2521476f';
 
 InstancesAPI.options = {
   'headers': {
@@ -20,10 +22,21 @@ InstancesAPI.options = {
   }
 };
 
+// InstancesAPI.filter = {
+//   'headers': {
+//     'Authorization': `Bearer ${InstancesAPI.baseAPI}`,
+//     'Content-Type': 'application/json',
+//     'X-Filter': '{\'label\': {\'+contains\': \'One-Click\'}}'
+//   }
+// };
+
 /**
  * Instances Methods
  */
 InstancesAPI.methods = {};
+Distributions.methods = {};
+Regions.methods = {};
+ServerPlans.methods = {};
 
 /**
  * @summary Insert a instance in the database (note: optional instance properties not listed here)
@@ -34,7 +47,8 @@ InstancesAPI.methods = {};
 InstancesAPI.methods.fetch = function (instanceUrl) {
   try {
     const result = HTTP.call('GET',`${InstancesAPI.baseAPI}/${instanceUrl}`, InstancesAPI.options);
-    
+    console.log('try: ', result);
+
     if (result.statusCode === 200){
       return result.data;
     } else {
@@ -42,45 +56,118 @@ InstancesAPI.methods.fetch = function (instanceUrl) {
     }
 
   } catch (e) {
+    console.log('catch: ', e)
     // Got a network error, timeout, or HTTP error in the 400 or 500 range.
     return false;
   }
 };
 
+// ------------------------------------------------------------------------------------------- //
+// -------------------------------------- Distributions -------------------------------------- //
+// ------------------------------------------------------------------------------------------- //
+
 /**
- * @summary Insert a instance in the database (note: optional instance properties not listed here)
- * @param {Object} instance - the instance being inserted
- * @param {string} instance.userId - the id of the user the instance belongs to
- * @param {string} instance.title - the instance's title
+ * @summary Insert a distribution in the database (note: optional distribution properties not listed here)
+ * @param {Object} distribution - the distribution being inserted
+ * @param {string} distribution.userId - the id of the user the distribution belongs to
+ * @param {string} distribution.title - the distribution's title
  */
-InstancesAPI.methods.new = function (instance, collectionName) {
-  const getCollectionName = collectionName._name;
-  const setCollectionNames = [Distributions, Regions, ServerPlans, ServerAddOns]
-  
-  setCollectionNames.forEach(collection => {
-
-    if (collectionName.toLowerCase() === collection._name) {
-      const setInstance = instance.forEach(item => collection.insert(item));
-      return setInstance;
-    }
-  })
-
-  return false
+Distributions.methods.new = function (distribution) {
+  distribution._id = Distributions.insert(distribution);
+  console.log('distribution: ', distribution)
+  return distribution;
 };
 
-
 /**
- * @summary Edit a instance in the database
- * @param {string} instanceId – the ID of the instance being edited
+ * @summary Edit a distribution in the database
+ * @param {string} distributionId – the ID of the distribution being edited
  * @param {Object} modifier – the modifier object
- * @param {Object} instance - the current instance object
+ * @param {Object} distribution - the current distribution object
  */
-InstancesAPI.methods.edit = function (instanceId, modifier, instance) {
+Distributions.methods.edit = function (distributionId, modifier, distribution) {
+  if (typeof distribution === 'undefined') {
+    distribution = Distributionss.findOne(distributionId);
+  }
 
+  Distributions.update(distributionId, modifier);
+  return Distributions.findOne(distributionId);
 };
 
+
+// ------------------------------------------------------------------------------------------- //
+// -------------------------------------- Regions -------------------------------------- //
+// ------------------------------------------------------------------------------------------- //
+
+/**
+ * @summary Insert a region in the database (note: optional region properties not listed here)
+ * @param {Object} region - the region being inserted
+ * @param {string} region.userId - the id of the user the region belongs to
+ * @param {string} region.title - the region's title
+ */
+Regions.methods.new = function (region) {
+  region._id = Regions.insert(region);
+  console.log('region: ', region)
+  return region;
+};
+
+/**
+ * @summary Edit a region in the database
+ * @param {string} regionId – the ID of the region being edited
+ * @param {Object} modifier – the modifier object
+ * @param {Object} region - the current region object
+ */
+Regions.methods.edit = function (regionId, modifier, region) {
+  if (typeof region === 'undefined') {
+    region = Regionss.findOne(regionId);
+  }
+
+  Regions.update(regionId, modifier);
+  return Regions.findOne(regionId);
+};
+
+
+// ------------------------------------------------------------------------------------------- //
+// -------------------------------------- ServerPlans -------------------------------------- //
+// ------------------------------------------------------------------------------------------- //
+
+/**
+ * @summary Insert a serverplan in the database (note: optional serverplan properties not listed here)
+ * @param {Object} serverplan - the serverplan being inserted
+ * @param {string} serverplan.userId - the id of the user the serverplan belongs to
+ * @param {string} serverplan.title - the serverplan's title
+ */
+ServerPlans.methods.new = function (serverplan) {
+  serverplan._id = ServerPlans.insert(serverplan);
+  console.log('serverplan: ', serverplan)
+  return serverplan;
+};
+
+/**
+ * @summary Edit a serverplan in the database
+ * @param {string} serverplanId – the ID of the serverplan being edited
+ * @param {Object} modifier – the modifier object
+ * @param {Object} serverplan - the current serverplan object
+ */
+ServerPlans.methods.edit = function (serverplanId, modifier, serverplan) {
+  if (typeof serverplan === 'undefined') {
+    serverplan = ServerPlanss.findOne(serverplanId);
+  }
+
+  ServerPlans.update(serverplanId, modifier);
+  return ServerPlans.findOne(serverplanId);
+};
+
+
+
+// ------------------------------------------------------------------------------------------- //
+// ------------------------------------- Meteor Methods -------------------------------------- //
+// ------------------------------------------------------------------------------------------- //
 
 Meteor.methods({
+
+  // ------------------------------------------------------------------------------------------- //
+  // ---------------------------------------- Fetch API ---------------------------------------- //
+  // ------------------------------------------------------------------------------------------- //
 
   /**
    * @summary Meteor method for fetching data from API call
@@ -90,47 +177,133 @@ Meteor.methods({
    */
   'instances.fetch'(instanceUrl) {
     check(instanceUrl, String);
+    this.unblock();
     return InstancesAPI.methods.fetch(instanceUrl);
   },
 
 
+  // ------------------------------------------------------------------------------------------- //
+  // -------------------------------------- Distributions -------------------------------------- //
+  // ------------------------------------------------------------------------------------------- //
+
   /**
-   * @summary Meteor method for submitting a instance from the client
-   * NOTE: the current user and the instance author user might sometimes be two different users!
+   * @summary Meteor method for submitting a distribution from the client
+   * NOTE: the current user and the distribution author user might sometimes be two different users!
    * @memberof Instances
    * @isMethod true
-   * @param {Object} instance - the instance being inserted
+   * @param {Object} distribution - the distribution being inserted
    */
-  'instances.new'(instance, collectionName) {
-
-    // check(instance, {
-    //   title: String,
-    //   url: String
-    // });
-    
-    return InstancesAPI.methods.new(instance, collectionName);
+  'distributions.new'(distribution) {
+    // check(modifier, Match.OneOf({$set: Object}, {$unset: Object}, {$set: Object, $unset: Object}));
+    return Distributions.methods.new(distribution);
   },
 
   /**
-   * @summary Meteor method for editing a instance from the client
+   * @summary Meteor method for editing a distribution from the client
    * @memberof Instances
    * @isMethod true
-   * @param {Object} instanceId - the id of the instance being updated
+   * @param {Object} distributionId - the id of the distribution being updated
    * @param {Object} modifier - the update modifier
    */
-  'instances.edit'(instanceId, modifier) {
-    check(instanceId, String);
-    console.log('instances.edit: ', instanceId, ' ==== ', modifier);
+  'distributions.edit'(distributionId, modifier) {
+    check(distributionId, String);
+
+    const distribution = Distributions.findOne(distributionId);
+    return Distributions.methods.edit(distributionId, modifier, distribution);
   },
 
  /**
-   * @summary Meteor method for deleting a instance
+   * @summary Meteor method for deleting a distribution
    * @memberof Instances
    * @isMethod true
-   * @param {String} instanceId - the id of the instance
+   * @param {String} distributionId - the id of the distribution
    */
-  'instances.remove'(instanceId) {
-    check(instanceId, String);
-    console.log('instances.remove: ', instanceId);
+  'distributions.remove'(distributionId) {
+    check(distributionId, String);
+    console.log('distributions.remove: ', distributionId);
+  },
+
+
+  // ------------------------------------------------------------------------------------------- //
+  // -------------------------------------- Regions -------------------------------------- //
+  // ------------------------------------------------------------------------------------------- //
+
+  /**
+   * @summary Meteor method for submitting a region from the client
+   * NOTE: the current user and the region author user might sometimes be two different users!
+   * @memberof Instances
+   * @isMethod true
+   * @param {Object} region - the region being inserted
+   */
+  'regions.new'(region) {
+    // check(modifier, Match.OneOf({$set: Object}, {$unset: Object}, {$set: Object, $unset: Object}));
+    return Regions.methods.new(region);
+  },
+
+  /**
+   * @summary Meteor method for editing a region from the client
+   * @memberof Instances
+   * @isMethod true
+   * @param {Object} regionId - the id of the region being updated
+   * @param {Object} modifier - the update modifier
+   */
+  'regions.edit'(regionId, modifier) {
+    check(regionId, String);
+
+    const region = Regions.findOne(regionId);
+    return Regions.methods.edit(regionId, modifier, region);
+  },
+
+ /**
+   * @summary Meteor method for deleting a region
+   * @memberof Instances
+   * @isMethod true
+   * @param {String} regionId - the id of the region
+   */
+  'regions.remove'(regionId) {
+    check(regionId, String);
+    console.log('regions.remove: ', regionId);
+  },
+
+
+  // ------------------------------------------------------------------------------------------- //
+  // -------------------------------------- ServerPlans -------------------------------------- //
+  // ------------------------------------------------------------------------------------------- //
+
+  /**
+   * @summary Meteor method for submitting a serverplan from the client
+   * NOTE: the current user and the serverplan author user might sometimes be two different users!
+   * @memberof Instances
+   * @isMethod true
+   * @param {Object} serverplan - the serverplan being inserted
+   */
+  'serverplans.new'(serverplan) {
+    // check(modifier, Match.OneOf({$set: Object}, {$unset: Object}, {$set: Object, $unset: Object}));
+    return ServerPlans.methods.new(serverplan);
+  },
+
+  /**
+   * @summary Meteor method for editing a serverplan from the client
+   * @memberof Instances
+   * @isMethod true
+   * @param {Object} serverplanId - the id of the serverplan being updated
+   * @param {Object} modifier - the update modifier
+   */
+  'serverplans.edit'(serverplanId, modifier) {
+    check(serverplanId, String);
+
+    const serverplan = ServerPlans.findOne(serverplanId);
+    return ServerPlans.methods.edit(serverplanId, modifier, serverplan);
+  },
+
+ /**
+   * @summary Meteor method for deleting a serverplan
+   * @memberof Instances
+   * @isMethod true
+   * @param {String} serverplanId - the id of the serverplan
+   */
+  'serverplans.remove'(serverplanId) {
+    check(serverplanId, String);
+    console.log('serverplans.remove: ', serverplanId);
   },
 })

@@ -126,6 +126,10 @@
   &:hover {
     transform: translate3d(0,-8px,0);
     z-index: 2;
+
+    ~ .radio-dropdown {
+      transform: translate3d(0,-8px,0);
+    }
   }
 }
 
@@ -211,5 +215,15 @@
 
   img {
     width: 100%;
+    @include round-corner(5px);
+  }
+}
+
+.admin-select-card-image {
+  @include margin(8px, right);
+  @include size(30px, 30px); 
+
+  img {
+    @include round-corner(3px);
   }
 }

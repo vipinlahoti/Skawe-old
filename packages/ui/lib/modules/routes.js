@@ -52,8 +52,7 @@ Skawe.routes.add([
   {name: 'admin.distributions',   path: '/admin/distributions',   component: Skawe.components.AdminDistributions,  layoutName: 'AdminLayout'},
   {name: 'admin.regions',         path: '/admin/regions',         component: Skawe.components.AdminRegions,        layoutName: 'AdminLayout'},
   {name: 'admin.server-plans',    path: '/admin/server-plans',    component: Skawe.components.AdminServerPlans,    layoutName: 'AdminLayout'},
-  {name: 'admin.click-apps',      path: '/admin/click-apps',      component: Skawe.components.AdminServerPlans,    layoutName: 'AdminLayout'},
-  {name: 'admin.addons',          path: '/admin/addons',          component: Skawe.components.AdminOneClickApps,   layoutName: 'AdminLayout'},
+  {name: 'admin.click-apps',      path: '/admin/click-apps',      component: Skawe.components.AdminOneClickApps,    layoutName: 'AdminLayout'},
 
 
 ]);

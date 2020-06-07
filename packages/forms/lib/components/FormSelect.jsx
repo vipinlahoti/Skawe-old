@@ -7,7 +7,7 @@ const FormSelect = ({label, name, value, help, options}) =>
     <Form.Label>{label}</Form.Label>
     <Form.Control as="select">
       {options.map((item, index) =>
-        <option key={index}>{item}</option>
+        <option key={index} value={item.value}>{item.label}</option>
       )}
     </Form.Control>
     <Form.Text className="text-muted">

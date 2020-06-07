@@ -8,9 +8,10 @@ const Flash = ({message}) => {
   let type = message.type;
   type = type === 'error' ? 'danger' : type; // if type is "error", use "danger" instead
 
+  console.log('message', message)
   return (
     <Alert className="flash-message" variant={type}>
-      {message.content}
+      {message.content.message}
     </Alert>
   )
 }

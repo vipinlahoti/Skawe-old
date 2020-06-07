@@ -252,6 +252,23 @@ a {
   display: none;
 }
 
+.disable-block {
+  opacity: .45;
+  position: relative;
+  // border: 3px solid $red;
+
+  &:after {
+    content: '';
+    background: rgba(0, 0, 0, 0.05);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    z-index: 99;
+  }
+}
+
 .text-left {
   @include text-align(left);
 }

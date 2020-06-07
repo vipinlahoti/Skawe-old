@@ -7,9 +7,7 @@ class FormComponent extends Component {
     const name = e.target.name;
     const value = e.target.value;
 
-    console.log('name: ', name, 'this.props.name: ', this.props.name)
     if (name === this.props.name) {
-      console.log('## updateCurrentValue:## ', this.props, name, value)
       this.props.updateCurrentValue(this.props.name, value);
     }
   }
