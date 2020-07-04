@@ -34,15 +34,9 @@
   border-bottom: 1px solid $gray-200;
 }
 
-.badge {
-  @include font-size(12px);
-  @include padding(0px 8px);
-  background: rgba($primary, 0.2);
-}
-
 .price-summary {
-  @include padding(32px, left);
-  @include width(300px, max);
+  @include padding(16px, left);
+  @include width(310px, max);
   position: sticky;
   top: 0;
 
@@ -204,63 +198,185 @@ footer,
       }
     }
   }
+
+  .active.list-group-item {
+    border: 3px solid $primary;
+    position: relative;
+
+    &:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 25px 25px 0;
+      border-color: transparent $primary transparent transparent;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
 }
 
 .json-card {
   @include width(250px, min);
 }
 
-.d-collapse {
-  .collapsable-header {
-    width: 100%;
-  }
-}
-
-.radio-dropdown {
-  display: none;
-
-  .form-label {
-    cursor: pointer;
-    display: block;
-
-    &:hover {
-      color: $primary;
-    }
-  }
-
-  p {
-    @include margin(8px, bottom);
-    font-size: 90%;
-  }
-}
-
-.d-expand {
-  .radio-dropdown {
-    @include height(350px, max);
-    @include padding(8px 16px);
-    display: block;
-    position: absolute;
-    background: $white;
-    // border: 3px solid $primary;
-    width: 100%;
-    border-top: 0;
-    z-index: 999;
-    left: 0;
-    top: 100%;
-    box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.095);
-    transition: transform .3s ease;
-    overflow: hidden;
-    overflow-y: scroll;
-  }
-}
-
 .admin-selectbox {
   .list-group-item {
-    @include height(55px, min);
+    @include height(65px, min);
+    @include padding(8px);
+    @include margin(0);
+  }
+}
+
+.admin-selectbox.form-label {
+  .list-group-item {
+    min-height: auto;
   }
 }
 
 .admin-select {
+  align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+.password-strength-meter {
+  text-align: left;
+}
+
+.password-strength-meter-progress {
+  @include height(10px);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+}
+
+.password-strength-meter-progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 3px;
+}
+
+.password-strength-meter-label {
+  font-size: 14px;
+}
+
+.password-strength-meter-progress::-webkit-progress-value {
+  border-radius: 2px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.strength-Weak::-webkit-progress-value {
+  background-color: $danger;
+}
+.strength-Fair::-webkit-progress-value {
+  background-color: $orange
+}
+.strength-Good::-webkit-progress-value {
+  background-color: $warning;
+}
+.strength-Strong::-webkit-progress-value {
+  background-color: $primary;
+}
+
+.cloud__card {
+  .list-group-item {
+    flex-direction: column;
+    display: block;
+  }
+}
+
+
+.dark-mode {
+  background: $dark;
+  color: $gray-500;
+
+  .navbar-sidebar {
+    background: url('/images/triangles-background.png') $dark;
+
+    .nav-link {
+      color: $gray-500;      
+      
+      &.active {
+        background: rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  .navbar-admin,
+  .section-dashboard,
+  .dashboard-footer,
+  .bg-light,
+  .list-group-item,
+  .table,
+  .table tbody tr:nth-of-type(odd),
+  .modal-body,
+  .modal-header {
+    background: $dark;
+  }
+
+  .bg-dark-light {
+    background-color: $gray-800;
+  }
+
+  .list-group-item {
+    background: $gray-800;
+    color: $gray-500;
+  }
+
+  .table td,
+  .table th {
+    border-top: 1px solid $gray-800;
+  }
+
+  .table th {
+    border-bottom: 2px solid $gray-800;
+  }
+
+  .table,
+  .table a,
+  .admin-card-description,
+  .media .media__body-description,
+  .btn.btn-black-link,
+  .close,
+  .price-summary p {
+    color: $gray-500;
+  }
+
+  .nav.nav-pills {
+    border-bottom: 1px solid $gray-800;
+
+    .nav-link {
+      color: $gray-400;
+    }
+
+    .nav-link.active {
+      color: $gray-400;
+    }
+  }
+
+  .form-control {
+    background: $gray-800;
+    border-color: $gray-800;
+    color: $gray-500;
+  }
+
+  .media .media__body,
+  .modal-header,
+  .border-bottom {
+    border-color: $gray-800;
+  }
+
+  .media .media__body.media__body--staff {
+    border-left-color: $primary;
+  }
+
+  .btn.btn-black-fill {
+    background: $gray-800;
+    color: $gray-500;
+  }
+
+  .progress {
+    background: $gray-700;    
+  }
 }

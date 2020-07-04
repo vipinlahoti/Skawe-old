@@ -1,5 +1,5 @@
 import Skawe from 'meteor/skawe:lib';
-import { Distributions, Regions, ServerPlans } from 'meteor/skawe:instances';
+import { CloudInstances, Distributions, Regions, ServerPlans } from 'meteor/skawe:instances';
 import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Container, Row, Col, Tab, Nav } from 'react-bootstrap';
@@ -13,10 +13,13 @@ class CreateCloudInstancePage extends Component {
     selectServerPlans: [],
     selectAddonPrices: [],
     selectAddonPlans: [],
+    selectPasswordStrength: '',
     addonPlans: [
         {
           id: 'enable-backup',
           label: 'Enable Backup',
+          autoLabel: 'Auto Backup Enabled',
+          autoEnable: this.props.currentUser.autoBackup,
           priceMo: '',
           priceHr: '',
           description: 'Three backup slots are executed and rotated automatically: a daily backup, a 2-7 day old backup, and an 8-14 day old backup. Plans are priced according to the Linode plan selected above.'
@@ -44,6 +47,7 @@ class CreateCloudInstancePage extends Component {
   }
 
   selectedPlans = (setServerPlans) => {
+    console.log('setServerPlans: ', setServerPlans)
     this.setState({
       selectAddonPrices: setServerPlans,
       selectServerPlans: setServerPlans
@@ -79,20 +83,28 @@ class CreateCloudInstancePage extends Component {
     });
   }
 
+  passwordStrength = getStrength => {
+    this.setState({
+      selectPasswordStrength: getStrength
+    });
+  }
+
   render() {
     const { 
       selectDistribution,
       selectRegion,
       selectLabel,
       selectRootPassword,
+      selectPasswordStrength,
       selectServerPlans,
       addonPlans,
       selectAddonPrices,
       selectAddonPlans
     } = this.state;
 
-    const rootPasswordTextWrapper = 
-      <ul><li>Be at least 6 characters</li><li>Contain at least two of the following character classes: uppercase letters, lowercase letters, numbers, and punctuation.</li></ul>
+    const userId = this.props.currentUser._id;
+    const userAutoBackup = this.props.currentUser.autoBackup;
+    const cloudInstancesList = this.props.cloudInstancesList.length;
 
     return (
       <React.Fragment>
@@ -117,32 +129,49 @@ class CreateCloudInstancePage extends Component {
 
                 <Tab.Content className="pb-0">
                   <Tab.Pane eventKey="first">
-                    <Skawe.components.DistributionSelect selectedDistribution={this.selectedDistribution} />
+                    <Skawe.components.DistributionSelect
+                      title="Choose a Distribution"
+                      placeholder="-- Select a Distribution --"
+                      selectedDistribution={this.selectedDistribution}
+                    />
                   </Tab.Pane>
                   <Tab.Pane eventKey="second">
-                    One Click Apps
+                    <Skawe.components.DistributionSelect
+                      title="Choose an App to install"
+                      placeholder="-- Select an App --"
+                      selectedDistribution={this.selectedDistribution}
+                    />
                   </Tab.Pane>
                 </Tab.Content>
               </Tab.Container>
 
               <Skawe.components.RegionSelect
+                title="Choose a Region"
+                placeholder="-- Select a Region --"
                 showSpeedTest={true}
                 selectedRegion={this.selectedRegion}
               />
-              <Skawe.components.InstancePlans selectedPlans={this.selectedPlans} />
-              <Skawe.components.InstanceLabel
+              <Skawe.components.InstancePlans
+                title="Choose a Plan"
+                selectedPlans={this.selectedPlans}
+              />
+              {/*<Skawe.components.InstanceLabel
                 column={6}
                 title="Server / Instance Label"
                 placeholder="cloud-instance"
                 description="Add a label to your Instance, ex: 'your-server-name'"
                 selectedLabel={this.selectedLabel}
+              />*/}
+              <Skawe.components.RootPassword
+                selectedRootPassword={this.selectedRootPassword}
+                passwordStrength={this.passwordStrength}
               />
-              <Skawe.components.RootPassword selectedRootPassword={this.selectedRootPassword} />
               {/*<Skawe.components.SSHKeys />*/}
               <Skawe.components.AdditionalFeatures
                 selectedAddonPrices={selectAddonPrices}
                 addonPlans={addonPlans}
                 selectedAddonPlans={this.selectedAddonPlans}
+                userAutoBackup={userAutoBackup}
               />
             </Col>
 
@@ -153,7 +182,10 @@ class CreateCloudInstancePage extends Component {
                 serverPlans={selectServerPlans}
                 serverLabel={selectLabel}
                 rootPassword={selectRootPassword}
+                passwordStrength={selectPasswordStrength}
                 addOnsPlans={selectAddonPlans}
+                userId={userId}
+                cloudInstanceCount={cloudInstancesList}
               />
             </Col>
           </Row>
@@ -168,12 +200,15 @@ const CreateCloudInstancePageContainer = withTracker(() => {
   Meteor.subscribe('distributions.list');
   Meteor.subscribe('regions.list');
   Meteor.subscribe('serverplans.list');
+  Meteor.subscribe('cloudinstances.list');
 
   return {
     distributionsList: Distributions.find().fetch(),
     regionsList: Regions.find().fetch(),
     serverPlansList: ServerPlans.find().fetch(),
+    cloudInstancesList: CloudInstances.find().fetch(),
   };
 })(CreateCloudInstancePage);
 
-Skawe.registerComponent('CreateCloudInstancePage', CreateCloudInstancePageContainer);
+const CreateCloudInstancePageUserContainer = Skawe.withAccount(CreateCloudInstancePageContainer);
+Skawe.registerComponent('CreateCloudInstancePage', CreateCloudInstancePageUserContainer);

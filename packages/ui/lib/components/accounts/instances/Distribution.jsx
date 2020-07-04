@@ -2,94 +2,53 @@ import Skawe from 'meteor/skawe:lib';
 import { Distributions } from 'meteor/skawe:instances';
 import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
-import { Row, Col, ListGroup, Form } from 'react-bootstrap';
+import { ListGroup, Form } from 'react-bootstrap';
 import _groupBy from 'lodash/groupBy';
 
 class Distribution extends Component {
-  state = {
-    checkedItems: new Map(),
-    apiDataList: this.props.apiData,
-    toggleVersions: false
-  }
 
   handleChange = async e => {
     const id = e.target.id;
     const splitId = id.split(',');
-    // this.setState({ toggleVersions: false })
     this.props.selectedDistribution(splitId);
-  }
-
-  toggleVersions = () => {
-    this.setState({ toggleVersions: true })
+    this.props.onHide(true)
   }
 
   render() {
-    const { dataList } = this.props;
+    const { dataList, title, markSelectedDistro } = this.props;
     const setDistributionList = _groupBy(dataList, 'category');
-    const expandVersions = this.state.toggleVersions ? 'd-expand' : 'd-collapse';
-    console.log(setDistributionList)
 
     return (
-      <div className="section-distributions mb-1 bg-light">
-        <Row>
-          {Object.entries(setDistributionList).map(([key, value], index) => 
-            <Col md={4} key={index}>
-              <ListGroup>
-                {value.length > 1 ?
-                <div className="admin-checkbox">
-                  <ListGroup.Item className={`p-1 mb-0 ${expandVersions}`} onClick={this.toggleVersions}>
-                    <div className="d-flex"> 
-                      <div className="admin-card-image">
-                        <img src={value[0]['image']} alt={key} />
-                      </div>
-                      <div className="admin-card-description">
-                        <h6 className="title-6 mb-0">{key}</h6>
-                        {value.length ? <small>Select Version</small> : '' }
-                      </div>
-                    </div>
-                    <div className="radio-dropdown">
-                      {value.map((version, index) => 
-                        <Form.Label key={index}>
-                          <input 
-                            type="radio"
-                            name="distributions"
-                            id={`${version['distId']},${version['category']},${version['label']}`}
-                            onChange={this.handleChange}
-                          />
-                          <p>{version.label}</p>
-                        </Form.Label>
-                      )}
-                    </div>
-                  </ListGroup.Item>
-                </div>
-                : 
-                <Form.Label className="admin-checkbox">
-                {value.map((version, index) => 
-                  <React.Fragment key={index}>
+      <div className="select-list">
+        {Object.entries(setDistributionList).map(([key, value], index) => 
+          <React.Fragment key={index}>
+            <div className="mb-2">
+              <h6 className="title-6">{key}</h6>
+              {value.map((distro, index) => 
+                <ListGroup key={index}>
+                  <Form.Label className="admin-checkbox admin-selectbox">
                     <input 
                       type="radio"
                       name="distributions"
-                      id={`${version['distId']},${version['category']},${version['label']}`}
+                      id={`${distro['distId']},${distro['category']},${distro['label']},${distro['image']}`}
                       onChange={this.handleChange}
                     />
-                    <ListGroup.Item className="p-1 mb-0">
-                      <div className="admin-card-image">
-                        <img src={version['image']} alt={key} />
-                      </div>
+                    <ListGroup.Item className={markSelectedDistro === distro.label ? 'active' : ''}>
                       <div className="admin-card-description">
-                        <h6 className="title-6 mb-0">{key}</h6>
-                        <small>{version.label}</small>
+                        <div className="d-flex middle-xs">
+                          <div className="admin-card-image admin-select-card-image d-flex middle-xs">
+                            <img src={distro.image} alt={distro.label} />
+                          </div>
+                          <p className="mb-0">{distro.label}</p>
+                        </div>
                       </div>
                     </ListGroup.Item>
-                  </React.Fragment>
-                  )}
-                </Form.Label>
-              }
-              </ListGroup>
-            </Col>
-            
-          )}
-        </Row>
+                  </Form.Label>
+                </ListGroup>
+              )}
+            </div>
+          </React.Fragment>
+        )}
       </div>
     )
   }
@@ -105,28 +64,3 @@ const DistributionContainer = withTracker(() => {
 
 Skawe.registerComponent('Distribution', DistributionContainer);
 
-
-
-
-// {dataList.map((distro, index) => 
-//   <Col md={4} key={index}>
-//     <ListGroup>
-//       <Form.Label className="admin-checkbox">
-//         <input 
-//           type="radio"
-//           id={`${distro['id']},${distro['vendor']},${distro['label']}`}
-//           name="distributions"
-//           onChange={this.handleChange}
-//         />
-//         <ListGroup.Item className="p-1">
-//           <div className="admin-card-image">
-//             <img src={distro.image} alt={distro.label} />
-//           </div>
-//           <div className="admin-card-description">
-//             <h6 className="title-6 mb-0">{distro.label}</h6>
-//           </div>
-//         </ListGroup.Item>
-//       </Form.Label>
-//     </ListGroup>
-//   </Col>
-// )}

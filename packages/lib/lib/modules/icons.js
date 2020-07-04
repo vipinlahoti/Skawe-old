@@ -38,4 +38,14 @@ Skawe.utils.icons = {
   add_alert: 'add_alert',
   keyboard_arrow_up: 'keyboard_arrow_up',
   keyboard_arrow_down: 'keyboard_arrow_down',
+  autorenew: 'autorenew',
+  power_settings_new: 'power_settings_new',
+  add_circle_outline: 'add_circle_outline',
+  content_copy: 'content_copy',
+  credit_card: 'credit_card',
+  edit: 'edit',
+  cloud_download: 'cloud_download',
+  delete_forever: 'delete_forever',
+  more_horiz: 'more_horiz',
+  
 };

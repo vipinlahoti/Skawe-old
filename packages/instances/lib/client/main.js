@@ -8,6 +8,7 @@ import {
   Regions,
   ServerPlans,
   ServerAddOns,
+  CloudInstances
 } from '../modules/index.js'
 
 export {
@@ -16,4 +17,5 @@ export {
   Regions,
   ServerPlans,
   ServerAddOns,
+  CloudInstances
 };

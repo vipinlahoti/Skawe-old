@@ -1,5 +1,6 @@
 import Skawe from './config.js';
 
+import './instances.js';
 import './schema.js';
 import './settings.js';
 import './utils.js';

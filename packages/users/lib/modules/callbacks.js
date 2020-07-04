@@ -12,7 +12,13 @@ function setupUser (user, options) {
     profile: options.profile || {},
     karma: 0,
     isInvited: false,
-    invitedCount: 0
+    invitedCount: 0,
+    cloudInstances: [],
+    backups: [],
+    blockStorages: [],
+    domains: [],
+    help: 0,
+    theme: 'light-mode'
   };
   user = _.extend(user, userProperties);
 
@@ -52,3 +58,13 @@ function setupUser (user, options) {
   return user;
 }
 Skawe.callbacks.add("users.new.sync", setupUser);
+
+/**
+ * @summary Increment the user's cloudInstances count
+ */
+function CloudInstancesNewIncrementCloudInstanceCount (cloudInstances) {
+  const userId = cloudInstances.userId;
+  console.log('cloudInstances.new.async: ', cloudInstances)
+  Users.update({_id: userId}, {'cloudInstances': cloudInstances});
+}
+Skawe.callbacks.add('cloudInstances.new.async', CloudInstancesNewIncrementCloudInstanceCount);

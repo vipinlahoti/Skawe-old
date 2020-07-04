@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class ModalTrigger extends PureComponent {
   state = {
-    modalIsOpen: false,
+    modalIsOpen: this.props.modalIsOpen !== undefined ? this.props.modalIsOpen : false,
   }
 
   clickHandler = (e) => {
@@ -18,11 +18,13 @@ class ModalTrigger extends PureComponent {
   openModal = () => {
     this.props.openCallback && this.props.openCallback();
     this.setState({ modalIsOpen: true });
+    if (this.props.showModal) this.props.showModal(true);
   }
 
   closeModal = () => {
     this.props.closeCallback && this.props.closeCallback();
     this.setState({ modalIsOpen: false });
+    if (this.props.showModal) this.props.showModal(false);
   }
 
   render() {
@@ -37,6 +39,7 @@ class ModalTrigger extends PureComponent {
       modalProps,
       header,
       footer,
+      modalIsOpen
     } = this.props;
 
     let triggerComponent = trigger || component;
@@ -47,7 +50,13 @@ class ModalTrigger extends PureComponent {
         {label}
       </a>
     );
-    const childrenComponent = React.cloneElement(children, { closeModal: this.closeModal });
+
+    const modalOpen = 
+        modalIsOpen !== undefined
+      ? modalIsOpen
+      : this.state.modalIsOpen
+
+    const childrenComponent = React.cloneElement(children);
     const headerComponent = header && React.cloneElement(header, { closeModal: this.closeModal });
     const footerComponent = footer && React.cloneElement(footer, { closeModal: this.closeModal });
 
@@ -56,7 +65,7 @@ class ModalTrigger extends PureComponent {
         {triggerComponent}
         <Skawe.components.Modal
           className={className}
-          show={this.state.modalIsOpen}
+          show={modalOpen}
           onHide={this.closeModal}
           dialogClassName={dialogClassName}
           title={title}

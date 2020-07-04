@@ -122,6 +122,30 @@ a {
       left: 0;
     }
   }
+
+  &.small-list {
+    @include margin(16px, top);
+    @include margin(16px, bottom);
+
+    li {
+      @include font-size(14px);
+      @include margin(8px, bottom);
+
+      &:before {
+        top: 10px;
+      }
+    }
+  }
+
+  &.count-list {
+    column-count: 2;
+  }
+
+  .list-label {
+    @include margin(16px, right);
+    display: inline-block;
+    font-weight: 600;
+  }
 }
 
 .list-detail {
@@ -181,7 +205,8 @@ a {
 
 
 .table {
-  @include margin(32px, bottom);
+  // @include margin(32px, bottom);
+  background: $white;
   border-collapse: collapse;
   color: $gray-700;
   width: 100%;
@@ -189,18 +214,26 @@ a {
   td,
   th {
     @include padding(8px);
-    border-top: 1px solid $gray-300;
-    vertical-align: top;
+    border-top: 1px solid $gray-200;
+    vertical-align: center;
+  }
+
+  td {
+    font-size: 90%;
   }
 
   th {
-    border-bottom: 2px solid $gray-400;
+    border-bottom: 2px solid $gray-300;
     text-align: inherit;
     vertical-align: bottom;
   }
 
   tbody tr:nth-of-type(odd) {
-    background-color: rgba(0,0,0,.05);
+    background-color: $light;
+  }
+
+  a {
+    color: $gray-700;
   }
 
   .btn {
@@ -298,30 +331,31 @@ a {
 }
 
 .bg-primary {
-  background-color: $primary;
+  background-color: $primary !important;
 }
 
 .bg-secondary {
-  background-color: $secondary;
+  background-color: $secondary !important;
 }
 
 .bg-success {
-  background-color: $success;
+  background-color: $success !important;
 }
 
 .bg-info {
-  background-color: $info;
+  background-color: $info !important;
 }
 
 .bg-warning {
-  background-color: $warning;
+  background-color: $warning !important;
 }
 
 .bg-danger {
-  background-color: $danger;
+  background-color: $danger !important;
 }
 
-.bg-light {
+.bg-light,
+.bg-dark-light {
   background-color: $light;
 }
 
@@ -428,4 +462,114 @@ a {
 
 .d-flex {
   display: flex !important;
+}
+
+.block-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.breadcrumb__wrapper {
+  .breadcrumb-divider {
+    @include margin(8px, left);
+    @include margin(8px, right);
+    color: $gray-500;
+  }
+}
+
+.badge {
+  @include margin(8px, left);
+  @include padding(2px 8px);
+  @include font-size(12px);
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  color: $white;
+  background: $gray-600;
+
+  &.badge-primary {
+    background: $primary;
+  }
+
+  &.badge-blue {
+    background: $blue;
+  }
+}
+
+.thread__wrapper {
+  @include margin(16px 0px);
+}
+
+.media {
+  @include margin(32px, bottom);
+  display: flex;
+
+  .media__body {
+    @include padding(16px);
+    border: 1px solid $gray-300;
+    border-left: 5px solid $secondary;
+    box-shadow: 0 1px 3px rgba(50, 50, 93, 0.12), 0 1px 0 rgba(0, 0, 0, 0.02);
+
+    &.media__body--staff {
+      border-left: 5px solid $primary;
+    }
+  }
+
+  .media__body-heading {
+    @include padding(4px 0px);
+  }
+  
+  .media__body-description {
+    @include font-size(15px);
+    color: $gray-700;
+  }
+
+  .media-time {
+    @include font-size(14px);
+  }
+
+  .media__reply {
+    @include margin(55px, left);
+    @include margin(55px, top);
+    width: 100%;
+    
+    textarea {
+      @include height(200px, min);
+      @include margin(16px, bottom);
+      border: 1px solid $gray-300;
+      box-shadow: 0 1px 3px rgba(50, 50, 93, 0.12), 0 1px 0 rgba(0, 0, 0, 0.02);
+      width: 100%
+    }
+  }
+}
+
+.thread__wrapper--chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+
+  .chat__bot {
+    @include padding(8px);
+    @include margin(8px, bottom);
+    border: 1px solid $gray-300;
+    width: 85%;
+  }
+}
+
+.dots {
+  @include font-size(42px);
+  @include margin(-5px, top);
+  @include margin(5px, right);
+  @include height(20px);
+  line-height: 0;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-90 {
+  width: 90%;
 }

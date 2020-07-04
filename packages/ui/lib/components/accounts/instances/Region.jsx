@@ -2,61 +2,53 @@ import Skawe from 'meteor/skawe:lib';
 import { Regions } from 'meteor/skawe:instances';
 import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
-import { Row, Col, ListGroup, Form } from 'react-bootstrap';
+import { ListGroup, Form } from 'react-bootstrap';
+import _groupBy from 'lodash/groupBy';
 
 class Region extends Component {
-  state = {
-    checkedItems: new Map(),
-    apiDataList: this.props.apiData
-  }
-
   handleChange = async e => {
     const id = e.target.id;
     const splitId = id.split(',');
     this.props.selectedRegion(splitId);
+    this.props.onHide(true)
   }
 
   render() {
-    const { dataList, showSpeedTest } = this.props;
-
-    console.log('region: ', dataList)
+    const { dataList, title, markSelectedRegion } = this.props;
+    const setDataList = _groupBy(dataList, 'region');
 
     return (
-      <div className="section-distributions mb-1 bg-light">
-        <h6 className="title-6 mb-1">Region</h6>
-        {showSpeedTest ?
-          <Row>
-            <Col>
-              <small className="d-block mb-1">Use our speedtest page to find the best region for your current location.</small>
-            </Col>
-          </Row>
-        : null }
-        <Row>
-          {dataList.map((location, index) => 
-            <Col md={4} key={index}>
-              <ListGroup>
-                <Form.Label className="admin-checkbox">
+     <div className="select-list">
+      {Object.entries(setDataList).map(([key, value], index) => 
+        <React.Fragment key={index}>
+          <div className="mb-2">
+            <h6 className="title-6">{key}</h6>
+            {value.map((region, index) => 
+              <ListGroup key={index}>
+                <Form.Label className="admin-checkbox admin-selectbox">
                   <input 
                     type="radio"
-                    id={`${location['city']},${location['country']},${location['regionId']}`}
-                    name="region"
+                    name="regions"
+                    id={`${region['city']},${region['country']},${region['regionId']},${region['image']}`}
                     onChange={this.handleChange}
                   />
-                  <ListGroup.Item className="p-1">
-                    <div className="admin-card-image d-flex middle-xs">
-                      <img src={location.image} alt={location.city} />
-                    </div>
+                  <ListGroup.Item className={markSelectedRegion === region.city ? 'active' : ''}>
                     <div className="admin-card-description">
-                      <p className="mb-0">{location.country}</p>
-                      <h6 className="title-6 mb-0">{location.city}</h6>
+                      <div className="d-flex middle-xs">
+                        <div className="admin-card-image admin-select-card-image d-flex middle-xs">
+                          <img src={region.image} alt={region.city} />
+                        </div>
+                        <p className="mb-0">{region.city}, {region.country}</p>
+                      </div>
                     </div>
                   </ListGroup.Item>
                 </Form.Label>
               </ListGroup>
-            </Col>
-          )}
-        </Row>
-      </div>
+            )}
+          </div>
+        </React.Fragment>
+      )}
+    </div>
     )
   }
 }

@@ -211,7 +211,7 @@
 
 .admin-card-image {
   @include margin(16px, right);
-  @include size(50px, 50px);
+  @include size(40px, 40px);
 
   img {
     width: 100%;
@@ -226,4 +226,8 @@
   img {
     @include round-corner(3px);
   }
+}
+
+.d-row {
+  flex-direction: row;
 }

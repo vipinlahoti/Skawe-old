@@ -1,49 +1,63 @@
 import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Tab, Nav, Row, Col, Card } from 'react-bootstrap';
 
 const SupportTicket = (props, context) => {
   return (
     <div className="support-tickets">
+      <Skawe.components.SupportTicketHeaders />
+
       <Row>
         <Col>
-          <h5 className="title-5 mb-1">Support Tickets</h5>
-        </Col>
-        <Col>
-          <Skawe.components.ModalTrigger title="Support Ticket" component={
-              <div className="text-right">
-                <Skawe.components.Button variant="primary" size="small">
-                  Open New Ticket
-                </Skawe.components.Button>
-              </div>
-            }>
-            <Skawe.components.NewSupportTicket />
-          </Skawe.components.ModalTrigger>
+          <div className="flex-column nav nav-pills" role="tablist">
+            <div className="nav-item">
+              <Link to={{ pathname: '/accounts/tickets' }} className="nav-link active" role="tab">
+                Open Tickets
+              </Link>
+            </div>
+            <div className="nav-item">
+              <Link to={{ pathname: '/accounts/tickets/closed' }} className="nav-link" role="tab">
+                Closed Tickets
+              </Link>
+            </div>
+          </div>
         </Col>
       </Row>
 
       <Row>
         <Col>
-          <Tab.Container defaultActiveKey="first" className="pt-0">
-            <Nav variant="pills">
-              <Nav.Item>
-                <Nav.Link eventKey="first">Open Tickets</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="second">Closed Tickets</Nav.Link>
-              </Nav.Item>
-            </Nav>
-
-            <Tab.Content>
-              <Tab.Pane eventKey="first">
-                Support Tickets List
-              </Tab.Pane>
-              <Tab.Pane eventKey="second">
-                Support Tickets List
-              </Tab.Pane>
-            </Tab.Content>
-          </Tab.Container>
+          <div className="tab-content mt-2">
+            <div className="instances__list">
+              <table className="table support__open">
+                <thead>
+                  <tr>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Ticket ID</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Updated Date</th>
+                    <th scope="col">Updated By</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <h6 className="title-6 mb-0">
+                        <Link to={{ pathname: '/accounts/tickets/summary' }} className="d-flex middle-xs">
+                          Multiple Instances from API
+                        </Link>
+                      </h6>
+                    </td>
+                    <td>skawe0923728176</td>
+                    <td>2020-06-13 22:03:03</td>
+                    <td>2020-06-13 22:03:03</td>
+                    <td>rlonergan</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </Col>
       </Row>
     </div>

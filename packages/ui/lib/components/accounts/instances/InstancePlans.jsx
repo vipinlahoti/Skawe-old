@@ -17,11 +17,12 @@ class InstancePlans extends Component {
   }
 
   render() {
-    const { dataList } = this.props;
+    const { dataList, title, description, disableActive } = this.props;
 
     return (
       <div className="section-distributions mb-1 bg-light">
-        <h6 className="title-6 mb-1">Choose a Plan</h6>
+        <h6 className="title-6">{title}</h6>
+        { description ? <p className="d-block mt-1">{description}</p> : null }
         <Row>
           {dataList.map((plans, index) => 
             <Col md={4} key={index}>
@@ -35,9 +36,10 @@ class InstancePlans extends Component {
                   `
                 }
                 salePrice={plans.priceMo}
-                formId={`${plans['planId']},${plans['label']},${plans['vcpu']},${plans['disk']},${plans['memory']},${plans['priceMo']},${plans['addonBackupMo']}`}
+                formId={`${plans['planId']},${plans['label']},${plans['vcpu']},${plans['disk']},${plans['memory']},${plans['priceMo']},${plans['addonBackupMo']},${plans['transfer']}`}
                 formName="serverPlans"
                 handleChange={this.handleChange}
+                disableActive={disableActive}
               />
             </Col>
           )}

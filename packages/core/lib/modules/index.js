@@ -6,6 +6,7 @@ import '../components/HeadTags.jsx';
 import '../components/Icon.jsx';
 import '../components/ScrollToTop.jsx';
 import '../components/Loading.jsx';
+import '../components/ComponentLoading.jsx';
 import '../components/Error404.jsx';
 import '../components/Avatar.jsx';
 import '../components/CanDo.jsx';
@@ -28,4 +29,5 @@ import '../components/modal/Modal.jsx';
 
 // Container hooks
 import './container/withAccount.js';
+import './container/withInstance.js';
 

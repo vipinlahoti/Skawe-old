@@ -2,8 +2,9 @@ import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
+import withAccount from '../../modules/container/withAccount';
 
-const BootstrapModal = ({ children, show = false, onHide, title, showCloseButton = true, header, footer, ...rest }) => {
+const BootstrapModal = ({ currentUser, children, show = false, onHide, title, showCloseButton = true, header, footer, ...rest }) => {
   let headerComponent;
   if (header) {
     headerComponent = <Modal.Header>{header}</Modal.Header>;
@@ -13,15 +14,17 @@ const BootstrapModal = ({ children, show = false, onHide, title, showCloseButton
     headerComponent = <Modal.Header closeButton={showCloseButton}></Modal.Header>;
   }
 
-  const footerComponent = footer ? <Modal.Footer>{footer}</Modal.Footer> : null;
-  
+  const footerComponent = footer ? <Modal.Footer>{footer}</Modal.Footer> : null;  
+
   return (
     <Modal show={show} onHide={onHide} {...rest} keyboard={false} backdrop={'static'}>
-      {headerComponent}
-      <Modal.Body>
-        {children}
-      </Modal.Body>
-      {footerComponent}
+      <div className={currentUser.theme}>
+        {headerComponent}
+        <Modal.Body>
+          {children}
+        </Modal.Body>
+        {footerComponent}
+      </div>
     </Modal>
   );
 };
@@ -35,4 +38,5 @@ BootstrapModal.propTypes = {
   footer: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
-Skawe.registerComponent('Modal', BootstrapModal);
+const BootstrapModalContainer = Skawe.withAccount(BootstrapModal);
+Skawe.registerComponent('Modal', BootstrapModalContainer);

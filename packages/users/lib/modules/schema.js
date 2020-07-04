@@ -87,6 +87,104 @@ Users.schema = new SimpleSchema({
     editableBy: canEdit
   },
   /**
+    The user's phone number. Modifiable.
+  */
+  phoneNumber: {
+    type: String,
+    optional: true,
+    publish: true,
+    profile: true,
+    control: 'text',
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
+    The user's Address Line 1. Modifiable.
+  */
+  address: {
+    type: String,
+    optional: true,
+    publish: true,
+    profile: true,
+    control: 'text',
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
+    The user's Address Line 2. Modifiable.
+  */
+  addressLine2: {
+    label: 'Address Line 2',
+    type: String,
+    optional: true,
+    publish: true,
+    profile: true,
+    control: 'text',
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
+    The user's City. Modifiable.
+  */
+  city: {
+    type: String,
+    optional: true,
+    publish: true,
+    profile: true,
+    control: 'text',
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
+    The user's Zip code. Modifiable.
+  */
+  zipCode: {
+    type: String,
+    optional: true,
+    publish: true,
+    profile: true,
+    control: 'text',
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
+    The user's Country. Modifiable.
+  */
+  country: {
+    type: String,
+    optional: true,
+    publish: true,
+    profile: true,
+    control: 'text',
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
+    The user's Company. Modifiable.
+  */
+  company: {
+    type: String,
+    optional: true,
+    publish: true,
+    profile: true,
+    control: 'text',
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
+    The user's Company URL. Modifiable.
+  */
+  companyUrl: {
+    label: 'Company URL',
+    type: String,
+    optional: true,
+    publish: true,
+    profile: true,
+    control: 'text',
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
     The user's email. Modifiable.
   */
   email: {
@@ -122,6 +220,26 @@ Users.schema = new SimpleSchema({
     type: String,
     publish: true,
     optional: true
+  },
+  /**
+    Auto backup for all future instances
+  */
+  autoBackup: {
+    type: Boolean,
+    control: 'checkbox',
+    optional: true,
+    insertableBy: canInsert,
+    editableBy: canEdit
+  },
+  /**
+    Dark mode theme for user dashboard
+  */
+  theme: {
+    type: Boolean,
+    control: 'checkbox',
+    optional: true,
+    insertableBy: canInsert,
+    editableBy: canEdit
   },
   /**
     Groups

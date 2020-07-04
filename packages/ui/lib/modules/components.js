@@ -1,6 +1,7 @@
 // Common
 import '../components/common/Layout.jsx';
 import '../components/common/Logo.jsx';
+import '../components/common/DashboardLogo.jsx';
 import '../components/common/Footer.jsx';
 import '../components/common/Header.jsx';
 import '../components/common/MiniFooter.jsx';
@@ -13,6 +14,7 @@ import '../components/common/TabsContainer.jsx';
 import '../components/common/HeroJumbotron.jsx';
 import '../components/common/Heading.jsx';
 import '../components/common/Announcement.jsx';
+import '../components/common/PasswordStrengthMeter.jsx';
 
 
 
@@ -46,6 +48,7 @@ import '../components/pages/features/ControlPanelPage.jsx';
 
 // Instances
 import '../components/accounts/instances/FirstInstance.jsx';
+import '../components/accounts/instances/FirstInstanceAddon.jsx';
 import '../components/accounts/instances/AdditionalFeatures.jsx';
 import '../components/accounts/instances/InstanceJsonCard.jsx';
 import '../components/accounts/instances/InstanceLabel.jsx';
@@ -53,6 +56,28 @@ import '../components/accounts/instances/InstanceSizeCount.jsx';
 import '../components/accounts/instances/InstancePlans.jsx';
 import '../components/accounts/instances/AddDomain.jsx';
 import '../components/accounts/instances/ImportDomainZone.jsx';
+import '../components/accounts/instances/SettingsInstance.jsx';
+import '../components/accounts/instances/RebuildInstance.jsx';
+import '../components/accounts/instances/ResizeInstance.jsx';
+import '../components/accounts/instances/NetworkingInstance.jsx';
+import '../components/accounts/instances/OverviewInstance.jsx';
+
+import '../components/accounts/instances/AddPrivateIPInstance.jsx';
+import '../components/accounts/instances/AddPublicIPInstance.jsx';
+import '../components/accounts/instances/AddIPv6Instance.jsx';
+
+
+import '../components/accounts/GraphInstance.jsx';
+import '../components/accounts/instances/CPUGraphInstance.jsx';
+import '../components/accounts/instances/DiskIOGraphInstance.jsx';
+import '../components/accounts/instances/IPV4GraphInstance.jsx';
+import '../components/accounts/instances/IPV6GraphInstance.jsx';
+
+import '../components/accounts/instances/OverviewSidebarInstance.jsx';
+import '../components/accounts/instances/DeployedInstance.jsx';
+import '../components/accounts/instances/AddedDomainInstance.jsx';
+
+import '../components/accounts/instances/BackupsInstance.jsx';
 
 import '../components/accounts/instances/Distribution.jsx';
 import '../components/accounts/instances/DistributionSelect.jsx';
@@ -63,15 +88,23 @@ import '../components/accounts/instances/SSHKeys.jsx';
 
 // Users
 import '../components/users/CompleteProfile.jsx';
-import '../components/users/UsersEditForm.jsx';
 import '../components/users/UsersMenu.jsx';
 import '../components/users/UsersName.jsx';
+import '../components/users/UsersAccounts.jsx';
+import '../components/users/UsersHeaders.jsx';
+import '../components/users/UsersBillingInfo.jsx';
+import '../components/users/UsersPasswordChange.jsx';
+import '../components/users/UsersSettings.jsx';
+import '../components/users/UsersMakePayment.jsx';
+import '../components/users/UsersEditPaymentMethod.jsx';
+
 
 // Pricing Summary
 import '../components/accounts/PriceSummary.jsx';
 
 // Admin
 import '../components/admin/AdminLayout.jsx';
+import '../components/admin/AdminLayoutChild.jsx';
 import '../components/admin/AdminHeader.jsx';
 import '../components/admin/AdminFooter.jsx';
 import '../components/admin/AdminSidebar.jsx';
@@ -94,18 +127,28 @@ import '../components/accounts/ListBlockStoragePage';
 import '../components/accounts/ListDnsManagerPage';
 import '../components/accounts/ListLoadBalancerPage';
 
+// Instance Summary
+import '../components/accounts/SummaryHeader';
+import '../components/accounts/CloudInstanceSummaryPage';
+import '../components/accounts/BackupSummary';
+import '../components/accounts/BlockStorageSummary';
+import '../components/accounts/NetworkingSummary';
+import '../components/accounts/ReBuildSummary';
+import '../components/accounts/ResizeSummary';
+import '../components/accounts/SettingsSummary';
+
+
 // Create Instances
 import '../components/accounts/create/CreateCloudInstancePage';
 import '../components/accounts/create/CreateBlockStoragePage';
 import '../components/accounts/create/CreateLoadBalancerPage';
 
 // Support
-import '../components/accounts/support/GetHelpPage.jsx';
-import '../components/accounts/support/ChatBotModal.jsx';
-import '../components/accounts/support/ChatBotThread.jsx';
 import '../components/accounts/support/SupportTicket.jsx';
-import '../components/accounts/support/NewSupportTicket.jsx';
-import '../components/accounts/support/SupportTicketThread.jsx';
+import '../components/accounts/support/SupportTicketNew.jsx';
+import '../components/accounts/support/SupportTicketSummary.jsx';
+import '../components/accounts/support/SupportTicketHeaders.jsx';
+import '../components/accounts/support/SupportTicketClosed.jsx';
 
 // Domain Search
 // import '../components/common/DomainSearch.jsx';

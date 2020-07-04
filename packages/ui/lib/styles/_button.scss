@@ -97,6 +97,22 @@
     }
   }
 
+  &.btn-danger {
+    border-color: $red;
+    color: $red; 
+
+    &:hover {
+      background: $red;
+      color: $white;
+    }
+
+    &-fill {
+      background: $red;
+      border-color: $red;
+      color: $white; 
+    }
+  }
+
   &.btn-small {
     @include padding(4px 20px);
     @include font-size(15px);
@@ -105,6 +121,42 @@
 
     .icon {
       line-height: 25px;
+    }
+  }
+
+  &.btn-primary-link,
+  &.btn-black-link,
+  &.btn-danger-link {
+    @include padding(2px 8px);
+    @include font-size(15px);
+    background: none;
+    border: 0;
+    color: $primary;
+    height: 30px;
+    line-height: 20px;
+    
+    &:hover {
+      color: $primary;
+    }
+
+    .icon {
+      line-height: 20px;
+    }
+  }
+
+  &.btn-black-link {
+    color: $dark;
+
+    &:hover {
+      color: $dark;
+    }
+  }
+
+  &.btn-danger-link {
+    color: $red;
+
+    &:hover {
+      color: $red;
     }
   }
 
@@ -128,14 +180,18 @@
   }
 }
 
-.icon-btn {
-  @include margin(0 16px);
+.btn-icon {
+  @include margin(0 8px);
   @include padding(0);
+  align-items: center;
   border: 0;
+  height: 18px;
+  line-height: 15px;
 
   .icon {
     @include margin(0);
-    @include font-size(32px);
+    @include font-size(18px);
+    line-height: 18px;
   }
 
   .icon-arrow_forward {
@@ -144,5 +200,28 @@
 
   &:hover {
     background: transparent;
+    color: inherit;
+  }
+
+  &.icon-md {
+    .icon {
+      @include margin(0);
+      @include font-size(22px);
+      line-height: 22px;
+    }    
+  }
+}
+
+.icon-blue {
+  color: $copy-blue;
+
+  &:hover {
+    color: $copy-blue;
+  }
+}
+
+.btn-no-arrow {
+  .icon-arrow_forward {
+    display: none;
   }
 }

@@ -23,3 +23,10 @@ Meteor.publish('users.current', function () {
   const user = Users.find({_id: this.userId}, {fields: {'services.password.bcrypt': false}});
   return user || [];
 });
+
+/**
+ * @summary Publish the list user
+ */
+Meteor.publish('users.list', function () {
+  return Users.find();
+});

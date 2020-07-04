@@ -25,6 +25,13 @@ fieldset,
 label {
   @include margin(8px, bottom);
   display: inline-block;
+
+  &:disabled {
+    .list-group-item {
+      cursor: default;
+      opacity: .65;
+    }
+  }
 }
 
 .form-control {
@@ -177,6 +184,31 @@ label {
       background-color: $gray-600;
       border-radius: .5rem;
       transition: transform .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+  }
+}
+
+.theme-selection {
+  display: flex;
+}
+
+.theme-check {
+  .admin-checkbox {
+    @include margin(16px, right);
+  }
+
+  .list-group-item {
+    @include size(180px, 100px);
+    @include font-size(14px);
+
+    .admin-card-description {
+      color: $gray-600;
+      width: 100%;
+    }
+
+    &.dark-mode {
+      background: $dark;
+      color: $white;
     }
   }
 }

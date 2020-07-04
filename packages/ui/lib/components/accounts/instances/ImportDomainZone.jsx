@@ -22,22 +22,3 @@ class ImportDomainZone extends Component {
 }
 
 Skawe.registerComponent('ImportDomainZone', ImportDomainZone);
-
-
-// <Skawe.components.SkaweForms
-//   buttonText="Save"
-//   fields={[
-//     {
-//       id: 'domain',
-//       type: 'text',
-//       label: 'Domain',
-//       required: true
-//     },
-//     {
-//       id: 'remote-nameserver',
-//       type: 'text',
-//       label: 'Remote Nameserver',
-//       required: true
-//     }
-//   ]}
-// />

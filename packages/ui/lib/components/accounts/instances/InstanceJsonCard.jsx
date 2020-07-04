@@ -31,6 +31,9 @@ class InstanceJsonCard extends Component {
                               collection={this.props.collection}
                               buttonText="Add"
                               methodName={this.props.methodName}
+                              successCallback={addItem => {
+                                alert(`${addItem.label} is added`);
+                              }}
                             />
                           </Skawe.components.ModalTrigger>
                         </ListGroup.Item>

@@ -19,3 +19,9 @@ export const ServerAddOns = Skawe.collection({
   collectionName: 'ServerAddOns'
 });
 // Skawe.subscriptions.preload('serverAddOns.list');
+
+
+// Cloud Instances
+export const CloudInstances = Skawe.collection({
+  collectionName: 'CloudInstances'
+});

@@ -1,4 +1,5 @@
 import Skawe from 'meteor/skawe:lib';
+import zxcvbn from 'zxcvbn';
 import React, { Component } from 'react';
 import { Row, Col, Form } from 'react-bootstrap';
 
@@ -7,9 +8,16 @@ class RootPassword extends Component {
     value: ''
   }
 
+  setScore = getScore => {
+    console.log('getScore: ', getScore)
+    this.props.passwordStrength(getScore);
+  }
+
   handleChange = async e => {
     this.setState({value: e.target.value});
+    const setPasswordStrength = zxcvbn(e.target.value);
     this.props.selectedRootPassword(e.target.value);
+    this.props.passwordStrength(setPasswordStrength.score);
   }
 
   render() {
@@ -25,6 +33,10 @@ class RootPassword extends Component {
                 placeholder="Enter a Password"
                 value={this.state.value}
                 onChange={this.handleChange}/>
+              <Skawe.components.PasswordStrengthMeter
+                setScore={this.setScore}
+                password={this.state.value}
+              />
               <Form.Text className="text-muted">
                 Password must:
                 <ul>

@@ -29,7 +29,7 @@ class AdditionalFeatures extends Component {
   }
 
   render() {
-    const { selectedAddonPrices, addonPlans } = this.props;
+    const { selectedAddonPrices, addonPlans, userAutoBackup } = this.props;
 
     return (
       <div className="section-distributions mb-1 bg-light">
@@ -50,14 +50,14 @@ class AdditionalFeatures extends Component {
                       type="checkbox"
                       id={plans.id}
                       name={plans.id}
-                      checked={!!this.state.checkedItems.get(plans['id'])}
+                      checked={plans.autoEnable || !!this.state.checkedItems.get(plans['id'])}
                       disabled={!selectedAddonPrices.length}
                       onChange={this.handleChange}
                     />
                     <div className="check"></div>
                     <div className="title-6 mb-0">
                       {plans.label}
-                      
+                      {plans.autoEnable ? <span className="ml-1 badge">{plans.autoLabel}</span> : null}
                       {plans.id === 'enable-backup' && selectedAddonPrices && selectedAddonPrices.length ?
                         <React.Fragment>
                           <span className="ml-1 badge">₹{selectedAddonPrices[6]}/mo</span>

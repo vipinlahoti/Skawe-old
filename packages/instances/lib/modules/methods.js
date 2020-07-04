@@ -1,23 +1,26 @@
 import Skawe from 'meteor/skawe:lib';
+import base64 from 'base-64';
+// import Razorpay from './checkout.js';
 import {
   Distributions,
   Regions,
   ServerPlans,
   ServerAddOns,
+  CloudInstances,
 } from './collection.js'
 
 
 /**
  * Instances API
  */
-export const InstancesAPI = {}
+export let InstancesAPI = {}
 
 InstancesAPI.baseAPI = 'https://api.linode.com/v4',
 InstancesAPI.baseAPIKey = '4bcc8b11cabc0d431ea67106cacc29f376a637fbf7c0e097c6893b5e2521476f';
 
 InstancesAPI.options = {
   'headers': {
-    'Authorization': `Bearer ${InstancesAPI.baseAPI}`,
+    'Authorization': `Bearer ${InstancesAPI.baseAPIKey}`,
     'Content-Type': 'application/json'
   }
 };
@@ -30,10 +33,11 @@ InstancesAPI.options = {
 //   }
 // };
 
+
 /**
  * Instances Methods
  */
-InstancesAPI.methods = {};
+// InstancesAPI = {};
 Distributions.methods = {};
 Regions.methods = {};
 ServerPlans.methods = {};
@@ -44,23 +48,19 @@ ServerPlans.methods = {};
  * @param {string} instance.userId - the id of the user the instance belongs to
  * @param {string} instance.title - the instance's title
  */
-InstancesAPI.methods.fetch = function (instanceUrl) {
-  try {
-    const result = HTTP.call('GET',`${InstancesAPI.baseAPI}/${instanceUrl}`, InstancesAPI.options);
-    console.log('try: ', result);
+
+InstancesAPI.fetch = function (instanceUrl) {
+  if (Meteor.isServer) {
+    const result = HTTP.call('GET', `${InstancesAPI.baseAPI}/${instanceUrl}`, InstancesAPI.options);
 
     if (result.statusCode === 200){
       return result.data;
     } else {
       throw new Meteor.Error(500, 'Failed to fetch');
     }
-
-  } catch (e) {
-    console.log('catch: ', e)
-    // Got a network error, timeout, or HTTP error in the 400 or 500 range.
-    return false;
   }
 };
+
 
 // ------------------------------------------------------------------------------------------- //
 // -------------------------------------- Distributions -------------------------------------- //
@@ -177,8 +177,14 @@ Meteor.methods({
    */
   'instances.fetch'(instanceUrl) {
     check(instanceUrl, String);
-    this.unblock();
-    return InstancesAPI.methods.fetch(instanceUrl);
+    // this.unblock();
+    return InstancesAPI.fetch(instanceUrl);
+  },
+
+
+  'instances.payment'(paymentData) {
+    // this.unblock();
+    return InstancesAPI.payment(paymentData);
   },
 
 
@@ -306,4 +312,59 @@ Meteor.methods({
     check(serverplanId, String);
     console.log('serverplans.remove: ', serverplanId);
   },
+
+
+// ------------------------------------------------------------------------------------------- //
+// ----------------------------------------- Deploy ------------------------------------------ //
+// ------------------------------------------------------------------------------------------- //
+  
+  /**
+   * @summary Meteor method for deploying a clous instance
+   * @memberof Instances
+   * @isMethod true
+   * @param {Object} instance - the instance being inserted
+   */
+  'cloudInstance.new'(instanceUrl, instance, instanceExtra) {
+    console.log('instance == ', instance, ' == instanceExtra == ', instanceExtra);
+    // if (Meteor.isServer) {
+    //   try {
+    //     HTTP.call('POST', `${InstancesAPI.baseAPI}/${instanceUrl}`, {
+    //       headers: {
+    //         'Authorization': `Bearer ${InstancesAPI.baseAPIKey}`
+    //       },
+    //       data : instance
+    //     }, (error, result) => {
+    //       if (result.statusCode === 200) {
+            
+    //         const insertData = {
+    //           cloudInstanceId: result.data.id,
+    //           type: result.data.type,
+    //           cpu: instanceExtra.cpu,
+    //           image: instanceExtra.image,
+    //           label: result.data.label,
+    //           ram: instanceExtra.ram,
+    //           region: instanceExtra.region,
+    //           storage: instanceExtra.storage,
+    //           status: result.data.status,
+    //           transfer: instanceExtra.transfer,
+    //           backup: instanceExtra.backup,
+    //           userId: Meteor.userId()
+    //         };
+
+    //         insertData._id = CloudInstances.insert(insertData);
+
+    //         // callback to increment counter
+    //         Skawe.callbacks.run('cloudInstances.new.async', insertData);
+    //         return insertData
+    //       } else {
+    //         throw new Meteor.Error(500, error);
+    //       }
+    //     });
+    //   } catch (e) {
+    //     console.log('catch: ', e)
+    //     // Got a network error, timeout, or HTTP error in the 400 or 500 range.
+    //     return false;
+    //   }
+    // }
+  },  
 })

@@ -219,11 +219,15 @@ class SkaweForms extends Component {
 
     const fields = this.getFieldNames();
 
+    console.log('fields: === ', fields)
+
     // complete the data with values from custom components
     const data = {
       ..._.pick(this.getDocument(), ...fields),
       ...this.state.currentValues, 
     };
+
+    console.log('data: ==== ', data)
 
     console.log('this.state.currentValues: ', data);
 

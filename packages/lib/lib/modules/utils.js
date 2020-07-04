@@ -1,5 +1,6 @@
 import Skawe from './config.js';
 import getSlug from 'speakingurl';
+import moment from 'moment';
 
 /**
  * @summary The global namespace for Skawe utils.
@@ -35,6 +36,15 @@ Skawe.utils.camelToSpaces = str => {
  */
 Skawe.utils.underscoreToDash = str => {
   return str.replace('_', '-');
+};
+
+/**
+ * @summary Convert an underscore-space string to dash-separated string
+ * @param {String} str
+ */
+Skawe.utils.underscoreToSpace = str => {
+  str = str.replace('_', ' ');
+  return Skawe.utils.capitalise(str);
 };
 
 /**
@@ -330,6 +340,38 @@ Skawe.utils.getLogoUrl = () => {
     return logoUrl.indexOf('://') > -1 ? logoUrl : prefix + logoUrl;
   }
 };
+
+Skawe.utils.sizeConvertWithLabel = (bytes, decimals = 0) => {
+  if (bytes === 0) return '0 Bytes';
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+Skawe.utils.sizeConvert = (bytes, decimals = 0) => {
+  if (bytes === 0 || bytes < 1024) return '0';
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  console.log(bytes, parseFloat((bytes / Math.pow(k, i)).toFixed(dm)));
+
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
+}
+
+Skawe.utils.timeZoneFormat = (time, now) => {
+  if (now) {
+    return moment(time).fromNow()
+  } else {
+    return moment(time).format('MMMM Do YYYY, HH:MM')
+  }
+}
 
 // for publishing fields
 Skawe.utils.canAccessField = (user, field) => {

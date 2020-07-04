@@ -992,6 +992,7 @@
 @media only screen and (min-width: $screen-xl) {
   .container {
     width: $container-xl;
+    max-width: 1300px;
   }
   .col-xl,
   .col-xl-1,

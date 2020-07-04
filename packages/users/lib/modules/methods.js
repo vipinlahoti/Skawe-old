@@ -28,7 +28,6 @@ Users.edit = (userId, modifier, user) => {
 Meteor.methods({
   'users.edit'(userId, modifier) {
 
-
     // checking might be redundant because SimpleSchema already enforces the schema, but you never know
     // check(modifier, Match.OneOf({$set: Users.simpleSchema()}, {$unset: Object}, {$set: Users.simpleSchema(), $unset: Object}));
     check(modifier, Match.OneOf({$set: Object}, {$unset: Object}, {$set: Object, $unset: Object}));

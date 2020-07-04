@@ -39,22 +39,38 @@ Skawe.callbacks.remove = function (hookName, callbackName) {
  * @param {Any} args - Other arguments will be passed to each successive iteration
  * @returns {Object} Returns the item after it's been through all the callbacks for this hook
  */
-Skawe.callbacks.run = function () {
+// Skawe.callbacks.run = function () {
 
-  // the first argument is the name of the hook
-  const hook = arguments[0];
-  // the second argument is the item on which to iterate
-  const item = arguments[1];
-  // successive arguments are passed to each iteration
-  const args = Array.prototype.slice.call(arguments).slice(2);
+//   // the first argument is the name of the hook
+//   const hook = arguments[0];
+//   // the second argument is the item on which to iterate
+//   const item = arguments[1];
+//   // successive arguments are passed to each iteration
+//   const args = Array.prototype.slice.call(arguments).slice(2);
+
+//   const callbacks = Skawe.callbacks[hook];
+
+//   if (typeof callbacks !== 'undefined' && !!callbacks.length) { // if the hook exists, and contains callbacks to run
+
+//     return callbacks.reduce(function(result, callback) {
+//       const newArguments = [result].concat(args);
+//       return callback.apply(this, newArguments);
+//     }, item);
+
+//   } else { // else, just return the item unchanged
+//     return item;
+//   }
+// };
+
+Skawe.callbacks.run = function (hook, item, constant) {
 
   const callbacks = Skawe.callbacks[hook];
 
   if (typeof callbacks !== 'undefined' && !!callbacks.length) { // if the hook exists, and contains callbacks to run
 
     return callbacks.reduce(function(result, callback) {
-      const newArguments = [result].concat(args);
-      return callback.apply(this, newArguments);
+      // console.log(callback.name);
+      return callback(result, constant);
     }, item);
 
   } else { // else, just return the item unchanged
