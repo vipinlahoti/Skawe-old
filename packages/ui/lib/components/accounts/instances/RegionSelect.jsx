@@ -42,7 +42,7 @@ class RegionSelect extends Component {
           </Row>
         : null }
         <Row>
-          <Col md={6}>
+          <Col md={6} sm={12} xs={4}>
             <Skawe.components.ModalTrigger showModal={this.showModal} modalIsOpen={modalIsOpen} title={title} component={
               <ListGroup>
                 <div className="admin-checkbox admin-selectbox">

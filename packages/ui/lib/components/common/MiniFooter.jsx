@@ -4,19 +4,19 @@ import { Container, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 
 const MiniFooter = ({title, variant, link, className, newsLetter}) =>
-  <div className={classNames('section-stripe section-small text-white', className, variant, newsLetter ? 'line-height-lg' : null)}>
+  <div className={classNames('section-stripe section-small bg-light', className, variant, newsLetter ? 'line-height-lg' : null)}>
     <Container>
       <Row className="center-xs">
-        <Col sm={12} md={10}>
+        <Col lg={10} md={12} sm={12} xs={4}>
           <Row className={className}>
-            <Col>
+            <Col lg={8} md={6} sm={12} xs={4}>
               <h4 className="mb-0 font-weight-light title-5">{title}</h4>
             </Col>
 
             {link ?
               (
-                <Col>
-                  <Skawe.components.Button variant="white" isLink={true} path={link}>
+                <Col lg={4} md={6} sm={12} xs={4}>
+                  <Skawe.components.Button variant="primary" isLink={true} path={link}>
                     Get Started
                   </Skawe.components.Button>
                 </Col>
@@ -26,7 +26,7 @@ const MiniFooter = ({title, variant, link, className, newsLetter}) =>
 
             {newsLetter ?
             (
-              <Col>
+              <Col lg={4} md={6} sm={12} xs={4}>
                 <Skawe.components.NewsLetter type="inline" />
               </Col>
             ) : null }

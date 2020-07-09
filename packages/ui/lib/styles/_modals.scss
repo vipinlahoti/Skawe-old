@@ -72,14 +72,18 @@
 }
 
 .modal-dialog {
-  @include width(700px, max);
-  @include width(480px);
   margin: 0 0 0 auto;
   position: fixed;
   top: 0;
   right: 0;
   height: 100%;
   transform: translate(0, 50px);
+  width: 100%;
+
+  @include breakpoint($screen-md) {
+    @include width(700px, max);
+    @include width(480px);
+  }
 
   .modal-content {
     position: relative;

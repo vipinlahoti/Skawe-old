@@ -25,7 +25,7 @@ class InstancePlans extends Component {
         { description ? <p className="d-block mt-1">{description}</p> : null }
         <Row>
           {dataList.map((plans, index) => 
-            <Col md={4} key={index}>
+            <Col md={4} sm={6} xs={4} key={index}>
               <Skawe.components.PriceCard
                 title={plans.label}
                 description={

@@ -1,7 +1,9 @@
 .btn {
+  @include margin(16px, bottom);
   @include padding(4px 32px);
   @include font-size(16px);
   @include height(55px);
+  @include round-corner(4px);
   background-color: transparent;
   border: 3px solid $dark;
   line-height: 40px;
@@ -15,6 +17,13 @@
   vertical-align: middle;
   will-change: transform;
   transition: .3s all ease-in-out;
+  justify-content: center;
+  width: 100%;
+
+  @include breakpoint($screen-sm) {
+    @include margin(0px, bottom);
+    width: auto;
+  }
 
   .icon {
     @include margin(5px, right);
@@ -22,24 +31,26 @@
     max-width: 30px;
   }
 
-  .icon-arrow_forward {
-    @include margin(-24px, left);
-    transition: all 0.3s ease-in-out 0s;
-    opacity: 0;
-  }
+  // .icon-arrow_forward {
+  //   @include margin(-24px, left);
+  //   transition: all 0.3s ease-in-out 0s;
+  //   opacity: 0;
+  // }
 
   ~.btn {
-    @include margin(20px, left);
+    @include breakpoint($screen-sm) {
+      @include margin(20px, left);
+    }
   }
 
   &:hover {
     background: $dark;
     color: $white;
 
-    .icon-arrow_forward {
-      @include margin(8px, left);
-      opacity: 1;
-    }
+    // .icon-arrow_forward {
+    //   @include margin(8px, left);
+    //   opacity: 1;
+    // }
   }
 
   &:focus,
@@ -65,6 +76,7 @@
     &-fill {
       background: $white;
       border-color: $white;
+      box-shadow: 0 0 10px rgba($white, 0.35);
       color: $dark;
     }
   }
@@ -75,6 +87,13 @@
 
     &:hover {
       background: $primary;
+      color: $white;
+    }
+
+    &-fill {
+      background: $primary;
+      border-color: $primary;
+      box-shadow: 0 0 10px rgba($primary, 0.35);
       color: $white;
     }
   }
@@ -93,6 +112,7 @@
     &-fill {
       background: $dark;
       border-color: $dark;
+      box-shadow: 0 0 10px rgba($dark, 0.35);
       color: $white; 
     }
   }
@@ -160,6 +180,16 @@
     }
   }
 
+  &.flat-link {
+    @include font-size(14px);
+    display: flex;
+
+    .icon {
+      @include font-size(16px);
+      @include margin(4px, left);
+    }
+  }
+
 }
 
 //
@@ -168,16 +198,6 @@
 .btn-block {
   justify-content: center;
   width: 100%;
-}
-
-.flat-link {
-  @include font-size(14px);
-  display: flex;
-
-  .icon {
-    @include font-size(16px);
-    @include margin(4px, left);
-  }
 }
 
 .btn-icon {

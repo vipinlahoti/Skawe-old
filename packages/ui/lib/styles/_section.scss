@@ -1,5 +1,6 @@
 .section {
   @include padding(120px 0);
+  overflow: hidden;
 }
 
 .section-lg {
@@ -66,17 +67,22 @@
 }
 
 .section-stripe {
-  background-image: url('/images/triangles-background.png');
-  background-position: fixed;
+  // background-image: url('/images/triangles-background.png');
+  // background-position: fixed;
 }
 
 .dashboard__wrapper {
-  @include margin(220px, left);
+  @include breakpoint($screen-md) {
+    @include margin(220px, left);
+  }
 }
 
 .section-dashboard {
-  @include padding(32px 32px 96px);
   min-height: calc(100vh - 128px);
+
+  @include breakpoint($screen-md) {
+    @include padding(32px 32px 96px);
+  }
 
   .container {
     // @include width(1200px, max);
@@ -85,5 +91,33 @@
   .form-input,
   .accounts-ui {
     @include width(450px, max); 
+  }
+}
+
+
+.diagonal-bg {
+  position: relative;
+
+  &:after {
+    @include round-corner(195px);
+    @include height(550px);
+    @include width(550px);
+    background: $gray-400;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: -25px;
+    right: -45px;
+    opacity: 0.25;
+    -webkit-transform: rotate(130deg);
+    transform: rotate(130deg);
+    box-shadow: 0 0 40px rgba($gray-400, 0.5);
+  }
+  
+  &.diagonal-bg-left {
+    &:after {
+      bottom: -25px;
+      left: -45px;
+    }
   }
 }

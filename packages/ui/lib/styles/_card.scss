@@ -110,12 +110,15 @@
 .list-group-item {
   @include padding(32px);
   @include margin(16px, bottom);
+  align-items: flex-start;
   background: $white;
   height: auto;
   position: relative;
   display: flex;
+  flex-direction: column;
   // border: 1px solid rgba(0,0,0,.125);
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.095);
+  box-shadow: 0px 0px 25px rgba($dark, 0.085);
+
   // border-right-width: 0;
   transition: transform .3s ease;
 

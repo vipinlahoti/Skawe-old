@@ -9,7 +9,7 @@ $gray-500: #adb5bd !default;
 $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
-$gray-900: #212529 !default;
+$gray-900: #161c2d !default;
 $black:    #000 !default;
 
 $blue:    #5e72e4 !default;
@@ -39,7 +39,7 @@ $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
 
-$highlight: #02b359 !default;
+$highlight: $primary !default;
 
 $text-color: $dark;
 
@@ -52,8 +52,8 @@ $base-line-height: 24px !default;
 $font-weight-base: 400 !default;
 $line-height-base: 1.5 !default;
 
-$base-font-family:      'Open Sans', sans-serif !default;
-$brand-font-family:       'Poppins', sans-serif !default;
+$base-font-family:      'Nunito', sans-serif !default;
+$brand-font-family:     'Poppins', sans-serif !default;
 
 // BREAKPOINTS
 $screen-xs:	23.4375em;// 375px

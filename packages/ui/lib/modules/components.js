@@ -28,6 +28,8 @@ import '../components/pages/ResetPassword.jsx';
 import '../components/pages/HomePage.jsx';
 import '../components/pages/ContactSalesPage.jsx';
 import '../components/pages/PricingPage.jsx';
+import '../components/pages/UniversalTOSPage.jsx';
+
 
 // Marketplace
 import '../components/pages/marketplace/MarketPlacePage.jsx';
@@ -38,8 +40,10 @@ import '../components/pages/products/CloudInstancePage.jsx';
 import '../components/pages/products/LoadBalancersPage.jsx';
 import '../components/pages/products/BlockStoragePage.jsx';
 import '../components/pages/products/BackupsPage.jsx';
+import '../components/pages/products/StoragePage.jsx';
 import '../components/pages/products/DDosProtectionPage.jsx';
 import '../components/pages/products/DnsManagerPage.jsx';
+import '../components/pages/products/AdditionalIPPage.jsx';
 import '../components/pages/products/ProfessionalServicesPage.jsx';
 import '../components/pages/products/ObjectStoragePage.jsx';
 
@@ -110,6 +114,7 @@ import '../components/admin/AdminFooter.jsx';
 import '../components/admin/AdminSidebar.jsx';
 import '../components/admin/AdminUsers.jsx';
 import '../components/admin/AdminAddons.jsx';
+import '../components/admin/AdminCreateNew.jsx';
 
 import '../components/admin/AdminDistributions.jsx';
 import '../components/admin/AdminRegions.jsx';

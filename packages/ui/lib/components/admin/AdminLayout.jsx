@@ -3,7 +3,6 @@ import { CloudInstances } from 'meteor/skawe:instances';
 import { withTracker } from 'meteor/react-meteor-data'
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { Container, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 
 class AdminLayout extends Component {
@@ -19,13 +18,7 @@ class AdminLayout extends Component {
           <div className="dashboard-container">
             <Skawe.components.AdminHeader />
             <div className="section-dashboard">
-              <Container>
-                <Row>
-                  <Col>
-                    {children}
-                  </Col>
-                </Row>
-              </Container>
+              {children}
             </div>
             <Skawe.components.AdminFooter />
           </div>

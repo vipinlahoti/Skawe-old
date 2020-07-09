@@ -28,7 +28,7 @@ const ListDnsManagerPage = () => {
                   </Skawe.components.ModalTrigger>
 
                   <Skawe.components.ModalTrigger title="Import a Zone" component={
-                    <Skawe.components.Button variant="black-fill">
+                    <Skawe.components.Button variant="primary-fill">
                       Import a Zone
                     </Skawe.components.Button>
                   }>

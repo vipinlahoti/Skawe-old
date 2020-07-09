@@ -35,7 +35,7 @@ class DistributionSelect extends Component {
       <div className="section-distributions mb-1 bg-light">
         <h6 className="title-6 mb-1">{title}</h6>
         <Row>
-          <Col md={6}>
+          <Col md={6} sm={12} xs={4}>
             <Skawe.components.ModalTrigger showModal={this.showModal} modalIsOpen={modalIsOpen} title={title} component={
                 <ListGroup>
                   <div className="admin-checkbox admin-selectbox">

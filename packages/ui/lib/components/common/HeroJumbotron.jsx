@@ -3,34 +3,54 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
-const HeroJumbotron = (props, {currentUser}) => {
-  const { title, description, whiteButton, whiteButtonPath, whiteButtonText, blackButton, blackButtonPath, form, formType } = props;
+const HeroJumbotron = (
+  {
+    currentUser,
+    title,
+    description,
+    whiteButton,
+    whiteButtonPath,
+    whiteButtonText,
+    blackButton,
+    blackButtonPath,
+    form,
+    formType,
+    size,
+    image,
+    alt
+  }) => {
 
   return (
-    <Jumbotron>
+    <Jumbotron className={`jumbotron-${size}`}>
       <Container>
-        <Row>
-          <Col sm={12} md={10} lg={8}>
+        <Row className="middle-xs">
+          <Col md={7} sm={12} xs={4}>
             <h2 className="title-2">{title}</h2>
             <p className="lead mb-2">{description}</p>
             
             {whiteButton ?
-              (<Skawe.components.Button isLink={true} variant="white" path={whiteButtonPath}>
+              (<Skawe.components.Button isLink={true} variant="primary" path={whiteButtonPath}>
                 {whiteButtonText}
               </Skawe.components.Button>) : null }
 
             {blackButton ?
-              (<Skawe.components.Button isLink={true} variant="black-fill" path={blackButtonPath}>
+              (<Skawe.components.Button isLink={true} variant="primary-fill" path={blackButtonPath}>
                 Create a Free Account
               </Skawe.components.Button>) : null }
-          </Col>
 
           {form && !currentUser ?
-            (<Col sm={12} md={10}>
+            (
               <div className="mt-1">
-                <Skawe.components.CreateAccount buttonText="Create an Account" state={formType} />
+                <Skawe.components.CreateAccount buttonText="Create account" state={formType} />
               </div>
-            </Col>) : null }
+            ) : null }
+          </Col>
+
+          <Col md={5} sm={12} xs={4}>
+            <div className="jumbotron-image">
+              <img src={image} alt={alt} />
+            </div>
+          </Col>
         </Row>
       </Container>
     </Jumbotron>

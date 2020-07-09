@@ -255,7 +255,7 @@ class AccountsReact_ {
           forgotPwd: 'Send Reset Link',
           resetPwd: 'Save New Password',
           signIn: 'Login',
-          signUp: 'Create an Account',
+          signUp: 'Create account',
           resendVerification: 'Send Verification Link',
           enrollAccount: 'Save Password',
         },

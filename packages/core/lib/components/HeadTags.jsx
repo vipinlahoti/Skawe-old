@@ -46,7 +46,8 @@ class HeadTags extends Component {
 
         <link rel='canonical' href={url}/>
         <link name='favicon' rel='shortcut icon' href={Skawe.settings.get('faviconUrl', '/img/favicon.ico')}/>
-        <link name='font-face' rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,700|Open+Sans:300,400,600|Material+Icons'/>
+        {/* <link name='font-face' rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,700|Open+Sans:300,400,600|Material+Icons'/> */}
+        <link name='font-face' rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Nunito:300,400,500,700|Open+Sans:300,400,600|Material+Icons'/>
 
         {Skawe.headtags.meta.map((tag, index) => <meta key={index} {...tag}/>)}
         {Skawe.headtags.link.map((tag, index) => <link key={index} {...tag}/>)}

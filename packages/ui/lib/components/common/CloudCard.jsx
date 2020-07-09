@@ -3,7 +3,7 @@ import React from 'react';
 import { Col, ListGroup } from 'react-bootstrap';
 
 const CloudCard = ({icon, title, description, path, listPrice, salePrice}) =>
-  <Col sm={12} md={6} lg={3}>
+  <Col lg={3} md={4} sm={6} xs={4}>
     <ListGroup>
       <ListGroup.Item>
         <div className="card-icon card-icon-lg">

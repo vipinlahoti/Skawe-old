@@ -1,13 +1,13 @@
 import Skawe from 'meteor/skawe:lib';
 import React from 'react';
 
-const DDosProtectionPage = () => {
+const StoragePage = () => {
   return (
     <React.Fragment>
-      <Skawe.components.HeadTags title="DDos Protection" description="DDos Protection Page" />
+      <Skawe.components.HeadTags title="Storage" description="Storage Page" />
 
       <Skawe.components.HeroJumbotron 
-        title="DDos Protection"
+        title="Storage"
         description="Find an app that suits you, then spin it up in 60 seconds or less. 100+ preconfigured 1-Click Apps are available including WordPress, LAMP, Docker, Plesk, and more."
         whiteButton={true}
         whiteButtonText="View Pricing"
@@ -21,4 +21,4 @@ const DDosProtectionPage = () => {
   )
 }
 
-Skawe.registerComponent('DDosProtectionPage', DDosProtectionPage);
+Skawe.registerComponent('StoragePage', StoragePage);

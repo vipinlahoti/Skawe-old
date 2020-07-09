@@ -287,7 +287,7 @@ class SkaweForms extends Component {
           {fieldGroups.map(group => <FormGroup key={group.name} {...group} updateCurrentValue={this.updateCurrentValue} />)}
           <Skawe.components.Button
             type="submit"
-            variant="black-fill"
+            variant="primary-fill"
           >
             {this.props.buttonText ?  this.props.buttonText : 'Submit'}
           </Skawe.components.Button>

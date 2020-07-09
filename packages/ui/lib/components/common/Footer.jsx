@@ -9,15 +9,19 @@ const Footer = () =>
   <footer className="section-medium">
       <Container>
         <Row className="between-xs">
-          <Col>
+          <Col md={3} sm={4} xs={4}>
             <h6 className="title-6">Products</h6>
             <Nav className="vertical-nav">
               <Link to={{ pathname: '/products/cloud-instance' }} className="nav-link">
                 Cloud Instance
               </Link>
               <br />
-              <Link to={{ pathname: '/products/object-storage' }} className="nav-link">
-                Object Storage
+              <Link to={{ pathname: '/products/storage' }} className="nav-link">
+                Storage
+              </Link>
+              <br />
+              <Link to={{ pathname: '/products/block-storage' }} className="nav-link">
+                Volume Block Storage
               </Link>
               <br />
               <Link to={{ pathname: '/products/backups' }} className="nav-link">
@@ -28,21 +32,21 @@ const Footer = () =>
                 Load Balancers
               </Link>
               <br />
-              <Link to={{ pathname: '/products/ddos-protection' }} className="nav-link">
-                DDoS Protection
+              <Link to={{ pathname: '/products/additional-ip' }} className="nav-link">
+                Additional IP
               </Link>
               <br />
               <Link to={{ pathname: '/products/dns-manager' }} className="nav-link">
                 DNS Manager
               </Link>
               <br />
-              <Link to={{ pathname: '/products/professional-services' }} className="nav-link">
-                Professional Services
-              </Link>
+              <Link to={{ pathname: '/products/ddos-protection' }} className="nav-link">
+                DDoS Protection
+              </Link>              
             </Nav>
           </Col>
 
-          <Col>
+          <Col md={3} sm={4} xs={4}>
             <h6 className="title-6">Marketplace</h6>
             <Nav className="vertical-nav">
               <Link to={{ pathname: '/marketplace' }} className="nav-link">
@@ -55,7 +59,7 @@ const Footer = () =>
             </Nav>
           </Col>
 
-          <Col>
+          <Col md={3} sm={4} xs={4}>
             <h6 className="title-6">Contact</h6>
             <Nav className="vertical-nav">
               <Link to={{ pathname: '/contact-sales' }} className="nav-link">
@@ -68,10 +72,8 @@ const Footer = () =>
             </Nav>
           </Col>
 
-          <Col></Col>
-
-          <Col>
-            <div className="text-right">
+          <Col md={3} sm={6} xs={4}>
+            <div className="footer-right">
               <Skawe.components.Logo siteTitle={siteTitle}/>
               <div className="copyright mt-1">Copyright &copy; 2020 All Rights Reserved.</div>
             </div>

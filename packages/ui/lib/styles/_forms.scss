@@ -1,5 +1,6 @@
 fieldset,
 .fieldset {
+  @include padding(0);
   border: 0;
   outline: 0;
 }
@@ -7,14 +8,31 @@ fieldset,
 .form-inline {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include breakpoint($screen-md) {
+    justify-content: flex-start;
+  }
+
+  @include breakpoint($screen-sm) {
+    flex-direction: row;
+  }
 
   .form-control {
     @include width(260px, min);
   }
 
   .form-group {
-    @include margin(8px, right);
-    @include margin(0, bottom);
+    @include margin(0, right);
+    @include margin(16px, bottom);
+    width: 100%;
+
+    @include breakpoint($screen-sm) {
+      @include margin(8px, right);
+      @include margin(0, bottom);
+      width: auto;
+    }
   }
 }
 
@@ -44,8 +62,8 @@ label {
   color: $dark;
   background-color: $white;
   background-clip: padding-box;
-  border: 1px solid $gray-400;
-  box-shadow: 0 1px 3px rgba(50, 50, 93, .12), 0 1px 0 rgba(0,0,0,.02);
+  border: 1px solid $gray-300;
+  // box-shadow: 0 1px 3px rgba(50, 50, 93, .12), 0 1px 0 rgba(0,0,0,.02);
 
   &::-ms-expand {
     background-color: transparent;
@@ -60,7 +78,7 @@ label {
 
   &:focus,
   &:active {
-    border-color: $gray-600;
+    border-color: $gray-500;
     outline: none;
   }
 
@@ -198,8 +216,12 @@ label {
   }
 
   .list-group-item {
-    @include size(180px, 100px);
+    @include size(120px, 80px);
     @include font-size(14px);
+
+    @include breakpoint($screen-sm) {
+      @include size(180px, 100px);
+    }
 
     .admin-card-description {
       color: $gray-600;

@@ -7,10 +7,12 @@
 
 ::-moz-selection { /* Code for Firefox */
   background: $highlight;
+  color: $white;
 }
 
 ::selection {
   background: $highlight;
+  color: $white;
 }
 
 :-webkit-autofill,
@@ -142,7 +144,7 @@ a {
   }
 
   .list-label {
-    @include margin(16px, right);
+    @include margin(8px, right);
     display: inline-block;
     font-weight: 600;
   }
@@ -462,6 +464,10 @@ a {
 
 .d-flex {
   display: flex !important;
+}
+
+.d-row {
+  flex-direction: row;
 }
 
 .block-right {

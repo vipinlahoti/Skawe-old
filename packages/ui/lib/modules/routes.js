@@ -1,9 +1,11 @@
 import Skawe from 'meteor/skawe:lib';
 
 Skawe.routes.add([
-  {name: 'home',              path: '/',               component: Skawe.components.HomePage},
-  {name: 'contact-sales',     path: '/contact-sales',  component: Skawe.components.ContactSalesPage},
-  {name: 'pricing',           path: '/pricing',        component: Skawe.components.PricingPage},
+  {name: 'home',          path: '/',                  component: Skawe.components.HomePage},
+  {name: 'contact-sales', path: '/contact-sales',     component: Skawe.components.ContactSalesPage},
+  {name: 'pricing',       path: '/pricing',           component: Skawe.components.PricingPage},
+  {name: 'tos',           path: '/tos/universal-tos', component: Skawe.components.UniversalTOSPage},
+  
 
   // Accounts
   {name: 'login',           path: '/login',            component: Skawe.components.LoginPage},
@@ -17,12 +19,16 @@ Skawe.routes.add([
 
   // Products
   {name: 'cloud-instance',  path: '/products/cloud-instance', component: Skawe.components.CloudInstancePage},
-  {name: 'block-storage',   path: '/products/block-storage',  component: Skawe.components.BlockStoragePage},
   {name: 'load-balancers',  path: '/products/load-balancers', component: Skawe.components.LoadBalancersPage},
 
-  {name: 'dns-manager',           path: '/products/dns-manager',            component: Skawe.components.DnsManagerPage},
-  {name: 'ddos-protection',       path: '/products/ddos-protection',        component: Skawe.components.DDosProtectionPage},
-  {name: 'backups',               path: '/products/backups',                component: Skawe.components.BackupsPage},
+  {name: 'dns-manager',     path: '/products/dns-manager',      component: Skawe.components.DnsManagerPage},
+  {name: 'ddos-protection', path: '/products/ddos-protection',  component: Skawe.components.DDosProtectionPage},
+  {name: 'additional-ip',   path: '/products/additional-ip',    component: Skawe.components.AdditionalIPPage},
+  
+  {name: 'storage',       path: '/products/storage',       component: Skawe.components.StoragePage},
+  {name: 'block-storage', path: '/products/block-storage', component: Skawe.components.BlockStoragePage},
+  {name: 'backups',       path: '/products/backups',       component: Skawe.components.BackupsPage},
+
   {name: 'professional-services', path: '/products/professional-services',  component: Skawe.components.ProfessionalServicesPage},
   {name: 'object-storage',        path: '/products/object-storage',         component: Skawe.components.ObjectStoragePage},
 

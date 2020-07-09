@@ -12,8 +12,9 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6,
 .title-1, .title-2, .title-3, .title-4, .title-5, .title-6 {
 	@include margin(0);
-	font-family: $brand-font-family;
+	// font-family: $brand-font-family;
   font-weight: 500;
+  line-height: inherit;
 }
 
 h1,
@@ -57,6 +58,7 @@ h6,
 .title-6 {
   @include margin(8px, bottom);
 	@include font-size($h6-font-size);
+  font-weight: 600;
 }
 
 .title-1 .block,

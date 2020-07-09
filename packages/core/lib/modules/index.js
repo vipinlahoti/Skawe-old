@@ -1,4 +1,5 @@
 import './messages.js';
+import './methods.js';
 
 import '../components/App.jsx';
 import '../components/Layout.jsx';

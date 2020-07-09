@@ -9,7 +9,7 @@ class AccountsButton extends React.Component {
     const { onClick, text, social } = this.props
 
     return (
-      <Skawe.components.Button variant="black-fill" onClick={onClick} className={ social ? 'social-btn btn-white ' + social : ''}>
+      <Skawe.components.Button variant="primary-fill" onClick={onClick} className={ social ? 'social-btn btn-white ' + social : ''}>
         {social ? text[0].toUpperCase() + text.substr(1) : text}
       </Skawe.components.Button>
     )

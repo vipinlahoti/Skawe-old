@@ -14,7 +14,6 @@ class Layout extends Component {
         <Skawe.components.Header />
         {this.props.children}
         <Skawe.components.MiniFooter
-          variant="bg-primary"
           className="center-xs"
           title="Sign up for the Skawe Cloud Newsletter"
           newsLetter={true}

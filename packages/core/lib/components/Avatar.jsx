@@ -11,7 +11,7 @@ const Avatar = ({user, size, link, className}) => {
   const avatarClassNames = classNames('avatar', className);
 
   const sizes = {
-    small: '40px',
+    small: '50px',
     medium: '80px',
     large: '120px'
   }

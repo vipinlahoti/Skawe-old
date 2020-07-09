@@ -11,7 +11,7 @@
     z-index: 1000;
     display: none;
     list-style: none;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.095);
+    box-shadow: 0px 10px 15px rgba($dark, 0.075);
     transition: transform .3s ease;
   
     &.show {
@@ -52,7 +52,7 @@
 
     &:hover,
     &.active {
-      background: rgba($primary, .2);
+      color: $primary;
     }
   }
 }

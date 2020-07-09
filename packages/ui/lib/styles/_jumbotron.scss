@@ -1,12 +1,15 @@
 .jumbotron {
-  @include padding(100px, top);
-  @include height(680px);
-  @extend .bg-primary;
-  background: url('/images/triangles-background.png') $primary fixed;
-  color: $white;
+  @include padding(120px, top);
+  @include padding(80px, bottom);
   display: flex;
   align-items: center;
+  overflow: hidden;
   position: relative;
+
+  @include breakpoint($screen-md) {
+    @include height(600px);
+    @include padding(120px, bottom);
+  }
 
   .hero__wrapper {
     position: relative;
@@ -29,6 +32,91 @@
 
   &.section-xsmall {
     @include padding(132px, top);
+  }
+
+  p {
+    @extend .lead;
+    @extend .mb-2;
+  }
+
+  .jumbotron-image {
+    position: relative;
+
+    &:after {
+      @include round-corner(100px);
+      @include size(280px);
+      background: $primary;
+      content: none;
+      position: absolute;
+      z-index: -1;
+      bottom: -20px;
+      right: 0;
+      opacity: 0.9;
+      -webkit-transform: rotate(130deg);
+      transform: rotate(130deg);
+      box-shadow: 0 0 40px rgba($primary, 0.5);
+
+      @include breakpoint($screen-md) {
+        @include round-corner(150px);
+        @include size(600px);
+        content: '';
+        left: 64px;
+        right: auto;
+      }
+
+      img {
+        width: 100%;
+
+        @include breakpoint($screen-sm) {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  &.jumbotron-large {
+    @include padding(130px, top);
+    @include padding(180px, bottom);
+    height: auto;
+
+    .jumbotron-image {
+      &:after {
+        @include round-corner(100px);
+        @include size(280px);
+        background: $primary;
+        content: " ";
+        position: absolute;
+        z-index: -1;
+        bottom: -20px;
+        right: 0;
+        opacity: 0.9;
+        -webkit-transform: rotate(130deg);
+        transform: rotate(130deg);
+        box-shadow: 0 0 40px rgba($primary, 0.5);
+
+        @include breakpoint($screen-sm) {
+          @include round-corner(190px);
+          @include size(550px);
+          bottom: -32px;
+          left: 32px;
+          right: auto;
+        }
+
+        @include breakpoint($screen-md) {
+          @include size(900px);
+          bottom: 32px;
+          left: 85px;
+        }
+      }
+
+      img {
+        width: 100%;
+
+        @include breakpoint($screen-md) {
+          width: auto;
+        }
+      }
+    }
   }
 }
 

@@ -1,13 +1,16 @@
 .navbar {
-  @include padding(24px 48px);
-  background: url('/images/triangles-background.png') $primary;
+  @include padding(24px 32px);
   position: absolute;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
   align-items: center;
-  justify-content: flex-start; // space out brand from logo  
+  justify-content: space-between;
   z-index: 99;
   width: 100%;
+
+  @include breakpoint($screen-sm) {
+    @include padding(24px 48px);
+  }
 }
 
 .navbar-brand {
@@ -15,10 +18,27 @@
   @include padding(10px);
   color: $white;
   display: inline-block;
-  font-family: $brand-font-family;
+  // font-family: $brand-font-family;
   font-weight: 600;
   line-height: inherit;
   white-space: nowrap;
+  position: relative;
+
+  &:after {
+    background: $primary;
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    bottom: 4px;
+    left: -3px;
+    width: 55px;
+    height: 40px;
+    border-radius: 15px;
+    opacity: 0.9;
+    -webkit-transform: rotate(130deg);
+    transform: rotate(130deg);
+    box-shadow: 0 0 40px rgba($primary, 0.5);
+  }
 
   &:hover {
     color: $white;
@@ -35,12 +55,16 @@
   .nav-link {
     @include margin(0 16px);
     cursor: pointer;
-    color: $white;
-    border-bottom: 3px solid transparent;
+    color: $dark;
+    // border-bottom: 3px solid transparent;
     display: block;
-    line-height: 50px;
+    line-height: 52px;
     font-weight: 600;
     transition: all 0.3s ease-in-out 0s;
+
+    &:hover {
+      color: $primary;
+    }
   
     ~.btn {
       @include margin(10px, left);
@@ -50,72 +74,127 @@
   .nav-cart {
     &:hover {
       border-color: transparent;
-    }    
+    }
   }
 
-  .dropdown-toggle {
-     &.btn-white,
-     &.btn-none {
-      @include margin(16px, left);
-      @include margin(16px, right);
-      color: $white;
-      line-height: 48px;
-      font-weight: 500;
+  .nav-title {
+    @include margin(16px, top);
+    @include margin(16px, bottom);
+    @include font-size(12px);
+    color: $gray-500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .nav-products {
+    border-right: 1px solid $gray-200;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .dropdown {
+    position: static;
+
+    .dropdown-item {
+      @include margin(4px, top);
+      @include margin(4px, bottom);
+      @include padding(0);
 
       &:hover {
         background: transparent;
-      }
-
-      &:after {
-        margin-top: 23px;
+        color: $primary;
       }
     }
 
-    &.btn-primary {
-      background: $primary;
-      color: $white;
+    .dropdown-menu {
+      top: 100px;
+      left: 0;
+      right: 0;
+      width: 100%;
+
+      &:before {
+        content: none;
+      }
     }
 
-    &.btn-white,
-    &.btn-none {
-      @include padding(0 20px);
-      background: $primary;
-      border: 3px solid $primary;
-      color: $white;
-
-      &:hover {
-        background: $primary;
-        border: 3px solid $primary;
-        color: $white
+    &.show {
+      .dropdown-toggle {
+        color: $primary;
       }
     }
   }
 
-  .dropdown-item {
-    @extend .middle-xs;
-    border-bottom: 1px solid $gray-200;
-    display: flex;
+  .dropdown-toggle {
+    //  &.btn-white,
+    //  &.btn-none {
+    //   @include margin(16px, left);
+    //   @include margin(16px, right);
+    //   @include padding(0);
+    //   background: transparent;
+    //   border: 0;
+    //   color: $white;
+    //   line-height: 58px;
+    //   transition: all 0.3s ease-in-out 0s;
 
-    .icon {
-      @include font-size(42px);
-      @include margin(16px, right);
-    }
+    //   &:hover {
+    //     background: transparent;
+    //   }
+
+      // &:after {
+      //   margin-top: 23px;
+      // }
+    // }
+
+    // &.btn-primary {
+    //   background: $primary;
+    //   color: $white;
+    // }
+
+    // &.btn-white,
+    // &.btn-none {
+    //   @include padding(0 20px);
+    //   background: $primary;
+    //   border: 3px solid $primary;
+    //   color: $white;
+
+    //   &:hover {
+    //     background: $primary;
+    //     border: 3px solid $primary;
+    //     color: $white
+    //   }
+    // }
   }
+
+  // .dropdown-item {
+  //   @extend .middle-xs;
+  //   border-bottom: 1px solid $gray-200;
+  //   display: flex;
+
+  //   .icon {
+  //     @include font-size(42px);
+  //     @include margin(16px, right);
+  //     color: $primary;
+  //   }
+  // }
 
   .nav-link-desc {
+    font-weight: 600;
+
     span {
       @include margin(4px, top);
-      @include font-size(14px);
+      // @include font-size(14px);
       color: $gray-700;
       display: block;
+      font-weight: 400;
     }
   }
 }
 
 .navbar-admin {
-  @include padding(16px 48px 16px 32px);
-  @include height(75px);
-  background-color: $light;
+  @include padding(15px 48px 15px 32px);
+  // @include height(75px);
+  // background-color: $light;
   background-image: none;
   position: static;
 
@@ -173,13 +252,18 @@
   left: 0px;
   height: 100%;
   z-index: 21;
-  background: url('/images/triangles-background.png') $primary;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.095);
+  // background: $light;
+  // box-shadow: 0px 0px 25px rgba($primary, 0.15);
   overflow-x: none;
   overflow-y: auto;
 
   .navbar-brand {
-    @include padding(28px 32px);
+    @include margin(20px 32px);
+    // color: $primary;
+
+    // &:after {
+    //   background: $white;
+    // }
   }
 
   .nav {
@@ -188,12 +272,13 @@
 
   .nav-link {
     @include padding(8px 32px);
-    color: $white;
+    color: $dark;
     display: block;
 
     &:hover,
     &.active {
-      background: rgba(0, 0, 0, .065);
+      // background: rgba(0, 0, 0, .065);
+      color: $primary;
     }
   }
 }
@@ -237,14 +322,61 @@
 }
 
 .vertical-nav {
+  @include margin(32px, bottom);
+
   .nav-link {
     @include font-size(14px);
     @include margin(5px 0);
-    color: $gray-400;
+    color: $dark;
     display: inline-block;
 
-    &:hover {
-      color: $white;
-    }
+    // &:hover {
+    //   color: $white;
+    // }
   }
+}
+
+.navbar-expand-lg {
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.navbar-toggler {
+  @include padding(8px);
+  @include font-size(14px);
+  @include round-corner(4px);
+  background-color: transparent;
+  border: 1px solid $gray-500;
+  cursor: pointer;
+  color: $gray-500;
+  display: flex;
+  line-height: 1;
+
+  @include breakpoint($screen-sm) {
+    display: none;
+  }
+
+  .navbar-toggler-icon {
+    @include size(16px);
+    background: no-repeat 50%;
+    background-size: 100% 100%;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.collapse:not(.show) {
+  display: none;
+
+  @include breakpoint($screen-sm) {
+    display: flex;
+    flex-basis: auto;
+  }
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
 }

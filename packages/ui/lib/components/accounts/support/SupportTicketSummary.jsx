@@ -19,7 +19,7 @@ const SupportTicketSummary = ({currentUser}) => {
       </Row>
 
       <Row>
-        <Col md={6}>
+        <Col lg={6} md={12} sm={12} xs={4}>
           <ul className="list small-list count-list">
             <li><span className="list-label">Ticket ID:</span> #KGV-93LCC </li>
             <li>
