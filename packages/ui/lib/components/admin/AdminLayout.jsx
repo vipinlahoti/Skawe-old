@@ -8,25 +8,28 @@ import classNames from 'classnames';
 class AdminLayout extends Component {
   render() {
     const { children, currentUser } = this.props; // eslint-disable-line
-    const theme = currentUser.theme;
     const currentRoute = this.props.location.pathname;
     
     return (
-      <div className={theme}>
-        <div className="dashboard__wrapper">
-          <Skawe.components.AdminSidebar currentRoute={currentRoute} />
-          <div className="dashboard-container">
-            <Skawe.components.AdminHeader />
-            <div className="section-dashboard">
-              {children}
+      <React.Fragment>
+        {currentUser ?
+          <div className={currentUser.theme}>
+            <div className="dashboard__wrapper">
+              <Skawe.components.AdminSidebar currentRoute={currentRoute} />
+              <div className="dashboard-container">
+                <Skawe.components.AdminHeader />
+                <div className="section-dashboard">
+                  {children}
+                </div>
+                <Skawe.components.AdminFooter />
+              </div>
             </div>
-            <Skawe.components.AdminFooter />
           </div>
-        </div>
-      </div>
+        : <Skawe.components.Loading /> }
+      </React.Fragment>
     )
   }
 }
 
-const AdminLayoutContainer = Skawe.withAccount(AdminLayout);
+const AdminLayoutContainer = Skawe.withCurrentUser(AdminLayout);
 Skawe.registerComponent('AdminLayout', AdminLayoutContainer);

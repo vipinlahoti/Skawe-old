@@ -210,5 +210,5 @@ const CreateCloudInstancePageContainer = withTracker(() => {
   };
 })(CreateCloudInstancePage);
 
-const CreateCloudInstancePageUserContainer = Skawe.withAccount(CreateCloudInstancePageContainer);
+const CreateCloudInstancePageUserContainer = Skawe.withCurrentUser(CreateCloudInstancePageContainer);
 Skawe.registerComponent('CreateCloudInstancePage', CreateCloudInstancePageUserContainer);

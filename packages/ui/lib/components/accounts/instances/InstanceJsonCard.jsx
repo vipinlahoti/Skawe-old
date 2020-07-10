@@ -64,5 +64,5 @@ class InstanceJsonCard extends Component {
   }
 }
 
-const InstanceJsonCardContainer = Skawe.withAccount(InstanceJsonCard);
+const InstanceJsonCardContainer = Skawe.withCurrentUser(InstanceJsonCard);
 Skawe.registerComponent('InstanceJsonCard', InstanceJsonCardContainer);

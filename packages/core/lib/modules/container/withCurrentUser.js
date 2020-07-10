@@ -2,15 +2,13 @@ import Skawe from 'meteor/skawe:lib';
 import { withTracker } from 'meteor/react-meteor-data'
 
 // https://blog.meteor.com/introducing-usetracker-react-hooks-for-meteor-cb00c16d6222
-Skawe.withAccount = withTracker((props) => {
+Skawe.withCurrentUser = withTracker((props) => {
   if (Meteor.isClient) {
-    const userId = Meteor.userId();
-    const loggingIn = Meteor.loggingIn();
+    Meteor.subscribe('users.current');
+    const currentUser = Meteor.user();
 
     return {
-      userId,
-      loggingIn,
-      authenticated: !loggingIn && !!userId,
+      currentUser
     }
   }
 })

@@ -18,7 +18,7 @@ const BootstrapModal = ({ currentUser, children, show = false, onHide, title, sh
 
   return (
     <Modal show={show} onHide={onHide} {...rest} keyboard={false} backdrop={'static'}>
-      <div className={currentUser.theme}>
+      <div>
         {headerComponent}
         <Modal.Body>
           {children}

@@ -60,6 +60,6 @@ const UsersAccounts = ({currentUser}) => {
   )
 };
 
-const UsersAccountsContainer = Skawe.withAccount(UsersAccounts);
+const UsersAccountsContainer = Skawe.withCurrentUser(UsersAccounts);
 
 Skawe.registerComponent('UsersAccounts', UsersAccountsContainer);

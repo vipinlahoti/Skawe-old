@@ -30,5 +30,6 @@ import '../components/modal/Modal.jsx';
 
 // Container hooks
 import './container/withAccount.js';
-import './container/withInstance.js';
+import './container/withCurrentUser.js';
+import './container/withTrackerSsr.js';
 

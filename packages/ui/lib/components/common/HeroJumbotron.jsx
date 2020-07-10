@@ -57,5 +57,5 @@ const HeroJumbotron = (
   )
 }
 
-const HeroJumbotronContainer = Skawe.withAccount(HeroJumbotron);
+const HeroJumbotronContainer = Skawe.withCurrentUser(HeroJumbotron);
 Skawe.registerComponent('HeroJumbotron', HeroJumbotronContainer);

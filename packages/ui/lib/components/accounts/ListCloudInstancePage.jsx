@@ -89,5 +89,5 @@ const ListCloudInstancePageInstance = withTracker(() => {
   };
 })(ListCloudInstancePage);
 
-const ListCloudInstancewithAccount = Skawe.withAccount(ListCloudInstancePageInstance);
-Skawe.registerComponent('ListCloudInstancePage', ListCloudInstancewithAccount);
+const ListCloudInstancewithCurrentUser = Skawe.withCurrentUser(ListCloudInstancePageInstance);
+Skawe.registerComponent('ListCloudInstancePage', ListCloudInstancewithCurrentUser);

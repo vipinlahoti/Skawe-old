@@ -47,5 +47,5 @@ class UsersMenu extends Component {
   }
 }
 
-const UsersMenuContainer = Skawe.withAccount(UsersMenu);
+const UsersMenuContainer = Skawe.withCurrentUser(UsersMenu);
 Skawe.registerComponent('UsersMenu', UsersMenuContainer);

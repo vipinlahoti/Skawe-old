@@ -74,5 +74,5 @@ const SupportTicketSummary = ({currentUser}) => {
   )
 }
 
-const SupportTicketSummaryContainer = Skawe.withAccount(SupportTicketSummary);
+const SupportTicketSummaryContainer = Skawe.withCurrentUser(SupportTicketSummary);
 Skawe.registerComponent('SupportTicketSummary', SupportTicketSummaryContainer);

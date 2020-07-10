@@ -6,25 +6,16 @@ import { StaticRouter } from 'react-router';
 import { object } from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-onPageLoad(sink => {
+onPageLoad(async (sink) => {
   const context = {};
   let htmlContent = '';
 
-  const App = props => {
-  return (
-      <StaticRouter location={props.location} context={context}>
-        <Skawe.components.App />
-      </StaticRouter>
-    );
-  }
+  const App = 
+    <StaticRouter location={sink.request.url} context={context}>
+      <Skawe.components.App />
+    </StaticRouter>;
 
-  App.propTypes = {
-    location: object.isRequired
-  };
-
-  htmlContent = ReactDOM.renderToString(
-    <App location={sink.request.url} />
-  );
+  htmlContent = ReactDOM.renderToString(App);
 
   const wrappedHtmlContent = `<div id="react-app">${htmlContent}</div>`;
   const helmet = Helmet.renderStatic();

@@ -1,6 +1,5 @@
 import Skawe from 'meteor/skawe:lib';
 import { CloudInstances } from 'meteor/skawe:instances';
-import { withTracker } from 'meteor/react-meteor-data'
 import React, { Component } from 'react';
 import { ListGroup, Container, Row, Col } from 'react-bootstrap';
 
@@ -8,6 +7,8 @@ class DashboardPage extends Component {
 
   render() {
     const { currentUser, cloudInstancesList } = this.props;
+
+    console.log(currentUser)
 
     return (
       <React.Fragment>
@@ -100,7 +101,7 @@ class DashboardPage extends Component {
   }
 }
 
-const DashboardPageInstance = withTracker(() => {
+const DashboardPageInstance = Skawe.withTrackerSsr(() => {
   Meteor.subscribe('cloudinstances.userlist');
 
   return {
@@ -108,5 +109,5 @@ const DashboardPageInstance = withTracker(() => {
   };
 })(DashboardPage);
 
-const DashboardPageContainer = Skawe.withAccount(DashboardPageInstance);
+const DashboardPageContainer = Skawe.withCurrentUser(DashboardPageInstance);
 Skawe.registerComponent('DashboardPage', DashboardPageContainer);

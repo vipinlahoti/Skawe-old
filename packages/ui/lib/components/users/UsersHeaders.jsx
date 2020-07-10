@@ -31,6 +31,6 @@ const UsersHeaders = ({currentUser}) => {
   )
 };
 
-const UsersHeadersContainer = Skawe.withAccount(UsersHeaders);
+const UsersHeadersContainer = Skawe.withCurrentUser(UsersHeaders);
 
 Skawe.registerComponent('UsersHeaders', UsersHeadersContainer);

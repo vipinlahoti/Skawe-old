@@ -173,5 +173,5 @@ class UsersSettings extends Component {
   }
 }
 
-const UsersSettingsContainer = Skawe.withAccount(UsersSettings);
+const UsersSettingsContainer = Skawe.withCurrentUser(UsersSettings);
 Skawe.registerComponent('UsersSettings', UsersSettingsContainer);
