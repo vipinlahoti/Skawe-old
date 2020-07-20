@@ -23,7 +23,7 @@
     "handlebars": "^4.7.6",
     "html-to-text": "^5.1.1",
     "juice": "^6.0.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "meteor-node-stubs": "^1.0.0",
     "moment": "^2.26.0",
     "prop-types": "^15.7.2",
