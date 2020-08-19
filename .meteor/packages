@@ -1,0 +1,24 @@
+# see http://docs.vulcanjs.org/packages
+
+vulcan:core
+apollo
+
+############ Language Packages ############
+
+vulcan:i18n-en-us
+# vulcan:i18n-es-es
+
+############ Accounts Packages ############
+
+accounts-password@1.6.0
+# accounts-twitter
+# accounts-facebook
+
+vulcan:debug
+vulcan:accounts
+vulcan:backoffice
+
+# Ui
+vulcan:ui-bootstrap
+vulcan:cloudinary
+skawe

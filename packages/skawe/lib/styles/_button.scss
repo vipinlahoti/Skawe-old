@@ -1,0 +1,311 @@
+.btn {
+  @include margin(16px, bottom);
+  @include padding(4px 32px);
+  @include font-size(16px);
+  @include height(55px);
+  @include round-corner(4px);
+  background-color: transparent;
+  border: 3px solid $dark;
+  line-height: 40px;
+  color: $gray-800;
+  cursor: pointer;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 700;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+  will-change: transform;
+  transition: .3s all ease-in-out;
+  justify-content: center;
+  width: 100%;
+
+  @include breakpoint($screen-sm) {
+    @include margin(0px, bottom);
+    width: auto;
+  }
+
+  .icon {
+    @include margin(5px, right);
+    line-height: 40px;
+    max-width: 30px;
+  }
+
+  // .icon-arrow_forward {
+  //   @include margin(-24px, left);
+  //   transition: all 0.3s ease-in-out 0s;
+  //   opacity: 0;
+  // }
+
+  ~.btn {
+    @include breakpoint($screen-sm) {
+      @include margin(20px, left);
+    }
+  }
+
+  &:hover {
+    background: $dark;
+    color: $white;
+
+    // .icon-arrow_forward {
+    //   @include margin(8px, left);
+    //   opacity: 1;
+    // }
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: 0px 0px 0px 2px $dark, 0px 0px 0px 4px $white;
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: default;
+    opacity: .65;
+  }
+
+  &.btn-white {
+    border-color: $white;
+    color: $white;
+
+    &:hover {
+      background: $white;
+      color: $dark;
+    }
+
+    &:focus,
+    &.focus {
+      outline: 0;
+      box-shadow: 0px 0px 0px 2px $white, 0px 0px 0px 4px $dark;
+    }
+
+    &-fill {
+      background: $white;
+      border-color: $white;
+      box-shadow: 0 0 10px rgba($white, 0.35);
+      color: $dark;
+
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0px 0px 0px 2px $white, 0px 0px 0px 4px $dark;
+      }
+    }
+  }
+
+  &.btn-primary {
+    border-color: $primary;
+    color: $primary;
+
+    &:hover {
+      background: $primary;
+      color: $white;
+    }
+
+    &-fill {
+      background: $primary;
+      border-color: $primary;
+      box-shadow: 0 0 10px rgba($primary, 0.35);
+      color: $white;
+
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0px 0px 0px 2px $white, 0px 0px 0px 4px $primary;
+      }
+    }
+
+    &:focus,
+    &.focus {
+      outline: 0;
+      box-shadow: 0px 0px 0px 2px $white, 0px 0px 0px 4px $primary;
+    }
+  }
+
+  &.btn-secondary {
+    border-color: $secondary;
+    color: $secondary;
+
+    &:hover {
+      background: $secondary;
+      color: $white;
+    }
+  }
+
+  &.btn-black {
+    &-fill {
+      background: $dark;
+      border-color: $dark;
+      box-shadow: 0 0 10px rgba($dark, 0.35);
+      color: $white; 
+
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0px 0px 0px 2px $white, 0px 0px 0px 4px $dark;
+      }
+    }
+
+    &:focus,
+    &.focus {
+      outline: 0;
+      box-shadow: 0px 0px 0px 2px $white, 0px 0px 0px 4px $dark;
+    }
+  }
+
+  &.btn-danger {
+    border-color: $red;
+    color: $red; 
+
+    &:hover {
+      background: $red;
+      color: $white;
+    }
+
+    &:focus,
+    &.focus {
+      outline: 0;
+      box-shadow: 0px 0px 0px 2px $white, 0px 0px 0px 4px $red;
+    }
+
+    &-fill {
+      background: $red;
+      border-color: $red;
+      color: $white; 
+
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0px 0px 0px 2px $white, 0px 0px 0px 4px $red;
+      }
+    }
+  }
+
+  &.btn-small {
+    @include padding(4px 20px);
+    @include font-size(15px);
+    height: 40px;
+    line-height: 25px;
+
+    .icon {
+      line-height: 25px;
+    }
+  }
+
+  &.btn-primary-link,
+  &.btn-black-link,
+  &.btn-danger-link {
+    @include padding(2px 8px);
+    @include font-size(15px);
+    background: none;
+    border: 0;
+    color: $primary;
+    height: auto;
+    line-height: 20px;
+    
+    &:hover {
+      color: $primary;
+    }
+
+    .icon {
+      line-height: 20px;
+    }
+  }
+
+  &.btn-black-link {
+    color: $dark;
+
+    &:hover {
+      color: $dark;
+    }
+  }
+
+  &.btn-danger-link {
+    color: $red;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
+  &.flat-link {
+    @include font-size(14px);
+    display: flex;
+
+    .icon {
+      @include font-size(16px);
+      @include margin(4px, left);
+    }
+  }
+
+}
+
+//
+// Block button
+//
+.btn-block {
+  justify-content: center;
+  width: 100%;
+}
+
+.btn-icon {
+  @include margin(0 8px);
+  @include padding(0);
+  align-items: center;
+  border: 0;
+  height: 18px;
+  line-height: 15px;
+
+  .icon {
+    @include margin(0);
+    @include font-size(18px);
+    line-height: 18px;
+  }
+
+  .icon-arrow_forward {
+    display: none;
+  }
+
+  &:hover {
+    background: transparent;
+    color: inherit;
+  }
+
+  &.icon-md {
+    .icon {
+      @include margin(0);
+      @include font-size(22px);
+      line-height: 22px;
+    }    
+  }
+
+  &.icon-lg {
+    @include round-corner(50px);
+    @include size(55px);
+    background: $gray-100;
+
+    .icon {
+      @include margin(0);
+      @include font-size(32px);
+    }
+
+    &:hover {
+      background: $gray-200;
+    }
+  }
+}
+
+.icon-blue {
+  color: $copy-blue;
+
+  &:hover {
+    color: $copy-blue;
+  }
+}
+
+.btn-no-arrow {
+  .icon-arrow_forward {
+    display: none;
+  }
+}
