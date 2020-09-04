@@ -1,7 +1,7 @@
 import { Accounts } from 'meteor/vulcan:accounts';
 
 Accounts.config({
-  sendVerificationEmail: false,
+  sendVerificationEmail: true,
 });
 
 Accounts.ui.config({
