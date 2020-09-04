@@ -12,9 +12,7 @@ const NavLinks = () => {
       <Components.ModalTrigger size="sm" title="Create New" component={button}>
         <Components.AdminCreateNew />
       </Components.ModalTrigger>
-      <Components.Button variant="primary-link" className="btn-icon icon-lg" path="/accounts/events" isLink={true}>
-        <Components.Icon name="notifications_none" />
-      </Components.Button>
+      
       <Components.UsersMenu />
     </Nav>
   )

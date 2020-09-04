@@ -63,7 +63,7 @@ const AdminTickets = () => (
           fragmentName: 'TicketItem',
         }}
         showNew={true}
-        showEdit={true}
+        showEdit={false}
       />
     </div>
   </div>

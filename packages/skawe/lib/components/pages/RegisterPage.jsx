@@ -8,11 +8,12 @@ const RegisterPage = () =>
   <React.Fragment>
     <Components.HeadTags title="Register Page" description="Register Page" />
 
-    <div className="section">
+    <Components.HeroJumbotron />
+
+    <div className="section pt-0">
       <Container>
         <Row>
           <div className="accounts-card">
-            <div className="accounts-card-banner"></div>
             <Card className="shadow-lg">
               <Card.Header>
                 <div className="title-5 mb-2">

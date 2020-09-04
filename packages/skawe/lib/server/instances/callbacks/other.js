@@ -8,6 +8,23 @@ import Users from 'meteor/vulcan:users';
 import { Instances } from '../../../modules/instances/index.js'
 
 
+/**
+ * @summary Increment the user's instance count
+ */
+export function incrementUserInstanceCount(instance) {
+  var userId = instance.document.userId;
+  Users.update({ _id: userId }, { $inc: {instanceCount: 1} });
+}
+
+//////////////////////////////////////////////////////
+// instances.remove.sync                                //
+//////////////////////////////////////////////////////
+
+export function InstancesRemoveOperations(instance) {
+  Users.update({ _id: instance.document.userId }, { $inc: { 'instanceCount': -1 } });
+  return instance;
+}
+
 //////////////////////////////////////////////////////
 // users.remove.async                               //
 //////////////////////////////////////////////////////

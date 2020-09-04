@@ -20,6 +20,8 @@ const AdminComments = () => (
           { name: 'postId', label: 'Post' },
           { name: 'userId', label: 'User' }
         ]}
+        showEdit={false}
+        showNew={false}
       />
     </div>
   </div>

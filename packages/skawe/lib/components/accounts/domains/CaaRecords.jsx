@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 
 class CaaRecords extends Component {
   render() {
-    const { domainRecordData } = this.props;
+    const { domainData, domainRecordData, domainRecords } = this.props;
 
     return (
       <div className="mb-4">
@@ -20,7 +20,10 @@ class CaaRecords extends Component {
                   Add a CAA Record
                 </Components.Button>
               }>
-                <Components.AddCaaRecords />
+                <Components.AddCaaRecords
+                  domainData={domainData}
+                  domainRecords={domainRecords}
+                />
               </Components.ModalTrigger>
             </div>
           </Col>
@@ -72,13 +75,25 @@ class CaaRecords extends Component {
                                 Edit
                               </Components.Button>
                             }>
-                              <Components.AddCaaRecords records={record} />
+                              <Components.AddCaaRecords
+                                records={record}
+                                domainData={domainData}
+                                domainRecords={domainRecords}
+                              />
                             </Components.ModalTrigger>
                             
-                            <Components.Button size="small" variant="danger-link">
-                              <Components.Icon name="delete_forever" />
-                              Delete
-                            </Components.Button>
+                            <Components.ModalTrigger size="alert" title="Delete CAA Record" component={
+                              <Components.Button variant="danger-link" size="small">
+                                <Components.Icon name="delete_forever" />
+                                Delete
+                              </Components.Button>
+                            }>
+                              <Components.DeleteRecords
+                                records={record}
+                                domainData={domainData}
+                                domainRecords={domainRecords}
+                              />
+                            </Components.ModalTrigger>
                           </div>
                         </td>
                       </tr>

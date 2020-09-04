@@ -49,8 +49,7 @@ class TicketsPage extends Component {
                   <li><span className="list-label">Ticket ID:</span> {ticket._id} </li>
                   <li>
                     <span className="list-label">Status:</span> 
-                    <span className="badge badge-primary">Open</span>
-                    {/* <span className="badge">Closed</span> */}
+                    <span className={`badge ${ticket.status === 'Open' ? 'badge-primary' : ''}`}>{ticket.status}</span>
                   </li>
                   <li><span className="list-label">Last updated:</span> {ticket.lastReplyedAt ? moment(new Date(ticket.lastReplyedAt)).fromNow() : <FormattedMessage id="tickets.dateNotDefined" />}</li>
                 </ul>
@@ -63,9 +62,20 @@ class TicketsPage extends Component {
                   <div className="media">
                     <Components.UsersAvatar user={ticket.user} size="small" className="mr-1" addLink={false} />
                     <div className="media__body">
-                      <div className="media__body-heading"><strong><Components.UsersName user={ticket.user} /></strong> / <span className="media-time">{ticket.createdAt ? moment(new Date(ticket.createdAt)).fromNow() : <FormattedMessage id="tickets.dateNotDefined" />}</span></div>
+                      <div className="media__body-heading">
+                        <strong>
+                          <Components.UsersName user={ticket.user} />
+                        </strong>
+                        &nbsp; / &nbsp;
+                        <span className="media-time">
+                          {ticket.createdAt ? moment(new Date(ticket.createdAt)).fromNow() : <FormattedMessage id="tickets.dateNotDefined" />}
+                        </span>
+                        {ticket.user.groups.map(group =>
+                          <span className="badge" key={group}>{group}</span>
+                        )}
+                      </div>
                       <div className="media__body-description">
-                        <div className="mt-1 mb-1">{ticket.htmlBody ? <div className="text-left" dangerouslySetInnerHTML={htmlBody}></div> : null}</div>
+                        {ticket.htmlBody ? <div className="text-left" dangerouslySetInnerHTML={htmlBody}></div> : null}
                         <div className="media__body-vote"></div>
                       </div>
                     </div>

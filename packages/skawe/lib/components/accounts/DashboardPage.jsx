@@ -79,7 +79,7 @@ const DashboardPage = ({ currentUser }) => {
       
       <Container>
         <Row>
-          <Col md={8} sm={12} xs={12}>
+          <Col md={10} sm={12} xs={12}>
             <div className="mb-3">
               <Row>
                 <Col>
@@ -162,8 +162,9 @@ const DashboardPage = ({ currentUser }) => {
 
           </Col>
 
+          {/*
           <Col md={4} sm={12} xs={12}>
-
+            
             <div className="text-left block-right">
               <ListGroup className="cloud__card">
                 <ListGroup.Item>
@@ -175,8 +176,9 @@ const DashboardPage = ({ currentUser }) => {
                 </ListGroup.Item>
               </ListGroup>
             </div>
-
+            
           </Col>
+          */}
         </Row>
       </Container>
     </React.Fragment>

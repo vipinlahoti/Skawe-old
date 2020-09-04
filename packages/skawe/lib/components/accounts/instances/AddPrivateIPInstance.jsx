@@ -65,6 +65,10 @@ class AddPrivateIPInstance extends Component {
     }
   }
 
+  closeModal = () => {
+    this.props.closeModal();
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -74,7 +78,7 @@ class AddPrivateIPInstance extends Component {
           Allocate
         </Components.Button>
 
-        <Components.Button>
+        <Components.Button variant="black" onClick={this.closeModal}>
           Cancel
         </Components.Button>
       </React.Fragment>

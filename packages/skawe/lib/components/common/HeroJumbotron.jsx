@@ -29,8 +29,8 @@ const HeroJumbotron = (
     <Jumbotron className={`jumbotron-${size}`}>
       <Container>
         <Row className="middle-xs">
-          <Col md={7} sm={12} xs={4}>
-            <h2 className="title-2">{title}</h2>
+          <Col md={6} sm={12} xs={4}>
+            <h1 className="title-1">{title}</h1>
             <p className="lead mb-2">{description}</p>
             
             {!form ? 
@@ -75,7 +75,7 @@ const HeroJumbotron = (
             ) : null }
           </Col>
 
-          <Col md={5} sm={12} xs={4}>
+          <Col md={5} sm={12} xs={4} className="col-md-offset-1">
             <div className="jumbotron-image">
               <img src={image} alt={alt} />
             </div>

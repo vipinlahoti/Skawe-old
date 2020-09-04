@@ -172,8 +172,6 @@ a {
 }
 
 .announcement__wrapper {
-  border: 1px dashed $primary;
-
   .announcement {
     @include padding(16px);
     display: flex;
@@ -214,7 +212,7 @@ a {
   position: fixed;
   bottom: 32px;
   right: 32px;
-  z-index: 9999;
+  z-index: 999;
 }
 
 

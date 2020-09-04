@@ -6,13 +6,18 @@ Accounts.config({
 
 Accounts.ui.config({
   passwordSignupFields: 'EMAIL_ONLY',
-  // loginPath: '/login',
-  // signUpPath: '/register',
-  // resetPasswordPath: '/forgot-password',
+  loginPath: '/login',
+  signUpPath: '/register',
+  resetPasswordPath: '/forgot-password',
   // profilePath: '/profile',
   minimumPasswordLength: 6,
-  // onSignedInHook: () => redirect('/accounts/dashboard'),
+  onSignedInHook() {
+   console.log('sign in');
+    window.location.href = '/accounts/dashboard';
+    // redirect('/accounts/dashboard')
+  },
   onSignedOutHook() {
+    console.log('signout');
     window.location.href = '/';
   }
 });

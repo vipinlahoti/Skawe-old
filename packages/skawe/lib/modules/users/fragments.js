@@ -9,6 +9,7 @@ registerFragment(/* GraphQL */`
     username
     displayName
     emailHash
+    groups
     avatarUrl
     pageUrl
   }
@@ -27,6 +28,8 @@ registerFragment(/* GraphQL */`
     groups
     # vulcan:posts
     postCount
+    instanceCount
+    domainCount
     # vulcan:comments
     # commentCount
   }
@@ -34,5 +37,9 @@ registerFragment(/* GraphQL */`
 
 extendFragment('UsersCurrent', `
   theme,
-  autoBackup
+  autoBackup,
+  instanceCount,
+  domainCount,
+  country,
+  region
 `);

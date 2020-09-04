@@ -17,7 +17,7 @@ const CreatedAtFormat = ({ document: ticket }) => {
 }
 
 const RepliedAtFormat = ({ document: ticket }) => {
-  return ticket.lastReplyedAt !== null ? moment(new Date(ticket.lastReplyedAt)).fromNow() : null;
+  return moment(new Date(ticket.lastReplyedAt)).fromNow()
 }
 
 const Departments = ({ document: ticket }) =>
@@ -29,7 +29,7 @@ const Departments = ({ document: ticket }) =>
     )}
   </React.Fragment>
 
-const TicketsHome = ({ currentUser, currentRoute, location = {} }) => {
+const TicketClosed = ({ currentUser, currentRoute, location = {} }) => {
   const query = qs.parse(location.search, { ignoreQueryPrefix: true }) || {};
   const { search } = query;
 
@@ -44,12 +44,12 @@ const TicketsHome = ({ currentUser, currentRoute, location = {} }) => {
           <Col>
             <div className="flex-column nav nav-pills" role="tablist">
               <div className="nav-item">
-                <Link to={{ pathname: '/accounts/tickets' }} className="nav-link active" role="tab">
+                <Link to={{ pathname: '/accounts/tickets' }} className="nav-link" role="tab">
                   Open Tickets
                 </Link>
               </div>
               <div className="nav-item">
-                <Link to={{ pathname: '/accounts/tickets/closed' }} className="nav-link" role="tab">
+                <Link to={{ pathname: '/accounts/tickets/closed' }} className="nav-link active" role="tab">
                   Closed Tickets
                 </Link>
               </div>
@@ -69,7 +69,7 @@ const TicketsHome = ({ currentUser, currentRoute, location = {} }) => {
                         _eq: currentUser._id
                       },
                       status: {
-                        _in: ['Open'],
+                        _in: ['Closed'],
                       },
                     }
                   }}
@@ -117,4 +117,4 @@ const TicketsHome = ({ currentUser, currentRoute, location = {} }) => {
   )
 };
 
-registerComponent({ name: 'TicketsHome', component: TicketsHome, hocs: [withCurrentUser] });
+registerComponent({ name: 'TicketClosed', component: TicketClosed, hocs: [withCurrentUser] });

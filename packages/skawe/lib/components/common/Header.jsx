@@ -47,66 +47,6 @@ const NavLinks = ({authenticated, setPageLists}) => {
                     : null }
                   </React.Fragment>
                  )}
-                
-                {/*
-                <Col md={3}>
-                  <div className="ml-3 nav-products">
-                    <h6 className="nav-title">Featured</h6>
-                    <LinkContainer to="/products/cloud-instance">
-                      <NavDropdown.Item>
-                        Cloud Instance
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/products/storage">
-                      <NavDropdown.Item>
-                        Storage
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                  </div>
-                </Col>
-
-                <Col md={3}>
-                  <div className="ml-3 nav-products">
-                    <h6 className="nav-title">Storage</h6>
-                    <LinkContainer to="/products/object-storage">
-                      <NavDropdown.Item>
-                        Volume Block Storage
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/products/backups">
-                      <NavDropdown.Item>
-                        Backups
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                  </div>
-                </Col>
-
-                <Col md={3}>
-                  <div className="ml-3 nav-products">
-                    <h6 className="nav-title">Networking</h6>
-                    <LinkContainer to="/products/load-balancers">
-                      <NavDropdown.Item>
-                        Load Balancers
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/products/additional-ip">
-                      <NavDropdown.Item>
-                        Additional IPs
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/products/dns-manager">
-                      <NavDropdown.Item>
-                        DNS Manager
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/products/ddos-protection">
-                      <NavDropdown.Item>
-                        DDOS Protection
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                  </div>
-                </Col>
-                */}
                 <Col md={3}>
                   
                 </Col>
@@ -134,12 +74,13 @@ const NavLinks = ({authenticated, setPageLists}) => {
       <div>
         { authenticated ? <NavLoggedIn authenticated={authenticated} /> : 
         <React.Fragment>
+          {/*
           <Components.Button variant="white" isLink={true} path="/register">
             Register
           </Components.Button>
-
-          <Components.Button variant="white-fill" isLink={true} path="/login">
-            Login
+          */}
+          <Components.Button variant="white-fill" isLink={true} path="/accounts/dashboard">
+            Get Started
           </Components.Button>
         </React.Fragment> }
       </div>

@@ -3,6 +3,6 @@ import Alert from 'react-bootstrap/Alert';
 import { registerComponent } from 'meteor/vulcan:lib';
 
 const BootstrapAlert = ({ children, variant = 'danger',  ...rest }) => 
-  <Alert dismissible variant={variant} {...rest}>{children}</Alert>;
+  <Alert variant={variant} {...rest}>{children}</Alert>;
 
 registerComponent('Alert', BootstrapAlert);

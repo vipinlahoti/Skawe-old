@@ -194,14 +194,22 @@ type User {
   votes(collectionName: String): [Vote] 
   theme: String 
   autoBackup: Boolean 
+  country: String 
+  region: String 
   postCount: Float 
   posts(limit: Int = 5): [Post] 
   comments(limit: Int = 5): [Comment] 
   commentCount: Float 
+  instanceCount: Float 
+  domainCount: Float 
   notifications_users: Boolean 
   notifications_posts: Boolean 
   notifications_comments: Boolean 
   notifications_replies: Boolean 
+  notifications_instances: Boolean 
+  notifications_domains: Boolean 
+  notifications_tickets: Boolean 
+  notifications_tickets_reply: Boolean 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
@@ -284,10 +292,16 @@ input CreateUserDataInput {
   groups: [String] 
   theme: String 
   autoBackup: Boolean 
+  country: String 
+  region: String 
   notifications_users: Boolean 
   notifications_posts: Boolean 
   notifications_comments: Boolean 
   notifications_replies: Boolean 
+  notifications_instances: Boolean 
+  notifications_domains: Boolean 
+  notifications_tickets: Boolean 
+  notifications_tickets_reply: Boolean 
 }
 
 input UpdateUserInput{
@@ -315,10 +329,16 @@ input UpdateUserDataInput {
   groups: [String] 
   theme: String 
   autoBackup: Boolean 
+  country: String 
+  region: String 
   notifications_users: Boolean 
   notifications_posts: Boolean 
   notifications_comments: Boolean 
   notifications_replies: Boolean 
+  notifications_instances: Boolean 
+  notifications_domains: Boolean 
+  notifications_tickets: Boolean 
+  notifications_tickets_reply: Boolean 
 }
 
 input UserFilterInput {
@@ -346,14 +366,22 @@ input UserFilterInput {
 
   theme: String_Selector
   autoBackup: Boolean_Selector
+  country: String_Selector
+  region: String_Selector
   postCount: Float_Selector
 
 
   commentCount: Float_Selector
+  instanceCount: Float_Selector
+  domainCount: Float_Selector
   notifications_users: Boolean_Selector
   notifications_posts: Boolean_Selector
   notifications_comments: Boolean_Selector
   notifications_replies: Boolean_Selector
+  notifications_instances: Boolean_Selector
+  notifications_domains: Boolean_Selector
+  notifications_tickets: Boolean_Selector
+  notifications_tickets_reply: Boolean_Selector
 }
 
 input UserSortInput {
@@ -376,14 +404,22 @@ input UserSortInput {
   votes: SortOptions
   theme: SortOptions
   autoBackup: SortOptions
+  country: SortOptions
+  region: SortOptions
   postCount: SortOptions
   posts: SortOptions
   comments: SortOptions
   commentCount: SortOptions
+  instanceCount: SortOptions
+  domainCount: SortOptions
   notifications_users: SortOptions
   notifications_posts: SortOptions
   notifications_comments: SortOptions
   notifications_replies: SortOptions
+  notifications_instances: SortOptions
+  notifications_domains: SortOptions
+  notifications_tickets: SortOptions
+  notifications_tickets_reply: SortOptions
 }
 
 input UserSelectorInput {
@@ -1294,8 +1330,8 @@ type Ticket {
   slug: String 
   body: String 
   htmlBody: String 
-  thumbnailUrl: String 
   lastReplyedAt: Date 
+  status: String 
   userIP: String 
   userAgent: String 
   referrer: String 
@@ -1390,7 +1426,6 @@ input CreateTicketInput {
 input CreateTicketDataInput {
   subject: String 
   body: String 
-  thumbnailUrl: String 
   userId: String 
   departmentsIds: [String] 
 }
@@ -1414,7 +1449,6 @@ input UpsertTicketInput{
 input UpdateTicketDataInput {
   subject: String 
   body: String 
-  thumbnailUrl: String 
   departmentsIds: [String] 
 }
 
@@ -1430,8 +1464,8 @@ input TicketFilterInput {
   slug: String_Selector
   body: String_Selector
   htmlBody: String_Selector
-  thumbnailUrl: String_Selector
   lastReplyedAt: Date_Selector
+  status: String_Selector
   userIP: String_Selector
   userAgent: String_Selector
   referrer: String_Selector
@@ -1460,8 +1494,8 @@ input TicketSortInput {
   slug: SortOptions
   body: SortOptions
   htmlBody: SortOptions
-  thumbnailUrl: SortOptions
   lastReplyedAt: SortOptions
+  status: SortOptions
   userIP: SortOptions
   userAgent: SortOptions
   referrer: SortOptions
@@ -1719,6 +1753,9 @@ type Page {
   features: [Feature] 
   pagePath: String 
   pageUrl: String 
+  cloudinaryId: String 
+  cloudinaryUrls: [JSON] 
+  cloudinaryUrl(format: String): String 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
@@ -1876,6 +1913,9 @@ input PageFilterInput {
   featuresIds: String_Array_Selector
   pagePath: String_Selector
   pageUrl: String_Selector
+  cloudinaryId: String_Selector
+
+  cloudinaryUrl: String_Selector
 }
 
 input PageSortInput {
@@ -1905,6 +1945,9 @@ input PageSortInput {
   featuresIds: SortOptions
   pagePath: SortOptions
   pageUrl: SortOptions
+  cloudinaryId: SortOptions
+  cloudinaryUrls: SortOptions
+  cloudinaryUrl: SortOptions
 }
 
 input PageSelectorInput {
@@ -1914,6 +1957,139 @@ input PageSelectorInput {
 }
 
 input PageSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Announcements
+type Announcement {
+  _id: String 
+  description: String 
+  code: String 
+}
+
+
+input DeleteAnnouncementInput{
+  filter: AnnouncementFilterInput
+  id: String
+}
+
+input SingleAnnouncementInput {
+  # filtering
+  filter: AnnouncementFilterInput
+  sort: AnnouncementSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: AnnouncementSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiAnnouncementInput {
+
+  # filtering
+  filter: AnnouncementFilterInput
+  sort: AnnouncementSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleAnnouncementOutput{
+  result: Announcement
+}
+
+type  MultiAnnouncementOutput{
+  results: [Announcement]
+  totalCount: Int
+}
+
+type AnnouncementMutationOutput{
+  data: Announcement
+}
+
+input CreateAnnouncementInput {
+  data: CreateAnnouncementDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateAnnouncementDataInput {
+  description: String 
+  code: String 
+}
+
+input UpdateAnnouncementInput{
+  filter: AnnouncementFilterInput
+  id: String
+  data: UpdateAnnouncementDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertAnnouncementInput{
+  filter: AnnouncementFilterInput
+  id: String
+  data: UpdateAnnouncementDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateAnnouncementDataInput {
+  description: String 
+  code: String 
+}
+
+input AnnouncementFilterInput {
+  _and: [AnnouncementFilterInput]
+  _not: AnnouncementFilterInput
+  _or: [AnnouncementFilterInput]
+
+
+  _id: String_Selector
+  description: String_Selector
+  code: String_Selector
+}
+
+input AnnouncementSortInput {
+  _id: SortOptions
+  description: SortOptions
+  code: SortOptions
+}
+
+input AnnouncementSelectorInput {
+  _and: [AnnouncementSelectorInput]
+  _or: [AnnouncementSelectorInput]
+
+}
+
+input AnnouncementSelectorUniqueInput {
   _id: String
   documentId: String # OpenCRUD backwards compatibility
   slug: String
@@ -1935,6 +2111,8 @@ type Instance {
   storage: String 
   transfer: String 
   status: String 
+  ipv4: [String] 
+  ipv6: String 
   userIP: String 
   userAgent: String 
   referrer: String 
@@ -2031,6 +2209,8 @@ input CreateInstanceDataInput {
   storage: String 
   transfer: String 
   status: String 
+  ipv4: [String] 
+  ipv6: String 
   userId: String 
   priceHr: String 
   priceMo: String 
@@ -2067,6 +2247,8 @@ input UpdateInstanceDataInput {
   storage: String 
   transfer: String 
   status: String 
+  ipv4: [String] 
+  ipv6: String 
   priceHr: String 
   priceMo: String 
   backupPriceHr: String 
@@ -2093,6 +2275,8 @@ input InstanceFilterInput {
   storage: String_Selector
   transfer: String_Selector
   status: String_Selector
+  ipv4: String_Array_Selector
+  ipv6: String_Selector
   userIP: String_Selector
   userAgent: String_Selector
   referrer: String_Selector
@@ -2120,6 +2304,8 @@ input InstanceSortInput {
   storage: SortOptions
   transfer: SortOptions
   status: SortOptions
+  ipv4: SortOptions
+  ipv6: SortOptions
   userIP: SortOptions
   userAgent: SortOptions
   referrer: SortOptions
@@ -2303,143 +2489,6 @@ input DomainSelectorInput {
 }
 
 input DomainSelectorUniqueInput {
-  _id: String
-  documentId: String # OpenCRUD backwards compatibility
-  slug: String
-
-}
-
-
-# Type for Events
-type Event {
-  _id: String 
-  createdAt: Date 
-  name: String 
-  userId: String 
-  user: User 
-  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
-}
-
-
-input DeleteEventInput{
-  filter: EventFilterInput
-  id: String
-}
-
-input SingleEventInput {
-  # filtering
-  filter: EventFilterInput
-  sort: EventSortInput
-  search: String
-  id: String
-
-  # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
-  selector: EventSelectorUniqueInput
-
-  # options (backwards-compatibility)
-  # Whether to enable caching for this query
-  enableCache: Boolean
-  # Return null instead of throwing MissingDocumentError
-  allowNull: Boolean
-  # An identifier to name the query's execution context
-  contextName: String
-}
-
-input MultiEventInput {
-
-  # filtering
-  filter: EventFilterInput
-  sort: EventSortInput
-  search: String
-  offset: Int
-  limit: Int
-
-  # backwards-compatibility
-  # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
-  terms: JSON
-
-  # options (backwards-compatibility)
-  # Whether to enable caching for this query
-  enableCache: Boolean
-  # Whether to calculate totalCount for this query
-  enableTotal: Boolean
-  # An identifier to name the query's execution context
-  contextName: String
-  
-}
-
-type SingleEventOutput{
-  result: Event
-}
-
-type  MultiEventOutput{
-  results: [Event]
-  totalCount: Int
-}
-
-type EventMutationOutput{
-  data: Event
-}
-
-input CreateEventInput {
-  data: CreateEventDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input CreateEventDataInput {
-  name: String 
-  userId: String 
-}
-
-input UpdateEventInput{
-  filter: EventFilterInput
-  id: String
-  data: UpdateEventDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input UpsertEventInput{
-  filter: EventFilterInput
-  id: String
-  data: UpdateEventDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input UpdateEventDataInput {
-  name: String 
-}
-
-input EventFilterInput {
-  _and: [EventFilterInput]
-  _not: EventFilterInput
-  _or: [EventFilterInput]
-
-
-  _id: String_Selector
-  createdAt: Date_Selector
-  name: String_Selector
-  userId: String_Selector
-}
-
-input EventSortInput {
-  _id: SortOptions
-  createdAt: SortOptions
-  name: SortOptions
-  userId: SortOptions
-}
-
-input EventSelectorInput {
-  _and: [EventSelectorInput]
-  _or: [EventSelectorInput]
-
-}
-
-input EventSelectorUniqueInput {
   _id: String
   documentId: String # OpenCRUD backwards compatibility
   slug: String
@@ -3550,134 +3599,6 @@ input AppSelectorUniqueInput {
 }
 
 
-# Type for Backups
-type Backup {
-  _id: String 
-  backupId: String 
-}
-
-
-input DeleteBackupInput{
-  filter: BackupFilterInput
-  id: String
-}
-
-input SingleBackupInput {
-  # filtering
-  filter: BackupFilterInput
-  sort: BackupSortInput
-  search: String
-  id: String
-
-  # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
-  selector: BackupSelectorUniqueInput
-
-  # options (backwards-compatibility)
-  # Whether to enable caching for this query
-  enableCache: Boolean
-  # Return null instead of throwing MissingDocumentError
-  allowNull: Boolean
-  # An identifier to name the query's execution context
-  contextName: String
-}
-
-input MultiBackupInput {
-
-  # filtering
-  filter: BackupFilterInput
-  sort: BackupSortInput
-  search: String
-  offset: Int
-  limit: Int
-
-  # backwards-compatibility
-  # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
-  terms: JSON
-
-  # options (backwards-compatibility)
-  # Whether to enable caching for this query
-  enableCache: Boolean
-  # Whether to calculate totalCount for this query
-  enableTotal: Boolean
-  # An identifier to name the query's execution context
-  contextName: String
-  
-}
-
-type SingleBackupOutput{
-  result: Backup
-}
-
-type  MultiBackupOutput{
-  results: [Backup]
-  totalCount: Int
-}
-
-type BackupMutationOutput{
-  data: Backup
-}
-
-input CreateBackupInput {
-  data: CreateBackupDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input CreateBackupDataInput {
-  backupId: String 
-}
-
-input UpdateBackupInput{
-  filter: BackupFilterInput
-  id: String
-  data: UpdateBackupDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input UpsertBackupInput{
-  filter: BackupFilterInput
-  id: String
-  data: UpdateBackupDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input UpdateBackupDataInput {
-  backupId: String 
-}
-
-input BackupFilterInput {
-  _and: [BackupFilterInput]
-  _not: BackupFilterInput
-  _or: [BackupFilterInput]
-
-
-  _id: String_Selector
-  backupId: String_Selector
-}
-
-input BackupSortInput {
-  _id: SortOptions
-  backupId: SortOptions
-}
-
-input BackupSelectorInput {
-  _and: [BackupSelectorInput]
-  _or: [BackupSelectorInput]
-
-}
-
-input BackupSelectorUniqueInput {
-  _id: String
-  documentId: String # OpenCRUD backwards compatibility
-  slug: String
-
-}
-
-
 
 
 type Query {
@@ -3729,6 +3650,12 @@ type Query {
   # A list of Page documents matching a set of query terms
   pages(input: MultiPageInput):  MultiPageOutput
   
+  # A single Announcement document fetched by ID or slug
+  announcement(input: SingleAnnouncementInput!): SingleAnnouncementOutput
+  
+  # A list of Announcement documents matching a set of query terms
+  announcements(input: MultiAnnouncementInput):  MultiAnnouncementOutput
+  
   # A single Instance document fetched by ID or slug
   instance(input: SingleInstanceInput!): SingleInstanceOutput
   
@@ -3740,12 +3667,6 @@ type Query {
   
   # A list of Domain documents matching a set of query terms
   domains(input: MultiDomainInput):  MultiDomainOutput
-  
-  # A single Event document fetched by ID or slug
-  event(input: SingleEventInput!): SingleEventOutput
-  
-  # A list of Event documents matching a set of query terms
-  events(input: MultiEventInput):  MultiEventOutput
   
   # A single Category document fetched by ID or slug
   category(input: SingleCategoryInput!): SingleCategoryOutput
@@ -3788,12 +3709,6 @@ type Query {
   
   # A list of App documents matching a set of query terms
   apps(input: MultiAppInput):  MultiAppOutput
-  
-  # A single Backup document fetched by ID or slug
-  backup(input: SingleBackupInput!): SingleBackupOutput
-  
-  # A list of Backup documents matching a set of query terms
-  backups(input: MultiBackupInput):  MultiBackupOutput
   
 }
   
@@ -4017,6 +3932,38 @@ type Mutation {
   selector: PageSelectorUniqueInput
 ) : PageMutationOutput
 
+  # Mutation for creating new Announcement documents
+  createAnnouncement(
+  input: CreateAnnouncementInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateAnnouncementDataInput
+) : AnnouncementMutationOutput
+
+  # Mutation for updating a Announcement document
+  updateAnnouncement(
+  input: UpdateAnnouncementInput,
+  "Deprecated (use 'input' field instead)."
+  selector: AnnouncementSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateAnnouncementDataInput 
+) : AnnouncementMutationOutput
+
+  # Mutation for upserting a Announcement document
+  upsertAnnouncement(
+  input: UpsertAnnouncementInput,
+  "Deprecated (use 'input' field instead)."
+  selector: AnnouncementSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateAnnouncementDataInput
+) : AnnouncementMutationOutput
+
+  # Mutation for deleting a Announcement document
+  deleteAnnouncement(
+  input: DeleteAnnouncementInput,
+  "Deprecated (use 'input' field instead)."
+  selector: AnnouncementSelectorUniqueInput
+) : AnnouncementMutationOutput
+
   # Mutation for creating new Instance documents
   createInstance(
   input: CreateInstanceInput,
@@ -4080,38 +4027,6 @@ type Mutation {
   "Deprecated (use 'input' field instead)."
   selector: DomainSelectorUniqueInput
 ) : DomainMutationOutput
-
-  # Mutation for creating new Event documents
-  createEvent(
-  input: CreateEventInput,
-  "Deprecated (use 'input' field instead)."
-  data: CreateEventDataInput
-) : EventMutationOutput
-
-  # Mutation for updating a Event document
-  updateEvent(
-  input: UpdateEventInput,
-  "Deprecated (use 'input' field instead)."
-  selector: EventSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateEventDataInput 
-) : EventMutationOutput
-
-  # Mutation for upserting a Event document
-  upsertEvent(
-  input: UpsertEventInput,
-  "Deprecated (use 'input' field instead)."
-  selector: EventSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateEventDataInput
-) : EventMutationOutput
-
-  # Mutation for deleting a Event document
-  deleteEvent(
-  input: DeleteEventInput,
-  "Deprecated (use 'input' field instead)."
-  selector: EventSelectorUniqueInput
-) : EventMutationOutput
 
   # Mutation for creating new Category documents
   createCategory(
@@ -4336,38 +4251,6 @@ type Mutation {
   "Deprecated (use 'input' field instead)."
   selector: AppSelectorUniqueInput
 ) : AppMutationOutput
-
-  # Mutation for creating new Backup documents
-  createBackup(
-  input: CreateBackupInput,
-  "Deprecated (use 'input' field instead)."
-  data: CreateBackupDataInput
-) : BackupMutationOutput
-
-  # Mutation for updating a Backup document
-  updateBackup(
-  input: UpdateBackupInput,
-  "Deprecated (use 'input' field instead)."
-  selector: BackupSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateBackupDataInput 
-) : BackupMutationOutput
-
-  # Mutation for upserting a Backup document
-  upsertBackup(
-  input: UpsertBackupInput,
-  "Deprecated (use 'input' field instead)."
-  selector: BackupSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateBackupDataInput
-) : BackupMutationOutput
-
-  # Mutation for deleting a Backup document
-  deleteBackup(
-  input: DeleteBackupInput,
-  "Deprecated (use 'input' field instead)."
-  selector: BackupSelectorUniqueInput
-) : BackupMutationOutput
 
 }
 

@@ -15,6 +15,8 @@ registerFragment(/* GraphQL */`
     storage
     transfer
     status
+    ipv4
+    ipv6
     priceHr
     priceMo
 

@@ -120,6 +120,28 @@ const schema = {
     canUpdate: ['members'],
   },
   /**
+    IPV4
+  */
+  ipv4: {
+    type: Array,
+    canRead: ['owners'],
+    canCreate: ['members'],
+    canUpdate: ['members'],
+  },
+  'ipv4.$': {
+    type: String,
+    optional: true,
+  },
+  /**
+    IPv6
+  */
+  ipv6: {
+    type: String,
+    canRead: ['owners'],
+    canCreate: ['members'],
+    canUpdate: ['members'],
+  },
+  /**
     Save info for later spam checking on a instance. We will use this for the akismet package
   */
   userIP: {

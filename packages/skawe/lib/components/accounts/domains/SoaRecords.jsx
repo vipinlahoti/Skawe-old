@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 
 class SoaRecords extends Component {
   render() {
-    const { domainData } = this.props;
+    const { domainData, getDomain } = this.props;
 
     return (
       <div className="mb-4">
@@ -68,7 +68,7 @@ class SoaRecords extends Component {
                           Edit
                         </Components.Button>
                       }>
-                        <Components.AddSoaRecords records={domainData} />
+                        <Components.AddSoaRecords records={domainData} getDomain={getDomain} />
                       </Components.ModalTrigger>
                     </td>
                   </tr>

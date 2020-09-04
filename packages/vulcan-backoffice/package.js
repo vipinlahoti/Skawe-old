@@ -6,13 +6,7 @@ Package.describe({
 });
 
 Package.onUse(api => {
-  api.versionsFrom('METEOR@1.5.2');
-
-  api.use([
-    'vulcan:core@=1.16.0',
-    'vulcan:i18n@=1.16.0',
-    'vulcan:accounts@1.16.0'
-  ]);
+  api.use(['vulcan:core@=1.16.0', 'vulcan:i18n@=1.16.0', 'vulcan:accounts@1.16.0']);
 
   api.mainModule('lib/server/main.js', 'server');
   api.mainModule('lib/client/main.js', 'client');

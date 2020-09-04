@@ -18,15 +18,8 @@ const UsersEditForm = ({ document: user, currentUser, loading, flash }) => {
         collection={Users}
         submitLabel="Update Profile"
         fields={[
+          'username',
           'displayName',
-          'phoneNumber',
-          'address',
-          'addressLine2',
-          'city',
-          'zipCode',
-          'country',
-          'company',
-          'companyUrl'
         ]}
         successCallback={user => {
           flash({ id: 'users.edit_success', properties: { name: Users.getDisplayName(user) }, type: 'success' });

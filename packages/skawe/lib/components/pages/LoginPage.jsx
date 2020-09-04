@@ -8,22 +8,19 @@ const LoginPage = () =>
   <React.Fragment>
     <Components.HeadTags title="Login Page" description="Login Page" />
 
-    <div className="section">
+    <Components.HeroJumbotron />
+
+    <div className="section pt-0">
       <Container>
         <Row>
           <div className="accounts-card">
-            <div className="accounts-card-banner"></div>
             <Card className="shadow-lg">
               <Card.Header>
                 <div className="title-5 mb-2">
-                  Registered Users
-                  <span className="d-block">Have an account? Sign in now.</span>
+                  Login or Create Account
                 </div>
                 
-                <Components.CreateAccount state={STATES.SIGN_IN}/>
-
-                <p className="mt-1">Need to find your <Link to={{ pathname: '/forgot-password' }}>Password</Link>?</p>
-                <p>Don't have an account? <Link to={{ pathname: '/register' }}>Register Now</Link>.</p>
+                <Components.AccountsLoginForm />
 
               </Card.Header>
             </Card>

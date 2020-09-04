@@ -44,14 +44,14 @@ class ResizeInstance extends Component {
 
       } else {
         this.setState({ instanceStatus: '', disableButton: false })
-        this.props.instanceStatus(getInstancesData.data);
+        this.props.instanceStatus(cloudInstanceData);
 
         const data = {
-          type: String(getInstancesData.type),
+          type: String(cloudInstanceData.type),
           cpu: String(this.state.selectServerPlans[2]),
           ram: String(this.state.selectServerPlans[4]),
           storage: String(this.state.selectServerPlans[3]),
-          status: String(getInstancesData.status),
+          status: String(cloudInstanceData.status),
           transfer: String(this.state.selectServerPlans[7]),
           backupPrice: String(this.state.selectServerPlans[6]),
         };
@@ -68,6 +68,7 @@ class ResizeInstance extends Component {
   }
 
   selectedPlans = (setServerPlans) => {
+    console.log(setServerPlans)
     this.setState({
       selectServerPlans: setServerPlans
     });

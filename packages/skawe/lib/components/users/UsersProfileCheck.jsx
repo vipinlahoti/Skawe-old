@@ -1,82 +1,189 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { withSingle2, Components, getSetting, registerComponent, withCurrentUser, withMessages, withUpdate } from 'meteor/vulcan:core';
 import Users from 'meteor/vulcan:users';
-import { withSingle, Components, registerComponent, withMessages } from 'meteor/vulcan:core';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
+import { Navbar, Container, Row, Col, Tab, Nav } from 'react-bootstrap';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
-const UsersProfileCheck = ({currentUser, document, loading, flash}, context) => {
+const logoUrl = getSetting('logoUrl');
+const siteTitle = getSetting('title');
 
-  // we're loading all fields marked as "mustComplete" using withDocument
-  const userMustCompleteFields = document;
+class UsersProfileCheck extends Component {
+  state = {
+    country: '',
+    region: '',
+    nextStep: false
+  }
 
-  // if user is not logged in, or userMustCompleteFields is still loading, don't return anything
-  if (!currentUser || loading) {
+  selectCountry = val => {
+    this.setState({ country: val });
+  }
+ 
+  selectRegion = val => {
+    this.setState({ region: val });
+  }
 
-    return null;
+  handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
 
-  } else {
+    this.setState({
+      [name]: value
+    })
+  }
 
-    // return fields that are required by the schema but haven't been filled out yet
-    const fieldsToComplete = Users.getRequiredFields().filter(fieldName => {
-      return !userMustCompleteFields[fieldName];
-    });
+  showNext = e => {
+    const { country, region } = this.state;
+    const checkFields = country.length > 0 && region.length > 0;
+    
+    this.setState({
+      nextStep: checkFields
+    })
+  }
 
-    if (fieldsToComplete.length > 0) {
-      const footer = (
-        <a className="complete-profile-logout" onClick={ () => Meteor.logout(() => window.location.reload() /* something is broken here when giving the apollo client as a prop*/) }>
-          <FormattedMessage id="app.or"/> <FormattedMessage id="users.log_out"/>
-        </a>
-      );
-      return (
-        <Components.Modal
-          size='small'
-          show={ true }
-          showCloseButton={ false }
-          title={<FormattedMessage id="users.complete_profile"/>}
-          footer={ footer }
-        >
-          <Components.SmartForm
-            collection={ Users }
-            documentId={ currentUser._id }
-            fields={ fieldsToComplete }
-            showRemove={ false }
-            successCallback={user => {
-              const newUser = {...currentUser, ...user};
-              if (Users.hasCompletedProfile(newUser)) {
-                flash({id: "users.profile_completed", type: 'success'});
-              }
-            }}
-          />
-        </Components.Modal>
-      );
-    } else {
+  updateProfile = async e => {
+    const { updateUser, currentUser, flash } = this.props;
+    const { country, region } = this.state;
 
-      return null;
-
+    if (currentUser) {
+      this.props.updateUser({
+        selector: { _id: currentUser._id},
+        data: { 
+          country: country,
+          region: region
+        }
+      }).then(() => flash({ id: 'users.edit_success', properties: { name: Users.getDisplayName(currentUser) }, type: 'success' }))
     }
   }
 
-};
+  render() {
+    const { currentUser, loading, flash } = this.props;
+    console.log('currentUser: ', currentUser)
+    // if user is not logged in, or userMustCompleteFields is still loading, don't return anything
+    if (!currentUser || loading) {
 
+      return null;
 
-UsersProfileCheck.propTypes = {
-  currentUser: PropTypes.object
-};
+    } else {
+      const { country, region, nextStep } = this.state;
+      const checkFields = country.length > 0 && region.length > 0;
+      const activeTab = nextStep ? 'active-tab' : '';
 
-UsersProfileCheck.displayName = 'UsersProfileCheck';
+        return (
+          <div className="profile__complete section">
+            <Container>
+              <Row className="center-xs text-left">
+                <Col sm={12} md={8}>
+                  <Row>
+                    <Col>
+                      <Navbar variant="light">
+                        <Components.Logo logoUrl={logoUrl} siteTitle={siteTitle} />
+                      </Navbar>
+                    </Col>
+                  </Row>
 
-const mustCompleteFragment = gql`
-  fragment UsersMustCompleteFragment on User {
-    _id
-    ${Users.getRequiredFields().join('\n')}
+                  <Row className="center-xs">
+                    <Col>
+
+                      <div className="complete__profile-wrapper">
+                        <ul className="complete__profile-wrapper-links">
+                          <li className={`complete__profile-wrapper-item active ${activeTab}`}>Your Details</li>
+                          <li className={`complete__profile-wrapper-item ${activeTab}`}>Billing Info</li>
+                        </ul>
+
+                        <div className="pt-3">
+                          <div className={`complete__profile-tab text-left active ${activeTab}`}>
+                            <Components.FormElement>
+                              
+                              <div className="form-group">
+                                <label>Country</label>
+                                <CountryDropdown
+                                  className="form-control"
+                                  value={country}
+                                  priorityOptions={['IN']}
+                                  onChange={(val) => this.selectCountry(val)} />
+                              </div>
+
+                              <div className="form-group">
+                                <label>Region</label>
+                                <RegionDropdown
+                                  className="form-control"
+                                  country={country}
+                                  value={region}
+                                  onChange={(val) => this.selectRegion(val)} />
+                              </div>
+                              <Components.Button variant="primary-fill" onClick={this.showNext} disabled={!checkFields}>
+                                Next
+                              </Components.Button>
+                            </Components.FormElement>
+                          </div>
+
+                          <div className={`complete__profile-tab text-left ${activeTab}`}>
+                            <div className="d-block mb-2">
+                              Billing Info
+                            </div>
+                            <Components.Button variant="primary-fill" onClick={this.updateProfile}>
+                              Complete Profile
+                            </Components.Button>
+                          </div>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        );
+      // } else {
+
+      //   return null;
+
+      // }
+    }
+
   }
-`
+}
 
-const options = {
-  collection: Users,
-  queryName: 'usersMustCompleteQuery',
-  fragment: mustCompleteFragment,
-};
 
-registerComponent({ name: 'UsersProfileCheck', component: UsersProfileCheck, hocs: [withMessages, [withSingle, options]] });
+// UsersProfileCheck.propTypes = {
+//   currentUser: PropTypes.object
+// };
+
+// UsersProfileCheck.displayName = 'UsersProfileCheck';
+
+// const mustCompleteFragment = gql`
+//   fragment UsersMustCompleteFragment on User {
+//     _id
+//     ${Users.getRequiredFields().join('\n')}
+//   }
+// `
+
+// const options = {
+//   collection: Users,
+//   queryName: 'usersMustCompleteQuery',
+//   fragment: mustCompleteFragment,
+// };
+
+
+// const options = {
+//   collection: Users,
+//   fragmentName: 'UsersProfile',
+// };
+
+registerComponent({
+  name: 'UsersProfileCheck',
+  component: UsersProfileCheck,
+  hocs: [
+    withMessages,
+    withCurrentUser,
+    withUpdate({
+      collection: Users,
+      fragmentName: 'UsersCurrent',
+    }),
+    // [withSingle2, options]
+  ]
+});

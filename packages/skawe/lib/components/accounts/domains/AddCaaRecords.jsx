@@ -1,4 +1,4 @@
-import { Components, registerComponent } from 'meteor/vulcan:core';
+import { Components, registerComponent, withMutation, withMessages } from 'meteor/vulcan:core';
 import React, { Component } from 'react';
 
 class AddCaaRecords extends Component {
@@ -23,13 +23,63 @@ class AddCaaRecords extends Component {
     const dataValue = this.state.dataValue;
     const tllValue = this.state.tllValue;
     const tag = this.state.tag;
+    const domainId = this.props.domainData.id;
 
-    console.log(
-      'nameValue: ', nameValue,
-      ' dataValue: ', dataValue,
-      ' tllValue: ', tllValue,
-      ' tag: ', tllValue
-    )
+    let setData;
+    let dataMutation;
+
+    if (this.props.records) {
+      setData = {
+        name: nameValue,
+        tag: tag,
+        target: dataValue,
+        ttl_sec: Number(tllValue),
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records/${this.props.records.id}`,
+        method: 'PUT',
+        data: setData
+      }
+
+    } else {
+      setData = {
+        name: nameValue,
+        tag: tag,
+        target: dataValue,
+        ttl_sec: Number(tllValue),
+        type: 'CAA',
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records`,
+        method: 'POST',
+        data: setData
+      }
+    }
+
+    try {
+      const result = await this.props.getInstancesData({ dataMutation });
+
+      const {
+        data: {
+          getInstancesData
+        }
+      } = result;
+      const body = getInstancesData.data;
+
+      if (body.statusCode === 200) {
+        this.props.closeModal();
+        if (this.props.records) {
+          this.props.flash({ id: 'records.edited', type: 'success' });
+        } else {
+          this.props.flash({ id: 'records.created', type: 'success' });
+        }
+        this.props.domainRecords();
+      }
+    } catch (error) {
+      console.error(error); // eslint-disable-line
+    }
   }
 
   render() {
@@ -84,4 +134,16 @@ class AddCaaRecords extends Component {
   }
 }
 
-registerComponent({ name: 'AddCaaRecords', component: AddCaaRecords });
+const instanceOptions = {
+  name: 'getInstancesData',
+  args: { dataMutation: 'JSON' }
+};
+
+registerComponent({
+  name: 'AddCaaRecords',
+  component: AddCaaRecords,
+  hocs: [
+    withMessages,
+    withMutation(instanceOptions),
+  ]
+});

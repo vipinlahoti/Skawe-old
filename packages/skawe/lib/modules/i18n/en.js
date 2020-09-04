@@ -30,7 +30,7 @@ addStrings('en', {
   'accounts.set_password': 'Set password',
   'accounts.enter_new_password': 'Enter new password',
   'accounts.new_password': 'New password',
-  'accounts.forgot_password': 'Forgot password',
+  'accounts.forgot_password': 'Password',
   'accounts.sign_up': 'Create Account',
   'accounts.sign_in': 'Login',
   'accounts.sign_out': 'Sign out',
@@ -85,6 +85,10 @@ addStrings('en', {
   'users.notifications': 'Notifications',
   'users.notifications_users': 'New Users Notifications',
   'users.notifications_posts': 'New Posts Notifications',
+  'users.notifications_instances': 'New Instances Notifications',
+  'users.notifications_domains': 'New Domains Notifications',
+  'users.notifications_tickets': 'New Tickets Notifications',
+  'users.notifications_tickets_reply': 'New Ticket Replied Notifications',
   'users.newsletter_subscribeToNewsletter': 'Subscribe to newsletter',
   'users.users_admin': 'Admin',
   'users.admin': 'Admin',
@@ -314,6 +318,7 @@ addStrings('en', {
   // Admin
   //===================================//
   'admin': 'Admin',
+  'admin.announcements': 'Announcements (admin)',
   'admin.users': 'Users (admin)',
   'admin.categories': 'Categories (admin)',
   'admin.posts': 'Posts (admin)',
@@ -329,6 +334,7 @@ addStrings('en', {
   'admin.click-apps': 'Click Apps (admin)',
   'admin.instances': 'Instances (admin)',
   'admin.domains': 'Domains (admin)',
+  'admin.backoffice': 'Backoffice (Super admin)',
 
 
   //===================================//
@@ -368,7 +374,7 @@ addStrings('en', {
   'tickets.rate_limit_error': 'Please wait {value} seconds before ticketing again.',
   'tickets.sign_up_or_log_in_first': 'Please sign up or log in first.',
   'tickets.postedAt': 'Posted at',
-  'tickets.dateNotDefined': 'Date not defined',
+  'tickets.dateNotDefined': 'Not replied yet',
   'tickets.subscribe': 'Subscribe',
   'tickets.unsubscribe': 'Unsubscribe',
   'tickets.subscribed': 'You have subscribed to “{name}” comments.',
@@ -479,5 +485,11 @@ addStrings('en', {
   'instance.created_success': 'Instance created successfully',
 
 
+  //===================================//
+  // Records
+  //===================================//
+  'records.deleted': 'Deleted successfully',
+  'records.created': 'Created successfully',
+  'records.edited': 'Edited successfully',
 });
 

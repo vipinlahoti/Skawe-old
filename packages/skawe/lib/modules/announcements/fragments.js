@@ -1,8 +1,9 @@
 import { registerFragment } from 'meteor/vulcan:core';
 
 registerFragment(/* GraphQL */`
-  fragment BackupItem on Backup {
+  fragment AnnouncementItem on Announcement {
     _id
-    backupId
+    description
+    code
   }
 `);

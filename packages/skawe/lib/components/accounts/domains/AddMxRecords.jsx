@@ -1,4 +1,4 @@
-import { Components, registerComponent } from 'meteor/vulcan:core';
+import { Components, registerComponent, withMutation, withMessages } from 'meteor/vulcan:core';
 import React, { Component } from 'react';
 
 class AddMxRecords extends Component {
@@ -18,17 +18,68 @@ class AddMxRecords extends Component {
     })
   };
 
-  createNsRecords = async e => {
+  createRecords = async e => {
     const mailServer = this.state.mailServer;
     const subDomain = this.state.subDomain;
     const tllValue = this.state.tllValue;
     const priority = this.state.priority;
-    console.log(
-      'mailServer: ', mailServer,
-      ' subDomain: ', subDomain,
-      ' tllValue: ', tllValue,
-      ' priority: ', priority
-    )
+    const domainId = this.props.domainData.id;
+
+    let setData;
+    let dataMutation;
+
+    if (this.props.records) {
+      setData = {
+        name: subDomain,
+        priority: Number(priority),
+        target: mailServer,
+        ttl_sec: Number(tllValue),
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records/${this.props.records.id}`,
+        method: 'PUT',
+        data: setData
+      }
+
+    } else {
+      setData = {
+        name: subDomain,
+        priority: Number(priority),
+        target: mailServer,
+        ttl_sec: Number(tllValue),
+        type: 'MX'
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records`,
+        method: 'POST',
+        data: setData
+      }
+    }
+
+    try {
+      const result = await this.props.getInstancesData({ dataMutation });
+
+      const {
+        data: {
+          getInstancesData
+        }
+      } = result;
+      const body = getInstancesData.data;
+
+      if (body.statusCode === 200) {
+        this.props.closeModal();
+        if (this.props.records) {
+          this.props.flash({ id: 'records.edited', type: 'success' });
+        } else {
+          this.props.flash({ id: 'records.created', type: 'success' });
+        }
+        this.props.domainRecords();
+      }
+    } catch (error) {
+      console.error(error); // eslint-disable-line
+    }
   }
 
   render() {
@@ -75,7 +126,7 @@ class AddMxRecords extends Component {
           }}
         />
 
-        <Components.Button variant="primary-fill" onClick={this.createNsRecords} disabled={!checkDisable}>
+        <Components.Button variant="primary-fill" onClick={this.createRecords} disabled={!checkDisable}>
           { records ? 'Save' : 'Create' }
         </Components.Button>
       </Components.FormElement>
@@ -83,4 +134,16 @@ class AddMxRecords extends Component {
   }
 }
 
-registerComponent({ name: 'AddMxRecords', component: AddMxRecords });
+const instanceOptions = {
+  name: 'getInstancesData',
+  args: { dataMutation: 'JSON' }
+};
+
+registerComponent({
+  name: 'AddMxRecords',
+  component: AddMxRecords,
+  hocs: [
+    withMessages,
+    withMutation(instanceOptions),
+  ]
+});

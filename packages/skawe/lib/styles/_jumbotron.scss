@@ -1,13 +1,15 @@
 .jumbotron {
-  @include padding(120px, top);
+  @include padding(220px, top);
   @include padding(80px, bottom);
-  display: flex;
   align-items: center;
+  background-image: url('/images/triangles-background.png');
+  display: flex;
   overflow: hidden;
   position: relative;
+  z-index: 1;
 
   @include breakpoint($screen-md) {
-    @include height(550px);
+    // @include height(680px);
     @include padding(120px, bottom);
   }
 
@@ -88,9 +90,8 @@
   }
 
   &.jumbotron-large {
-    @include padding(130px, top);
-    @include padding(180px, bottom);
-    height: auto;
+    @include padding(220px, bottom);
+    height: 100vh;
 
     .jumbotron-image {
       &:after {

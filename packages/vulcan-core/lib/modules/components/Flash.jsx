@@ -16,7 +16,7 @@ class Flash extends PureComponent {
   // }
 
   dismissFlash(e) {
-    // e.preventDefault();
+    e.preventDefault();
     this.props.clear(this.props.message._id);
   }
 

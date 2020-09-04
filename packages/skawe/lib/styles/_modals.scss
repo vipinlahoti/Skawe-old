@@ -30,7 +30,7 @@
   overflow: hidden;
  
   .modal {
-    background: rgba(0,0,0,.35);
+    background: rgba($dark, .65);
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -112,6 +112,21 @@
       @include width(980px);
       @include width(1100px, max);
     }
+  }
+
+  &.modal-full {
+    max-width: 100%;
+    width: 100%;
+
+    .modal-header {
+      border: 0;
+    }
+  }
+
+  &.modal-alert {
+    height: auto;
+    margin: 10% auto;
+    position: static;
   }
 }
 

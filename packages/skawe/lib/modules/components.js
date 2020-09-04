@@ -29,20 +29,14 @@ import '../components/common/Loading.jsx';
 
 
 //======================================================//
-// forms
-//======================================================//
-import '../components/pages/LoginPage.jsx';
-import '../components/pages/RegisterPage.jsx';
-import '../components/pages/ForgotPassword.jsx';
-import '../components/pages/ResetPassword.jsx';
-
-
-//======================================================//
 // Pages
 //======================================================//
 import '../components/pages/PagesPage.jsx';
 import '../components/pages/HomePage.jsx';
-
+import '../components/pages/LoginPage.jsx';
+import '../components/pages/RegisterPage.jsx';
+import '../components/pages/ForgotPassword.jsx';
+import '../components/pages/ResetPassword.jsx';
 
 //======================================================//
 // Posts
@@ -71,6 +65,7 @@ import '../components/comments/CommentsNode.jsx';
 import '../components/comments/CommentsNewForm.jsx';
 import '../components/comments/CommentsEditForm.jsx';
 import '../components/comments/CommentsLoadMore.jsx';
+
 
 //======================================================//
 // Accounts Pages
@@ -118,7 +113,6 @@ import '../components/users/UsersPasswordChange.jsx';
 import '../components/users/UsersSettings.jsx';
 import '../components/users/UsersMakePayment.jsx';
 import '../components/users/UsersEditPaymentMethod.jsx';
-import '../components/users/UserEvents.jsx';
 
 
 //======================================================//
@@ -147,6 +141,8 @@ import '../components/admin/AdminServerPlans.jsx';
 import '../components/admin/AdminOneClickApps.jsx';
 import '../components/admin/AdminCloudInstances.jsx';
 import '../components/admin/AdminDomains.jsx';
+import '../components/admin/AdminAnnouncements.jsx';
+
 
 
 //======================================================//
@@ -158,6 +154,7 @@ import '../components/tickets/TicketsDepartments.jsx';
 import '../components/tickets/TicketsPage.jsx';
 import '../components/tickets/TicketsRepliesThread.jsx';
 import '../components/tickets/TicketsNew.jsx';
+import '../components/tickets/TicketClosed.jsx';
 
 
 //======================================================//
@@ -182,7 +179,6 @@ import '../components/accounts/instances/InstanceOriginalJsonCard.jsx';
 import '../components/accounts/instances/InstanceLabel.jsx';
 import '../components/accounts/instances/InstanceSizeCount.jsx';
 import '../components/accounts/instances/InstancePlans.jsx';
-import '../components/accounts/instances/AddDomain.jsx';
 import '../components/accounts/instances/ImportDomainZone.jsx';
 import '../components/accounts/instances/SettingsInstance.jsx';
 import '../components/accounts/instances/RebuildInstance.jsx';
@@ -214,6 +210,7 @@ import '../components/accounts/instances/MakePayment.jsx';
 //======================================================//
 // Domains
 //======================================================//
+import '../components/accounts/domains/AddDomain.jsx';
 import '../components/accounts/domains/SoaRecords.jsx';
 import '../components/accounts/domains/NsRecords.jsx';
 import '../components/accounts/domains/MxRecords.jsx';
@@ -222,6 +219,7 @@ import '../components/accounts/domains/CNameRecords.jsx';
 import '../components/accounts/domains/TxtRecords.jsx';
 import '../components/accounts/domains/SrvRecords.jsx';
 import '../components/accounts/domains/CaaRecords.jsx';
+import '../components/accounts/domains/DeleteRecords.jsx';
 
 import '../components/accounts/domains/AddARecords.jsx';
 import '../components/accounts/domains/AddCaaRecords.jsx';

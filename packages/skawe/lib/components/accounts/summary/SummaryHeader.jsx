@@ -65,7 +65,7 @@ class SummaryHeader extends Component {
       const instanceResult = getInstancesData.data;
       
       if (instanceResult.statusCode === 200) {
-        this.getInstanceData();
+        this.props.getInstanceData();
       }
 
     } catch (error) {

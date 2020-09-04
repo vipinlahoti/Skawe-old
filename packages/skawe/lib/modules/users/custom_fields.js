@@ -1,5 +1,6 @@
 import Users from 'meteor/vulcan:users';
 import { Connectors } from 'meteor/vulcan:core';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 const notificationsGroup = {
   name: 'notifications',
@@ -8,7 +9,7 @@ const notificationsGroup = {
 
 Users.addField([
   /**
-    user dashboard Theme
+    user dashboard Theme. Modifiable.
   */
   {
     fieldName: 'theme',
@@ -28,7 +29,7 @@ Users.addField([
     },
   },
   /**
-    Enable Auto backup
+    Enable Auto backup. Modifiable.
   */
   {
     fieldName: 'autoBackup',
@@ -41,6 +42,41 @@ Users.addField([
       input: 'checkbox',
     },
   },
+
+  /**
+    The user's Country. Modifiable.
+  */
+  {
+    fieldName: 'country',
+    fieldSchema: {
+      type: String,
+      optional: true,
+      canRead: ['members'],
+      canCreate: ['members'],
+      canUpdate: ['members'],
+      input: 'text',
+    }
+  },
+
+  /**
+    The user's Region. Modifiable.
+  */
+  {
+    fieldName: 'region',
+    fieldSchema: {
+      type: String,
+      optional: true,
+      canRead: ['members'],
+      canCreate: ['members'],
+      canUpdate: ['members'],
+      input: 'text',
+    }
+  },
+
+  /*=================================
+   * Posts
+   *================================*/
+  
   /**
     Count of the user's posts
   */
@@ -55,7 +91,7 @@ Users.addField([
   },
   /**
   The user's associated posts (GraphQL only)
-*/
+  */
   {
     fieldName: 'posts',
     fieldSchema: {
@@ -80,6 +116,10 @@ Users.addField([
       },
     },
   },
+
+  /*=================================
+   * Comments
+   *================================*/
   /**
   The user's associated comments (GraphQL only)
 */
@@ -117,6 +157,36 @@ Users.addField([
       canRead: ['guests'],
     },
   },
+  
+  /*=================================
+   * Instances
+   *================================*/
+  
+  /**
+    Count of the user's Instances
+  */
+  {
+    fieldName: 'instanceCount',
+    fieldSchema: {
+      type: Number,
+      optional: true,
+      defaultValue: 0,
+      canRead: ['members'],
+    },
+  },
+  /**
+    Count of the user's Domains
+  */
+  {
+    fieldName: 'domainCount',
+    fieldSchema: {
+      type: Number,
+      optional: true,
+      defaultValue: 0,
+      canRead: ['members'],
+    },
+  },
+
   // Add notifications options to user profile settings
   {
     fieldName: 'notifications_users',
@@ -169,6 +239,62 @@ Users.addField([
       defaultValue: false,
       input: 'checkbox',
       canRead: ['guests'],
+      canCreate: ['members'],
+      canUpdate: ['members'],
+      group: notificationsGroup,
+    },
+  },
+  {
+    fieldName: 'notifications_instances',
+    fieldSchema: {
+      label: 'New instance',
+      type: Boolean,
+      optional: true,
+      defaultValue: false,
+      input: 'checkbox',
+      canRead: ['members'],
+      canCreate: ['members'],
+      canUpdate: ['members'],
+      group: notificationsGroup,
+    },
+  },
+  {
+    fieldName: 'notifications_domains',
+    fieldSchema: {
+      label: 'New Domain',
+      type: Boolean,
+      optional: true,
+      defaultValue: false,
+      input: 'checkbox',
+      canRead: ['members'],
+      canCreate: ['members'],
+      canUpdate: ['members'],
+      group: notificationsGroup,
+    },
+  },
+  {
+    fieldName: 'notifications_tickets',
+    fieldSchema: {
+      label: 'New Ticket',
+      type: Boolean,
+      optional: true,
+      defaultValue: false,
+      input: 'checkbox',
+      canRead: ['members'],
+      canCreate: ['members'],
+      canUpdate: ['members'],
+      group: notificationsGroup,
+    },
+  },
+  {
+    fieldName: 'notifications_tickets_reply',
+    fieldSchema: {
+      label: 'New Reply on Ticket',
+      type: Boolean,
+      optional: true,
+      defaultValue: false,
+      input: 'checkbox',
+      canRead: ['members'],
       canCreate: ['members'],
       canUpdate: ['members'],
       group: notificationsGroup,

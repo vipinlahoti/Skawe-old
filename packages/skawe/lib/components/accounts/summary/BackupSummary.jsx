@@ -64,7 +64,8 @@ class BackupSummary extends Component {
             instanceDbId={instanceDbId}
             instanceStatus={instanceStatus}
             listBackups={listBackups}
-            backupPrice={instanceSingle.backupPrice}
+            backupPriceHr={instanceSingle.backupPriceHr}
+            backupPriceMo={instanceSingle.backupPriceMo}
             backupEnabled={instanceSingle.backupEnabled}
             backupCancelledAt={instanceSingle.backupCancelledAt}
             checkBackup={this.checkBackup}

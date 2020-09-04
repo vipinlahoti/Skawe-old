@@ -28,7 +28,7 @@ class RegionSelect extends Component {
         {showSpeedTest ?
           <Row>
             <Col>
-              <small className="d-block mb-1">Use our speedtest page to find the best region for your current location.</small>
+              {/*<small className="d-block mb-1">Use our speedtest page to find the best region for your current location.</small>*/}
             </Col>
           </Row>
         : null }

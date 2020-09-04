@@ -145,6 +145,8 @@ class PriceSummary extends Component {
           region: String(setExtra.region),
           storage: String(setExtra.storage),
           status: String(apiData.status),
+          ipv4: apiData.ipv4,
+          ipv6: apiData.ipv6,
           transfer: String(setExtra.transfer),
           priceHr: String(setExtra.priceHr),
           priceMo: String(setExtra.priceMo),
@@ -170,7 +172,7 @@ class PriceSummary extends Component {
             this.props.history.push({ pathname: body.pagePath });
           })
 
-        }, 2500);
+        }, 4000);
       }
 
     } catch (error) {

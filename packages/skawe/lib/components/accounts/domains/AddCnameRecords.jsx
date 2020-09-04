@@ -1,4 +1,4 @@
-import { Components, registerComponent } from 'meteor/vulcan:core';
+import { Components, registerComponent, withMutation, withMessages } from 'meteor/vulcan:core';
 import React, { Component } from 'react';
 
 class AddCnameRecords extends Component {
@@ -17,21 +17,73 @@ class AddCnameRecords extends Component {
     })
   };
 
-  createNsRecords = async e => {
+  createRecords = async e => {
     const hostName = this.state.hostName;
     const alias = this.state.alias;
     const tllValue = this.state.tllValue;
-    console.log(
-      'hostName: ', hostName,
-      ' alias: ', alias,
-      ' tllValue: ', tllValue
-    )
+    const domainId = this.props.domainData.id;
+
+    let setData;
+    let dataMutation;
+
+    if (this.props.records) {
+      setData = {
+        name: hostName,
+        target: alias,
+        ttl_sec: Number(tllValue),
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records/${this.props.records.id}`,
+        method: 'PUT',
+        data: setData
+      }
+
+    } else {
+      setData = {
+        name: hostName,
+        target: alias,
+        ttl_sec: Number(tllValue),
+        type: 'CNAME',
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records`,
+        method: 'POST',
+        data: setData
+      }
+    }
+
+    try {
+      const result = await this.props.getInstancesData({ dataMutation });
+
+      const {
+        data: {
+          getInstancesData
+        }
+      } = result;
+      const body = getInstancesData.data;
+
+      if (body.statusCode === 200) {
+        this.props.closeModal();
+        if (this.props.records) {
+          this.props.flash({ id: 'records.edited', type: 'success' });
+        } else {
+          this.props.flash({ id: 'records.created', type: 'success' });
+        }
+        this.props.domainRecords();
+      }
+    } catch (error) {
+      console.error(error); // eslint-disable-line
+    }
+    
+
   }
 
   render() {
     const { hostName, alias, tllValue } = this.state;
     const { records } = this.props;
-    const checkDisable = (hostName.length > 0) && (String(tllValue).length > 0);
+    const checkDisable = (hostName.length > 0) && (alias.length > 0) && (String(tllValue).length > 0);
 
     return (
       <Components.FormElement>
@@ -50,7 +102,6 @@ class AddCnameRecords extends Component {
             name: 'alias',
             value: alias,
             autoComplete: 'off',
-            placeholder: 'hostname or @ for root',
             onChange: this.handleChange,
           }}
         />
@@ -64,7 +115,7 @@ class AddCnameRecords extends Component {
           }}
         />
 
-        <Components.Button variant="primary-fill" onClick={this.createNsRecords} disabled={!checkDisable}>
+        <Components.Button variant="primary-fill" onClick={this.createRecords} disabled={!checkDisable}>
           { records ? 'Save' : 'Create' }
         </Components.Button>
       </Components.FormElement>
@@ -72,4 +123,16 @@ class AddCnameRecords extends Component {
   }
 }
 
-registerComponent({ name: 'AddCnameRecords', component: AddCnameRecords });
+const instanceOptions = {
+  name: 'getInstancesData',
+  args: { dataMutation: 'JSON' }
+};
+
+registerComponent({
+  name: 'AddCnameRecords',
+  component: AddCnameRecords,
+  hocs: [
+    withMessages,
+    withMutation(instanceOptions),
+  ]
+});

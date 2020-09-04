@@ -10,7 +10,6 @@ import {
 import React, { Component } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 import { Instances } from '../../../modules/instances/index.js';
-import { Events } from '../../../modules/events/index.js';
 
 class BackupsInstance extends Component {
   state = {
@@ -188,7 +187,8 @@ class BackupsInstance extends Component {
       instance,
       instanceId,
       listBackups,
-      backupPrice,
+      backupPriceHr,
+      backupPriceMo,
       backupEnabled,
       backupCancelledAt
     } = this.props;
@@ -253,7 +253,7 @@ class BackupsInstance extends Component {
               <Card>
                 <Card.Body>
                   <Card.Title>Add a Backup to your Instances</Card.Title>
-                  <Card.Text>Three backup slots are executed and rotated automatically: a daily backup, a 2-7 day old backup, and 8-14 day old backup. To enable backups for just {backupPrice} per month, click below.</Card.Text>
+                  <Card.Text>Three backup slots are executed and rotated automatically: a daily backup, a 2-7 day old backup, and 8-14 day old backup. To enable backups for just ₹ {backupPriceHr} per hr or ₹ {backupPriceMo} per month, click below.</Card.Text>
                   <Components.Button variant="primary-fill" onClick={this.enableBackup}>
                     Enable Backup
                   </Components.Button>

@@ -27,6 +27,18 @@ const UserLoggedInMenu = ({ currentUser, client }) => {
 
   if (Users.isAdmin(currentUser)) {
     menuItems.push({
+      to: `/backoffice`,
+      labelId: 'admin.backoffice',
+    });
+
+    menuItems.push({
+      to: `/admin/announcements`,
+      labelId: 'admin.announcements',
+    });
+
+    menuItems.push('divider');
+
+    menuItems.push({
       to: `/admin/users`,
       labelId: 'admin.users',
     });
@@ -41,10 +53,10 @@ const UserLoggedInMenu = ({ currentUser, client }) => {
       to: `/admin/posts`,
       labelId: 'admin.posts',
     });
-    menuItems.push({
-      to: `/admin/comments`,
-      labelId: 'admin.comments',
-    });
+    // menuItems.push({
+    //   to: `/admin/comments`,
+    //   labelId: 'admin.comments',
+    // });
 
     menuItems.push('divider');
 
@@ -56,10 +68,10 @@ const UserLoggedInMenu = ({ currentUser, client }) => {
       to: `/admin/tickets`,
       labelId: 'admin.tickets',
     });
-    menuItems.push({
-      to: `/admin/replies`,
-      labelId: 'admin.replies',
-    });
+    // menuItems.push({
+    //   to: `/admin/replies`,
+    //   labelId: 'admin.replies',
+    // });
 
     menuItems.push('divider');
 

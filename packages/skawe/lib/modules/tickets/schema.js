@@ -87,15 +87,15 @@ const schema = {
   /**
     Thumbnail
   */
-  thumbnailUrl: {
-    label: 'Attachment',
-    type: String,
-    optional: true,
-    control: 'text',
-    canRead: ['guests'],
-    canCreate: ['members'],
-    canUpdate: ['members']
-  },
+  // thumbnailUrl: {
+  //   label: 'Attachment',
+  //   type: String,
+  //   optional: true,
+  //   control: 'text',
+  //   canRead: ['guests'],
+  //   canCreate: ['members'],
+  //   canUpdate: ['members']
+  // },
   /**
     Timestamp of the last reply
   */
@@ -103,6 +103,17 @@ const schema = {
     type: Date,
     optional: true,
     canRead: ['guests'],
+  },
+  /**
+    Status of ticket
+  */
+  status: {
+    type: String,
+    optional: true,
+    canRead: ['members'],
+    onCreate: () => {
+      return 'Open';
+    },
   },
   /**
     Save info for later spam checking on a ticket. We will use this for the akismet package

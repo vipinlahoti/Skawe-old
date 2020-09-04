@@ -42,13 +42,12 @@ addRoute([
   {name: 'users.billings',  path: '/accounts/billing',  componentName: 'UsersBillingInfo',    layoutName: 'AdminLayout'},
   {name: 'users.password',  path: '/accounts/password', componentName: 'UsersPasswordChange', layoutName: 'AdminLayout'},
   {name: 'users.settings',  path: '/accounts/settings', componentName: 'UsersSettings',       layoutName: 'AdminLayout'},
-  {name: 'users.events',    path: '/accounts/events',   componentName: 'UserEvents',          layoutName: 'AdminLayout'},
 
   // Help
-  {name: 'help-ticket',         path: '/accounts/tickets',             componentName: 'TicketsHome',         layoutName: 'AdminLayout'},
-  {name: 'help-ticket-new',     path: '/accounts/tickets/new',         componentName: 'TicketsNew',          layoutName: 'AdminLayout'},
-  // {name: 'help-ticket-closed',  path: '/accounts/tickets/closed',      componentName: 'SupportTicketClosed', layoutName: 'AdminLayout'},
-  {name: 'help-ticket-summary', path: '/accounts/tickets/:_id/:slug?', componentName: 'TicketsPage',         layoutName: 'AdminLayout'},
+  {name: 'help-ticket',         path: '/accounts/tickets',             componentName: 'TicketsHome',  layoutName: 'AdminLayout'},
+  {name: 'help-ticket-new',     path: '/accounts/tickets/new',         componentName: 'TicketsNew',   layoutName: 'AdminLayout'},
+  {name: 'help-ticket-closed',  path: '/accounts/tickets/closed',      componentName: 'TicketClosed', layoutName: 'AdminLayout'},
+  {name: 'help-ticket-summary', path: '/accounts/tickets/:_id/:slug?', componentName: 'TicketsPage',  layoutName: 'AdminLayout'},
 
   // admin
   {name: 'admin.categories',  path: '/admin/categories',  componentName: 'AdminCategories',  layoutName: 'AdminLayout'},
@@ -64,6 +63,7 @@ addRoute([
   {name: 'admin.pages',       path: '/admin/pages',       componentName: 'AdminPages',       layoutName: 'AdminLayout'},
   
   {name: 'admin.users',       path: '/admin/users',       componentName: 'AdminUsers',       layoutName: 'AdminLayout'},
+  {name: 'admin.announcements',    path: '/admin/announcements',    componentName: 'AdminAnnouncements',    layoutName: 'AdminLayout'},
 
   {name: 'admin-distributions', path: '/admin/distributions', componentName: 'AdminDistributions', layoutName: 'AdminLayout'},
   {name: 'admin-clickapps',     path: '/admin/click-apps',  componentName: 'AdminOneClickApps',  layoutName: 'AdminLayout'},

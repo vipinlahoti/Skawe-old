@@ -3,13 +3,13 @@ import { Components, registerComponent } from 'meteor/vulcan:core';
 
 export class AccountsFields extends React.Component {
   render () {
-    let { fields = {} } = this.props;
+    let { fields = {}, className = 'fields' } = this.props;
     return (
-      <React.Fragment>
+      <div className={ className }>
         {Object.keys(fields).map((id, i) =>
           <Components.AccountsField {...fields[id]} key={i} />
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }

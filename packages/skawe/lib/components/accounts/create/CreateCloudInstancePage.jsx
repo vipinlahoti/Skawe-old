@@ -21,7 +21,7 @@ class CreateCloudInstancePage extends Component {
           autoEnable: this.props.currentUser.autoBackup,
           priceMo: '',
           priceHr: '',
-          description: 'Three backup slots are executed and rotated automatically: a daily backup, a 2-7 day old backup, and an 8-14 day old backup. Plans are priced according to the Linode plan selected above.'
+          description: 'Three backup slots are executed and rotated automatically: daily backup, 2-7 days old backup, and 8-14 daya old backup. Backup Plans are priced according to the Instances plan selected.'
         },
         {
           id: 'private-ip',
@@ -46,6 +46,7 @@ class CreateCloudInstancePage extends Component {
   }
 
   selectedPlans = (setServerPlans) => {
+    console.log(setServerPlans)
     this.setState({
       selectAddonPrices: setServerPlans,
       selectServerPlans: setServerPlans

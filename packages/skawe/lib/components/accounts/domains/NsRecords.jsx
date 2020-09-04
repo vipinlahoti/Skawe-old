@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 class NsRecords extends Component {
+
   render() {
-    const { domainData, domainRecordData } = this.props;
+    const { domainData, domainRecordData, domainRecords } = this.props;
 
     return (
       <div className="mb-4">
@@ -20,7 +21,10 @@ class NsRecords extends Component {
                   Add a NS Record
                 </Components.Button>
               }>
-                <Components.AddNsRecords />
+                <Components.AddNsRecords
+                  domainData={domainData}
+                  domainRecords={domainRecords}
+                />
               </Components.ModalTrigger>
             </div>
           </Col>
@@ -80,13 +84,25 @@ class NsRecords extends Component {
                               Edit
                             </Components.Button>
                           }>
-                            <Components.AddNsRecords records={record} />
+                            <Components.AddNsRecords
+                              records={record}
+                              domainData={domainData}
+                              domainRecords={domainRecords}
+                            />
                           </Components.ModalTrigger>
 
-                          <Components.Button size="small" variant="danger-link">
-                            <Components.Icon name="delete_forever" />
-                            Delete
-                          </Components.Button>
+                          <Components.ModalTrigger size="alert" title="Delete NS Record" component={
+                            <Components.Button variant="danger-link" size="small">
+                              <Components.Icon name="delete_forever" />
+                              Delete
+                            </Components.Button>
+                          }>
+                            <Components.DeleteRecords
+                              records={record}
+                              domainData={domainData}
+                              domainRecords={domainRecords}
+                            />
+                          </Components.ModalTrigger>
                         </div>
                       </td>
                     </tr>

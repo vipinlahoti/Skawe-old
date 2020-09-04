@@ -14,6 +14,7 @@ const AdminCreateNew = (props, context) =>
       <span>Cloud Instance</span>
     </Link>
 
+    {/*
     <Link to={{ pathname: '/accounts/list-block-storage/create' }} className="list-group-item text-dark d-row middle-xs p-1 p-0">
       <span className="admin-select-card-image">
         <Components.Icon name="storage" iconClass="text-primary" />
@@ -27,6 +28,7 @@ const AdminCreateNew = (props, context) =>
       </span>
       <span>Load Balancers</span>
     </Link>
+    */}
 
     <Link to={{ pathname: '/accounts/list-dns-manager' }} className="list-group-item text-dark d-row middle-xs p-1 p-0">
       <span className="admin-select-card-image">
@@ -36,10 +38,5 @@ const AdminCreateNew = (props, context) =>
     </Link>
 
   </React.Fragment>
-
-AdminCreateNew.contextTypes = {
-  messages: PropTypes.object,
-  intl: intlShape
-};
 
 registerComponent({ name: 'AdminCreateNew', component: AdminCreateNew });

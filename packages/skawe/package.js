@@ -19,6 +19,7 @@ Package.onUse(function (api) {
     'vulcan:forms-upload@=1.16.0',
     'vulcan:events@=1.16.0',
     'vulcan:admin@=1.16.0',
+    'vulcan:cloudinary@=1.16.0',
   ]);
 
   api.addAssets([

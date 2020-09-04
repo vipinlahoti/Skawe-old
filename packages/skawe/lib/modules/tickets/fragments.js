@@ -4,10 +4,13 @@ registerFragment(/* GraphQL */`
   fragment TicketItem on Ticket {
     # tickets
     _id
+    body
+    htmlBody
     subject
     slug
     createdAt
     lastReplyedAt
+    status
 
     pagePath
     pageUrl
@@ -19,7 +22,7 @@ registerFragment(/* GraphQL */`
     }
 
     # embedly
-    thumbnailUrl
+    # thumbnailUrl
 
     # departments
     departmentsIds
@@ -35,20 +38,12 @@ registerFragment(/* GraphQL */`
       ...UsersMinimumInfo
     }
 
-    # voting
-    currentUserVotes {
-      ...VoteFragment
-    }
-    baseScore
-    score
   }
 `);
 
 registerFragment(/* GraphQL */`
   fragment TicketPage on Ticket {
     ...TicketItem
-    body
-    htmlBody
   }
 `);
 

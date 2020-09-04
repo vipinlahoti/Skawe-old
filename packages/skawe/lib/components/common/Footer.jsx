@@ -88,6 +88,10 @@ const Footer = ({results, totalCount}) => {
               <Link to={{ pathname: '/login' }} className="nav-link">
                 Log In
               </Link>
+              <br />
+              <Link to={{ pathname: '/register' }} className="nav-link">
+                Register
+              </Link>
             </Nav>
           </Col>
 
@@ -95,6 +99,9 @@ const Footer = ({results, totalCount}) => {
             <div className="footer-right">
               <Components.Logo siteTitle={siteTitle}/>
               <div className="copyright mt-1">Copyright &copy; 2020 All Rights Reserved.</div>
+              <div className="copyright">
+                Made in India.
+              </div>
             </div>
           </Col>
         </Row>

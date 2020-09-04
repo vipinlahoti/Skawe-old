@@ -6,7 +6,6 @@ const NewButton = ({ collection, size, label, style = 'primary', formProps, ...p
   <Components.ModalTrigger
     label={label || intl.formatMessage({ id: 'datatable.new' })}
     title={label || intl.formatMessage({ id: 'datatable.new' })}
-    size={size}
     component={
       <Components.Button variant={style} size={size}>
        {label || <FormattedMessage id="datatable.new" />}

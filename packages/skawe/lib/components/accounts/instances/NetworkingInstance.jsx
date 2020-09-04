@@ -25,7 +25,7 @@ class NetworkingInstance extends Component {
             </Col>
             <Col>
               <div className="d-flex end-xs">
-                <Components.ModalTrigger size="small" title="Allocate Private IPv4 Address" component={
+                <Components.ModalTrigger size="alert" title="Allocate Private IPv4 Address" component={
                   <Components.Button variant="primary-link" size="small" disabled={networkIps.ipv4.private.length}>
                     <Components.Icon name="add_circle_outline" />
                       Add Private IPv4

@@ -1,4 +1,4 @@
-import { Components, registerComponent } from 'meteor/vulcan:core';
+import { Components, registerComponent, withMutation, withMessages } from 'meteor/vulcan:core';
 import React, { Component } from 'react';
 
 class AddSrvRecords extends Component {
@@ -30,15 +30,69 @@ class AddSrvRecords extends Component {
     const target = this.state.target;
     const tllValue = this.state.tllValue;
 
-    console.log(
-      'service: ', service,
-      ' protocol: ', protocol,
-      ' priority: ', priority,
-      ' weight: ', weight,
-      ' port: ', port,
-      ' target: ', target,
-      ' tllValue: ', tllValue,
-    )
+    const domainId = this.props.domainData.id;
+
+    let setData;
+    let dataMutation;
+
+    if (this.props.records) {
+      setData = {
+        port: Number(port),
+        priority: Number(priority),
+        protocol: protocol,
+        service: service,
+        target: target,
+        ttl_sec: Number(tllValue),
+        weight: Number(weight),
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records/${this.props.records.id}`,
+        method: 'PUT',
+        data: setData
+      }
+
+    } else {
+      setData = {
+        port: Number(port),
+        priority: Number(priority),
+        protocol: protocol,
+        service: service,
+        target: target,
+        ttl_sec: Number(tllValue),
+        weight: Number(weight),
+        type: 'SRV'
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records`,
+        method: 'POST',
+        data: setData
+      }
+    }
+
+    try {
+      const result = await this.props.getInstancesData({ dataMutation });
+
+      const {
+        data: {
+          getInstancesData
+        }
+      } = result;
+      const body = getInstancesData.data;
+
+      if (body.statusCode === 200) {
+        this.props.closeModal();
+        if (this.props.records) {
+          this.props.flash({ id: 'records.edited', type: 'success' });
+        } else {
+          this.props.flash({ id: 'records.created', type: 'success' });
+        }
+        this.props.domainRecords();
+      }
+    } catch (error) {
+      console.error(error); // eslint-disable-line
+    }
   }
 
   render() {
@@ -128,4 +182,16 @@ class AddSrvRecords extends Component {
   }
 }
 
-registerComponent({ name: 'AddSrvRecords', component: AddSrvRecords });
+const instanceOptions = {
+  name: 'getInstancesData',
+  args: { dataMutation: 'JSON' }
+};
+
+registerComponent({
+  name: 'AddSrvRecords',
+  component: AddSrvRecords,
+  hocs: [
+    withMessages,
+    withMutation(instanceOptions),
+  ]
+});

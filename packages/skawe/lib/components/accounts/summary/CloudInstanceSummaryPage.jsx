@@ -254,6 +254,7 @@ class CloudInstanceSummaryPage extends Component {
                   instanceId={instanceId}
                   instanceStatus={this.instanceStatus}
                   instanceDbId={instanceDbId}
+                  getInstanceData={this.getInstanceData}
                 />
 
                 {cloudInstanceData.status !== 'running' && cloudInstanceData.status !== 'offline' ?
@@ -291,10 +292,18 @@ class CloudInstanceSummaryPage extends Component {
                     <Tab.Pane eventKey="first">
                       <Row>
                         <Col md={8}>
-                          <Components.OverviewInstance instance={cloudInstanceData} instanceSingle={instanceSingle} />
+                          <Components.OverviewInstance
+                            instance={cloudInstanceData}
+                            instanceSingle={instanceSingle}
+                            getInstanceData={this.getInstanceData}
+                          />
 
                           {Object.keys(instanceStats).length ?
-                            <Components.GraphInstance instanceId={instanceId} instanceStats={instanceStats} />
+                            <Components.GraphInstance
+                              instanceId={instanceId}
+                              instanceStats={instanceStats}
+                              getInstanceData={this.getInstanceData}
+                            />
                           : 
                             <div className="p-1 bg-light bg-dark-light">
                               <div className="instances__list">

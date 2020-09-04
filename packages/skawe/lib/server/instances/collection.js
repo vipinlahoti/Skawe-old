@@ -3,6 +3,7 @@ import Instances from '../../modules/instances/collection.js';
 import {
   rateLimit,
   createNotifications,
+  incrementUserInstanceCount,
   InstancesRemoveOperations
 } from './callbacks/index.js';
 
@@ -11,10 +12,10 @@ extendCollection(Instances, {
   callbacks: {
     create: {
       validate: [rateLimit],
-      // async: [incrementUserInstanceCount]
+      async: [incrementUserInstanceCount]
     },
-    // delete: {
-    //   async: [InstancesRemoveOperations],
-    // },
+    delete: {
+      async: [InstancesRemoveOperations],
+    },
   }
 });

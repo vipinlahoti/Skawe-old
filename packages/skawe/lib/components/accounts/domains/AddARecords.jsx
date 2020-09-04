@@ -1,4 +1,4 @@
-import { Components, registerComponent } from 'meteor/vulcan:core';
+import { Components, registerComponent, withMutation, withMessages } from 'meteor/vulcan:core';
 import React, { Component } from 'react';
 
 class AddARecords extends Component {
@@ -21,11 +21,61 @@ class AddARecords extends Component {
     const hostName = this.state.hostName;
     const ipAddress = this.state.ipAddress;
     const tllValue = this.state.tllValue;
-    console.log(
-      'hostName: ', hostName,
-      ' ipAddress: ', ipAddress,
-      ' tllValue: ', tllValue
-    )
+    const domainId = this.props.domainData.id;
+
+    let setData;
+    let dataMutation;
+
+    if (this.props.records) {
+      setData = {
+        name: hostName,
+        target: ipAddress,
+        ttl_sec: Number(tllValue),
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records/${this.props.records.id}`,
+        method: 'PUT',
+        data: setData
+      }
+
+    } else {
+      setData = {
+        name: hostName,
+        target: ipAddress,
+        ttl_sec: Number(tllValue),
+        type: 'AAAA'
+      }
+      
+      dataMutation = {
+        url: `domains/${domainId}/records`,
+        method: 'POST',
+        data: setData
+      }
+    }
+
+    try {
+      const result = await this.props.getInstancesData({ dataMutation });
+
+      const {
+        data: {
+          getInstancesData
+        }
+      } = result;
+      const body = getInstancesData.data;
+
+      if (body.statusCode === 200) {
+        this.props.closeModal();
+        if (this.props.records) {
+          this.props.flash({ id: 'records.edited', type: 'success' });
+        } else {
+          this.props.flash({ id: 'records.created', type: 'success' });
+        }
+        this.props.domainRecords();
+      }
+    } catch (error) {
+      console.error(error); // eslint-disable-line
+    }
   }
 
   render() {
@@ -40,7 +90,6 @@ class AddARecords extends Component {
             label: 'Hostname',
             name: 'hostName',
             value: hostName,
-            placeholder: 'hostname or @ for root',
             autoComplete: 'off',
             onChange: this.handleChange,
           }}
@@ -72,4 +121,16 @@ class AddARecords extends Component {
   }
 }
 
-registerComponent({ name: 'AddARecords', component: AddARecords });
+const instanceOptions = {
+  name: 'getInstancesData',
+  args: { dataMutation: 'JSON' }
+};
+
+registerComponent({
+  name: 'AddARecords',
+  component: AddARecords,
+  hocs: [
+    withMessages,
+    withMutation(instanceOptions),
+  ]
+});

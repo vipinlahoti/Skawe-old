@@ -18,7 +18,8 @@ vulcan:debug
 vulcan:accounts
 vulcan:backoffice
 
+tracker@1.2.0
+
 # Ui
 vulcan:ui-bootstrap
-vulcan:cloudinary
 skawe

@@ -60,7 +60,8 @@ label {
   }
 }
 
-.form-control {
+.form-control,
+.PhoneInputInput {
   @include height(55px);
   @include padding(4px 16px);
   @include font-size(16px);
@@ -298,6 +299,10 @@ label {
     &.warning {
       color: $danger;
     }
+  }
+
+  .btn-primary-fill {
+    @extend .btn-block;
   }
 }
 

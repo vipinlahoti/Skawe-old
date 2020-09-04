@@ -1,4 +1,4 @@
-import { Components, registerComponent } from 'meteor/vulcan:core';
+import { Components, registerComponent, withMutation, withMessages } from 'meteor/vulcan:core';
 import React, { Component } from 'react';
 
 class AddSoaRecords extends Component {
@@ -18,7 +18,7 @@ class AddSoaRecords extends Component {
     this.setState({
       [name]: value
     })
-  };
+  }
 
   createRecords = async e => {
     const domain = this.state.domain;
@@ -27,14 +27,43 @@ class AddSoaRecords extends Component {
     const refresh = this.state.refresh;
     const retry = this.state.retry;
     const expire = this.state.expire;
-    console.log(
-      'domain: ', domain,
-      ' email: ', email,
-      ' tllValue: ', tllValue,
-      ' refresh: ', refresh,
-      ' retry: ', retry,
-      ' expire: ', expire
-    )
+    const domainId = this.props.records.id;
+
+    const setSoaData = {
+      axfr_ips: [],
+      domain: domain,
+      expire_sec: Number(expire),
+      refresh_sec: Number(refresh),
+      retry_sec: Number(retry),
+      soa_email: email,
+      status: this.props.records.status,
+      ttl_sec: Number(tllValue),
+    }
+
+    const dataMutation = {
+      url: `domains/${domainId}`,
+      method: 'PUT',
+      data: setSoaData
+    }
+
+    try {
+      const result = await this.props.getInstancesData({ dataMutation });
+
+      const {
+        data: {
+          getInstancesData
+        }
+      } = result;
+      const body = getInstancesData.data;
+
+      if (body.statusCode === 200) {
+        this.props.closeModal();
+        this.props.flash({ id: 'records.edited', type: 'success' });
+        this.props.getDomain();
+      }
+    } catch (error) {
+      console.error(error); // eslint-disable-line
+    }
   }
 
   render() {
@@ -112,4 +141,16 @@ class AddSoaRecords extends Component {
   }
 }
 
-registerComponent({ name: 'AddSoaRecords', component: AddSoaRecords });
+const instanceOptions = {
+  name: 'getInstancesData',
+  args: { dataMutation: 'JSON' }
+};
+
+registerComponent({
+  name: 'AddSoaRecords',
+  component: AddSoaRecords,
+  hocs: [
+    withMessages,
+    withMutation(instanceOptions),
+  ]
+});

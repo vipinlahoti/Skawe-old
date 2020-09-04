@@ -19,7 +19,7 @@ export function updateUserTicket (reply) {
   // update ticket
   Tickets.update(ticketId, {
     $inc:       {replyCount: 1},
-    $set:       {lastReplyedAt: new Date()},
+    $set:       {lastReplyedAt: new Date(), status: 'Open'},
     $addToSet:  {replyersIds: userId}
   });
 

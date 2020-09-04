@@ -31,6 +31,12 @@ const ListDnsManagerPage = ({currentUser}) => {
       <Container>
         <Row>
           <Col md={8}>
+
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={8}>
             <Row>
               <Col>
                 <h6 className="title-6">Manage your Domains</h6>
@@ -43,7 +49,7 @@ const ListDnsManagerPage = ({currentUser}) => {
                       Add a Domain
                     </Components.Button>
                   }>
-                    <Components.AddDomain />
+                    <Components.AddDomain input={{ filter: { userId: { _eq: currentUser._id } } }} />
                   </Components.ModalTrigger>
                 </div>
               </Col>
@@ -79,17 +85,18 @@ const ListDnsManagerPage = ({currentUser}) => {
           </Col>
 
           <Col md={4}>
-            <div className="text-left block-right">
-              <ListGroup className="cloud__card">
-                <ListGroup.Item>
-                  <p>You do not have an active Instance for DNS zones to be served</p>
-                  <Components.Button variant="primary" size="small" path="/accounts/list-cloud-instance/create" isLink={true}>
-                    Add an Instance
-                  </Components.Button>
-                </ListGroup.Item>
-              </ListGroup>
-
-            </div>
+            {currentUser.instanceCount <= 0 ?
+              <div className="text-left block-right">
+                <ListGroup className="cloud__card">
+                  <ListGroup.Item>
+                    <p>You do not have an active Instance for DNS zones to be served</p>
+                    <Components.Button variant="primary" size="small" path="/accounts/list-cloud-instance/create" isLink={true}>
+                      Add an Instance
+                    </Components.Button>
+                  </ListGroup.Item>
+                </ListGroup>
+              </div>
+            : null }
           </Col>
         </Row>
       </Container>

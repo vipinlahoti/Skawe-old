@@ -60,7 +60,7 @@ const ListCloudInstancePage = ({ currentUser }) => {
     
       <Container>
         <Row>
-          <Col md={8}>
+          <Col md={10}>
             <Row>
               <Col>
                 <h6 className="title-6">Cloud Instance</h6>
@@ -91,6 +91,7 @@ const ListCloudInstancePage = ({ currentUser }) => {
                       { name: 'label', component: Label },
                       { name: 'status', component: Status, sortable: true, },
                       { name: 'region', component: Region },
+                      { name: 'ipv4' },
                     ]}
                     options={{
                       fragmentName: 'InstanceItem',
@@ -104,7 +105,9 @@ const ListCloudInstancePage = ({ currentUser }) => {
             </Row>
           </Col>
 
+          {/*
           <Col md={4}>
+            
             <div className="text-left block-right">
               <ListGroup className="cloud__card">
                 <ListGroup.Item>
@@ -117,7 +120,9 @@ const ListCloudInstancePage = ({ currentUser }) => {
               </ListGroup>
 
             </div>
+          
           </Col>
+          */}
         </Row>
       </Container>
 

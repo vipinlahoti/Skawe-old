@@ -74,13 +74,43 @@ if (settings && extractBase && extractBaseFull) {
         });
       }
     
+    } else if (params.method === 'PUT') {
+      if (params.type === 'full') {  
+        result = HTTP.call('PUT', `${extractBaseFull}/${params.url}`, {
+          'headers': {
+            'Authorization': `Bearer ${settings}`,
+            'Content-Type': 'application/json'
+          },
+          data: params.data
+        });
+
+      } else {
+        result = HTTP.call('PUT', `${extractBase}/${params.url}`, {
+          'headers': {
+            'Authorization': `Bearer ${settings}`,
+            'Content-Type': 'application/json'
+          },
+          data: params.data
+        });
+      }
+    
     } else {
-      result = HTTP.del(`${extractBaseFull}/${params.url}`, {
-        'headers': {
-          'Authorization': `Bearer ${settings}`,
-          'Content-Type': 'application/json'
-        }
-      });
+      if (params.type === 'full') {  
+        result = HTTP.del(`${extractBaseFull}/${params.url}`, {
+          'headers': {
+            'Authorization': `Bearer ${settings}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+      } else {
+        result = HTTP.del(`${extractBase}/${params.url}`, {
+          'headers': {
+            'Authorization': `Bearer ${settings}`,
+            'Content-Type': 'application/json'
+          }
+        });        
+      }
     }
 
     try {
@@ -89,6 +119,7 @@ if (settings && extractBase && extractBaseFull) {
       } else {
         console.log('Failed to fetch');
       }
+    
     } catch (error) {
       console.log('// ServerAPI error') // eslint-disable-line
       console.log(error); // eslint-disable-line

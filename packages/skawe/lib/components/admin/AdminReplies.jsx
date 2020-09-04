@@ -20,6 +20,8 @@ const AdminReplies = () => (
           { name: 'ticketId' },
           { name: 'userId', label: 'User'}
         ]}
+        showEdit={false}
+        showNew={false}
       />
     </div>
   </div>

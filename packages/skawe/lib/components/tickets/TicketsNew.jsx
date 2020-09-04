@@ -26,10 +26,7 @@ const TicketsNew = (props, context) =>
         <Col>
           <ul className="list small-list">
             <li>
-              we are here to help if you need us. Please keep in mind that not all topics are within the scope of our support. For overall system status, please see &nbsp;
-              <Link to={{ pathname: '/#' }} className="nav-link">
-                status.skawe.in
-              </Link>.
+              we are here to help if you need us. Please keep in mind that not all topics are within the scope of our support.
             </li>
           </ul>
         </Col>
@@ -42,6 +39,7 @@ const TicketsNew = (props, context) =>
               collection={Tickets}
               layout="vertical"
               successCallback={ticket => {
+                console.log('ticket: ', ticket)
                 props.history.push({ pathname: ticket.pageUrl });
                 props.flash({ id: 'tickets.created_message', type: 'success' });
               }}

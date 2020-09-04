@@ -3,9 +3,9 @@ import Tickets from '../../modules/tickets/collection.js';
 import Departments from '../../modules/departments/collection.js';
 import {
   rateLimit,
-  upvoteOwnTicket,
+  // upvoteOwnTicket,
   createNotifications,
-  incrementUserTicketCount,
+  // incrementUserTicketCount,
 } from './callbacks/index.js';
 
 // stupid workaround because filter cannot be async for some reason
@@ -18,8 +18,8 @@ extendCollection(Tickets, {
   callbacks: {
     create: {
       validate: [rateLimit],
-      after: [upvoteOwnTicket],
-      async: [createNotifications, incrementUserTicketCount],
+      // after: [upvoteOwnTicket],
+      async: [createNotifications],
     },
   },
   customFilters: [
