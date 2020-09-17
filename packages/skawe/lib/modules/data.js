@@ -67,3 +67,20 @@ export const postViews = [
   },
 ];
 
+export const docsViews = [
+  {
+    name: 'docs.top',
+    sort: 'score',
+    path: '/',
+  },
+  {
+    name: 'docs.best',
+    sort: 'baseScore',
+    path: '/best',
+  },
+  {
+    name: 'docs.new',
+    sort: 'postedAt',
+    path: '/new',
+  },
+];

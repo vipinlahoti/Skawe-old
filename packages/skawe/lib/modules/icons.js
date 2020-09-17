@@ -52,5 +52,14 @@ Utils.icons = {
   landscape: 'landscape',
   notifications_none: 'notifications_none',
   highlight_off: 'highlight_off',
-  
+  close: 'close',
+  sync: 'sync',
+  bug_report: 'bug_report',
+  dvr: 'dvr',
+  computer: 'computer',
+
+
+
+
+
 };

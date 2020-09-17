@@ -53,10 +53,13 @@ const UserLoggedInMenu = ({ currentUser, client }) => {
       to: `/admin/posts`,
       labelId: 'admin.posts',
     });
-    // menuItems.push({
-    //   to: `/admin/comments`,
-    //   labelId: 'admin.comments',
-    // });
+
+    menuItems.push('divider');
+
+    menuItems.push({
+      to: `/admin/docs`,
+      labelId: 'admin.docs',
+    });
 
     menuItems.push('divider');
 
@@ -68,10 +71,10 @@ const UserLoggedInMenu = ({ currentUser, client }) => {
       to: `/admin/tickets`,
       labelId: 'admin.tickets',
     });
-    // menuItems.push({
-    //   to: `/admin/replies`,
-    //   labelId: 'admin.replies',
-    // });
+    menuItems.push({
+      to: `/admin/replies`,
+      labelId: 'admin.replies',
+    });
 
     menuItems.push('divider');
 
@@ -115,6 +118,105 @@ const UserLoggedInMenu = ({ currentUser, client }) => {
     });
 
     menuItems.push('divider');
+  }
+
+  else if (Users.isMemberOf(currentUser, 'blogger')) {
+    menuItems.push({
+      to: `/admin/posts`,
+      labelId: 'admin.posts',
+    });
+  }
+
+  else if (Users.isMemberOf(currentUser, 'content-writer')) {
+    menuItems.push({
+      to: `/admin/posts`,
+      labelId: 'admin.posts',
+    });
+
+    menuItems.push({
+      to: `/admin/pages`,
+      labelId: 'admin.pages',
+    });
+
+    menuItems.push({
+      to: `/admin/docs`,
+      labelId: 'admin.docs',
+    });
+  }
+
+  else if (Users.isMemberOf(currentUser, 'moderator')) {
+    menuItems.push({
+      to: `/admin/posts`,
+      labelId: 'admin.posts',
+    });
+
+    menuItems.push({
+      to: `/admin/pages`,
+      labelId: 'admin.pages',
+    });
+
+    menuItems.push({
+      to: `/admin/docs`,
+      labelId: 'admin.docs',
+    });
+  }
+
+  else if (Users.isMemberOf(currentUser, 'staff')) {
+    menuItems.push({
+      to: `/admin/announcements`,
+      labelId: 'admin.announcements',
+    });
+    menuItems.push('divider');
+
+    menuItems.push({
+      to: `/admin/categories`,
+      labelId: 'admin.categories',
+    });
+    menuItems.push({
+      to: `/admin/posts`,
+      labelId: 'admin.posts',
+    });
+
+    menuItems.push('divider');
+
+    menuItems.push({
+      to: `/admin/resources`,
+      labelId: 'admin.resources',
+    });
+
+    menuItems.push({
+      to: `/admin/docs`,
+      labelId: 'admin.docs',
+    });
+
+    menuItems.push('divider');
+
+    menuItems.push({
+      to: `/admin/departments`,
+      labelId: 'admin.departments',
+    });
+    menuItems.push({
+      to: `/admin/tickets`,
+      labelId: 'admin.tickets',
+    });
+    menuItems.push({
+      to: `/admin/replies`,
+      labelId: 'admin.replies',
+    });
+    menuItems.push('divider');
+
+    menuItems.push({
+      to: `/admin/features`,
+      labelId: 'admin.features',
+    });
+    menuItems.push({
+      to: `/admin/pages`,
+      labelId: 'admin.pages',
+    });
+  }
+
+  else {
+    // dont know what should be here
   }
 
   menuItems.push({

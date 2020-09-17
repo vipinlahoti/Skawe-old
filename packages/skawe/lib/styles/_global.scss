@@ -27,7 +27,11 @@
 }
 
 .copyright {
-  font-size: 0.875rem;
+  @include font-size(16px);
+
+  @include breakpoint($screen-md) {
+    @include font-size(14px);
+  }
 }
 
 .border-bottom {
@@ -407,9 +411,11 @@ footer,
 }
 
 .footer-right {
+  @include margin(32px, top);
   text-align: left;
 
   @include breakpoint($screen-md) {
+    @include margin(0px, top);
     text-align: right;    
   }
 }
@@ -570,5 +576,34 @@ footer,
     &.active-tab {
       display: block;      
     }
+  }
+}
+
+.categories-list {
+  .dropdown-item {
+    @include margin(16px, bottom);
+    color: $dark;
+    display: block;
+
+    &.active,
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.error-page {
+  @include font-size(160px);
+}
+
+.tabpanel-list {
+  img {
+    @include margin(8px, bottom);
+    @include size(65px);
+  }
+
+  .icon {
+    @include font-size(80px);
+    line-height: 70px;
   }
 }

@@ -57,7 +57,7 @@ const schema = {
   seoTitle: {
     label: 'SEO Title',
     type: String,
-    optional: false,
+    optional: true,
     max: 70,
     canRead: ['guests'],
     canCreate: ['admins'],
@@ -71,13 +71,24 @@ const schema = {
   seoDescription: {
     label: 'SEO Description',
     type: String,
-    optional: false,
+    optional: true,
     max: 200,
     canRead: ['guests'],
     canCreate: ['admins'],
     canUpdate: ['admins'],
     input: 'textarea',
     group: formGroups.seo
+  },
+  /**
+    Order to list in UI
+  */
+  orderBy: {
+    type: Number,
+    optional: true,
+    canRead: ['guests'],
+    canCreate: ['admins'],
+    canUpdate: ['admins'],
+    group: formGroups.main
   },
   /**
     Title
@@ -111,6 +122,21 @@ const schema = {
     },
   },
   /**
+    Page Hero Eyebrow (markdown)
+  */
+  heroEyebrow: {
+    label: 'Hero Eyebrow',
+    type: String,
+    optional: false,
+    max: 150,
+    canRead: ['guests'],
+    canCreate: ['admins'],
+    canUpdate: ['admins'],
+    input: 'text',
+    order: 30,
+    group: formGroups.main
+  },
+  /**
     Page Hero Title (markdown)
   */
   heroTitle: {
@@ -131,7 +157,7 @@ const schema = {
   heroDescription: {
     label: 'Hero Description',
     type: String,
-    optional: false,
+    optional: true,
     max: 300,
     canRead: ['guests'],
     canCreate: ['admins'],
@@ -240,7 +266,7 @@ const schema = {
   body: {
     type: String,
     optional: true,
-    max: 50000,
+    max: 90000,
     canRead: ['guests'],
     canCreate: ['admins'],
     canUpdate: ['admins'],

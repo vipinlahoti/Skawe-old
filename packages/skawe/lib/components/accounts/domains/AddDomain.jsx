@@ -32,8 +32,6 @@ class AddDomain extends Component {
   }
 
   createRecords = async (type, name, id) => {
-    console.log('type: ', type, 'name: ', name, 'id: ', id);
-
     const { domainValue, emailValue, selectedIpv4, selectedIpv6 } = this.state;
     let getDomain;
     let setCreate;

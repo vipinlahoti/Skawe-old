@@ -24,7 +24,7 @@ class RepliesItem extends PureComponent {
             <span className="media-time">
               {moment(new Date(reply.postedAt)).fromNow()}
             </span>
-            {reply.user.groups.map(group =>
+            {reply.user.groups && reply.user.groups.map(group =>
               <span className="badge">{group}</span>
             )}
           </div>

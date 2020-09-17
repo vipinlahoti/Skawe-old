@@ -46,7 +46,6 @@ class CreateCloudInstancePage extends Component {
   }
 
   selectedPlans = (setServerPlans) => {
-    console.log(setServerPlans)
     this.setState({
       selectAddonPrices: setServerPlans,
       selectServerPlans: setServerPlans
@@ -143,8 +142,8 @@ class CreateCloudInstancePage extends Component {
 
               <div className="tab-content">
                 <Components.DistributionSelect
-                  title="Choose a Distribution"
-                  placeholder="-- Select a Distribution --"
+                  title="Choose an Operating System"
+                  placeholder="-- Select  an Operating System --"
                   selectedDistribution={this.selectedDistribution}
                 />
 

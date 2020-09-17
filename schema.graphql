@@ -1728,8 +1728,10 @@ type Page {
   createdAt: Date 
   seoTitle: String 
   seoDescription: String 
+  orderBy: Float 
   title: String 
   slug: String 
+  heroEyebrow: String 
   heroTitle: String 
   heroDescription: String 
   outlineBtn: String 
@@ -1831,7 +1833,9 @@ input CreatePageInput {
 input CreatePageDataInput {
   seoTitle: String 
   seoDescription: String 
+  orderBy: Float 
   title: String 
+  heroEyebrow: String 
   heroTitle: String 
   heroDescription: String 
   outlineBtn: String 
@@ -1866,7 +1870,9 @@ input UpsertPageInput{
 input UpdatePageDataInput {
   seoTitle: String 
   seoDescription: String 
+  orderBy: Float 
   title: String 
+  heroEyebrow: String 
   heroTitle: String 
   heroDescription: String 
   outlineBtn: String 
@@ -1891,8 +1897,10 @@ input PageFilterInput {
   createdAt: Date_Selector
   seoTitle: String_Selector
   seoDescription: String_Selector
+  orderBy: Float_Selector
   title: String_Selector
   slug: String_Selector
+  heroEyebrow: String_Selector
   heroTitle: String_Selector
   heroDescription: String_Selector
   outlineBtn: String_Selector
@@ -1923,8 +1931,10 @@ input PageSortInput {
   createdAt: SortOptions
   seoTitle: SortOptions
   seoDescription: SortOptions
+  orderBy: SortOptions
   title: SortOptions
   slug: SortOptions
+  heroEyebrow: SortOptions
   heroTitle: SortOptions
   heroDescription: SortOptions
   outlineBtn: SortOptions
@@ -2090,6 +2100,349 @@ input AnnouncementSelectorInput {
 }
 
 input AnnouncementSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Categories
+type Category {
+  _id: String 
+  name: String 
+  slug: String 
+  pagePath: String 
+  pageUrl: String 
+}
+
+
+input DeleteCategoryInput{
+  filter: CategoryFilterInput
+  id: String
+}
+
+input SingleCategoryInput {
+  # filtering
+  filter: CategoryFilterInput
+  sort: CategorySortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: CategorySelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiCategoryInput {
+
+  # filtering
+  filter: CategoryFilterInput
+  sort: CategorySortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleCategoryOutput{
+  result: Category
+}
+
+type  MultiCategoryOutput{
+  results: [Category]
+  totalCount: Int
+}
+
+type CategoryMutationOutput{
+  data: Category
+}
+
+input CreateCategoryInput {
+  data: CreateCategoryDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateCategoryDataInput {
+  name: String 
+  slug: String 
+}
+
+input UpdateCategoryInput{
+  filter: CategoryFilterInput
+  id: String
+  data: UpdateCategoryDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertCategoryInput{
+  filter: CategoryFilterInput
+  id: String
+  data: UpdateCategoryDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateCategoryDataInput {
+  name: String 
+  slug: String 
+}
+
+input CategoryFilterInput {
+  _and: [CategoryFilterInput]
+  _not: CategoryFilterInput
+  _or: [CategoryFilterInput]
+
+
+  _id: String_Selector
+  name: String_Selector
+  slug: String_Selector
+  pagePath: String_Selector
+  pageUrl: String_Selector
+}
+
+input CategorySortInput {
+  _id: SortOptions
+  name: SortOptions
+  slug: SortOptions
+  pagePath: SortOptions
+  pageUrl: SortOptions
+}
+
+input CategorySelectorInput {
+  _and: [CategorySelectorInput]
+  _or: [CategorySelectorInput]
+
+}
+
+input CategorySelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Documentations
+type Documentation {
+  _id: String 
+  createdAt: Date 
+  title: String 
+  slug: String 
+  body: String 
+  htmlBody: String 
+  thumbnailUrl: String 
+  viewCount: Float 
+  clickCount: Float 
+  status: Float 
+  postedAt: Date 
+  postedAtFormatted: String 
+  userIP: String 
+  userAgent: String 
+  referrer: String 
+  userId: String 
+  user: User 
+  categoriesIds: [String] 
+  categories: [Category] 
+  pagePath: String 
+  pageUrl: String 
+  emailShareUrl: String 
+  twitterShareUrl: String 
+  facebookShareUrl: String 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
+}
+
+
+input DeleteDocumentationInput{
+  filter: DocumentationFilterInput
+  id: String
+}
+
+input SingleDocumentationInput {
+  # filtering
+  filter: DocumentationFilterInput
+  sort: DocumentationSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: DocumentationSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiDocumentationInput {
+
+  # filtering
+  filter: DocumentationFilterInput
+  sort: DocumentationSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleDocumentationOutput{
+  result: Documentation
+}
+
+type  MultiDocumentationOutput{
+  results: [Documentation]
+  totalCount: Int
+}
+
+type DocumentationMutationOutput{
+  data: Documentation
+}
+
+input CreateDocumentationInput {
+  data: CreateDocumentationDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateDocumentationDataInput {
+  title: String 
+  body: String 
+  thumbnailUrl: String 
+  status: Float 
+  postedAt: Date 
+  userId: String 
+  categoriesIds: [String] 
+}
+
+input UpdateDocumentationInput{
+  filter: DocumentationFilterInput
+  id: String
+  data: UpdateDocumentationDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertDocumentationInput{
+  filter: DocumentationFilterInput
+  id: String
+  data: UpdateDocumentationDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateDocumentationDataInput {
+  title: String 
+  body: String 
+  thumbnailUrl: String 
+  status: Float 
+  postedAt: Date 
+  categoriesIds: [String] 
+}
+
+input DocumentationFilterInput {
+  _and: [DocumentationFilterInput]
+  _not: DocumentationFilterInput
+  _or: [DocumentationFilterInput]
+  _byCategory: DocumentationByCategoryFilterInput
+
+  _id: String_Selector
+  createdAt: Date_Selector
+  title: String_Selector
+  slug: String_Selector
+  body: String_Selector
+  htmlBody: String_Selector
+  thumbnailUrl: String_Selector
+  viewCount: Float_Selector
+  clickCount: Float_Selector
+  status: Float_Selector
+  postedAt: Date_Selector
+  userIP: String_Selector
+  userAgent: String_Selector
+  referrer: String_Selector
+  userId: String_Selector
+  categoriesIds: String_Array_Selector
+  pagePath: String_Selector
+  pageUrl: String_Selector
+  emailShareUrl: String_Selector
+  twitterShareUrl: String_Selector
+  facebookShareUrl: String_Selector
+}
+
+input DocumentationByCategoryFilterInput{
+  slug: String
+}
+
+input DocumentationSortInput {
+  _id: SortOptions
+  createdAt: SortOptions
+  title: SortOptions
+  slug: SortOptions
+  body: SortOptions
+  htmlBody: SortOptions
+  thumbnailUrl: SortOptions
+  viewCount: SortOptions
+  clickCount: SortOptions
+  status: SortOptions
+  postedAt: SortOptions
+  userIP: SortOptions
+  userAgent: SortOptions
+  referrer: SortOptions
+  userId: SortOptions
+  categoriesIds: SortOptions
+  pagePath: SortOptions
+  pageUrl: SortOptions
+  emailShareUrl: SortOptions
+  twitterShareUrl: SortOptions
+  facebookShareUrl: SortOptions
+}
+
+input DocumentationSelectorInput {
+  _and: [DocumentationSelectorInput]
+  _or: [DocumentationSelectorInput]
+
+}
+
+input DocumentationSelectorUniqueInput {
   _id: String
   documentId: String # OpenCRUD backwards compatibility
   slug: String
@@ -2496,145 +2849,6 @@ input DomainSelectorUniqueInput {
 }
 
 
-# Type for Categories
-type Category {
-  _id: String 
-  name: String 
-  slug: String 
-  pagePath: String 
-  pageUrl: String 
-}
-
-
-input DeleteCategoryInput{
-  filter: CategoryFilterInput
-  id: String
-}
-
-input SingleCategoryInput {
-  # filtering
-  filter: CategoryFilterInput
-  sort: CategorySortInput
-  search: String
-  id: String
-
-  # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
-  selector: CategorySelectorUniqueInput
-
-  # options (backwards-compatibility)
-  # Whether to enable caching for this query
-  enableCache: Boolean
-  # Return null instead of throwing MissingDocumentError
-  allowNull: Boolean
-  # An identifier to name the query's execution context
-  contextName: String
-}
-
-input MultiCategoryInput {
-
-  # filtering
-  filter: CategoryFilterInput
-  sort: CategorySortInput
-  search: String
-  offset: Int
-  limit: Int
-
-  # backwards-compatibility
-  # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
-  terms: JSON
-
-  # options (backwards-compatibility)
-  # Whether to enable caching for this query
-  enableCache: Boolean
-  # Whether to calculate totalCount for this query
-  enableTotal: Boolean
-  # An identifier to name the query's execution context
-  contextName: String
-  
-}
-
-type SingleCategoryOutput{
-  result: Category
-}
-
-type  MultiCategoryOutput{
-  results: [Category]
-  totalCount: Int
-}
-
-type CategoryMutationOutput{
-  data: Category
-}
-
-input CreateCategoryInput {
-  data: CreateCategoryDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input CreateCategoryDataInput {
-  name: String 
-  slug: String 
-}
-
-input UpdateCategoryInput{
-  filter: CategoryFilterInput
-  id: String
-  data: UpdateCategoryDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input UpsertCategoryInput{
-  filter: CategoryFilterInput
-  id: String
-  data: UpdateCategoryDataInput!
-  # An identifier to name the mutation's execution context
-  contextName: String
-}
-
-input UpdateCategoryDataInput {
-  name: String 
-  slug: String 
-}
-
-input CategoryFilterInput {
-  _and: [CategoryFilterInput]
-  _not: CategoryFilterInput
-  _or: [CategoryFilterInput]
-
-
-  _id: String_Selector
-  name: String_Selector
-  slug: String_Selector
-  pagePath: String_Selector
-  pageUrl: String_Selector
-}
-
-input CategorySortInput {
-  _id: SortOptions
-  name: SortOptions
-  slug: SortOptions
-  pagePath: SortOptions
-  pageUrl: SortOptions
-}
-
-input CategorySelectorInput {
-  _and: [CategorySelectorInput]
-  _or: [CategorySelectorInput]
-
-}
-
-input CategorySelectorUniqueInput {
-  _id: String
-  documentId: String # OpenCRUD backwards compatibility
-  slug: String
-
-}
-
-
 # Type for Departments
 type Department {
   _id: String 
@@ -2928,6 +3142,7 @@ type Distribution {
   label: String 
   # Example: "CentOS"
   vendor: String 
+  # Example: "/images/ubuntu.png"
   image: String 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
@@ -3081,6 +3296,7 @@ type Region {
   # Example: "Mumbai"
   city: String 
   capabilities: [String] 
+  # Example: "/images/india.png"
   image: String 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
@@ -3656,6 +3872,18 @@ type Query {
   # A list of Announcement documents matching a set of query terms
   announcements(input: MultiAnnouncementInput):  MultiAnnouncementOutput
   
+  # A single Category document fetched by ID or slug
+  category(input: SingleCategoryInput!): SingleCategoryOutput
+  
+  # A list of Category documents matching a set of query terms
+  categories(input: MultiCategoryInput):  MultiCategoryOutput
+  
+  # A single Documentation document fetched by ID or slug
+  documentation(input: SingleDocumentationInput!): SingleDocumentationOutput
+  
+  # A list of Documentation documents matching a set of query terms
+  documentations(input: MultiDocumentationInput):  MultiDocumentationOutput
+  
   # A single Instance document fetched by ID or slug
   instance(input: SingleInstanceInput!): SingleInstanceOutput
   
@@ -3667,12 +3895,6 @@ type Query {
   
   # A list of Domain documents matching a set of query terms
   domains(input: MultiDomainInput):  MultiDomainOutput
-  
-  # A single Category document fetched by ID or slug
-  category(input: SingleCategoryInput!): SingleCategoryOutput
-  
-  # A list of Category documents matching a set of query terms
-  categories(input: MultiCategoryInput):  MultiCategoryOutput
   
   # A single Department document fetched by ID or slug
   department(input: SingleDepartmentInput!): SingleDepartmentOutput
@@ -3735,6 +3957,8 @@ type Mutation {
   vote(documentId: String, voteType: String, collectionName: String, voteId: String) : Voteable
 
   increasePostViewCount(postId: String): Float
+
+  increaseDocumentationViewCount(documentationId: String): Float
 
   increaseTicketViewCount(ticketId: String): Float
 
@@ -3964,6 +4188,70 @@ type Mutation {
   selector: AnnouncementSelectorUniqueInput
 ) : AnnouncementMutationOutput
 
+  # Mutation for creating new Category documents
+  createCategory(
+  input: CreateCategoryInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateCategoryDataInput
+) : CategoryMutationOutput
+
+  # Mutation for updating a Category document
+  updateCategory(
+  input: UpdateCategoryInput,
+  "Deprecated (use 'input' field instead)."
+  selector: CategorySelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateCategoryDataInput 
+) : CategoryMutationOutput
+
+  # Mutation for upserting a Category document
+  upsertCategory(
+  input: UpsertCategoryInput,
+  "Deprecated (use 'input' field instead)."
+  selector: CategorySelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateCategoryDataInput
+) : CategoryMutationOutput
+
+  # Mutation for deleting a Category document
+  deleteCategory(
+  input: DeleteCategoryInput,
+  "Deprecated (use 'input' field instead)."
+  selector: CategorySelectorUniqueInput
+) : CategoryMutationOutput
+
+  # Mutation for creating new Documentation documents
+  createDocumentation(
+  input: CreateDocumentationInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateDocumentationDataInput
+) : DocumentationMutationOutput
+
+  # Mutation for updating a Documentation document
+  updateDocumentation(
+  input: UpdateDocumentationInput,
+  "Deprecated (use 'input' field instead)."
+  selector: DocumentationSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateDocumentationDataInput 
+) : DocumentationMutationOutput
+
+  # Mutation for upserting a Documentation document
+  upsertDocumentation(
+  input: UpsertDocumentationInput,
+  "Deprecated (use 'input' field instead)."
+  selector: DocumentationSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateDocumentationDataInput
+) : DocumentationMutationOutput
+
+  # Mutation for deleting a Documentation document
+  deleteDocumentation(
+  input: DeleteDocumentationInput,
+  "Deprecated (use 'input' field instead)."
+  selector: DocumentationSelectorUniqueInput
+) : DocumentationMutationOutput
+
   # Mutation for creating new Instance documents
   createInstance(
   input: CreateInstanceInput,
@@ -4027,38 +4315,6 @@ type Mutation {
   "Deprecated (use 'input' field instead)."
   selector: DomainSelectorUniqueInput
 ) : DomainMutationOutput
-
-  # Mutation for creating new Category documents
-  createCategory(
-  input: CreateCategoryInput,
-  "Deprecated (use 'input' field instead)."
-  data: CreateCategoryDataInput
-) : CategoryMutationOutput
-
-  # Mutation for updating a Category document
-  updateCategory(
-  input: UpdateCategoryInput,
-  "Deprecated (use 'input' field instead)."
-  selector: CategorySelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateCategoryDataInput 
-) : CategoryMutationOutput
-
-  # Mutation for upserting a Category document
-  upsertCategory(
-  input: UpsertCategoryInput,
-  "Deprecated (use 'input' field instead)."
-  selector: CategorySelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateCategoryDataInput
-) : CategoryMutationOutput
-
-  # Mutation for deleting a Category document
-  deleteCategory(
-  input: DeleteCategoryInput,
-  "Deprecated (use 'input' field instead)."
-  selector: CategorySelectorUniqueInput
-) : CategoryMutationOutput
 
   # Mutation for creating new Department documents
   createDepartment(

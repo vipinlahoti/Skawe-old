@@ -52,7 +52,6 @@ class SummaryHeader extends Component {
       method: 'POST',
       type: 'full',
     }
-    console.log('dataMutation', dataMutation)
 
     try {
       const result = await this.props.getInstancesData({ dataMutation });
@@ -95,7 +94,7 @@ class SummaryHeader extends Component {
     const { cloudInstanceData, instanceId } = this.props;
     const { instanceStatus } = this.state;
     const badgeClass = classNames(cloudInstanceData.status === 'running' ? 'bg-primary' : 'bg-danger', 'badge');
-    const imageIcon = cloudInstanceData.image.split('/')[1].toLowerCase().replace(/[0-9]./g, '');
+    const imageIcon = cloudInstanceData.image.split('/')[1].toLowerCase().replace(/[0-9]/g, '');
 
     return (
       <React.Fragment>

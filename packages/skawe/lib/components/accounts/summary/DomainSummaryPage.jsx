@@ -1,4 +1,4 @@
-import { Components, registerComponent, Utils, withSingle, withMutation, withUpdate, withDelete } from 'meteor/vulcan:core';
+import { Components, registerComponent, withSingle, withMutation, withUpdate, withDelete } from 'meteor/vulcan:core';
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import mapProps from 'recompose/mapProps';
@@ -12,16 +12,8 @@ class DomainSummaryPage extends Component {
   }
 
   componentDidMount() {
-    const getDomainData = Utils.domains.getDomainData;
-    const getDomainRecordsData = Utils.domains.getDomainRecordsData;
-    
-    if (getDomainData === undefined) {
-      this.getDomain();
-    }
-
-    if (getDomainRecordsData === undefined) {
-      this.domainRecords();
-    }
+    this.getDomain();
+    this.domainRecords();
   }
 
   getDomain = async e => {
@@ -46,11 +38,9 @@ class DomainSummaryPage extends Component {
       const domainData = body.data;
 
       this.setState({ domainData: {} });
-      Utils.domains.getDomainData = {};
     
       if (domainData) {
         this.setState({ domainData });
-        Utils.domains.getDomainData = domainData;
       }
 
     } catch (error) {
@@ -94,11 +84,9 @@ class DomainSummaryPage extends Component {
       const domainData = body.data;
 
       this.setState({ domainData: {} });
-      Utils.domains.getDomainData = {};
     
       if (domainData) {
         this.setState({ domainData });
-        Utils.domains.getDomainData = domainData;
         const data = {
           status: domainData.status,
         };
@@ -172,11 +160,9 @@ class DomainSummaryPage extends Component {
       const domainRecordData = flatBody.data;
 
       this.setState({ domainRecordData: [] });
-      Utils.domains.getDomainRecordsData = [];
 
       if (domainRecordData) {
         this.setState({ domainRecordData });
-        Utils.domains.getDomainRecordsData = domainRecordData;
       }
 
     } catch (error) {
@@ -202,23 +188,9 @@ class DomainSummaryPage extends Component {
       const domainDbId = getCurrentRoute[getCurrentRoute.length - 2];
       const domainSingle = this.props.document;
 
-      let domainData;
-      let domainRecordData;
-      const skaweDomainData = Utils.domains.getDomainData;
-      const skaweDomainRecord = Utils.domains.getDomainRecordsData;
-
-      if ((skaweDomainData === undefined) || (Object.keys(skaweDomainData).length === 0)) {
-        domainData = this.state.domainData;
-      } else {
-        domainData = skaweDomainData;
-      }
-
-      if (skaweDomainRecord === undefined || skaweDomainRecord.length === 0) {
-        domainRecordData = this.state.domainRecordData;
-      } else {
-        domainRecordData = skaweDomainRecord;
-      }
-
+      const domainData = this.state.domainData;
+      const domainRecordData = this.state.domainRecordData;
+  
       return (
         <React.Fragment>
           <Components.HeadTags title={`Domain - ${domainSingle.name}`} description="Domain Page" />

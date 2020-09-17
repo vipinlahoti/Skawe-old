@@ -135,8 +135,8 @@ class RebuildInstance extends Component {
         <h6 className="title-6">Rebuilding will destroy all data on all existing disks on this Instance.</h6>
         <div className="bg-light mb-1">
           <Components.DistributionSelect
-            title="Choose a Distribution"
-            placeholder="-- Select a Distribution --"
+            title="Choose an Operating System"
+            placeholder="-- Select an Operating System --"
             selectedDistribution={this.selectedDistribution}
           />
         </div>

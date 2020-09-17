@@ -39,6 +39,7 @@ const schema = {
   label: {
     type: String,
     input: 'text',
+    optional: true,
     canRead: ['guests'],
     canCreate: ['admins'],
     canUpdate: ['admins'],
@@ -50,6 +51,7 @@ const schema = {
   vendor: {
     type: String,
     input: 'text',
+    optional: true,
     canRead: ['guests'],
     canCreate: ['admins'],
     canUpdate: ['admins'],
@@ -62,6 +64,7 @@ const schema = {
     type: String,
     optional: true,
     canRead: ['guests'],
+    description: 'Example: "/images/ubuntu.png"',
     onCreate: ({ document: distribution }) => {
       const image = distribution.vendor.toLowerCase();
       return `/images/${image}.png`;

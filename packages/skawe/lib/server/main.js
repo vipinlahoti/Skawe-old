@@ -5,6 +5,7 @@ export * from '../modules/index.js';
 import './emails/index.js';
 import './comments/index.js';
 import './posts/index.js';
+import './documentations/index.js';
 
 import './replies/index.js';
 import './tickets/index.js';

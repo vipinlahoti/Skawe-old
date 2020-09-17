@@ -87,7 +87,7 @@ const schema = {
   body: {
     type: String,
     optional: true,
-    max: 50000,
+    max: 90000,
     canRead: ['guests'],
     canCreate: ['members'],
     canUpdate: ['members'],

@@ -1,5 +1,5 @@
 /*
- * Show a list of all bookings
+ * Show a list of all Pages
  * http://docs.vulcanjs.org/core-components.html#Datatable
  */
 
@@ -7,6 +7,7 @@ import { Components, registerComponent, withAccess } from 'meteor/vulcan:core';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import { statusesReverse } from '../../modules/data.js';
 import { Pages } from '../../modules/pages/collection.js';
 
@@ -35,32 +36,52 @@ const AdminPages = () => (
   <div className="admin-pages">
     <Components.HeadTags title="Pages" description="Pages" />
     
-    <h5 className="title-5 mb-1">Admin Pages</h5>
-    <div className="instances__list">
-      <Components.Datatable
-        collection={Pages}
-        columns={[
-          { name: '_id' },
-          { name: 'title', component: Title },
-          { name: 'featuresIds', label: 'Features', filterable: true, component: Features },
-          { name: 'status', filterable: true, component: Status },
-          { name: 'userId', label: 'User' },
-          { name: 'createdAt', label: 'Created At', sortable: true, contents: 'date', filterable: true },
-          { name: 'postedAt', label: 'Posted At', sortable: true, contents: 'date', filterable: true },
-        ]}
-        rowClass={page => `page-item page-item-status-${statusesReverse[page.status]}`}
-        options={{
-          fragmentName: 'PageItem',
-        }}
-        showNew={true}
-        showEdit={true}
-      />
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <h5 className="title-5 mb-1 breadcrumb__wrapper">
+            Pages
+          </h5>
+        </Col>
+        <Col>
+          <div className="text-right">
+            <Components.Button variant="primary" path="/accounts/pages/new" isLink={true}>
+              New Page
+            </Components.Button>
+          </div>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <div className="instances__list">
+            <Components.Datatable
+              collection={Pages}
+              columns={[
+                { name: '_id' },
+                { name: 'title', component: Title },
+                { name: 'featuresIds', label: 'Features', filterable: true, component: Features },
+                { name: 'status', filterable: true, component: Status },
+                { name: 'userId', label: 'User' },
+                { name: 'createdAt', label: 'Created At', sortable: true, contents: 'date', filterable: true },
+                { name: 'postedAt', label: 'Posted At', sortable: true, contents: 'date', filterable: true },
+              ]}
+              rowClass={page => `page-item page-item-status-${statusesReverse[page.status]}`}
+              options={{
+                fragmentName: 'PageItem',
+              }}
+              showNew={false}
+              showEdit={true}
+            />
+          </div>
+        </Col>
+      </Row>
+    </Container>
   </div>
 );
 
 const accessOptions = {
-  groups: ['admins'],
+  groups: ['admins', 'content-writer'],
   redirect: '/',
   message: 'Sorry, you do not have the rights to access this page.',
 };

@@ -14,26 +14,10 @@ class CloudInstanceSummaryPage extends Component {
   }
 
   componentDidMount() {
-    const getInstanceData = Utils.instances.getInstanceData;
-    const getusedBandwidth = Utils.instances.getusedBandwidth;
-    const getStatsData = Utils.instances.getStatsData;
-    const getListDisks = Utils.instances.getListDisks;
-
-    if (getInstanceData === undefined) {
       this.getInstanceData();
-    }
-
-    if (getusedBandwidth === undefined) {
       this.getusedBandwidth();
-    }
-
-    if (getStatsData === undefined) {
       this.getStatsData();
-    }
-
-    if (getListDisks === undefined) {
       this.getListDisks();
-    }
   }
 
   getInstanceData = async e => {
@@ -61,7 +45,6 @@ class CloudInstanceSummaryPage extends Component {
       
       if (cloudInstanceData) {
         this.setState({ cloudInstanceData });
-        Utils.instances.getInstanceData = cloudInstanceData;
 
         if (cloudInstanceData.status !== 'running' && cloudInstanceData.status !== 'offline') {
           this.getInstanceData();
@@ -108,7 +91,6 @@ class CloudInstanceSummaryPage extends Component {
 
       if (instanceStats) {
         this.setState({ instanceStats: instanceStats });
-        Utils.instances.getStatsData = instanceStats;
       }
 
     } catch (error) {
@@ -140,7 +122,6 @@ class CloudInstanceSummaryPage extends Component {
       
       if (usedBandwidth) {
         this.setState({ usedBandwidth });
-        Utils.instances.getusedBandwidth = usedBandwidth;
       }
 
     } catch (error) {
@@ -175,7 +156,6 @@ class CloudInstanceSummaryPage extends Component {
         for (let i = 0; i < listDisk.length; i ++) {
           if (listDisk[i]['filesystem'] === 'ext4') {
             this.setState({ listDisk: listDisk[i]['id'] });  
-            Utils.instances.getListDisks = listDisk[i]['id'];
           }
         }
       }
@@ -186,7 +166,6 @@ class CloudInstanceSummaryPage extends Component {
 
   instanceStatus = (cloudInstanceData) => {
     this.setState({ cloudInstanceData });
-    Utils.instances.getInstanceData = {};
   }
 
   render() {
@@ -207,41 +186,11 @@ class CloudInstanceSummaryPage extends Component {
       const instanceDbId = getCurrentRoute[getCurrentRoute.length - 2];
       const instanceSingle = this.props.document;
 
-      let cloudInstanceData;
-      let usedBandwidth;
-      let instanceStats;
-      let listDisks;
+      const cloudInstanceData = this.state.cloudInstanceData;
+      const usedBandwidth = this.state.usedBandwidth;
+      const instanceStats = this.state.instanceStats;
+      const listDisks = this.state.getListDisks;
 
-      const skaweCloudInstanceData = Utils.instances.getInstanceData;
-      const skaweUsedBandwidth = Utils.instances.getusedBandwidth;
-      const skaweInstanceStats = Utils.instances.getStatsData;
-      const skaweListDisks = Utils.instances.getListDisks;
-
-      if ((skaweCloudInstanceData === undefined) || (Object.keys(skaweCloudInstanceData).length === 0)) {
-        cloudInstanceData = this.state.cloudInstanceData;
-      } else {
-        cloudInstanceData = skaweCloudInstanceData;
-      }
-
-      if (skaweUsedBandwidth === undefined) {
-        usedBandwidth = this.state.usedBandwidth;
-      } else {
-        usedBandwidth = skaweUsedBandwidth;
-      }
-
-      if (skaweInstanceStats === undefined) {
-        instanceStats = this.state.instanceStats;
-      } else {
-        instanceStats = skaweInstanceStats;
-      }
-
-      if (skaweListDisks === undefined) {
-        listDisks = this.state.getListDisks;
-      } else {
-        listDisks = skaweListDisks;
-      }
-
-      console.log('cloudInstanceData: ', cloudInstanceData);
       return (
         <React.Fragment>
           <Components.HeadTags title="Cloud Instance" description="Cloud Instance Page" />

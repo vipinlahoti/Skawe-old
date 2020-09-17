@@ -39,6 +39,7 @@ const schema = {
   typeId: {
     type: String,
     input: 'text',
+    optional: true,
     canRead: ['members'],
     canCreate: ['admins'],
     canUpdate: ['admins'],
@@ -50,6 +51,7 @@ const schema = {
   label: {
     type: String,
     input: 'text',
+    optional: true,
     canRead: ['guests'],
     canCreate: ['admins'],
     canUpdate: ['admins'],

@@ -48,6 +48,7 @@ const schema = {
   */
   priceHr: {
     type: String,
+    optional: true,
     input: 'text',
     canRead: ['admins'],
     canCreate: ['admins'],
@@ -58,6 +59,7 @@ const schema = {
   */
   priceMo: {
     type: String,
+    optional: true,
     input: 'text',
     canRead: ['admins'],
     canCreate: ['admins'],
@@ -69,6 +71,7 @@ const schema = {
   sellPriceHr: {
     label: 'Sell Price - Hourly',
     type: String,
+    optional: true,
     input: 'text',
     canRead: ['guests'],
     canCreate: ['admins'],
@@ -80,6 +83,7 @@ const schema = {
   sellPriceMo: {
     label: 'Sell Price - Monthly',
     type: String,
+    optional: true,
     canRead: ['guests'],
     onCreate: ({ document: plan }) => {
       return Math.floor((plan.sellPriceHr * 24) * 30);
@@ -96,6 +100,7 @@ const schema = {
   memory: {
     label: 'RAM Size in GB',
     type: String,
+    optional: true,
     input: 'text',
     canRead: ['guests'],
     canCreate: ['admins'],
@@ -107,6 +112,7 @@ const schema = {
   disk: {
     label: 'Disk Size in GB',
     type: String,
+    optional: true,
     input: 'text',
     canRead: ['guests'],
     canCreate: ['admins'],
@@ -151,6 +157,7 @@ const schema = {
   */
   addons: {
     type: Array,
+    optional: true,
     input: 'checkboxgroup',
     canRead: ['guests'],
     canCreate: ['admins'],

@@ -20,24 +20,39 @@ h1, h2, h3, h4, h5, h6,
 h1,
 .h1,
 .title-1 {
-  @include margin(32px, bottom);
-	@include font-size($h1-font-size);
-  line-height: 68px;
+	@include font-size($h4-font-size);
+  @include margin(18px, bottom);
+  line-height: 45px;
+
+  @include breakpoint($screen-md) {
+    @include font-size($h1-font-size);
+    @include margin(32px, bottom);
+    line-height: 68px;
+  }
 }
 
 h2,
 .h2,
 .title-2 {
   @include margin(16px, bottom);
-	@include font-size($h2-font-size);
-  line-height: 60px;
+	@include font-size($h4-font-size);
+  line-height: 45px;
+
+  @include breakpoint($screen-md) {
+    @include font-size($h2-font-size);
+    line-height: 60px;
+  }
 }
 
 h3,
 .h3,
 .title-3 {
 	@include margin(16px, bottom);
-	@include font-size($h3-font-size);
+  @include font-size($h4-font-size);
+
+  @include breakpoint($screen-md) {
+    @include font-size($h3-font-size);
+  }
 }
 
 h4,
@@ -79,12 +94,11 @@ p {
 
 .lead {
 	@include font-size(21px);
-	font-weight: 400;
+	font-weight: 300;
 }
 
 .card-text {
 	@include font-size(18px);
-	font-weight: 300;
 }
 
 .text-data {
@@ -98,4 +112,11 @@ p {
 
 .text-small {
   @include font-size(14px);
+}
+
+.eyebrow {
+  @include font-size(16px);
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }

@@ -22,6 +22,7 @@ class HomePage extends Component {
       const pageName = page['features'][0]['name'];
 
       const htmlBody = { __html: page.body };
+      const category = page.features[0].slug;
 
       return (
         <React.Fragment>
@@ -46,11 +47,14 @@ class HomePage extends Component {
                 alt={page.thumbnailUrl ? page.heroTitle : ''}
                 size={page.thumbnailUrl ? 'large' : ''}
                 form={page.heroForm}
+                category={category}
               />
               
               {page.body ? <div dangerouslySetInnerHTML={htmlBody}></div> : null}
             </React.Fragment>
           : null }
+
+          <Components.GetStarted />
         </React.Fragment>
       )
     }
@@ -65,7 +69,7 @@ const queryOptions = {
 
 const mapPropsFunction = props => ({
   ...props,
-  documentId: 'mXfzu22RNFM4gK5kf',
+  documentId: 'HmZ9phT82DRfSi4uy',
 });
 
 registerComponent(

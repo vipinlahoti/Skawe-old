@@ -26,17 +26,26 @@ import '../components/common/AccountsButton.jsx';
 import '../components/common/AccountsField.jsx';
 import '../components/common/CardItemImage.jsx';
 import '../components/common/Loading.jsx';
+import '../components/common/GetStarted.jsx';
 
 
 //======================================================//
 // Pages
 //======================================================//
+import '../components/pages/PagesNew.jsx';
 import '../components/pages/PagesPage.jsx';
 import '../components/pages/HomePage.jsx';
 import '../components/pages/LoginPage.jsx';
 import '../components/pages/RegisterPage.jsx';
 import '../components/pages/ForgotPassword.jsx';
 import '../components/pages/ResetPassword.jsx';
+
+
+//======================================================//
+// Categories
+//======================================================//
+import '../components/categories/CategoriesMenu.jsx';
+
 
 //======================================================//
 // Posts
@@ -54,6 +63,18 @@ import '../components/posts/PostsCommenters.jsx';
 import '../components/posts/PostsPage.jsx';
 import '../components/posts/PostsStats.jsx';
 import '../components/posts/PostsCommentsThread.jsx';
+
+
+//======================================================//
+// Docs
+//======================================================//
+import '../components/documentations/DocsNew.jsx';
+import '../components/documentations/DocsHome.jsx';
+import '../components/documentations/DocsItem.jsx';
+import '../components/documentations/DocsList.jsx';
+import '../components/documentations/DocsPage.jsx';
+import '../components/documentations/DocsCategory.jsx';
+import '../components/documentations/DocsCategories.jsx';
 
 
 //======================================================//
@@ -143,6 +164,8 @@ import '../components/admin/AdminCloudInstances.jsx';
 import '../components/admin/AdminDomains.jsx';
 import '../components/admin/AdminAnnouncements.jsx';
 
+import '../components/admin/AdminDocumentation.jsx';
+
 
 
 //======================================================//
@@ -205,6 +228,7 @@ import '../components/accounts/instances/RootPassword.jsx';
 import '../components/accounts/instances/SSHKeys.jsx';
 import '../components/accounts/instances/PriceSummary.jsx';
 import '../components/accounts/instances/MakePayment.jsx';
+import '../components/accounts/instances/PageDistribution.jsx';
 
 
 //======================================================//

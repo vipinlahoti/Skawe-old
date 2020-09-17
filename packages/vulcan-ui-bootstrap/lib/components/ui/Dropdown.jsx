@@ -73,7 +73,7 @@ const BootstrapDropdown = ({ label, labelId, trigger, menuItems, menuContents, v
     }
   });
 
-  if (variant === 'flat') {
+  if (buttonProps.variant === 'flat') {
     
     return menuBody;
 
@@ -87,7 +87,6 @@ const BootstrapDropdown = ({ label, labelId, trigger, menuItems, menuContents, v
         </Dropdown>
       );
     } else {
-      console.log('else buttonProps: ', buttonProps);
       // else default to DropdownButton
       return (
         <DropdownButton {...buttonProps} title={labelId ? <FormattedMessage id={labelId} /> : label} {...dropdownProps}>

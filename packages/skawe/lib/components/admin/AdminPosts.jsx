@@ -123,7 +123,7 @@ const AdminPosts = () => (
 );
 
 const accessOptions = {
-  groups: ['admins'],
+  groups: ['admins', 'blogger', 'content-writer'],
   redirect: '/',
   message: 'Sorry, you do not have the rights to access this page.',
 };

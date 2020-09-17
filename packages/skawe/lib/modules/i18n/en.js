@@ -289,6 +289,79 @@ addStrings('en', {
   'categories.delete_success': 'Category “{name}” deleted.',
   'categories.invalid': 'Invalid category',
 
+
+  //===================================//
+  // Resources
+  //===================================//
+  'resources': 'Resources',
+  'resources.all': 'All Resources',
+  'resources.edit': 'Edit Resource',
+  'resources.edit_success': 'Resource “{name}” edited.',
+  'resources.new': 'New Resource',
+  'resources.new_success': 'Resource “{name}” created.',
+  'resources.delete': 'Delete Resource',
+  'resources.name': 'Name',
+  'resources.description': 'Description',
+  'resources.order': 'Order',
+  'resources.slug': 'Slug',
+  'resources.image': 'Image',
+  'resources.parentId': 'Parent ID',
+  'resources.subscribe': 'Subscribe to this category\'s posts',
+  'resources.unsubscribe': 'Unsubscribe to this category\'s posts',
+  'resources.subscribed': 'You have subscribed to “{name}” posts.',
+  'resources.unsubscribed': 'You have unsubscribed from “{name}” posts.',
+  'resources.subscribed_resources' : 'Resources subscribed to',
+  'resources.delete_confirm': 'Delete category “{title}”?',
+  'resources.delete_success': 'Resource “{name}” deleted.',
+  'resources.invalid': 'Invalid category',
+
+
+  //===================================//
+  // Documents
+  //===================================//
+  'docs.sort_by': 'Sort by',
+  'docs.new_Document': 'New Document',
+  'docs.edit': 'Edit',
+  'docs.create_success': 'Document “{title}” created.',
+  'docs.edit_success': 'Document “{title}” edited.',
+  'docs.delete': 'Delete',
+  'docs.delete_confirm': 'Delete Document “{title}”?',
+  'docs.delete_success': 'Document “{title}” deleted.',
+  'docs.title': 'Title',
+  'docs.body': 'Body',
+  'docs.categories': 'Categories',
+  'docs.thumbnailUrl': 'Image',
+  'docs.status': 'Status',
+  'docs.load_more': 'Load More',
+  'docs.no_more': 'No more docs.',
+  'docs.no_results': 'No Documents to display.',
+  'docs.search': 'Search',
+  'docs.view': 'View',
+  'docs.top': 'Top',
+  'docs.new': 'New',
+  'docs.best': 'Best',
+  'docs.pending': 'Pending',
+  'docs.rejected': 'Rejected',
+  'docs.scheduled': 'Scheduled',
+  'docs.daily': 'Daily',
+  'docs.clear_thumbnail': 'Clear Thumbnail',
+  'docs.clear_thumbnail?': 'Clear thumbnail?',
+  'docs.enter_thumbnail_url': 'Enter URL',
+  'docs.created_message': 'Document created.',
+  'docs.rate_limit_error': 'Please wait {value} seconds before Documenting again.',
+  'docs.sign_up_or_log_in_first': 'Please sign up or log in first.',
+  'docs.DocumentedAt': 'Documented at',
+  'docs.dateNotDefined': 'Date not defined',
+  'docs.subscribe': 'Subscribe',
+  'docs.unsubscribe': 'Unsubscribe',
+  'docs.subscribed': 'You have subscribed to “{name}” comments.',
+  'docs.unsubscribed': 'You have unsubscribed from “{name}” comments.',
+  'docs.subscribed_Documents' : 'Documents subscribed to',
+  'docs.link_already_Documented': 'This link has already been Documented.',
+  'docs.max_per_day': 'Sorry you cannot submit more than {value} Documents per day.',
+  'docs.like': 'Like',
+
+
   //===================================//
   // Departments
   //===================================//
@@ -320,6 +393,8 @@ addStrings('en', {
   'admin': 'Admin',
   'admin.announcements': 'Announcements (admin)',
   'admin.users': 'Users (admin)',
+  'admin.resources': 'Resources (admin)',
+  'admin.docs': 'Documentations (admin)',
   'admin.categories': 'Categories (admin)',
   'admin.posts': 'Posts (admin)',
   'admin.comments': 'Comments (admin)',

@@ -5,7 +5,11 @@
   word-wrap: break-word;
 
   .card-body {
-    @include padding(32px);
+    @include padding(32px 0);
+    
+    @include breakpoint($screen-md) {
+      @include padding(32px);
+    }
   }
 }
 
@@ -29,7 +33,7 @@
   height: auto;
 
   .icon {
-    @include font-size(56px);
+    @include font-size(68px);
     color: $primary;
   }
 }

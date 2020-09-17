@@ -317,7 +317,7 @@ label {
 .document-new-post {
   .form-component-textarea {
     textarea {
-      @include height(400px, min);
+      @include height(600px, min);
     }
   }
 }

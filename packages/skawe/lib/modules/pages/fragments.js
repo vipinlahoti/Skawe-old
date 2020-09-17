@@ -4,8 +4,9 @@ registerFragment(/* GraphQL */`
   fragment PageItem on Page {
     # pages
     _id
+    orderBy
     title
-    heroTitle
+    
     slug
     postedAt
     createdAt
@@ -31,22 +32,26 @@ registerFragment(/* GraphQL */`
 registerFragment(/* GraphQL */`
   fragment PagePage on Page {
     ...PageItem
-    seoTitle
-    seoDescription
-
-    viewCount
-    clickCount
-
-    # embedly
-    thumbnailUrl
-    
-    body
+    heroEyebrow
+    heroTitle
     heroDescription
+
     outlineBtn
     outlineBtnUrl
     fillBtn
     fillBtnUrl
     heroForm
+
+    # embedly
+    thumbnailUrl
+    
+    body
+    
+    seoTitle
+    seoDescription
+
+    viewCount
+    clickCount
   }
 `);
 

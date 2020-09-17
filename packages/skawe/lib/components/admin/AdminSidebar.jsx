@@ -1,10 +1,11 @@
-import { Components, registerComponent, getSetting } from 'meteor/vulcan:core';
+import { Components, registerComponent, getSetting, withCurrentUser } from 'meteor/vulcan:core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import classNames from 'classnames';
 
 const logoUrl = getSetting('logoUrl');
+const logoUrlDark = getSetting('logoUrlDark');
 const siteTitle = getSetting('title');
 
 const NavLinks = ({user, activeRoute}) => 
@@ -33,12 +34,16 @@ const AdminSidebar = ({currentUser, currentRoute}) => {
     setCurrentRoute = 'accounts'
   }
 
+  const getTheme = currentUser.theme
+
   return (
     <div className="navbar-sidebar">
-      <Components.DashboardLogo logoUrl={logoUrl} siteTitle={siteTitle}/>
+      {getTheme === 'dark-mode' ?
+        <Components.DashboardLogo logoUrl={logoUrlDark} siteTitle={siteTitle}/>
+      : <Components.DashboardLogo logoUrl={logoUrl} siteTitle={siteTitle}/> }
       <NavLinks user={currentUser} activeRoute={setCurrentRoute} />
     </div>
   )
 }
 
-registerComponent({ name: 'AdminSidebar', component: AdminSidebar });
+registerComponent({ name: 'AdminSidebar', component: AdminSidebar, hocs: [withCurrentUser] });

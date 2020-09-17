@@ -50,6 +50,7 @@ const schema = {
   */
   countryId: {
     type: String,
+    optional: true,
     input: 'text',
     canRead: ['guests'],
     canCreate: ['admins'],
@@ -85,6 +86,7 @@ const schema = {
   */
   capabilities: {
     type: Array,
+    optional: true,
     input: 'checkboxgroup',
     canRead: ['guests'],
     canCreate: ['admins'],
@@ -95,7 +97,8 @@ const schema = {
           {value: 'NodeBalancers', label: 'Load Balancers'},
           {value: 'BlockStorage', label: 'Block Storage'},
           {value: 'GPULinodes', label: 'GPU Linodes'},
-          {value: 'Kubernetes', label: 'Kubernetes'}
+          {value: 'Kubernetes', label: 'Kubernetes'},
+          {value: 'Vlans', label: 'Vlans'}
         ];
       }
   },
@@ -113,6 +116,7 @@ const schema = {
     canRead: ['guests'],
     canCreate: ['admins'],
     canUpdate: ['admins'],
+    description: 'Example: "/images/india.png"'
   }
   
 };

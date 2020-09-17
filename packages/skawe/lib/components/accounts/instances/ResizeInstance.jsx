@@ -68,7 +68,6 @@ class ResizeInstance extends Component {
   }
 
   selectedPlans = (setServerPlans) => {
-    console.log(setServerPlans)
     this.setState({
       selectServerPlans: setServerPlans
     });

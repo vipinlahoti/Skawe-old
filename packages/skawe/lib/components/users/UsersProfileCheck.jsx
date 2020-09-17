@@ -60,7 +60,6 @@ class UsersProfileCheck extends Component {
 
   render() {
     const { currentUser, loading, flash } = this.props;
-    console.log('currentUser: ', currentUser)
     // if user is not logged in, or userMustCompleteFields is still loading, don't return anything
     if (!currentUser || loading) {
 

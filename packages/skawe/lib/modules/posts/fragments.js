@@ -31,6 +31,14 @@ registerFragment(/* GraphQL */`
     categories {
       ...CategoryItem
     }
+  }
+`);
+
+registerFragment(/* GraphQL */`
+  fragment PostPage on Post {
+    ...PostItem
+    body
+    htmlBody
 
     # commentCount
     comments {
@@ -46,14 +54,6 @@ registerFragment(/* GraphQL */`
     }
     baseScore
     score
-  }
-`);
-
-registerFragment(/* GraphQL */`
-  fragment PostPage on Post {
-    ...PostItem
-    body
-    htmlBody
   }
 `);
 

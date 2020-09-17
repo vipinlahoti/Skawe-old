@@ -18,10 +18,10 @@ const PostsHome = ({ currentRoute, location = {} }) => {
       <Components.HeadTags title="Blogs" description="Contact Sales Page" />
 
       <Components.HeroJumbotron 
-        title="Blogs"
-        description="Find an app that suits you, then spin it up in 60 seconds or less. 100+ preconfigured 1-Click Apps are available including WordPress, LAMP, Docker, Plesk, and more."
-        blackButton="Create an Account"
-        blackButtonPath="/register"
+        eyebrow="Blogs"
+        title="What’s new at WiredLynk?"
+        blackButton="Create Account"
+        blackButtonPath="/accounts/dashboard"
       />
 
       <div className="section">
@@ -33,6 +33,8 @@ const PostsHome = ({ currentRoute, location = {} }) => {
           </Row>
         </Container>
       </div>
+
+      <Components.GetStarted />
     </React.Fragment>
   )
 };

@@ -70,7 +70,7 @@ class TicketsPage extends Component {
                         <span className="media-time">
                           {ticket.createdAt ? moment(new Date(ticket.createdAt)).fromNow() : <FormattedMessage id="tickets.dateNotDefined" />}
                         </span>
-                        {ticket.user.groups.map(group =>
+                        {ticket.user.groups && ticket.user.groups.map(group =>
                           <span className="badge" key={group}>{group}</span>
                         )}
                       </div>
@@ -81,7 +81,7 @@ class TicketsPage extends Component {
                     </div>
                   </div>
 
-                  <Components.TicketsRepliesThread ticketId={ticket._id} input={{ filter: { ticketId: { _eq: ticket._id } }, sort: {createdAt: 'asc'} }} />
+                  <Components.TicketsRepliesThread status={ticket.status} ticketId={ticket._id} input={{ filter: { ticketId: { _eq: ticket._id } }, sort: {createdAt: 'asc'} }} />
 
                 </div>
               </Col>

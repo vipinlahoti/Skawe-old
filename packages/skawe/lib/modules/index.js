@@ -16,6 +16,8 @@ export * from './categories/index.js';
 export * from './posts/index.js';
 export * from './comments/index.js';
 
+export * from './documentations/index.js';
+
 export * from './features/index.js';
 export * from './pages/index.js';
 

@@ -39,7 +39,6 @@ const TicketsNew = (props, context) =>
               collection={Tickets}
               layout="vertical"
               successCallback={ticket => {
-                console.log('ticket: ', ticket)
                 props.history.push({ pathname: ticket.pageUrl });
                 props.flash({ id: 'tickets.created_message', type: 'success' });
               }}

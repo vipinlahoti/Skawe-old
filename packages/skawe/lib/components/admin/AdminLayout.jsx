@@ -12,38 +12,30 @@ class AdminLayout extends Component {
     const currentRoute = this.props.location.pathname;
 
     if (currentUser) {
-      const country = currentUser.country;
-      const region = currentUser.region;
-      const checkFields = (country !== null && country.length > 0) && (region !== null && region.length > 0);
-
       return (
         <React.Fragment>
           <Helmet>
             <link name='font-face' rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Nunito:300,400,500,700|Open+Sans:300,400,600|Material+Icons'/>
           </Helmet>
           
-          {currentUser ?
-            <div className={currentUser.theme}>
-              <div className="toast__wrapper">
-                <Components.FlashMessages />
-              </div>
-              <div className="dashboard__wrapper">
-                <Components.AdminSidebar currentRoute={currentRoute} />
-                <div className="dashboard-container">
-                  <Components.Announcement />
-                  <Components.AdminHeader />
-                  <div className="section-dashboard">
-                    {children}
-                  </div>
-                  <Components.AdminFooter />
+          <div className={currentUser.theme}>
+            <div className="toast__wrapper">
+              <Components.FlashMessages />
+            </div>
+            <div className="dashboard__wrapper">
+              <Components.AdminSidebar currentRoute={currentRoute} />
+              <div className="dashboard-container">
+                <Components.AdminHeader />
+                <div className="section-dashboard">
+                  {children}
                 </div>
+                <Components.AdminFooter />
               </div>
             </div>
-          : <Components.Loading /> }
+          </div>
 
         </React.Fragment>
-      )
-    
+      )    
     } else {
       return (
         <React.Fragment>
@@ -69,17 +61,10 @@ class AdminLayout extends Component {
   }
 }
 
-// const accessOptions = {
-//   groups: ['members'],
-//   redirect: '/',
-//   message: 'Sorry, you do not have the rights to access this page.',
-// };
-
 registerComponent({
   name: 'AdminLayout',
   component: AdminLayout,
   hocs: [
-    withCurrentUser,
-    // [withAccess, accessOptions]
+    withCurrentUser
   ]
 });

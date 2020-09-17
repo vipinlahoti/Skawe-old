@@ -6,7 +6,7 @@ const Error404 = () => {
   return (
     <React.Fragment>
       <Components.HeadTags title="Error 404" description="Error 404" />
-      <Components.HeroJumbotron title={<FormattedMessage id="app.404"/>} />
+      <Components.HeroJumbotron extra="404" title={<FormattedMessage id="app.404"/>} />
     </React.Fragment>
   );
 };

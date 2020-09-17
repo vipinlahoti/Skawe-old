@@ -3,7 +3,7 @@ import { FormattedMessage } from 'meteor/vulcan:i18n';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TicketsRepliesThread = ({ loading, ticketId, results, totalCount, currentUser }) => {
+const TicketsRepliesThread = ({ loading, status, ticketId, results, totalCount, currentUser }) => {
   if (loading) {
     return (
       <div className="tickets-replies-thread">
@@ -18,9 +18,11 @@ const TicketsRepliesThread = ({ loading, ticketId, results, totalCount, currentU
       <div className="tickets-replies-thread">
         <Components.RepliesList currentUser={currentUser} replies={nestedReplies} replyCount={totalCount} />
         
+        {status !== 'Closed' ?
         <div className="pt-4">
           <Components.RepliesNewForm ticketId={ticketId} type="reply" />
         </div>
+        : null}
       </div>
     );
   }

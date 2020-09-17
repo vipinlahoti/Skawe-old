@@ -114,8 +114,6 @@ class PriceSummary extends Component {
       backupPriceMo: serverPlans[9], // backup
     }
 
-    console.log(setCreate, setExtra)
-
     const dataMutation = {
       url: 'instances',
       type: 'full',

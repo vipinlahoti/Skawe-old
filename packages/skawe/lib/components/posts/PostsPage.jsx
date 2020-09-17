@@ -86,16 +86,11 @@ class PostsPage extends Component {
             </Container>
           </Jumbotron>
 
-          <Container>
-            <Row>
-              {post.thumbnailUrl ? <img className="posts-thumbnail" src={post.thumbnailUrl} /> : null }
-            </Row>
-          </Container>
-          
           <div className="section pt-3 pb-5">
             <Container>
               <Row className="center-xs">
                 <Col lg={10} md={10} sm={12} xs={4}>
+                  {post.thumbnailUrl ? <img className="posts-thumbnail" src={post.thumbnailUrl} /> : null }
                   {post.htmlBody ? <div className="text-left" dangerouslySetInnerHTML={htmlBody}></div> : null}
                 </Col>
               </Row>

@@ -17,6 +17,11 @@ addRoute([
   {name: 'posts.category',   path: '/blog/category/:slug',  componentName: 'PostsCategory'},
   {name: 'posts.single',     path: '/blog/:_id/:slug?',     componentName: 'PostsPage'},
 
+  // docs
+  {name: 'docs.new',        path: '/docs',                 componentName: 'DocsHome'},
+  {name: 'docs.category',   path: '/docs/category/:slug',  componentName: 'DocsCategory'},
+  {name: 'docs.single',     path: '/docs/:_id/:slug?',     componentName: 'DocsPage'},
+
   // Dashboard  
   {name: 'dashboard',    path: '/accounts/dashboard',   componentName: 'DashboardPage',  layoutName: 'AdminLayout'},
 
@@ -55,10 +60,15 @@ addRoute([
   {name: 'posts-write',       path: '/accounts/blog/new', componentName: 'PostsNew',         layoutName: 'AdminLayout'},
   {name: 'admin.comments',    path: '/admin/comments',    componentName: 'AdminComments',    layoutName: 'AdminLayout'},
   
+  {name: 'admin.docs',        path: '/admin/docs',        componentName: 'AdminDocumentations', layoutName: 'AdminLayout'},
+  {name: 'docs-write',        path: '/accounts/docs/new', componentName: 'DocsNew',            layoutName: 'AdminLayout'},
+
   {name: 'admin.departments', path: '/admin/departments', componentName: 'AdminDepartments', layoutName: 'AdminLayout'},
   {name: 'admin.tickets',     path: '/admin/tickets',     componentName: 'AdminTickets',     layoutName: 'AdminLayout'},
   {name: 'admin.replies',     path: '/admin/replies',     componentName: 'AdminReplies',     layoutName: 'AdminLayout'},
   
+  {name: 'pages-write',        path: '/accounts/pages/new', componentName: 'PagesNew',       layoutName: 'AdminLayout'},
+
   {name: 'admin.features',    path: '/admin/features',    componentName: 'AdminFeatures',    layoutName: 'AdminLayout'},
   {name: 'admin.pages',       path: '/admin/pages',       componentName: 'AdminPages',       layoutName: 'AdminLayout'},
   

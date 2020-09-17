@@ -10,7 +10,7 @@ const CategoriesMenu = props => {
 
   let menuItems = [
     {
-      to: '/',
+      to: '/docs',
       labelId: 'categories.all',
     },
   ];
@@ -21,7 +21,7 @@ const CategoriesMenu = props => {
       ...results.map(({ name, slug }) => {
         return {
           to: {
-            pathname: `/category/${slug}`,
+            pathname: `/docs/category/${slug}`,
           },
           label: name,
           linkProps: {
@@ -33,13 +33,14 @@ const CategoriesMenu = props => {
   }
 
   return (
-    <Components.Dropdown
-      buttonProps={{ variant: 'secondary' }}
-      className="categories-list"
-      labelId={'categories'}
-      id="categories-dropdown"
-      menuItems={menuItems}
-    />
+    <div className="categories-list">
+      <Components.Dropdown
+        buttonProps={{ variant: 'flat' }}
+        labelId={'categories'}
+        id="categories-dropdown"
+        menuItems={menuItems}
+      />
+    </div>
   );
 };
 

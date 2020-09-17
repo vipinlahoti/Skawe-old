@@ -173,9 +173,13 @@ a {
 
 .announcement__wrapper {
   .announcement {
-    @include padding(16px);
+    @include padding(16px 0);
     display: flex;
     justify-content: center;
+
+    @include breakpoint($screen-md) {
+      @include padding(16px);
+    }
   }
 }
 
@@ -254,6 +258,77 @@ a {
     .icon {
       @include margin(8px, left);
       opacity: 1;
+    }
+  }
+}
+
+.table__list-wrapper {
+  width: 100%;
+
+  .table__list {
+    @include padding(0);
+    @include margin(0);
+    list-style: none;
+
+    .table__list-item {
+      @include padding(16px 0);
+      border-bottom: 1px solid $gray-300;
+
+      @include breakpoint($screen-sm) {
+        @include padding(0px);
+      }
+
+      &:last-child {
+        border: 0;
+      }
+
+      &.table__list-heading {
+        display: none;
+
+        @include breakpoint($screen-sm) {
+          display: flex;
+        }
+      }
+
+      span {
+        @include margin(5px, left);
+        font-weight: 400;
+
+        @include breakpoint($screen-sm) {
+          display: none;
+        }
+      }
+      
+      ul {
+        @include padding(0);
+        @include margin(0);
+        display: block;
+        justify-content: space-around;
+        list-style: none;
+        width: 100%;
+
+        @include breakpoint($screen-sm) {
+          display: flex;
+        }
+        
+        li {
+          @extend .title-6;
+          @include font-size(18px);
+          @include width(98px, min);
+          display: flex;
+
+          @include breakpoint($screen-sm) {
+            @include padding(16px);
+          }
+        }
+      }
+    
+      &.table__list-heading {
+        li {
+          @include font-size(16px);
+          font-weight: 400;
+        }
+      }
     }
   }
 }
@@ -478,6 +553,10 @@ a {
   border-radius: 50px !important;
 }
 
+.d-none {
+  display: none !important;
+}
+
 .d-block {
   display: block !important;
 }
@@ -520,6 +599,10 @@ a {
 
   &.badge-primary {
     background: $primary;
+
+    a {
+      color: $white;
+    }
   }
 
   &.badge-blue {
@@ -603,4 +686,30 @@ a {
 
 .w-90 {
   width: 90%;
+}
+
+pre {
+  @include padding(16px);
+  background: $gray-100;
+  border: 1px solid $gray-300;
+}
+
+blockquote {
+  @include padding(16px, left);
+  border-left: 5px solid $gray-300; 
+}
+
+.editor-text {
+  table {
+    @extend .table;
+    width: auto;
+  }
+
+  h1, h2, h3 {
+    @include margin(32px, top);
+  }
+
+  h4, h5, h6 {
+    @include margin(32px, top);
+  }
 }

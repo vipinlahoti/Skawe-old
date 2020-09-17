@@ -9,6 +9,7 @@ import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 const HeroJumbotron = (
   {
     currentUser,
+    eyebrow,
     title,
     description,
     whiteButton,
@@ -22,15 +23,19 @@ const HeroJumbotron = (
     alt,
     collection,
     doc,
-    flash
+    flash,
+    category,
+    extra
   }) => {
 
   return (
     <Jumbotron className={`jumbotron-${size}`}>
       <Container>
         <Row className="middle-xs">
-          <Col md={6} sm={12} xs={4}>
-            <h1 className="title-1">{title}</h1>
+          <Col lg={category !== 'home' ? 7 : 5} md={category !== 'home' ? 7 : 6} sm={12} xs={4}>
+            <h6 className="eyebrow">{eyebrow}</h6>
+            <div className="error-page">{extra}</div>
+            <h2 className="title-2">{title}</h2>
             <p className="lead mb-2">{description}</p>
             
             {!form ? 
@@ -75,7 +80,7 @@ const HeroJumbotron = (
             ) : null }
           </Col>
 
-          <Col md={5} sm={12} xs={4} className="col-md-offset-1">
+          <Col lg={category !== 'home' ? 4 : 6} md={category !== 'home' ? 4 : 5} sm={12} xs={4} className="col-md-offset-1">
             <div className="jumbotron-image">
               <img src={image} alt={alt} />
             </div>

@@ -17,6 +17,7 @@ const schema = {
   },
   code: {
     type: String,
+    optional: true,
     canRead: ['guests'],
     canCreate: ['admins'],
     canUpdate: ['admins'],
