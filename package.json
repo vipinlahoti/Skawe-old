@@ -42,7 +42,7 @@
     "body-parser": "^1.18.3",
     "body-parser-graphql": "^1.1.0",
     "chalk": "2.2.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "classnames": "^2.2.3",
     "cloudinary": "^1.22.0",
     "combined-stream2": "^1.1.2",
