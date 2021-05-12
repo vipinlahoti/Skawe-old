@@ -102,7 +102,7 @@
     "recompose": "^0.26.0",
     "rss": "^1.2.1",
     "sanitize-html": "^1.16.3",
-    "simpl-schema": "^1.4.2",
+    "simpl-schema": "^1.10.2",
     "speakingurl": "^9.0.0",
     "underscore": "^1.8.3",
     "universal-cookie-express": "^2.1.5",
