@@ -11,6 +11,8 @@ import clone from 'lodash/clone';
 
 // TODO: the following should use async/await, but async/await doesn't seem to work with Accounts.onCreateUser
 function onCreateUserCallback(options, user) {
+  console.log('options ', options)
+  console.log('user ', user)
   debug('');
   debugGroup('--------------- start \x1b[35m onCreateUser ---------------');
   debug(`Options: ${JSON.stringify(options)}`);

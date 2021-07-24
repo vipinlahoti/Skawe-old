@@ -81,7 +81,14 @@ class TicketsPage extends Component {
                     </div>
                   </div>
 
-                  <Components.TicketsRepliesThread status={ticket.status} ticketId={ticket._id} input={{ filter: { ticketId: { _eq: ticket._id } }, sort: {createdAt: 'asc'} }} />
+                  <Components.TicketsRepliesThread
+                    status={ticket.status}
+                    ticketId={ticket._id}
+                    input={{
+                      filter: { ticketId: { _eq: ticket._id } },
+                      sort: { createdAt: 'asc' }
+                    }}
+                  />
 
                 </div>
               </Col>
@@ -117,3 +124,5 @@ registerComponent(
   // HOC to load the data of the document, based on queryOptions & a documentId props
   [withSingle, queryOptions]
 );
+
+// , sort: {createdAt: 'asc'}

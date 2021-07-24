@@ -34,3 +34,4 @@ export const Tickets = createCollection({
 });
 
 export default Tickets;
+

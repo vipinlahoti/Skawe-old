@@ -5,7 +5,7 @@
     "npm": "^3.0"
   },
   "scripts": {
-    "start": "meteor --settings settings.json",
+    "start": "meteor --settings settings.json --port 4000",
     "visualizer": "meteor --extra-packages bundle-visualizer --production --settings settings.json",
     "lint": "eslint --cache --ext .jsx,js packages",
     "lintfix": "eslint --cache --fix --ext .jsx,js packages",

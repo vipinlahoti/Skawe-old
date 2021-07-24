@@ -2,6 +2,8 @@
 export * from '../modules/index.js';
 
 // Server
+import './callbacks.js';
+
 import './emails/index.js';
 import './comments/index.js';
 import './posts/index.js';

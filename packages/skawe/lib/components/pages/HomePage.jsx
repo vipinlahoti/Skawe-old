@@ -69,7 +69,7 @@ const queryOptions = {
 
 const mapPropsFunction = props => ({
   ...props,
-  documentId: 'HmZ9phT82DRfSi4uy',
+  documentId: 'mXfzu22RNFM4gK5kf',
 });
 
 registerComponent(

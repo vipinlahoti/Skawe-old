@@ -25,6 +25,7 @@ export let hasIntlFields = false;
 export const Collections = [];
 
 export const getCollection = name => {
+  console.log('Collections ', Collections)
   const collection = Collections.find(
     ({ options: { collectionName } }) => name === collectionName || name === collectionName.toLowerCase()
   );
